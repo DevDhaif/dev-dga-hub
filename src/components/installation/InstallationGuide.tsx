@@ -19,7 +19,7 @@ import { ArrowRight, ExternalLink } from '@/components/icons';
 import { ThemeBuilder } from './ThemeBuilder';
 import './installation.css';
 
-const STORYBOOK = 'https://devdhaif.github.io/dev-dga/';
+const STORYBOOK = 'https://dev-dga.vercel.app/';
 
 const INSTALL_LANGS = [
   { value: 'npm', label: 'npm', code: 'npm i @dev-dga/react @dev-dga/css @dev-dga/tokens' },

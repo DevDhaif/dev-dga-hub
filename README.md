@@ -6,7 +6,8 @@
 React components for Saudi Arabia's DGA "Platforms Code" design system.
 Bilingual (Arabic / English), RTL-native, dark-ready. MIT-licensed, free to use.
 
-**Docs and live demos: [dev-dga.vercel.app](https://dev-dga.vercel.app)**
+**Docs and live demos: [dev-dga-hub.vercel.app](https://dev-dga-hub.vercel.app)** ·
+Storybook: [dev-dga.vercel.app](https://dev-dga.vercel.app)
 
 > Independent implementation. Not affiliated with, nor endorsed by, the Saudi
 > Digital Government Authority (DGA).
@@ -17,7 +18,7 @@ Bilingual (Arabic / English), RTL-native, dark-ready. MIT-licensed, free to use.
 pnpm add @dev-dga/react @dev-dga/css @dev-dga/tokens
 ```
 
-Setup guide: [dev-dga.vercel.app/installation](https://dev-dga.vercel.app/installation)
+Setup guide: [dev-dga-hub.vercel.app/installation](https://dev-dga-hub.vercel.app/installation)
 
 ## This repo
 

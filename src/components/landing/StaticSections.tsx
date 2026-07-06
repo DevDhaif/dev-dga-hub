@@ -10,7 +10,7 @@ import { useCopy } from '@/lib/i18n';
 import { MasarDashboard } from '@/components/examples/MasarDashboard';
 import { ArrowRight, Code } from '@/components/icons';
 
-const CODE_URL = 'https://github.com/DevDhaif/dev-dga';
+const CODE_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 
 // One glyph per copy point - order must match c.about.points.
 const ABOUT_ICONS = [
@@ -305,7 +305,7 @@ export function Closer() {
           <Link href="/components">{c.closer.browse}</Link>
         </Button>
         <Button asChild variant="outline" size="lg">
-          <a href="https://github.com/DevDhaif/dev-dga" target="_blank" rel="noreferrer">
+          <a href="https://github.com/DevDhaif/dev-dga-hub" target="_blank" rel="noreferrer">
             {c.closer.github}
           </a>
         </Button>

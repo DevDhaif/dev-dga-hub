@@ -9,7 +9,7 @@ body:
       options:
         - "@dev-dga/react (component behavior)"
         - "@dev-dga/css or @dev-dga/tokens (styling, tokens)"
-        - Docs site (dev-dga.vercel.app)
+        - Docs site (dev-dga-hub.vercel.app)
         - Not sure
     validations:
       required: true

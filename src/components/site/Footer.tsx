@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { Wordmark } from './Wordmark';
 import { useCopy } from '@/lib/i18n';
 
-const REPO_URL = 'https://github.com/DevDhaif/dev-dga';
-const STORYBOOK_URL = 'https://devdhaif.github.io/dev-dga/';
+const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
+const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
 
 const AUTHOR_NAME = 'Dhaifallah Alfarawi';
 const AUTHOR_PORTFOLIO = 'https://devdhaif.vercel.app/';
@@ -38,7 +38,7 @@ export function Footer() {
           <a href={REPO_URL} target="_blank" rel="noreferrer">
             {c.footer.github}
           </a>
-          <a href={`${REPO_URL}/blob/main/LICENSE`} target="_blank" rel="noreferrer">
+          <a href={`${REPO_URL}/blob/HEAD/LICENSE`} target="_blank" rel="noreferrer">
             {c.footer.license}
           </a>
           <a href="https://www.npmjs.com/package/@dev-dga/react" target="_blank" rel="noreferrer">

@@ -14,7 +14,7 @@ import { arDemoRegistry, demoRegistry } from '../../../demos/registry.generated'
 import { arExampleCode } from '../../../content/ar-meta.generated';
 import './showcase.css';
 
-const STORYBOOK = 'https://devdhaif.github.io/dev-dga/';
+const STORYBOOK = 'https://dev-dga.vercel.app/';
 
 interface Prose {
   description: string;

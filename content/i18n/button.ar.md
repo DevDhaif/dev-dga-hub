@@ -79,7 +79,7 @@ import { Button } from '@dev-dga/react';
 export default function Demo() {
   return (
     <Button asChild>
-      <a href="https://github.com/DevDhaif/dev-dga" target="_blank" rel="noreferrer">
+      <a href="https://github.com/DevDhaif/dev-dga-hub" target="_blank" rel="noreferrer">
         افتح المستودع
       </a>
     </Button>

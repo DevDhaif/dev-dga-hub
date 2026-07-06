@@ -16,7 +16,7 @@ import { COPY, useCopy } from '@/lib/i18n';
 import { paletteById, useSettings } from '@/lib/settings';
 import { ArrowRight, ExternalLink } from '@/components/icons';
 
-const STORYBOOK_URL = 'https://devdhaif.github.io/dev-dga/';
+const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
 
 const DgaMark = () => (
   <svg

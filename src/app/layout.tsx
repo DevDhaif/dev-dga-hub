@@ -16,7 +16,7 @@ const DESCRIPTION =
   'An independent, MIT-licensed React 19 implementation of Saudi Arabia’s DGA Platforms Code design system. RTL-native, dark-ready, WCAG 2.2 AA. Not affiliated with the official DGA.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3100'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dev-dga-hub.vercel.app'),
   title: {
     default: 'dev-dga · Saudi DGA Platforms Code, as React',
     template: '%s · dev-dga',

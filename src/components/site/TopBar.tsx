@@ -10,8 +10,8 @@ import { SearchBox } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
 import { GitHub, ExternalLink, Menu, Close } from '@/components/icons';
 
-const REPO_URL = 'https://github.com/DevDhaif/dev-dga';
-const STORYBOOK_URL = 'https://devdhaif.github.io/dev-dga/';
+const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
+const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
 
 export function TopBar() {
   const pathname = usePathname();
