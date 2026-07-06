@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none" stroke-linecap="round">
+  <!-- outer frame -->
+  <rect x="22" y="26" width="84" height="44" rx="5" stroke="#161616" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <!-- header divider -->
+  <path d="M22 40h84" stroke="#161616" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <!-- column divider -->
+  <path d="M64 26v44" stroke="#161616" stroke-width="1.5" stroke-opacity="0.3" vector-effect="non-scaling-stroke"/>
+  <!-- row divider -->
+  <path d="M22 55h84" stroke="#161616" stroke-width="1.5" stroke-opacity="0.3" vector-effect="non-scaling-stroke"/>
+  <!-- header labels -->
+  <rect x="28" y="31" width="16" height="4" rx="2" fill="#161616" fill-opacity="0.5"/>
+  <rect x="70" y="31" width="14" height="4" rx="2" fill="#161616" fill-opacity="0.5"/>
+  <!-- green sort caret -->
+  <path d="M49 31.5l2.5 3 2.5-3" stroke="#1b8354" stroke-width="1.5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+  <!-- body cells -->
+  <rect x="28" y="46" width="22" height="3" rx="1.5" fill="#161616" fill-opacity="0.3"/>
+  <rect x="70" y="46" width="16" height="3" rx="1.5" fill="#161616" fill-opacity="0.3"/>
+  <rect x="28" y="60" width="20" height="3" rx="1.5" fill="#161616" fill-opacity="0.3"/>
+  <rect x="70" y="60" width="18" height="3" rx="1.5" fill="#161616" fill-opacity="0.3"/>
+</svg>

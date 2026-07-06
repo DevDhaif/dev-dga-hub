@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- link text -->
+  <rect x="34" y="42" width="44" height="6" rx="3" fill="#161616" fill-opacity="0.55"/>
+  <!-- accent underline -->
+  <path d="M34 55h44" stroke="#1b8354" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <!-- external-link glyph -->
+  <path d="M85 40h9v9M94 40 84 50" stroke="#161616" stroke-width="1.5" stroke-opacity="0.4" vector-effect="non-scaling-stroke"/>
+</svg>

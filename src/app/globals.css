@@ -1,0 +1,197 @@
+
+@layer theme, base, ddga-base, ddga-components, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+
+@theme {
+  --font-sans: var(--ddga-font-ar);
+  --font-mono: var(--ddga-font-mono);
+
+  --color-background: var(--ddga-color-background);
+  --color-foreground: var(--ddga-color-foreground);
+  --color-ink: var(--ddga-text-primary);
+  --color-ink-2: var(--ddga-text-secondary);
+  --color-ink-3: var(--ddga-text-tertiary);
+  --color-border: var(--ddga-color-border);
+  --color-card: var(--ddga-color-card);
+  --color-muted: var(--ddga-color-muted);
+  --color-muted-foreground: var(--ddga-color-muted-foreground);
+
+  --color-brand: var(--ddga-color-primary);
+  --color-brand-hover: var(--ddga-color-primary-hover);
+  --color-brand-active: var(--ddga-color-primary-active);
+  --color-brand-fg: var(--ddga-color-primary-foreground);
+
+  --color-sa-25: var(--ddga-sa-25);
+  --color-sa-50: var(--ddga-sa-50);
+  --color-sa-100: var(--ddga-sa-100);
+  --color-sa-200: var(--ddga-sa-200);
+  --color-sa-500: var(--ddga-sa-500);
+  --color-sa-600: var(--ddga-sa-600);
+  --color-sa-700: var(--ddga-sa-700);
+  --color-sa-900: var(--ddga-sa-900);
+  --color-sa-950: var(--ddga-sa-950);
+
+  --radius-xs: var(--ddga-radius-xs);
+  --radius-sm: var(--ddga-radius-sm);
+  --radius-md: var(--ddga-radius-md);
+  --radius-lg: var(--ddga-radius-lg);
+  --radius-xl: var(--ddga-radius-xl);
+}
+
+@layer base {
+  html {
+    background: var(--ddga-color-background);
+    color: var(--ddga-text-primary);
+    font-family: var(--ddga-font-ar), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--ddga-color-background);
+    color: var(--ddga-text-primary);
+  }
+
+  ::selection {
+    background: var(--ddga-sa-200);
+    color: var(--ddga-sa-950);
+  }
+
+  /* Site chrome only - @dev-dga components own their :focus-visible; a blanket rule doubles their ring. */
+  :where(a, button):not([class*='ddga-']):focus-visible {
+    outline: 2px solid var(--ddga-text-primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+
+  .mono {
+    font-family: var(--ddga-font-mono), var(--ddga-font-ar), ui-monospace, monospace;
+    font-feature-settings: 'ss01';
+  }
+
+  /* Brand sans, not mono - mono has no Arabic and falls back to a clashing face. */
+  .eyebrow {
+    font-family: var(--ddga-font-ar), system-ui, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: var(--ddga-color-primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  /* RTL: no uppercase or tracking for Arabic. */
+  [dir='rtl'] .eyebrow {
+    text-transform: none;
+    font-size: 0.8125rem;
+  }
+  .eyebrow::before {
+    content: '';
+    inline-size: 1.5rem;
+    block-size: 2px;
+    border-radius: 2px;
+    background: var(--ddga-color-primary);
+  }
+
+  .shell {
+    inline-size: 100%;
+    max-inline-size: 76rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  .hairline {
+    border: 1px solid var(--ddga-color-border);
+  }
+
+  .surface {
+    background: var(--ddga-color-card);
+    border: 1px solid var(--ddga-color-border);
+    border-radius: var(--ddga-radius-lg);
+  }
+
+  .grid-field {
+    background-image: radial-gradient(var(--ddga-color-border) 1px, transparent 1px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 75%);
+  }
+
+  .display {
+    font-family: var(--ddga-font-ar), system-ui, sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+  }
+
+  .example-embed {
+    display: block;
+    inline-size: 100%;
+    block-size: calc(100dvh - 65px);
+    border: 0;
+  }
+}
+
+/* .rtl-flip-x mirrors directional icons under RTL. */
+[dir='rtl'] .rtl-flip-x {
+  transform: scaleX(-1);
+}
+
+/* Physical props on purpose (iOS-style, same in RTL) - logical props would double the DS RTL mirroring. */
+.ddga-switch__thumb {
+  inset-inline-start: auto;
+  inset-inline-end: auto;
+  left: 4px;
+  right: auto;
+}
+.ddga-switch[data-state='checked'] .ddga-switch__thumb {
+  translate: 24px;
+}
+
+/* Arabic is cursive - never letter-space it; give it looser leading. */
+[dir='rtl'] {
+  letter-spacing: normal;
+}
+[dir='rtl']
+  :is(
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .display,
+    .eyebrow,
+    [class*='title'],
+    [class*='heading'],
+    [class*='eyebrow']
+  ):not([class*='ddga-']) {
+  letter-spacing: normal;
+}
+[dir='rtl'] :is(.display, .hero__title, h1, h2):not([class*='ddga-']) {
+  line-height: 1.28;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    transition: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

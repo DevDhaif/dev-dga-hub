@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none">
+  <circle cx="62" cy="47" r="18" stroke="#161616" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <circle cx="62" cy="42" r="6" stroke="#161616" stroke-width="1.5" stroke-opacity="0.55" vector-effect="non-scaling-stroke"/>
+  <path d="M74 60a12 12 0 0 0-24 0" stroke="#161616" stroke-width="1.5" stroke-opacity="0.55" vector-effect="non-scaling-stroke"/>
+  <!-- online status (accent) -->
+  <circle cx="76" cy="60" r="5" fill="#1b8354"/>
+</svg>

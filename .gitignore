@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+
+# Generated preview modules + i18n meta (rebuilt from content/ on gen/dev/build)
+/demos/.generated/
+/demos/registry.generated.ts
+/content/ar-meta.generated.ts
+
+# Illustration pipeline output (optimized SVGs + typed registry) - rebuilt from
+# assets/illustrations/ on gen/dev/build. Sources under assets/ are tracked.
+/public/illustrations/
+/src/lib/illustrations.generated.ts
+/src/lib/tokens.generated.ts
+
+# Vercel / misc
+.vercel
+*.tsbuildinfo
+
+# Local working notes and session prompts - not part of the public repo.
+/internal/

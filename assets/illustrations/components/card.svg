@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="30" y="26" width="68" height="46" rx="5" stroke="#161616" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <path d="M30 45h68" stroke="#161616" stroke-width="1.5" stroke-opacity="0.4" vector-effect="non-scaling-stroke"/>
+  <!-- media: sun + hills (accent sun) -->
+  <circle cx="45" cy="34" r="3.5" fill="#1b8354"/>
+  <path d="M34 41l9-6 7 4 8-5 6 4" stroke="#161616" stroke-width="1.5" stroke-opacity="0.4" vector-effect="non-scaling-stroke"/>
+  <!-- body -->
+  <rect x="36" y="51" width="40" height="4" rx="2" fill="#161616" fill-opacity="0.5"/>
+  <rect x="36" y="59" width="54" height="3.5" rx="1.75" fill="#161616" fill-opacity="0.3"/>
+  <rect x="36" y="65" width="44" height="3.5" rx="1.75" fill="#161616" fill-opacity="0.3"/>
+</svg>

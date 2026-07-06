@@ -1,0 +1,8 @@
+node_modules
+.next
+out
+vendor
+demos/.generated
+demos/registry.generated.ts
+content/ar-meta.generated.ts
+pnpm-lock.yaml

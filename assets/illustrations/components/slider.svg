@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none">
+  <!-- filled portion (accent) -->
+  <rect x="24" y="46.5" width="37" height="3" rx="1.5" fill="#1b8354"/>
+  <!-- remaining track -->
+  <rect x="75" y="46.5" width="29" height="3" rx="1.5" fill="#161616" fill-opacity="0.25"/>
+  <!-- thumb -->
+  <circle cx="68" cy="48" r="7" stroke="#161616" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+</svg>

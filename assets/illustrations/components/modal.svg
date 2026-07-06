@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none" stroke-linecap="round">
+  <!-- dimmed scrim -->
+  <rect x="12" y="14" width="104" height="68" rx="6" fill="#161616" fill-opacity="0.06"/>
+  <!-- modal card -->
+  <rect x="36" y="26" width="56" height="44" rx="5" stroke="#161616" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <!-- title -->
+  <rect x="44" y="34" width="24" height="4" rx="2" fill="#161616" fill-opacity="0.55"/>
+  <!-- close -->
+  <path d="M83 33l-4 4M79 33l4 4" stroke="#161616" stroke-width="1.5" stroke-opacity="0.4" vector-effect="non-scaling-stroke"/>
+  <!-- body lines -->
+  <rect x="44" y="45" width="40" height="3" rx="1.5" fill="#161616" fill-opacity="0.3"/>
+  <rect x="44" y="52" width="30" height="3" rx="1.5" fill="#161616" fill-opacity="0.3"/>
+  <!-- primary action (accent) -->
+  <rect x="64" y="59" width="20" height="7" rx="3.5" fill="#1b8354"/>
+</svg>

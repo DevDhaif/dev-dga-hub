@@ -1,0 +1,45 @@
+{
+  "name": "dev-dga-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Showcase + documentation site for the @dev-dga design system - bilingual (Arabic/English), RTL-native, dark-ready.",
+  "scripts": {
+    "sync": "node scripts/sync-catalog.mjs",
+    "gen": "node scripts/gen-demos.mjs && node scripts/optimize-illustrations.mjs && node scripts/gen-illustrations.mjs && node scripts/gen-tokens.mjs",
+    "dev": "pnpm gen && next dev -p 3100",
+    "build": "pnpm gen && next build",
+    "start": "next start -p 3100",
+    "lint": "eslint .",
+    "typecheck": "pnpm gen && tsc --noEmit",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@dev-dga/css": "^0.12.0",
+    "@dev-dga/react": "^0.12.0",
+    "@dev-dga/tokens": "^0.12.0",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
+    "@fontsource/ibm-plex-sans-arabic": "^5.2.9",
+    "gray-matter": "^4.0.3",
+    "next": "^16.2.10",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@tailwindcss/postcss": "^4.3.2",
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.4",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.6.0",
+    "prettier": "^3.8.1",
+    "svgo": "^4.0.1",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.59.3"
+  }
+}

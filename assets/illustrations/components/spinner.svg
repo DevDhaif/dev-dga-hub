@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none" stroke-linecap="round">
+  <circle cx="64" cy="48" r="16" stroke="#161616" stroke-width="3" stroke-opacity="0.18" vector-effect="non-scaling-stroke"/>
+  <path d="M64 32a16 16 0 0 1 16 16" stroke="#1b8354" stroke-width="3" vector-effect="non-scaling-stroke"/>
+</svg>

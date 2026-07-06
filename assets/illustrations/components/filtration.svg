@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="30" y="24" width="68" height="48" rx="5" stroke="#161616" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <path d="M36 30h13l-5 6v5l-3-2v-3z" stroke="#1b8354" stroke-width="1.3" vector-effect="non-scaling-stroke"/>
+  <rect x="54" y="31" width="24" height="4" rx="2" fill="#161616" fill-opacity="0.5"/>
+  <path d="M30 42h68" stroke="#161616" stroke-width="1.5" stroke-opacity="0.2" vector-effect="non-scaling-stroke"/>
+  <rect x="36" y="47" width="8" height="8" rx="2" fill="#1b8354" fill-opacity="0.15"/>
+  <rect x="36" y="47" width="8" height="8" rx="2" stroke="#1b8354" stroke-width="1.3" vector-effect="non-scaling-stroke"/>
+  <path d="M38 51l1.4 1.4 3-3" stroke="#1b8354" stroke-width="1.3" vector-effect="non-scaling-stroke"/>
+  <rect x="50" y="49" width="34" height="4" rx="2" fill="#161616" fill-opacity="0.35"/>
+  <rect x="36" y="60" width="8" height="8" rx="2" stroke="#161616" stroke-width="1.3" stroke-opacity="0.4" vector-effect="non-scaling-stroke"/>
+  <rect x="50" y="62" width="26" height="4" rx="2" fill="#161616" fill-opacity="0.3"/>
+</svg>

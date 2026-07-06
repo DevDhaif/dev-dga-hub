@@ -1,0 +1,43 @@
+name: Bug report
+description: Something in the @dev-dga packages or the docs site is broken
+labels: [bug]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where is the bug?
+      options:
+        - "@dev-dga/react (component behavior)"
+        - "@dev-dga/css or @dev-dga/tokens (styling, tokens)"
+        - Docs site (dev-dga.vercel.app)
+        - Not sure
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Package version
+      description: The @dev-dga/* version from your package.json or lockfile.
+      placeholder: "0.12.0"
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: >-
+        Minimal steps or a small code snippet. For RTL or Arabic bugs, say which
+        language and direction you were using.
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Browser, framework, and versions.
+      placeholder: "Chrome 138, Next.js 16, React 19"

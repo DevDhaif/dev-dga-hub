@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="28" y="28" width="72" height="42" rx="6" stroke="#161616" stroke-width="1.5" stroke-opacity="0.4" stroke-dasharray="5 4" vector-effect="non-scaling-stroke"/>
+  <!-- upload arrow (accent) -->
+  <path d="M64 56V40M57 47l7-7 7 7" stroke="#1b8354" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <path d="M50 62h28" stroke="#161616" stroke-width="1.5" stroke-opacity="0.3" vector-effect="non-scaling-stroke"/>
+</svg>

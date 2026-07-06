@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 96" fill="none" stroke-linecap="round">
+  <rect x="34" y="32" width="60" height="42" rx="5" stroke="#161616" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <path d="M34 44h60" stroke="#161616" stroke-width="1.5" stroke-opacity="0.5" vector-effect="non-scaling-stroke"/>
+  <path d="M46 28v6M82 28v6" stroke="#161616" stroke-width="1.5" vector-effect="non-scaling-stroke"/>
+  <!-- selected day (accent) -->
+  <circle cx="64" cy="55" r="6" fill="#1b8354" fill-opacity="0.14"/>
+  <circle cx="64" cy="55" r="2.6" fill="#1b8354"/>
+  <!-- other days -->
+  <circle cx="48" cy="55" r="2.6" fill="#161616" fill-opacity="0.3"/>
+  <circle cx="80" cy="55" r="2.6" fill="#161616" fill-opacity="0.3"/>
+  <circle cx="48" cy="66" r="2.6" fill="#161616" fill-opacity="0.3"/>
+  <circle cx="64" cy="66" r="2.6" fill="#161616" fill-opacity="0.3"/>
+  <circle cx="80" cy="66" r="2.6" fill="#161616" fill-opacity="0.3"/>
+</svg>
