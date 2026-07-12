@@ -1,8 +1,10 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Wordmark } from './Wordmark';
 import { useCopy } from '@/lib/i18n';
+import { isArabicPath, localizeHref } from '@/lib/locale-routes';
 
 const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
@@ -13,6 +15,8 @@ const AUTHOR_GITHUB = 'https://github.com/DevDhaif';
 
 export function Footer() {
   const { c } = useCopy();
+  const isAr = isArabicPath(usePathname());
+  const href = (p: string) => localizeHref(p, isAr);
   return (
     <footer className="footer">
       <div className="shell footer__inner">
@@ -23,14 +27,21 @@ export function Footer() {
 
         <nav className="footer__col" aria-label={c.footer.explore}>
           <p className="footer__heading">{c.footer.explore}</p>
-          <Link href="/components">{c.footer.components}</Link>
-          <Link href="/installation">{c.footer.installation}</Link>
-          <Link href="/theme">{c.themePage.eyebrow}</Link>
-          <Link href="/blocks">{c.footer.blocks}</Link>
-          <Link href="/examples/masar">{c.nav.examples}</Link>
+          <Link href={href('/components')}>{c.footer.components}</Link>
+          <Link href={href('/installation')}>{c.footer.installation}</Link>
+          <Link href={href('/theme')}>{c.themePage.eyebrow}</Link>
+          <Link href={href('/blocks')}>{c.footer.blocks}</Link>
+          <Link href={href('/examples/masar')}>{c.nav.examples}</Link>
           <a href={STORYBOOK_URL} target="_blank" rel="noreferrer">
             {c.footer.storybook}
           </a>
+        </nav>
+
+        <nav className="footer__col" aria-label={c.footer.proof}>
+          <p className="footer__heading">{c.footer.proof}</p>
+          <Link href={href('/compliance')}>{c.footer.compliance}</Link>
+          <Link href={href('/accessibility')}>{c.footer.accessibility}</Link>
+          <Link href={href('/rtl')}>{c.footer.rtl}</Link>
         </nav>
 
         <nav className="footer__col" aria-label={c.footer.project}>

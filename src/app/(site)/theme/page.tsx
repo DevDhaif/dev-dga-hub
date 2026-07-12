@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Theme Studio',
   description:
     'Full control over every @dev-dga design token. Edit all 188 --ddga-* variables live - colors, scales, radius, spacing, typography, shadows - preview across components in light/dark and Arabic/English, then copy the CSS.',
+  alternates: { canonical: '/theme' },
 };
 
 export default function Page() {

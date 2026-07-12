@@ -8,6 +8,7 @@ import { Wordmark } from './Wordmark';
 import { OPEN_COMMAND_EVENT } from './CommandPalette';
 import { SearchBox } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
+import { isArabicPath, localizeHref } from '@/lib/locale-routes';
 import { GitHub, ExternalLink, Menu, Close } from '@/components/icons';
 
 const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
@@ -15,13 +16,19 @@ const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
 
 export function TopBar() {
   const pathname = usePathname();
+  const isAr = isArabicPath(pathname);
+  const href = (p: string) => localizeHref(p, isAr);
   const { c } = useCopy();
   const [open, setOpen] = useState(false);
 
   const nav = [
     { href: '/components', label: c.nav.components },
+    { href: '/compliance', label: c.nav.compliance },
+    { href: '/accessibility', label: c.nav.accessibility },
     { href: '/rtl', label: c.nav.rtl },
     { href: '/installation', label: c.nav.installation },
+  ];
+  const mobileExtras = [
     { href: '/blocks', label: c.nav.blocks },
     { href: '/examples/masar', label: c.nav.examples },
   ];
@@ -29,17 +36,18 @@ export function TopBar() {
   return (
     <header className="topbar">
       <div className="shell topbar__inner">
-        <Link href="/" className="topbar__brand" aria-label={c.nav.home}>
+        <Link href={href('/')} className="topbar__brand" aria-label={c.nav.home}>
           <Wordmark />
         </Link>
 
         <nav className="topbar__nav" aria-label={c.chrome.navPrimary}>
           {nav.map((item) => {
-            const active = pathname === item.href || pathname.startsWith(item.href + '/');
+            const target = href(item.href);
+            const active = pathname === target || pathname.startsWith(target + '/');
             return (
               <Link
                 key={item.href}
-                href={item.href}
+                href={target}
                 className="topbar__link"
                 data-active={active}
                 aria-current={active ? 'page' : undefined}
@@ -100,8 +108,8 @@ export function TopBar() {
       {open && (
         <div className="topbar__mobile">
           <div className="shell topbar__mobile-inner">
-            {nav.map((item) => (
-              <Link key={item.href} href={item.href} onClick={() => setOpen(false)}>
+            {[...nav, ...mobileExtras].map((item) => (
+              <Link key={item.href} href={href(item.href)} onClick={() => setOpen(false)}>
                 {item.label}
               </Link>
             ))}

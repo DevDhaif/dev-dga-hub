@@ -1,14 +1,24 @@
 'use client';
 
+import { usePathname, useRouter } from 'next/navigation';
 import { PALETTES, useSettings } from '@/lib/settings';
 import { useCopy } from '@/lib/i18n';
+import { otherLocalePath } from '@/lib/locale-routes';
 import { Moon, Sun } from '@/components/icons';
 
 export function ThemeControls({ compact = false }: { compact?: boolean }) {
   const { mode, dir, palette, toggleMode, toggleDir, setPalette } = useSettings();
   const { c, locale } = useCopy();
+  const pathname = usePathname();
+  const router = useRouter();
   const paletteAria = (label: string) =>
     locale === 'ar' ? `${c.chrome.paletteWord} ${label}` : `${label} ${c.chrome.paletteWord}`;
+
+  const other = pathname ? otherLocalePath(pathname) : null;
+  const switchLanguage = () => {
+    if (other) router.push(other);
+    else toggleDir();
+  };
 
   return (
     <div className="controls" role="group" aria-label={c.chrome.displaySettings}>
@@ -33,7 +43,7 @@ export function ThemeControls({ compact = false }: { compact?: boolean }) {
       <button
         type="button"
         className="seg"
-        onClick={toggleDir}
+        onClick={switchLanguage}
         aria-label={c.chrome.toggleDirection}
         title={c.chrome.toggleDirection}
       >
