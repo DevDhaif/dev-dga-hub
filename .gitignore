@@ -28,5 +28,5 @@ next-env.d.ts
 /.impeccable/
 /.github/hooks/
 
-*.md
-!READMD.md
+/PRODUCT.md
+/DESIGN.md
