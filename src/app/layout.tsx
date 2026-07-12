@@ -109,7 +109,7 @@ export const viewport: Viewport = {
   ],
 };
 
-const noFlash = `(function(){try{var s=localStorage.getItem('${STORAGE_KEY}');var d=s?JSON.parse(s):{};var m=d.mode==='dark'?'dark':'light';var p=location.pathname;var ar=/^\\/ar(?=\\/|$)/.test(p);var enLoc=p==='/'||p==='/compliance'||p==='/accessibility'||p==='/rtl';var dir=ar?'rtl':(enLoc?'ltr':(d.dir==='rtl'?'rtl':'ltr'));var e=document.documentElement;e.setAttribute('data-theme',m);e.setAttribute('dir',dir);if(ar)e.setAttribute('lang','ar');e.style.colorScheme=m;}catch(_){}})();`;
+const noFlash = `(function(){try{var s=localStorage.getItem('${STORAGE_KEY}');var d=s?JSON.parse(s):{};var m=d.mode==='dark'?'dark':'light';var ar=/^\\/ar(?=\\/|$)/.test(location.pathname);var dir=ar||d.dir==='rtl'?'rtl':'ltr';var e=document.documentElement;e.setAttribute('data-theme',m);e.setAttribute('dir',dir);if(dir==='rtl')e.setAttribute('lang','ar');e.style.colorScheme=m;}catch(_){}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

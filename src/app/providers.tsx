@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 import { DgaProvider, NotificationToast } from '@dev-dga/react';
-import { LOCALIZED_PATHS, isArabicPath } from '@/lib/locale-routes';
+import { isArabicPath } from '@/lib/locale-routes';
 import {
   DEFAULT_SETTINGS,
   SettingsContext,
@@ -33,15 +33,7 @@ function readStored(): Settings {
 
 export function Providers({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-
-  const forcedDir: Dir | null = !pathname
-    ? null
-    : isArabicPath(pathname)
-      ? 'rtl'
-      : (LOCALIZED_PATHS as readonly string[]).includes(pathname)
-        ? 'ltr'
-        : null;
-  const isArabicRoute = !!pathname && isArabicPath(pathname);
+  const arabicRoute = !!pathname && isArabicPath(pathname);
 
   const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
   const [ready, setReady] = useState(false);
@@ -51,7 +43,13 @@ export function Providers({ children }: { children: ReactNode }) {
     setReady(true);
   }, []);
 
-  const dir: Dir = forcedDir ?? settings.dir;
+  const dir: Dir = arabicRoute ? 'rtl' : settings.dir;
+
+  useEffect(() => {
+    if (ready && arabicRoute && settings.dir !== 'rtl') {
+      setSettings((s) => ({ ...s, dir: 'rtl' }));
+    }
+  }, [ready, arabicRoute, settings.dir]);
 
   useEffect(() => {
     if (!ready) return;
@@ -63,9 +61,9 @@ export function Providers({ children }: { children: ReactNode }) {
     const el = document.documentElement;
     el.setAttribute('data-theme', settings.mode);
     el.setAttribute('dir', dir);
-    el.setAttribute('lang', isArabicRoute ? 'ar' : 'en');
+    el.setAttribute('lang', dir === 'rtl' ? 'ar' : 'en');
     el.style.colorScheme = settings.mode;
-  }, [settings, ready, dir, isArabicRoute]);
+  }, [settings, ready, dir]);
 
   const update = useCallback((patch: Partial<Settings>) => {
     setSettings((s) => ({ ...s, ...patch }));

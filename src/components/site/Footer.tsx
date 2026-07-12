@@ -1,10 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Wordmark } from './Wordmark';
 import { useCopy } from '@/lib/i18n';
-import { isArabicPath, localizeHref } from '@/lib/locale-routes';
+import { localizeHref } from '@/lib/locale-routes';
 
 const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
@@ -14,9 +13,8 @@ const AUTHOR_PORTFOLIO = 'https://devdhaif.vercel.app/';
 const AUTHOR_GITHUB = 'https://github.com/DevDhaif';
 
 export function Footer() {
-  const { c } = useCopy();
-  const isAr = isArabicPath(usePathname());
-  const href = (p: string) => localizeHref(p, isAr);
+  const { c, locale } = useCopy();
+  const href = (p: string) => localizeHref(p, locale === 'ar');
   return (
     <footer className="footer">
       <div className="shell footer__inner">
