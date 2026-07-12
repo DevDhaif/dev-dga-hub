@@ -20,6 +20,14 @@ pnpm add @dev-dga/react @dev-dga/css @dev-dga/tokens
 
 Setup guide: [dev-dga-hub.vercel.app/installation](https://dev-dga-hub.vercel.app/installation)
 
+## Explore
+
+- **Components** - the full gallery, live and themeable: [/components](https://dev-dga-hub.vercel.app/components)
+- **Compliance** - every component mapped to the official DGA Platforms Code, with a coverage status: [/compliance](https://dev-dga-hub.vercel.app/compliance)
+- **Accessibility** - the WCAG 2.2 AA conformance statement (self-assessed): [/accessibility](https://dev-dga-hub.vercel.app/accessibility) · [full statement](ACCESSIBILITY.md)
+- **Arabic & RTL** - RTL as a first language, with live demos: [/rtl](https://dev-dga-hub.vercel.app/rtl)
+- **Storybook** - [dev-dga.vercel.app](https://dev-dga.vercel.app)
+
 ## This repo
 
 This is the docs site and the public issue tracker. The library source is

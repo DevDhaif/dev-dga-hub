@@ -16,7 +16,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const found = componentBySlug(slug);
   if (!found) return {};
-  return { title: found.meta.name, description: found.meta.blurb };
+  return {
+    title: found.meta.name,
+    description: found.meta.blurb,
+    alternates: { canonical: `/components/${slug}` },
+  };
 }
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {

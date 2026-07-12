@@ -6,6 +6,7 @@ import { sectionIllustrations } from '@/lib/illustrations.generated';
 import { enrichIllustration } from '@/lib/illustration-motion';
 import { Hero } from './Hero';
 import { ProofStrip } from './ProofStrip';
+import { Pillars } from './Pillars';
 import { ThemingDemo } from './ThemingDemo';
 import { RtlDemo, DarkModeDemo } from './ParityDemos';
 import {
@@ -79,6 +80,10 @@ export function Landing() {
     <>
       <Hero />
       <ProofStrip />
+
+      <Section eyebrow={c.pillars.eyebrow} title={c.pillars.title} lead={c.pillars.lead}>
+        <Pillars />
+      </Section>
 
       <Section eyebrow={c.about.eyebrow} title={c.about.title} lead={c.about.lead} tint split>
         <AboutFeatures />
