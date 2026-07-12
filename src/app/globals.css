@@ -148,15 +148,11 @@
   transform: scaleX(-1);
 }
 
-/* Physical props on purpose (iOS-style, same in RTL) - logical props would double the DS RTL mirroring. */
-.ddga-switch__thumb {
-  inset-inline-start: auto;
-  inset-inline-end: auto;
-  left: 4px;
-  right: auto;
-}
 .ddga-switch[data-state='checked'] .ddga-switch__thumb {
   translate: 24px;
+}
+.ddga-switch[data-state='checked']:dir(rtl) .ddga-switch__thumb {
+  translate: -24px;
 }
 
 /* Arabic is cursive - never letter-space it; give it looser leading. */
