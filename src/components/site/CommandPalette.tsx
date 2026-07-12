@@ -24,6 +24,7 @@ export function CommandPalette() {
   const pages = [
     { value: 'home', label: c.command.home, href: '/' },
     { value: 'all-components', label: c.command.allComponents, href: '/components' },
+    { value: 'rtl', label: c.nav.rtl, href: '/rtl' },
     { value: 'installation', label: c.command.installation, href: '/installation' },
     { value: 'theme', label: c.themePage.eyebrow, href: '/theme' },
     { value: 'blocks', label: c.command.blocks, href: '/blocks' },

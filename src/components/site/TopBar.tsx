@@ -20,6 +20,7 @@ export function TopBar() {
 
   const nav = [
     { href: '/components', label: c.nav.components },
+    { href: '/rtl', label: c.nav.rtl },
     { href: '/installation', label: c.nav.installation },
     { href: '/blocks', label: c.nav.blocks },
     { href: '/examples/masar', label: c.nav.examples },

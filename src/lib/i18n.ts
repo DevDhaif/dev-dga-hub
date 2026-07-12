@@ -23,6 +23,7 @@ const en = {
     github: 'GitHub',
     home: 'dev-dga home',
     menu: 'Menu',
+    rtl: 'Arabic & RTL',
   },
   hero: {
     eyebrow: 'SDGA Platforms Code → React 19',
@@ -511,6 +512,101 @@ const en = {
       },
     },
   },
+  rtlPage: {
+    eyebrow: 'Arabic & RTL',
+    title: 'Right-to-left, engineered as a first language.',
+    lead: 'Every competitor ships RTL as a dir attribute and stops there. dev-dga treats Arabic as a first-class language - Hijri calendars, abjad counters, protected letter-joining, mirrored keyboard semantics, and bidi-safe Saudi data, all live below. Flip the direction and watch the whole page respond.',
+    onThisPage: 'On this page',
+    live: 'Live',
+    code: 'Code',
+    positioning: {
+      title: 'RTL is not a checkbox.',
+      body: 'A dir="rtl" flip mirrors boxes. It does not give you an Umm al-Qura calendar, abjad list markers, cursive joining that survives your design tokens, arrow keys that follow the reading order, or a National ID that stays legible inside an Arabic sentence. Those are the details a Saudi government team notices first - so they are the ones this system gets right.',
+    },
+    dir: {
+      label: 'Preview direction',
+      rtl: 'RTL · Arabic',
+      ltr: 'LTR · English',
+      hint: 'One switch flips every example below - layout, overlays, calendars, and keyboard focus all follow.',
+    },
+    sections: {
+      hijri: {
+        nav: 'Hijri calendars',
+        title: 'Hijri / Umm al-Qura, built in',
+        lead: 'The DatePicker and DateRangePicker carry an in-calendar Gregorian ↔ Hijri toggle. Switch to Hijri and each day cell shows the Umm al-Qura date with the Gregorian day beneath it, so people cross-reference without leaving the field. The stored value is always a native Date - the Hijri view is display only.',
+        points: [
+          {
+            t: 'Gregorian ↔ Hijri toggle',
+            d: 'A control inside the popover, on by default. Or pin one system with the calendar prop.',
+          },
+          {
+            t: 'Dual-calendar day cells',
+            d: 'showSecondaryCalendar prints the other system’s day number, small, beneath each day.',
+          },
+          {
+            t: 'Latin digits, always',
+            d: 'Numerals render 0-9, never Arabic-Indic - the Saudi government convention for forms and IDs.',
+          },
+          {
+            t: 'Locale-aware weekday header',
+            d: 'Arabic weekday initials read ح ن ث ر خ ج س - real day letters, not a collapsed “ال”.',
+          },
+        ],
+        note: 'The weekday-initial fix shipped in @dev-dga 0.12.2. Earlier builds collapsed several Arabic weekdays to “ال”.',
+      },
+      abjad: {
+        nav: 'Abjad counters',
+        title: 'Nested lists count in abjad',
+        lead: 'An ordered List numbers its top level 1-2-3 in both directions. Its nested items are where language shows: Latin a-b-c under LTR, and the Arabic abjad sequence أ-ب-ج-د-ه under RTL - the historical alphanumeric ordering, driven entirely by a CSS @counter-style.',
+        ltrLabel: 'LTR - nested items a-b-c',
+        rtlLabel: 'RTL - nested items أ-ب-ج',
+        note: 'Both lists below use identical markup. Only the direction differs.',
+      },
+      joining: {
+        nav: 'Letter-joining',
+        title: 'Cursive joining is protected',
+        lead: 'Arabic is cursive - its letters connect. The tracking that tightens Latin display type shatters an Arabic word into disconnected glyphs. The system resets letter-spacing to normal under RTL and never uppercases Arabic, so headings and eyebrows stay legible.',
+        okLabel: 'Protected - letters joined',
+        brokenLabel: 'Letter-spaced - joining broken',
+        note: 'The second sample adds letter-spacing: 0.25em - exactly what a Latin display utility would do. Never apply it to Arabic.',
+      },
+      keyboard: {
+        nav: 'RTL keyboard',
+        title: 'Arrow keys follow the reading order',
+        lead: 'Keyboard semantics invert with the layout. In Tabs, Slider, Rating, Menubar, and the DatePicker grid, the arrow that moves to the next item points along the reading direction - so under RTL, Left advances and Right goes back. Home and End jump to the first and last item; a roving tabindex keeps a single tab stop.',
+        keys: [
+          { k: '← →', d: 'Move between items, inverted under RTL to match reading order.' },
+          { k: 'Home End', d: 'Jump to the first / last item in the group.' },
+          { k: 'Tab', d: 'One stop for the whole group; arrows move within it (roving tabindex).' },
+        ],
+        try: 'Focus a control below and try the arrows - flip the direction and feel them invert.',
+        note: 'Handled by the components. You write no key handlers.',
+      },
+      logical: {
+        nav: 'Logical layout',
+        title: 'One layout, mirrored by logical properties',
+        lead: 'Nothing on this page uses left, right, margin-left, or text-align: left. Spacing, borders, and alignment are all written as logical properties - margin-inline, inset-inline-start, text-align: start - so a single dir flip mirrors the entire tree with zero per-component work. The card below is one component; it simply reflects.',
+        mirrorLabel: 'Same component, mirrored',
+        note: 'The @dev-dga component CSS is authored the same way: logical properties for layout, so a dir flip mirrors every box - no per-component RTL branches.',
+      },
+      saudi: {
+        nav: 'Saudi data',
+        title: 'Saudi identifiers stay LTR inside Arabic',
+        lead: 'A National ID, an IBAN, or a +966 mobile number is left-to-right data - even in an Arabic sentence. Left to the bidi algorithm, the leading + or SA jumps to the wrong end and the number becomes unreadable. Each field pins the value with a native dir="ltr" and the right inputMode, so the label mirrors but the number never scrambles.',
+        fields: {
+          nationalId: 'National ID',
+          mobile: 'Mobile number',
+          iban: 'IBAN',
+        },
+        note: 'Labels and layout follow the page direction; the field values are locked LTR. Sample values shown.',
+      },
+    },
+    cta: {
+      title: 'Build your Arabic-first product on a system that already thinks in RTL.',
+      browse: 'Browse components',
+      install: 'Read the setup guide',
+    },
+  },
   themePage: {
     eyebrow: 'Theme studio',
     title: 'Full control over every token.',
@@ -962,6 +1058,7 @@ const ar: typeof en = {
     github: 'GitHub',
     home: 'الرئيسية · dev-dga',
     menu: 'القائمة',
+    rtl: 'العربية والاتجاه',
   },
   hero: {
     eyebrow: 'كود منصّات هيئة الحكومة الرقمية ← React 19',
@@ -1441,6 +1538,101 @@ const ar: typeof en = {
         statusApproved: 'مُعتمَد',
         alert: 'تُحفَظ تغييراتك تلقائيًا.',
       },
+    },
+  },
+  rtlPage: {
+    eyebrow: 'العربية والاتجاه',
+    title: 'الاتجاه من اليمين إلى اليسار، هندسةً لا زخرفة.',
+    lead: 'تكتفي أغلب المكتبات بخاصية dir="rtl" وتتوقّف. أمّا dev-dga فيتعامل مع العربية لغةً أولى - تقويم هجري، وترقيم بالأبجدية، وحفاظٌ على اتصال الحروف، ودلالات لوحة مفاتيح منعكسة، وبيانات سعودية سليمة الاتجاه، كلّها حيّة أدناه. بدّل الاتجاه وشاهد الصفحة كلها تستجيب.',
+    onThisPage: 'في هذه الصفحة',
+    live: 'مباشر',
+    code: 'Code',
+    positioning: {
+      title: 'الاتجاه ليس مجرّد خانة تأشير.',
+      body: 'قلبُ dir يعكس الصناديق فحسب. لكنه لا يمنحك تقويم أم القرى، ولا علامات الأبجدية في القوائم، ولا اتصالًا للحروف يصمد أمام رموز التصميم، ولا أسهمًا تتبع اتجاه القراءة، ولا رقم هوية يبقى مقروءًا داخل جملة عربية. هذه أوّل ما يلاحظه فريقٌ حكومي سعودي - ولذلك يُتقنها هذا النظام.',
+    },
+    dir: {
+      label: 'اتجاه المعاينة',
+      rtl: 'يمين · عربي',
+      ltr: 'يسار · إنجليزي',
+      hint: 'مفتاحٌ واحد يقلب كل مثال في الأسفل - التخطيط والطبقات المنبثقة والتقويم وتركيز لوحة المفاتيح، كلها تتبعه.',
+    },
+    sections: {
+      hijri: {
+        nav: 'التقويم الهجري',
+        title: 'تقويم هجري / أم القرى، مدمجٌ أصلًا',
+        lead: 'يحمل DatePicker وDateRangePicker مبدّلًا بين الميلادي والهجري داخل التقويم. انتقل إلى الهجري فيعرض كل يومٍ تاريخَ أم القرى وتحته اليوم الميلادي، فيقابل المستخدم بين التقويمين دون مغادرة الحقل. والقيمة المخزَّنة دائمًا Date أصلية - والعرض الهجري للعرض فقط.',
+        points: [
+          {
+            t: 'مبدّل ميلادي ↔ هجري',
+            d: 'عنصرٌ داخل النافذة، مُفعّل افتراضيًا. أو ثبّت تقويمًا واحدًا بخاصية calendar.',
+          },
+          {
+            t: 'خلايا بتقويمين',
+            d: 'تطبع showSecondaryCalendar رقمَ اليوم في التقويم الآخر صغيرًا أسفل كل يوم.',
+          },
+          {
+            t: 'أرقام لاتينية دائمًا',
+            d: 'تُعرض الأرقام 0-9 لا الأرقام العربية-الهندية - وهو عُرف النماذج والهويّات الحكومية السعودية.',
+          },
+          {
+            t: 'ترويسة أيامٍ واعية باللغة',
+            d: 'تُقرأ أوائل الأيام ح ن ث ر خ ج س - حروفٌ حقيقية، لا “ال” مختزلة.',
+          },
+        ],
+        note: 'صدر إصلاح أوائل الأيام في @dev-dga 0.12.2؛ كانت النسخ الأقدم تختزل عدّة أيام إلى “ال”.',
+      },
+      abjad: {
+        nav: 'ترقيم أبجدي',
+        title: 'القوائم المتداخلة تعدّ بالأبجدية',
+        lead: 'ترقّم القائمة المرتّبة مستواها الأعلى 1-2-3 في الاتجاهين. أمّا العناصر المتداخلة فتُظهر اللغة: a-b-c لاتينية في اليسار، وتسلسل أبجد هوّز أ-ب-ج-د-ه في اليمين - الترتيب الأبجدي التاريخي، مدفوعًا كليًا بـ @counter-style في CSS.',
+        ltrLabel: 'يسار - العناصر المتداخلة a-b-c',
+        rtlLabel: 'يمين - العناصر المتداخلة أ-ب-ج',
+        note: 'تستخدم القائمتان أدناه الترميز نفسه؛ الفارق هو الاتجاه فقط.',
+      },
+      joining: {
+        nav: 'اتصال الحروف',
+        title: 'اتصال الحروف محميّ',
+        lead: 'العربية خطٌّ متصل - حروفها تترابط. والمباعدة (letter-spacing) التي تُحكِم الخط اللاتيني تُمزّق الكلمة العربية إلى حروفٍ منفصلة. لذا يعيد النظام letter-spacing إلى normal في اليمين ولا يحوّل العربية إلى أحرفٍ كبيرة، فتبقى العناوين والعناوين الفرعية مقروءة.',
+        okLabel: 'محميّ - الحروف متصلة',
+        brokenLabel: 'مباعَد - الاتصال مكسور',
+        note: 'تضيف العيّنة الثانية letter-spacing: 0.25em - وهو تمامًا ما تفعله أداة الخط اللاتيني. لا تطبّقها على العربية أبدًا.',
+      },
+      keyboard: {
+        nav: 'لوحة المفاتيح',
+        title: 'الأسهم تتبع اتجاه القراءة',
+        lead: 'تنعكس دلالات لوحة المفاتيح مع التخطيط. في التبويبات والمنزلق والتقييم وشريط القوائم وشبكة التقويم، السهم الذي ينتقل إلى التالي هو المتّجه مع القراءة - ففي اليمين يتقدّم السهم الأيسر ويرجع الأيمن. ينقل Home وEnd إلى الأول والأخير، ويُبقي التنقّل الجوّال محطةَ تبويبٍ واحدة.',
+        keys: [
+          { k: '← →', d: 'التنقّل بين العناصر، منعكسًا في اليمين ليطابق اتجاه القراءة.' },
+          { k: 'Home End', d: 'القفز إلى العنصر الأول / الأخير في المجموعة.' },
+          { k: 'Tab', d: 'محطةٌ واحدة للمجموعة كلها، والأسهم تنقّل داخلها (تنقّل جوّال).' },
+        ],
+        try: 'ركّز على عنصرٍ أدناه وجرّب الأسهم - بدّل الاتجاه واشعر بانعكاسها.',
+        note: 'تتكفّل به المكوّنات؛ لا تكتب أنت أي معالِج مفاتيح.',
+      },
+      logical: {
+        nav: 'تخطيط منطقي',
+        title: 'تخطيطٌ واحد، تعكسه الخصائص المنطقية',
+        lead: 'لا شيء في هذه الصفحة يستخدم left أو right أو margin-left أو text-align: left. فالمسافات والحدود والمحاذاة كلها مكتوبة بخصائص منطقية - margin-inline وinset-inline-start وtext-align: start - فيكفي قلبُ dir واحد لعكس الشجرة كاملةً دون أي عملٍ لكل مكوّن. والبطاقة أدناه مكوّنٌ واحد، ينعكس تلقائيًا.',
+        mirrorLabel: 'المكوّن نفسه، معكوسًا',
+        note: 'ومكوّنات @dev-dga مكتوبة بالأسلوب ذاته: خصائص منطقية للتخطيط، فقلبُ الاتجاه يعكس كل صندوق دون فروعٍ خاصة بالـ RTL.',
+      },
+      saudi: {
+        nav: 'بيانات سعودية',
+        title: 'المعرّفات السعودية تبقى يسارية داخل العربية',
+        lead: 'رقمُ الهوية والآيبان ورقمُ الجوال +966 بياناتٌ من اليسار إلى اليمين - حتى داخل جملة عربية. فلو تُرِكت لخوارزمية الاتجاه لقفزت + أو SA إلى الطرف الخطأ وصار الرقم غير مقروء. لذا يثبّت كل حقلٍ قيمتَه بـ dir="ltr" أصلي وبـ inputMode المناسب، فتنعكس التسمية ولا يختلّ الرقم.',
+        fields: {
+          nationalId: 'رقم الهوية الوطنية',
+          mobile: 'رقم الجوال',
+          iban: 'رقم الآيبان',
+        },
+        note: 'التسميات والتخطيط تتبع اتجاه الصفحة، والقيَم مثبّتة يسارية. القيَم المعروضة نموذجية.',
+      },
+    },
+    cta: {
+      title: 'ابنِ منتجك العربيَّ أولًا على نظامٍ يفكّر بالـ RTL أصلًا.',
+      browse: 'تصفّح المكوّنات',
+      install: 'دليل الإعداد',
     },
   },
   themePage: {

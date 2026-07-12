@@ -12,6 +12,7 @@ export default tseslint.config(
       'demos/registry.generated.ts',
       'content/ar-meta.generated.ts',
       'next-env.d.ts',
+      'internal/**',
     ],
   },
   js.configs.recommended,
