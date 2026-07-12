@@ -2,9 +2,8 @@
 
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useCopy } from '@/lib/i18n';
-import { isArabicPath, localizeHref } from '@/lib/locale-routes';
+import { localizeHref } from '@/lib/locale-routes';
 import { ArrowRight, ExternalLink } from '@/components/icons';
 
 const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
@@ -35,8 +34,8 @@ function CardShell({
 }
 
 export function Pillars() {
-  const { c } = useCopy();
-  const isAr = isArabicPath(usePathname());
+  const { c, locale } = useCopy();
+  const isAr = locale === 'ar';
   return (
     <div className="pillars">
       {c.pillars.items.map((item, i) => {

@@ -2,10 +2,9 @@
 
 import type { ReactNode } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Button } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
-import { isArabicPath, localizeHref } from '@/lib/locale-routes';
+import { localizeHref } from '@/lib/locale-routes';
 import { ArrowRight, ExternalLink } from '@/components/icons';
 import './accessibility.css';
 
@@ -38,9 +37,9 @@ function Section({
 }
 
 export function Accessibility() {
-  const { c } = useCopy();
+  const { c, locale } = useCopy();
   const a = c.a11yPage;
-  const isAr = isArabicPath(usePathname());
+  const isAr = locale === 'ar';
 
   const toc = [
     { id: 'summary', title: a.summary.title },

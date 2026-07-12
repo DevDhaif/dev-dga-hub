@@ -3,21 +3,32 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { PALETTES, useSettings } from '@/lib/settings';
 import { useCopy } from '@/lib/i18n';
-import { otherLocalePath } from '@/lib/locale-routes';
+import {
+  hasArabicCounterpart,
+  isArabicPath,
+  toArabicPath,
+  toEnglishPath,
+} from '@/lib/locale-routes';
 import { Moon, Sun } from '@/components/icons';
 
 export function ThemeControls({ compact = false }: { compact?: boolean }) {
-  const { mode, dir, palette, toggleMode, toggleDir, setPalette } = useSettings();
+  const { mode, dir, palette, toggleMode, setDir, setPalette } = useSettings();
   const { c, locale } = useCopy();
   const pathname = usePathname();
   const router = useRouter();
   const paletteAria = (label: string) =>
     locale === 'ar' ? `${c.chrome.paletteWord} ${label}` : `${label} ${c.chrome.paletteWord}`;
 
-  const other = pathname ? otherLocalePath(pathname) : null;
   const switchLanguage = () => {
-    if (other) router.push(other);
-    else toggleDir();
+    if (dir === 'rtl') {
+      setDir('ltr');
+      if (isArabicPath(pathname)) router.push(toEnglishPath(pathname));
+    } else {
+      setDir('rtl');
+      if (!isArabicPath(pathname) && hasArabicCounterpart(pathname)) {
+        router.push(toArabicPath(pathname));
+      }
+    }
   };
 
   return (

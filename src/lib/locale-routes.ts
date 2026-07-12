@@ -20,10 +20,6 @@ export function hasArabicCounterpart(pathname: string): boolean {
   return (LOCALIZED_PATHS as readonly string[]).includes(enPath);
 }
 
-export function otherLocalePath(pathname: string): string | null {
-  if (!hasArabicCounterpart(pathname)) return null;
-  return isArabicPath(pathname) ? toEnglishPath(pathname) : toArabicPath(pathname);
-}
 
 export function localizeHref(enPath: string, arabic: boolean): string {
   if (!arabic) return enPath;

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import {
   CommandDialog,
   CommandInput,
@@ -12,14 +12,13 @@ import {
 } from '@dev-dga/react';
 import { CATEGORIES } from '@/lib/catalog';
 import { useCopy } from '@/lib/i18n';
-import { isArabicPath, localizeHref } from '@/lib/locale-routes';
+import { localizeHref } from '@/lib/locale-routes';
 import { componentName } from '@/lib/component-names';
 
 export const OPEN_COMMAND_EVENT = 'dga:open-command';
 
 export function CommandPalette() {
   const router = useRouter();
-  const isAr = isArabicPath(usePathname());
   const { c, locale } = useCopy();
   const [open, setOpen] = useState(false);
 
@@ -43,7 +42,7 @@ export function CommandPalette() {
 
   const go = (href: string) => {
     setOpen(false);
-    router.push(localizeHref(href, isAr));
+    router.push(localizeHref(href, locale === 'ar'));
   };
 
   return (

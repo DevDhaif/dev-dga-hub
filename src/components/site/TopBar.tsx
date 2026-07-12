@@ -8,7 +8,7 @@ import { Wordmark } from './Wordmark';
 import { OPEN_COMMAND_EVENT } from './CommandPalette';
 import { SearchBox } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
-import { isArabicPath, localizeHref } from '@/lib/locale-routes';
+import { isArabicPath, localizeHref, toEnglishPath } from '@/lib/locale-routes';
 import { GitHub, ExternalLink, Menu, Close } from '@/components/icons';
 
 const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
@@ -16,9 +16,9 @@ const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
 
 export function TopBar() {
   const pathname = usePathname();
-  const isAr = isArabicPath(pathname);
-  const href = (p: string) => localizeHref(p, isAr);
-  const { c } = useCopy();
+  const { c, locale } = useCopy();
+  const href = (p: string) => localizeHref(p, locale === 'ar');
+  const current = isArabicPath(pathname) ? toEnglishPath(pathname) : pathname;
   const [open, setOpen] = useState(false);
 
   const nav = [
@@ -43,7 +43,7 @@ export function TopBar() {
         <nav className="topbar__nav" aria-label={c.chrome.navPrimary}>
           {nav.map((item) => {
             const target = href(item.href);
-            const active = pathname === target || pathname.startsWith(target + '/');
+            const active = current === item.href || current.startsWith(item.href + '/');
             return (
               <Link
                 key={item.href}
