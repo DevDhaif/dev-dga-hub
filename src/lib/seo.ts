@@ -13,6 +13,10 @@ export function languageAlternates(path: string): Record<string, string> {
 }
 
 export function absoluteUrl(path: string): string {
-  if (path === '/') return `${SITE_URL}/`;
+  if (path === '/') return SITE_URL;
   return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;
+}
+
+export function serializeJsonLd(data: unknown): string {
+  return JSON.stringify(data).replace(/</g, '\\u003c');
 }

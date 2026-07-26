@@ -2,7 +2,26 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ALL_COMPONENTS, componentBySlug } from '@/lib/catalog';
 import { getArabicContent, getComponentContent } from '@/lib/content';
+import { absoluteUrl, serializeJsonLd } from '@/lib/seo';
 import { ComponentPage } from '@/components/showcase/ComponentPage';
+
+function breadcrumbs(slug: string, name: string) {
+  const trail = [
+    { name: 'dev-dga', item: absoluteUrl('/') },
+    { name: 'Components', item: absoluteUrl('/components') },
+    { name, item: absoluteUrl(`/components/${slug}`) },
+  ];
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: trail.map((c, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: c.name,
+      item: c.item,
+    })),
+  };
+}
 
 export function generateStaticParams() {
   return ALL_COMPONENTS.map((c) => ({ slug: c.slug }));
@@ -37,19 +56,25 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const next = idx < ALL_COMPONENTS.length - 1 ? ALL_COMPONENTS[idx + 1] : null;
 
   return (
-    <ComponentPage
-      slug={slug}
-      name={meta.name}
-      categoryId={category.id}
-      status={meta.status}
-      en={{
-        description: content?.frontmatter.description ?? meta.blurb,
-        intro: content?.intro ?? '',
-      }}
-      ar={ar ? { description: ar.description, intro: ar.intro } : null}
-      examples={content?.examples ?? []}
-      prev={prev ? { slug: prev.slug, name: prev.name } : null}
-      next={next ? { slug: next.slug, name: next.name } : null}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbs(slug, meta.name)) }}
+      />
+      <ComponentPage
+        slug={slug}
+        name={meta.name}
+        categoryId={category.id}
+        status={meta.status}
+        en={{
+          description: content?.frontmatter.description ?? meta.blurb,
+          intro: content?.intro ?? '',
+        }}
+        ar={ar ? { description: ar.description, intro: ar.intro } : null}
+        examples={content?.examples ?? []}
+        prev={prev ? { slug: prev.slug, name: prev.name } : null}
+        next={next ? { slug: next.slug, name: next.name } : null}
+      />
+    </>
   );
 }

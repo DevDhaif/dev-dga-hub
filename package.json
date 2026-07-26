@@ -20,6 +20,8 @@
     "@dev-dga/tokens": "^0.13.0",
     "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/ibm-plex-sans-arabic": "^5.2.9",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "gray-matter": "^4.0.3",
     "next": "^16.2.10",
     "react": "^19.2.0",

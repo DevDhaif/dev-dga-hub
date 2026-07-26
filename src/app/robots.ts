@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL, absoluteUrl } from '@/lib/seo';
+import { absoluteUrl } from '@/lib/seo';
 
 export const dynamic = 'force-static';
 
@@ -10,6 +10,5 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
     },
     sitemap: absoluteUrl('/sitemap.xml'),
-    host: SITE_URL,
   };
 }
