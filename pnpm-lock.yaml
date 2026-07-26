@@ -9,14 +9,14 @@ importers:
   .:
     dependencies:
       '@dev-dga/css':
-        specifier: ^0.13.0
-        version: 0.13.0
+        specifier: ^1.1.0
+        version: 1.1.0
       '@dev-dga/react':
-        specifier: ^0.13.0
-        version: 0.13.0(@dev-dga/css@0.13.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        specifier: ^1.1.0
+        version: 1.1.0(@dev-dga/css@1.1.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@dev-dga/tokens':
-        specifier: ^0.13.0
-        version: 0.13.0
+        specifier: ^1.1.0
+        version: 1.1.0
       '@fontsource/ibm-plex-mono':
         specifier: ^5.2.7
         version: 5.2.7
@@ -94,20 +94,20 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  '@dev-dga/css@0.13.0':
-    resolution: {integrity: sha512-f5pHvzb+LnDXbJpRIpgeqaC7q623OY+RCm+U+r8tiX2wwg3CfWNDoM96iEQq+4PQQce/Gp5JhwxhyW5oy872Jg==}
+  '@dev-dga/css@1.1.0':
+    resolution: {integrity: sha512-j9B1kXyUS5TEhgEAUpYy3mBkcitCfGcq9KK5YX7dGxCYESBGuic994TWittDnaASCJFgrObvx/U41l2fvVxSEg==}
     engines: {node: '>=20'}
 
-  '@dev-dga/react@0.13.0':
-    resolution: {integrity: sha512-2sVXU3FXUmHyFWvlDyperH08HkrkAsTIwJN8UXNjEZ4Z35MKADdlkqBdBu0hlexfoIPzEI7jvsORibygwGT3cA==}
+  '@dev-dga/react@1.1.0':
+    resolution: {integrity: sha512-BNG2x7jaUjVp2A4i1CvVMPtM7Bp/wo4GEVFUHpvsGXbLUx44nZrWALr9hvOcKtamRTA+forZip62ZcVQDRIIFg==}
     engines: {node: '>=20'}
     peerDependencies:
-      '@dev-dga/css': 0.13.0
+      '@dev-dga/css': 1.1.0
       react: ^19.0.0
       react-dom: ^19.0.0
 
-  '@dev-dga/tokens@0.13.0':
-    resolution: {integrity: sha512-6DfpRU1yYR4omcV6xytbrC+HXTcqbC4PrJ2K7oddIZ4or3XbARckqumOoFiLChp3mSav3KgZtm7RuRD6Ddr0gg==}
+  '@dev-dga/tokens@1.1.0':
+    resolution: {integrity: sha512-c9waKH+KSNubkklo2tRFpwRR8qiJCPjDgFHyWJHdaZNucMJCwpVPIFmIJzR51U6pEnXHgwb46k48PzTeK19Ekw==}
     engines: {node: '>=20'}
 
   '@emnapi/runtime@1.11.1':
@@ -2368,12 +2368,12 @@ snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
 
-  '@dev-dga/css@0.13.0': {}
+  '@dev-dga/css@1.1.0': {}
 
-  '@dev-dga/react@0.13.0(@dev-dga/css@0.13.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+  '@dev-dga/react@1.1.0(@dev-dga/css@1.1.0)(@types/react-dom@19.2.3(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
     dependencies:
-      '@dev-dga/css': 0.13.0
-      '@dev-dga/tokens': 0.13.0
+      '@dev-dga/css': 1.1.0
+      '@dev-dga/tokens': 1.1.0
       '@internationalized/date': 3.12.2
       class-variance-authority: 0.7.1
       clsx: 2.1.1
@@ -2386,7 +2386,7 @@ snapshots:
       - '@types/react'
       - '@types/react-dom'
 
-  '@dev-dga/tokens@0.13.0': {}
+  '@dev-dga/tokens@1.1.0': {}
 
   '@emnapi/runtime@1.11.1':
     dependencies:
