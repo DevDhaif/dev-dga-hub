@@ -3,6 +3,9 @@ import type { ReactNode } from 'react';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
+import arabic400 from '@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2';
+import latin400 from '@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-latin-400-normal.woff2';
+
 import '@fontsource/ibm-plex-sans-arabic/400.css';
 import '@fontsource/ibm-plex-sans-arabic/500.css';
 import '@fontsource/ibm-plex-sans-arabic/600.css';
@@ -147,6 +150,9 @@ export function RootShell({ locale, children }: { locale: Locale; children: Reac
   return (
     <html lang={locale} dir={dirFor(locale)} suppressHydrationWarning>
       <head>
+        {[arabic400, latin400].map((href) => (
+          <link key={href} rel="preload" as="font" type="font/woff2" href={href} crossOrigin="" />
+        ))}
         <script dangerouslySetInnerHTML={{ __html: noFlash }} />
         <script
           type="application/ld+json"
