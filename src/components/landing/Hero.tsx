@@ -15,6 +15,7 @@ import {
 import { COPY, useCopy } from '@/lib/i18n';
 import { paletteById, useSettings } from '@/lib/settings';
 import { ArrowRight, ExternalLink } from '@/components/icons';
+import { useHref } from '@/lib/use-href';
 
 const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
 
@@ -89,6 +90,7 @@ function ServicePane({
 
 export function Hero() {
   const { c, locale } = useCopy();
+  const hrefFor = useHref();
   const { mode, palette } = useSettings();
   const pal = paletteById(palette);
   const theme = pal.primary ? { primary: pal.primary } : undefined;
@@ -138,7 +140,7 @@ export function Hero() {
 
             <div className="hero__cta">
               <Button asChild size="lg">
-                <Link href="/components">{c.hero.browse}</Link>
+                <Link href={hrefFor('/components')}>{c.hero.browse}</Link>
               </Button>
               <Button
                 asChild

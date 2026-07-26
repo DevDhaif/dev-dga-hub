@@ -7,6 +7,7 @@ import { useCopy } from '@/lib/i18n';
 import { localizeHref } from '@/lib/locale-routes';
 import { ArrowRight, ExternalLink } from '@/components/icons';
 import './accessibility.css';
+import { useHref } from '@/lib/use-href';
 
 const STATEMENT_URL = 'https://github.com/DevDhaif/dev-dga-hub/blob/HEAD/ACCESSIBILITY.md';
 const ISSUES_URL = 'https://github.com/DevDhaif/dev-dga-hub/issues';
@@ -38,6 +39,7 @@ function Section({
 
 export function Accessibility() {
   const { c, locale } = useCopy();
+  const hrefFor = useHref();
   const a = c.a11yPage;
   const isAr = locale === 'ar';
 
@@ -175,7 +177,7 @@ export function Accessibility() {
             <p className="a11yp-cta__title">{a.cta.title}</p>
             <div className="a11yp-cta__actions">
               <Button asChild size="md" endIcon={<ArrowRight width={16} height={16} />} iconFlip>
-                <Link href="/components">{a.cta.browse}</Link>
+                <Link href={hrefFor('/components')}>{a.cta.browse}</Link>
               </Button>
               <Button asChild variant="outline" size="md">
                 <Link href={localizeHref('/rtl', isAr)}>{a.cta.rtl}</Link>

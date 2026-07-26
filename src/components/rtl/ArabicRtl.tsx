@@ -20,9 +20,11 @@ import {
   TextInputAffix,
 } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
-import { paletteById, useSettings, type Dir } from '@/lib/settings';
+import { paletteById, useSettings } from '@/lib/settings';
+import type { Dir } from '@/lib/locale';
 import { ArrowRight } from '@/components/icons';
 import './rtl.css';
+import { useHref } from '@/lib/use-href';
 
 
 const HIJRI_CODE = `import { DatePicker } from '@dev-dga/react';
@@ -169,6 +171,7 @@ function AbjadList({ data }: { data: (typeof ABJAD)['ltr'] | (typeof ABJAD)['ar'
 
 export function ArabicRtl() {
   const { c } = useCopy();
+  const hrefFor = useHref();
   const r = c.rtlPage;
   const s = r.sections;
 
@@ -428,7 +431,7 @@ export function ArabicRtl() {
             <p className="rtlp-cta__title">{r.cta.title}</p>
             <div className="rtlp-cta__actions">
               <Button asChild size="md" endIcon={<ArrowRight width={16} height={16} />} iconFlip>
-                <Link href="/components">{r.cta.browse}</Link>
+                <Link href={hrefFor('/components')}>{r.cta.browse}</Link>
               </Button>
               <Button asChild variant="outline" size="md">
                 <Link href="/installation">{r.cta.install}</Link>

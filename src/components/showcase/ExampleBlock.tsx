@@ -2,7 +2,8 @@
 
 import { Suspense, useRef, useState, type ComponentType } from 'react';
 import { CodeSnippet, DgaProvider, Spinner } from '@dev-dga/react';
-import { useSettings, type Dir, type Mode } from '@/lib/settings';
+import { useSettings, type Mode } from '@/lib/settings';
+import type { Dir } from '@/lib/locale';
 import { useCopy } from '@/lib/i18n';
 import { exampleTitle } from '@/lib/example-titles';
 import { BiDi, Check, Code, Copy, Moon, Sun } from '@/components/icons';
@@ -21,7 +22,7 @@ const SIZE_PX: Record<Size, number | undefined> = { sm: 400, md: 700, lg: undefi
 
 export function ExampleBlock({ title, code, Demo, ArDemo, arCode }: ExampleBlockProps) {
   const page = useSettings();
-  const { c, locale } = useCopy();
+  const { c, locale, dir: pageDir } = useCopy();
   const displayTitle = exampleTitle(title, locale);
   const [size, setSize] = useState<Size>('lg');
   const [mode, setMode] = useState<Mode | null>(null);
@@ -31,7 +32,7 @@ export function ExampleBlock({ title, code, Demo, ArDemo, arCode }: ExampleBlock
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const resolvedMode = mode ?? page.mode;
-  const resolvedDir = dir ?? page.dir;
+  const resolvedDir = dir ?? pageDir;
   const overridden = mode !== null || dir !== null;
 
   // RTL renders the Arabic demo variant when one exists.
@@ -100,7 +101,7 @@ export function ExampleBlock({ title, code, Demo, ArDemo, arCode }: ExampleBlock
             aria-pressed={resolvedDir === 'rtl'}
             title={c.component.language}
             onClick={() =>
-              setDir((d) => (d === null ? (page.dir === 'rtl' ? 'ltr' : 'rtl') : null))
+              setDir((d) => (d === null ? (pageDir === 'rtl' ? 'ltr' : 'rtl') : null))
             }
           >
             <BiDi width={15} height={15} />

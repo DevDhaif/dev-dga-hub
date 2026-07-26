@@ -2,7 +2,8 @@
 
 import { useRef, useState, type ComponentType } from 'react';
 import { CodeSnippet, DgaProvider } from '@dev-dga/react';
-import { useSettings, type Dir, type Mode } from '@/lib/settings';
+import { useSettings, type Mode } from '@/lib/settings';
+import type { Dir } from '@/lib/locale';
 import { useCopy } from '@/lib/i18n';
 import { BiDi, Check, Code, Copy, Moon, Sun } from '@/components/icons';
 
@@ -15,7 +16,7 @@ interface BlockShowcaseProps {
 
 export function BlockShowcase({ name, desc, code, Component }: BlockShowcaseProps) {
   const page = useSettings();
-  const { c } = useCopy();
+  const { c, dir: pageDir } = useCopy();
   const [mode, setMode] = useState<Mode | null>(null);
   const [dir, setDir] = useState<Dir | null>(null);
   const [showCode, setShowCode] = useState(false);
@@ -23,7 +24,7 @@ export function BlockShowcase({ name, desc, code, Component }: BlockShowcaseProp
   const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const resolvedMode = mode ?? page.mode;
-  const resolvedDir = dir ?? page.dir;
+  const resolvedDir = dir ?? pageDir;
   const overridden = mode !== null || dir !== null;
 
   const copy = async () => {
@@ -59,7 +60,7 @@ export function BlockShowcase({ name, desc, code, Component }: BlockShowcaseProp
             data-active={dir !== null}
             aria-pressed={resolvedDir === 'rtl'}
             title={c.blocks.toggleLang}
-            onClick={() => setDir((v) => (v === null ? (page.dir === 'rtl' ? 'ltr' : 'rtl') : null))}
+            onClick={() => setDir((v) => (v === null ? (pageDir === 'rtl' ? 'ltr' : 'rtl') : null))}
           >
             <BiDi width={15} height={15} />
             <span>{resolvedDir === 'rtl' ? 'ع' : 'EN'}</span>
