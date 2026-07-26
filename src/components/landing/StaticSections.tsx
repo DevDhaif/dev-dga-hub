@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Button, Chip, CodeSnippet, CodeSnippetInline, Tag } from '@dev-dga/react';
+import { Button, CodeSnippet, CodeSnippetInline, Tag } from '@dev-dga/react';
 import { CATEGORIES } from '@/lib/catalog';
 import { categoryIllustrations } from '@/lib/illustrations.generated';
 import { enrichIllustration } from '@/lib/illustration-motion';
@@ -313,9 +313,7 @@ export function Closer() {
         </Button>
       </div>
       <div style={{ marginBlockStart: '1.5rem' }}>
-        <Chip variant="neutral" aria-hidden>
-          MIT
-        </Chip>
+        <Tag variant="secondary">MIT</Tag>
       </div>
     </section>
   );
