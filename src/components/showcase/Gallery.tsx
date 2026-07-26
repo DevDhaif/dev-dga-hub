@@ -14,6 +14,7 @@ import { demoRegistry } from '../../../demos/registry.generated';
 import { arBlurbs } from '../../../content/ar-meta.generated';
 import './gallery.css';
 import './illustration-motion.css';
+import { useHref } from '@/lib/use-href';
 
 const CATEGORY_IDS = new Set(CATEGORIES.map((c) => c.id));
 const exampleCount = (slug: string) => demoRegistry[slug]?.length ?? 0;
@@ -56,6 +57,7 @@ function CategoryArt({ id }: { id: string }) {
 
 export function Gallery() {
   const { c, locale } = useCopy();
+  const hrefFor = useHref();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState('');
   const [active, setActive] = useState<string | null>(() => {
@@ -163,7 +165,7 @@ export function Gallery() {
                 const name = componentName(comp.slug, comp.name, locale);
                 const blurb = locale === 'ar' ? (arBlurbs[comp.slug] ?? comp.blurb) : comp.blurb;
                 return (
-                  <Link key={comp.slug} href={`/components/${comp.slug}`} className="tile">
+                  <Link key={comp.slug} href={hrefFor(`/components/${comp.slug}`)} className="tile">
                     <TileArt slug={comp.slug} />
                     <div className="tile__body">
                       <div className="tile__head">

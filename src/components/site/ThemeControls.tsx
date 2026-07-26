@@ -3,32 +3,21 @@
 import { usePathname, useRouter } from 'next/navigation';
 import { PALETTES, useSettings } from '@/lib/settings';
 import { useCopy } from '@/lib/i18n';
-import {
-  hasArabicCounterpart,
-  isArabicPath,
-  toArabicPath,
-  toEnglishPath,
-} from '@/lib/locale-routes';
+import { hasArabicCounterpart, isArabicPath, toArabicPath, toEnglishPath } from '@/lib/locale-routes';
 import { Moon, Sun } from '@/components/icons';
 
 export function ThemeControls({ compact = false }: { compact?: boolean }) {
-  const { mode, dir, palette, toggleMode, setDir, setPalette } = useSettings();
+  const { mode, palette, toggleMode, setPalette } = useSettings();
   const { c, locale } = useCopy();
   const pathname = usePathname();
   const router = useRouter();
   const paletteAria = (label: string) =>
     locale === 'ar' ? `${c.chrome.paletteWord} ${label}` : `${label} ${c.chrome.paletteWord}`;
 
+  // Language lives in the URL, so switching it is a navigation, not a state toggle.
   const switchLanguage = () => {
-    if (dir === 'rtl') {
-      setDir('ltr');
-      if (isArabicPath(pathname)) router.push(toEnglishPath(pathname));
-    } else {
-      setDir('rtl');
-      if (!isArabicPath(pathname) && hasArabicCounterpart(pathname)) {
-        router.push(toArabicPath(pathname));
-      }
-    }
+    if (isArabicPath(pathname)) router.push(toEnglishPath(pathname));
+    else if (hasArabicCounterpart(pathname)) router.push(toArabicPath(pathname));
   };
 
   return (
@@ -58,11 +47,11 @@ export function ThemeControls({ compact = false }: { compact?: boolean }) {
         aria-label={c.chrome.toggleDirection}
         title={c.chrome.toggleDirection}
       >
-        <span data-on={dir === 'ltr'}>EN</span>
+        <span data-on={locale === 'en'}>EN</span>
         <span className="seg__sep" aria-hidden>
           ·
         </span>
-        <span data-on={dir === 'rtl'}>ع</span>
+        <span data-on={locale === 'ar'}>ع</span>
       </button>
 
       <button

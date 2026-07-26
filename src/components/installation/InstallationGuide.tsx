@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import type { ReactNode } from 'react';
+import { useHref } from '@/lib/use-href';
 import {
   Button,
   CodeSnippet,
@@ -96,6 +97,7 @@ function Section({ id, title, children }: { id: string; title: string; children:
 
 export function InstallationGuide() {
   const { c } = useCopy();
+  const hrefFor = useHref();
   const t = c.installPage;
 
   const toc = [
@@ -278,7 +280,7 @@ export function InstallationGuide() {
             <p className="doc-lead">{t.next.lead}</p>
             <div className="doc-next">
               <Button asChild size="md" endIcon={<ArrowRight width={16} height={16} />} iconFlip>
-                <Link href="/components">{t.next.browse}</Link>
+                <Link href={hrefFor('/components')}>{t.next.browse}</Link>
               </Button>
               <Button asChild variant="outline" size="md">
                 <Link href="/blocks">{t.next.blocks}</Link>

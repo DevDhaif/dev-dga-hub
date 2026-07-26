@@ -1,9 +1,10 @@
 'use client';
 
 import { COMPONENT_COUNT } from './catalog';
-import { useSettings } from './settings';
+import { dirFor, type Locale } from './locale';
+import { useLocale } from './locale-context';
 
-export type Locale = 'en' | 'ar';
+export type { Locale };
 
 export const INSTALL = {
   react: 'npm i @dev-dga/react',
@@ -2464,7 +2465,6 @@ const ar: typeof en = {
 export const COPY: Record<Locale, typeof en> = { en, ar };
 
 export function useCopy(): { c: typeof en; locale: Locale; dir: 'ltr' | 'rtl' } {
-  const { dir } = useSettings();
-  const locale: Locale = dir === 'rtl' ? 'ar' : 'en';
-  return { c: COPY[locale], locale, dir };
+  const locale = useLocale();
+  return { c: COPY[locale], locale, dir: dirFor(locale) };
 }

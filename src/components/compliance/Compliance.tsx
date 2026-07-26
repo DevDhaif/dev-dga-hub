@@ -12,6 +12,7 @@ import {
 } from '@/lib/compliance';
 import { ArrowRight, ExternalLink } from '@/components/icons';
 import './compliance.css';
+import { useHref } from '@/lib/use-href';
 
 const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
 
@@ -48,6 +49,7 @@ function StatusPill({ status, label }: { status: CoverageStatus; label: string }
 
 export function Compliance() {
   const { c } = useCopy();
+  const hrefFor = useHref();
   const p = c.compliancePage;
 
   const toc = COVERAGE_SECTIONS.map((s) => ({
@@ -124,7 +126,7 @@ export function Compliance() {
                         <td className="cmpl-td-official">{row.official}</td>
                         <td className="cmpl-td-component">
                           {row.slug ? (
-                            <Link href={`/components/${row.slug}`} className="cmpl-comp-link" dir="ltr">
+                            <Link href={hrefFor(`/components/${row.slug}`)} className="cmpl-comp-link" dir="ltr">
                               {row.component}
                             </Link>
                           ) : (
@@ -166,7 +168,7 @@ export function Compliance() {
               {EXTENSIONS.map((e) => (
                 <li key={e.component} className="cmpl-ext__item">
                   {e.slug ? (
-                    <Link href={`/components/${e.slug}`} className="cmpl-ext__link" dir="ltr">
+                    <Link href={hrefFor(`/components/${e.slug}`)} className="cmpl-ext__link" dir="ltr">
                       {e.component}
                     </Link>
                   ) : (
@@ -183,7 +185,7 @@ export function Compliance() {
             <p className="cmpl-cta__title">{p.cta.title}</p>
             <div className="cmpl-cta__actions">
               <Button asChild size="md" endIcon={<ArrowRight width={16} height={16} />} iconFlip>
-                <Link href="/components">{p.cta.browse}</Link>
+                <Link href={hrefFor('/components')}>{p.cta.browse}</Link>
               </Button>
               <Button
                 asChild

@@ -9,6 +9,7 @@ import { enrichIllustration } from '@/lib/illustration-motion';
 import { useCopy } from '@/lib/i18n';
 import { MasarDashboard } from '@/components/examples/MasarDashboard';
 import { ArrowRight, Code } from '@/components/icons';
+import { useHref } from '@/lib/use-href';
 
 const CODE_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 
@@ -259,6 +260,7 @@ export function CategoryTeaser() {
 
 export function Closer() {
   const { c } = useCopy();
+  const hrefFor = useHref();
   return (
     <section className="closer shell">
       <span
@@ -302,7 +304,7 @@ export function Closer() {
       <h2 className="closer__title">{c.closer.title}</h2>
       <div className="closer__cta">
         <Button asChild size="lg">
-          <Link href="/components">{c.closer.browse}</Link>
+          <Link href={hrefFor('/components')}>{c.closer.browse}</Link>
         </Button>
         <Button asChild variant="outline" size="lg">
           <a href="https://github.com/DevDhaif/dev-dga-hub" target="_blank" rel="noreferrer">

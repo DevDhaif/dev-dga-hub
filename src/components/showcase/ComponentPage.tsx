@@ -13,6 +13,7 @@ import { ComponentNav } from './ComponentNav';
 import { arDemoRegistry, demoRegistry } from '../../../demos/registry.generated';
 import { arExampleCode } from '../../../content/ar-meta.generated';
 import './showcase.css';
+import { useHref } from '@/lib/use-href';
 
 const STORYBOOK = 'https://dev-dga.vercel.app/';
 
@@ -35,6 +36,7 @@ export interface ComponentPageProps {
 
 export function ComponentPage(props: ComponentPageProps) {
   const { c, locale } = useCopy();
+  const hrefFor = useHref();
   const { slug, name, categoryId, status, en, ar, examples, prev, next } = props;
 
   const prose = locale === 'ar' && ar ? ar : en;
@@ -49,7 +51,7 @@ export function ComponentPage(props: ComponentPageProps) {
       <article className="cmp-main" style={{ paddingBlockEnd: '2rem' }}>
         <header className="cmp-header">
           <div className="cmp-header__top">
-            <Link href="/components" className="eyebrow" style={{ textDecoration: 'none' }}>
+            <Link href={hrefFor('/components')} className="eyebrow" style={{ textDecoration: 'none' }}>
               {category}
             </Link>
             {status === 'new' && <Tag variant="primary">{locale === 'ar' ? 'جديد' : 'New'}</Tag>}
@@ -99,7 +101,7 @@ export function ComponentPage(props: ComponentPageProps) {
 
         <nav className="cmp-pager" aria-label={c.chrome.pagination}>
           {prev ? (
-            <Link href={`/components/${prev.slug}`}>
+            <Link href={hrefFor(`/components/${prev.slug}`)}>
               <span className="cmp-pager__dir">
                 <ArrowLeft className="rtl-flip-x" width={14} height={14} />
                 {c.component.previous}
@@ -110,7 +112,7 @@ export function ComponentPage(props: ComponentPageProps) {
             <span />
           )}
           {next ? (
-            <Link href={`/components/${next.slug}`} className="cmp-pager__next">
+            <Link href={hrefFor(`/components/${next.slug}`)} className="cmp-pager__next">
               <span className="cmp-pager__dir">
                 {c.component.next}
                 <ArrowRight className="rtl-flip-x" width={14} height={14} />

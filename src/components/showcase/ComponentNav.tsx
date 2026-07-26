@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { CATEGORIES } from '@/lib/catalog';
 import { useCopy } from '@/lib/i18n';
 import { componentName } from '@/lib/component-names';
+import { useHref } from '@/lib/use-href';
 
 export function ComponentNav({ current }: { current: string }) {
   const { c, locale } = useCopy();
+  const hrefFor = useHref();
   const railRef = useRef<HTMLElement>(null);
   const activeRef = useRef<HTMLAnchorElement>(null);
 
@@ -34,7 +36,7 @@ export function ComponentNav({ current }: { current: string }) {
                 return (
                   <Link
                     key={comp.slug}
-                    href={`/components/${comp.slug}`}
+                    href={hrefFor(`/components/${comp.slug}`)}
                     className="cmp-nav__link"
                     aria-current={isActive ? 'page' : undefined}
                     ref={isActive ? activeRef : undefined}

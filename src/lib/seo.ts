@@ -1,14 +1,18 @@
+import { isLocalizedPath, toArabicPath } from './locale-routes';
+
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? 'https://dev-dga-hub.vercel.app'
 ).replace(/\/$/, '');
 
-export function languageAlternates(path: string): Record<string, string> {
-  const clean = path === '/' ? '' : path.replace(/\/$/, '');
-  const ar = clean === '' ? '/ar' : `/ar${clean}`;
+export function languageAlternates(enPath: string): Record<string, string> | undefined {
+  if (!isLocalizedPath(enPath)) return undefined;
+  return { en: enPath, ar: toArabicPath(enPath), 'x-default': enPath };
+}
+
+export function pageAlternates(enPath: string, locale: 'en' | 'ar') {
   return {
-    en: clean === '' ? '/' : clean,
-    ar,
-    'x-default': clean === '' ? '/' : clean,
+    canonical: locale === 'ar' ? toArabicPath(enPath) : enPath,
+    languages: languageAlternates(enPath),
   };
 }
 
