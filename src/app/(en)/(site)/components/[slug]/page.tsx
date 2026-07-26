@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ALL_COMPONENTS, componentBySlug } from '@/lib/catalog';
 import { getArabicContent, getComponentContent } from '@/lib/content';
-import { absoluteUrl, pageAlternates, serializeJsonLd } from '@/lib/seo';
+import { absoluteUrl, pageSeo, serializeJsonLd } from '@/lib/seo';
 import { ComponentPage } from '@/components/showcase/ComponentPage';
 
 function breadcrumbs(slug: string, name: string) {
@@ -38,7 +38,7 @@ export async function generateMetadata({
   return {
     title: found.meta.name,
     description: found.meta.blurb,
-    alternates: pageAlternates(`/components/${slug}`, 'en'),
+    ...pageSeo(`/components/${slug}`, 'en'),
   };
 }
 

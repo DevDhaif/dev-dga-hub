@@ -16,6 +16,11 @@ export function pageAlternates(enPath: string, locale: 'en' | 'ar') {
   };
 }
 
+export function pageSeo(enPath: string, locale: 'en' | 'ar') {
+  const alternates = pageAlternates(enPath, locale);
+  return { alternates, openGraph: { url: alternates.canonical, locale } };
+}
+
 export function absoluteUrl(path: string): string {
   if (path === '/') return SITE_URL;
   return `${SITE_URL}${path.startsWith('/') ? path : `/${path}`}`;

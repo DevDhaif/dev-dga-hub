@@ -18,7 +18,8 @@ import { SITE_URL, languageAlternates, serializeJsonLd } from '@/lib/seo';
 import { dirFor, type Locale } from '@/lib/locale';
 import pkg from '../../package.json';
 
-const LIB_REPO_URL = 'https://github.com/DevDhaif/dev-dga';
+// The only public repo: the library source lives in a private one.
+const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 
 const LIB_VERSION = pkg.dependencies['@dev-dga/react'].replace(/^\D*/, '');
 
@@ -131,7 +132,7 @@ function jsonLdFor(locale: Locale) {
         '@type': 'SoftwareSourceCode',
         name: '@dev-dga/react',
         description: DESCRIPTION[locale],
-        codeRepository: LIB_REPO_URL,
+        codeRepository: REPO_URL,
         url: home,
         programmingLanguage: ['TypeScript', 'React'],
         runtimePlatform: 'React 19',

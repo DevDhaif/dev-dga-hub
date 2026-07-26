@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { ALL_COMPONENTS, componentBySlug } from '@/lib/catalog';
 import { componentName } from '@/lib/component-names';
 import { getArabicContent, getComponentContent } from '@/lib/content';
-import { absoluteUrl, pageAlternates, serializeJsonLd } from '@/lib/seo';
+import { absoluteUrl, pageSeo, serializeJsonLd } from '@/lib/seo';
 import { ComponentPage } from '@/components/showcase/ComponentPage';
 
 export function generateStaticParams() {
@@ -23,7 +23,7 @@ export async function generateMetadata({
   return {
     title: name,
     description: ar?.description || found.meta.blurb,
-    alternates: pageAlternates(`/components/${slug}`, 'ar'),
+    ...pageSeo(`/components/${slug}`, 'ar'),
   };
 }
 
