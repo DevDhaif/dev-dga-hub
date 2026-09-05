@@ -3,10 +3,17 @@ title: Avatar
 slug: avatar
 category: Data display
 status: stable
-description: 'A user image with a text fallback.'
+description: 'React avatar with image, initials fallback, sizes, shapes, status dot, and stacked groups with +N overflow. Accessible names built in.'
+seoTitle: 'Avatar: React user avatar with fallback and groups'
 ---
 
 Avatar shows a photo, and `AvatarFallback` shows initials when the image is missing. Use `AvatarGroup` to stack several with a "+N" overflow.
+
+## When to use
+
+Use Avatar to represent a person or an organization in headers, comments, timelines, and tables. Provide `AvatarFallback` initials for missing photos.
+
+Use `AvatarGroup` to show several participants compactly, and keep the group capped so it stays readable.
 
 ## Example: Image with fallback
 
@@ -114,3 +121,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Avatar exposes `role="img"` with an accessible name from the `alt` or fallback text. The status dot is decorative, so state the status in text nearby when it matters.
+
+Groups announce the overflow count as text rather than only showing "+N" visually.

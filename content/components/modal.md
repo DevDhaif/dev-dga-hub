@@ -3,10 +3,17 @@ title: Modal
 slug: modal
 category: Overlays
 status: stable
-description: 'A centered dialog over the page.'
+description: 'Accessible React modal dialog built on Radix: header icon, title, description, body, footer actions, sizes, focus trapping, and Escape to close. Inherits theme and RTL.'
+seoTitle: 'Modal: accessible React modal dialog with focus trap'
 ---
 
 Modal opens a centered dialog from a trigger: header, body, and a footer of actions. It inherits theme and direction from the provider.
+
+## When to use
+
+Use Modal for a short task that must be completed or cancelled before returning. Examples: confirming a deletion, entering a verification code, or reviewing a summary before submission. Keep it to one purpose and a few controls.
+
+For longer secondary flows, use Drawer. For a lightweight panel anchored to a control, use Popover.
 
 ## Example: Confirmation dialog
 
@@ -65,3 +72,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Modal is a Radix Dialog: it renders `role="dialog"` with `aria-modal`, traps focus while open, closes on Escape, and returns focus to the trigger on close. `ModalTitle` and `ModalDescription` are linked to the dialog so its name and purpose are announced.
+
+The close button uses `closeLabel` as its accessible name, and the overlay inherits direction and theme from the provider.

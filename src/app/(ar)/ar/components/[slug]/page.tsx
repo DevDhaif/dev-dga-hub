@@ -5,6 +5,7 @@ import { componentName } from '@/lib/component-names';
 import { getArabicContent, getComponentContent } from '@/lib/content';
 import { absoluteUrl, pageSeo, serializeJsonLd } from '@/lib/seo';
 import { ComponentPage } from '@/components/showcase/ComponentPage';
+import { componentProps } from '@/lib/props.generated';
 
 export function generateStaticParams() {
   return ALL_COMPONENTS.map((c) => ({ slug: c.slug }));
@@ -21,7 +22,7 @@ export async function generateMetadata({
   const ar = getArabicContent(slug);
   const name = componentName(slug, found.meta.name, 'ar');
   return {
-    title: name,
+    title: ar?.seoTitle ?? name,
     description: ar?.description || found.meta.blurb,
     ...pageSeo(`/components/${slug}`, 'ar'),
   };
@@ -74,9 +75,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         en={{
           description: content?.frontmatter.description ?? meta.blurb,
           intro: content?.intro ?? '',
+          sections: content?.sections ?? {},
         }}
-        ar={ar ? { description: ar.description, intro: ar.intro } : null}
+        ar={ar ? { description: ar.description, intro: ar.intro, sections: ar.sections } : null}
         examples={content?.examples ?? []}
+        propsDoc={componentProps[slug] ?? []}
         prev={prev ? { slug: prev.slug, name: prev.name } : null}
         next={next ? { slug: next.slug, name: next.name } : null}
       />

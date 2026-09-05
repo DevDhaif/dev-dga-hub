@@ -3,10 +3,17 @@ title: DescriptionList
 slug: description-list
 category: Data display
 status: stable
-description: 'A key-value list for review and summary screens.'
+description: 'React key-value list rendering real dl, dt, and dd markup for review and summary screens, horizontal or vertical, with rich values and Arabic support.'
+seoTitle: 'DescriptionList: React key-value list for review screens'
 ---
 
 DescriptionList renders real `<dl>` markup. Each `DescriptionItem` pairs a term with its details, horizontally or vertically.
+
+## When to use
+
+Use DescriptionList to show a record's fields before submission or on a details page: applicant name, request number, status, dates. Use the horizontal layout for scanning and the vertical layout on narrow screens or when values are long.
+
+For tabular comparisons across many records, use Table.
 
 ## Example: Review summary
 
@@ -106,3 +113,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The list renders native `<dl>`, `<dt>`, and `<dd>` elements, so screen readers announce each term with its description.
+
+Keep terms short and unique, and put rich content such as StatusTag inside the details rather than the term.

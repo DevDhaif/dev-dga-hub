@@ -2,7 +2,7 @@ import { ogImage, OG_SIZE, OG_CONTENT_TYPE } from '@/lib/og';
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = 'dev-dga — نظام التصميم الحكومي السعودي بمكوّنات React متاحة الوصول.';
+export const alt = 'dev-dga - نظام التصميم الحكومي السعودي بمكوّنات React متاحة الوصول.';
 
 export default function Image() {
   return ogImage({

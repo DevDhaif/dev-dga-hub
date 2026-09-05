@@ -3,10 +3,17 @@ title: Floating Button
 slug: floating-button
 category: Actions & buttons
 status: new
-description: 'A floating action button for the main action.'
+description: 'React floating action button for the one primary action on a screen: icon-only or extended pill, on plain or colored surfaces, with asChild for links. RTL-aware.'
+seoTitle: 'FloatingButton: React floating action button (FAB)'
 ---
 
 FloatingButton surfaces the single most important action on a screen. An `icon` is required; add `children` for an extended pill. Positioning is up to you.
+
+## When to use
+
+Use FloatingButton when a screen has one dominant action that must stay reachable while the user scrolls. Starting a new request in a citizen portal is a typical case. Keep one per screen. If the action belongs to a form or a card, use Button instead.
+
+The component does not position itself. Place it with your own layout so it does not cover content or the bottom navigation on mobile.
 
 ## Example: Styles (icon-only)
 
@@ -118,3 +125,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The `icon` is decorative, so an icon-only FloatingButton must carry an `aria-label` that names the action. The extended pill uses its visible `children` as the accessible name. The disabled state is exposed through `aria-disabled` so the control stays discoverable.
+
+Because the button floats, check that it does not overlap focusable content and that its contrast holds on the surface behind it.

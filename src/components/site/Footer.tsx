@@ -53,6 +53,7 @@ export function Footer() {
           <a href="https://www.npmjs.com/package/@dev-dga/react" target="_blank" rel="noreferrer">
             {c.footer.npm}
           </a>
+          <a href="/llms.txt">{c.footer.llms}</a>
         </nav>
       </div>
 

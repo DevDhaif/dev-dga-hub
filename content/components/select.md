@@ -3,10 +3,17 @@ title: Select
 slug: select
 category: Form inputs
 status: stable
-description: 'A single-select field with label and error states.'
+description: 'Accessible React single-select field built on Radix, with label, helper text, error state, placeholder, and disabled options. Inherits dark mode and RTL.'
+seoTitle: 'Select: accessible React select field (Radix listbox)'
 ---
 
 Compose `Select` with `SelectItem` children, each with a stable `value`. The dropdown inherits dark mode and RTL from the provider.
+
+## When to use
+
+Use Select when the user picks one option from a known list of roughly five to fifteen items, such as a region or a document type. For long lists that need searching, or for multi-select, use Dropdown. For four or fewer options, RadioGroup is faster to scan.
+
+Pass a `placeholder` that describes the choice, not an instruction.
 
 ## Example: Country picker
 
@@ -88,3 +95,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The trigger is a button linked to the visible `label`, and the list opens as a listbox with keyboard navigation from Radix: arrow keys move, typing jumps to a matching option, Enter selects, and Escape closes.
+
+Helper text and errors are announced through `aria-describedby` and `aria-invalid`. The open list renders inside the provider portal, so it inherits direction and dark mode.

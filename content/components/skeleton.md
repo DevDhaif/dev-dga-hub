@@ -3,10 +3,17 @@ title: Skeleton
 slug: skeleton
 category: Feedback
 status: stable
-description: 'A placeholder shown while content loads.'
+description: 'React skeleton placeholder that mimics the shape of loading content: text lines, circles, cards, and inline shapes, with a shimmer that respects reduced motion.'
+seoTitle: 'Skeleton: React loading placeholder with shimmer'
 ---
 
 Skeleton fakes the shape of loading content. It is `aria-hidden`, so mark the loading surface itself with `aria-busy="true"`.
+
+## When to use
+
+Use Skeleton when the layout of incoming content is known, such as a list of cards or a profile header. The page then keeps its shape while data loads. Match the skeleton to the final layout to avoid a jump.
+
+For an unknown or short wait, a Spinner is enough. Do not show skeletons for more than a few seconds without feedback.
 
 ## Example: Shapes
 
@@ -67,3 +74,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Skeleton is `aria-hidden`, so it is invisible to screen readers. Mark the loading surface with `aria-busy="true"` and announce completion through a live region when the content arrives.
+
+The shimmer animation is disabled when the user prefers reduced motion.

@@ -3,10 +3,17 @@ title: Collapsible
 slug: collapsible
 category: Navigation
 status: stable
-description: 'A single show/hide panel.'
+description: 'React collapsible disclosure built on Radix for a single show-hide region, with your own trigger button, an open-by-default option, and a chevron pattern.'
+seoTitle: 'Collapsible: React show/hide disclosure (Radix)'
 ---
 
 Collapsible shows and hides one panel. Bring your own trigger button; keyboard and ARIA wiring come built in.
+
+## When to use
+
+Use Collapsible to hide optional detail behind a trigger: advanced filters, "Show more" in a summary, or a long explanation under a field. Keep the trigger label clear about what it reveals.
+
+For several stacked sections, use Accordion.
 
 ## Example: Basic
 
@@ -87,3 +94,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The trigger exposes `aria-expanded` and `aria-controls`, so its state and target are announced. Space and Enter toggle it.
+
+Use a real button as the trigger. If you add a chevron, keep it decorative and let the label carry the meaning.

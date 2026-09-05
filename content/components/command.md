@@ -3,10 +3,17 @@ title: Command
 slug: command
 category: Overlays
 status: stable
-description: 'A command palette (⌘K) with fuzzy search.'
+description: 'React command palette built on cmdk with fuzzy search, groups, shortcuts, and a CommandDialog that wires Cmd+K and Ctrl+K. Works inline or as an overlay.'
+seoTitle: 'Command: React command palette (⌘K) with fuzzy search'
 ---
 
 Command lists actions behind a search input; each `CommandItem` fires `onSelect`. `CommandDialog` is the same palette in an overlay and wires ⌘K itself.
+
+## When to use
+
+Use Command to let power users jump to pages and actions by typing: opening a request by number, switching a service, or running an admin action. Mount `CommandDialog` once for a global palette, or use `Command` inline for a searchable action list.
+
+For searching content rather than commands, use SearchBox.
 
 ## Example: Inline palette
 
@@ -191,3 +198,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The input is a `role="combobox"` tied to a `role="listbox"` of results, so arrow keys move through matches, Enter runs the highlighted item, and Escape closes. Give the input an `aria-label`.
+
+The dialog variant traps focus and returns it on close. Shortcuts shown next to items are hints; every item also works by mouse and keyboard.

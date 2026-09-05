@@ -3,10 +3,17 @@ title: Progress
 slug: progress
 category: Feedback
 status: stable
-description: 'A progress bar and ring.'
+description: 'React linear progress bar and circular progress ring with determinate and indeterminate states, feedback states, label, helper text, and value display.'
+seoTitle: 'Progress: React progress bar and circular progress ring'
 ---
 
 `Progress` is the linear bar and `CircularProgress` is the ring. Pass a `value`, or omit it for the indeterminate state; the ring needs an `aria-label`.
+
+## When to use
+
+Use Progress when you can express completion as a number: an upload, a multi-file scan, or a quota. Use the indeterminate state only while the total is unknown. Use `CircularProgress` in compact spaces such as cards and table cells.
+
+For step-based flows, use ProgressIndicator instead.
 
 ## Example: Linear bar
 
@@ -76,3 +83,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Progress renders `role="progressbar"` with `aria-valuenow`, `aria-valuemin`, and `aria-valuemax`, and omits the current value while indeterminate. The visible `label` names the bar; the ring has no visible label, so pass `aria-label` or `aria-labelledby`.
+
+Use `getValueLabel` to announce a friendlier value such as "3 of 5 files".

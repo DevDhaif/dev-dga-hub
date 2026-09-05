@@ -3,10 +3,17 @@ title: FileUpload
 slug: file-upload
 category: Form inputs
 status: stable
-description: 'A file uploader with drag and drop.'
+description: 'React file upload with drag and drop, accept and size validation, per-file status and progress, and a compact button variant. Fully controlled, RTL ready.'
+seoTitle: 'FileUpload: React drag-and-drop file uploader'
 ---
 
 FileUpload is fully controlled: you own the `files` array, run the upload yourself, and report each file's `status`. Validation uses `accept`, `maxSize`, and `maxFiles`.
+
+## When to use
+
+Use FileUpload for attachments such as ID scans, contracts, or supporting documents. Set `accept`, `maxSize`, and `maxFiles` to match the service rules, and report each file's `status` as your upload proceeds.
+
+Use the button variant inside dense forms and the drop zone when files are the main task. Keep the rules visible in the helper text.
 
 ## Example: Drag-and-drop zone
 
@@ -118,3 +125,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The drop zone is also a button, so keyboard users can open the file picker with Enter or Space. Rejections are announced through a `role="alert"` list with the reason for each file.
+
+Each file row exposes its status and a labelled remove button. The field label, helper text, and error are wired like TextInput.

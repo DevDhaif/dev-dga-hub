@@ -25,7 +25,7 @@ Every page below also exists in Arabic under the \`/ar\` prefix
 ## Docs
 
 - [Installation](${absoluteUrl('/installation')}): install, wrap in DgaProvider, theme via CSS variables.
-- [Components](${absoluteUrl('/components')}): all ${COMPONENT_COUNT} components with live examples.
+- [Components](${absoluteUrl('/components')}): all ${COMPONENT_COUNT} components. Each page has when-to-use guidance, live examples, a props table generated from the typings, and accessibility notes.
 - [Blocks](${absoluteUrl('/blocks')}): prebuilt UI blocks composed from the components.
 - [Theme Studio](${absoluteUrl('/theme')}): edit every --ddga-* design token live and export CSS.
 - [Arabic & RTL](${absoluteUrl('/rtl')}): Hijri calendars, abjad counters, bidi-safe Saudi data.

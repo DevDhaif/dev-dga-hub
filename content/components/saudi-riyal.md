@@ -3,10 +3,17 @@ title: Saudi Riyal
 slug: saudi-riyal
 category: Data display
 status: new
-description: 'The Saudi Riyal symbol with correct amount formatting.'
+description: 'React SaudiRiyal component that renders the official Riyal symbol with SDGA-compliant amount formatting: fixed symbol position, RTL-safe sign, numerals, and tones.'
+seoTitle: 'SaudiRiyal: official Riyal symbol with correct formatting'
 ---
 
 SaudiRiyal pins the official Riyal glyph before the number in both directions, keeps the digits left to right, and announces the currency to screen readers. Pass a `number` to format it.
+
+## When to use
+
+Use SaudiRiyal for every monetary amount in a Saudi service: fees, fines, balances, and totals. Pass a number and let the component place the symbol, format the digits, and handle negatives.
+
+Use the symbol alone in column headers or labels.
 
 ## Example: Amount
 
@@ -148,3 +155,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The amount is exposed as an image with an accessible name that reads the currency and value, and the symbol glyph is `aria-hidden`. Digits stay left to right in Arabic layouts, and negative amounts keep the sign on the correct side.
+
+The component inherits font size so it scales with the surrounding text.

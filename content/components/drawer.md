@@ -3,10 +3,17 @@ title: Drawer
 slug: drawer
 category: Overlays
 status: stable
-description: 'A panel that slides in from the edge of the screen.'
+description: 'React drawer that slides in from the inline start, inline end, or bottom for settings, detail panels, and filter forms. Same focus handling as Modal, RTL-aware sides.'
+seoTitle: 'Drawer: React side sheet and bottom sheet'
 ---
 
 Drawer slides a panel from the screen edge, with the same focus and ESC behavior as Modal. `side` is logical, so `start`/`end` flip with direction.
+
+## When to use
+
+Use Drawer for secondary flows that need more room than a Modal: editing settings, viewing a record's details, or a filter form. Use the bottom sheet on mobile for short pickers.
+
+Because `side` is logical, `start` and `end` swap in RTL. Keep the page behind it visible so users keep their context.
 
 ## Example: Settings drawer
 
@@ -142,3 +149,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Drawer is built on the same Dialog base as Modal: focus is trapped inside, Escape closes it, and focus returns to the trigger. Title and description parts give the panel its accessible name.
+
+The close button has an accessible name, and the panel follows the page direction so it slides in from the expected edge.

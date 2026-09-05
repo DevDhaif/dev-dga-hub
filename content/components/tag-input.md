@@ -3,10 +3,17 @@ title: TagInput
 slug: tag-input
 category: Form inputs
 status: stable
-description: 'A field that turns typed text into chips.'
+description: 'React tag input that commits typed text as removable chips, with validation, a maximum count, de-duplication, and field wiring. Keyboard and Arabic ready.'
+seoTitle: 'TagInput: React input that turns text into removable tags'
 ---
 
 Enter or a comma commits the text as a chip; Backspace removes the last one. It de-duplicates and supports `max` and `validate`.
+
+## When to use
+
+Use TagInput to collect several short free-form values: email recipients, keywords, or reference numbers. Use `validate` to reject malformed entries and `max` to cap the count.
+
+When the values come from a fixed list, use Dropdown with `multiple` so users pick rather than type.
 
 ## Example: Controlled tags
 
@@ -84,3 +91,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The chips render as a list, so screen readers hear how many values exist and can move through them. Enter or a comma commits a value and Backspace removes the last one, and a live region announces additions and removals.
+
+The field label, helper text, and error are wired like TextInput. Each remove button carries the tag name in its accessible label.

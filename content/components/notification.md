@@ -3,10 +3,17 @@ title: Notification
 slug: notification
 category: Feedback
 status: new
-description: 'A full-width banner at the top of the page.'
+description: 'React full-width notification banner for system messages at the top of a page: semantic types, a bold lead, actions, and a dismiss button. RTL ready.'
+seoTitle: 'Notification: React page-level notification banner'
 ---
 
 Notification is the page-level banner for system messages. Set the `type`, add a bold `lead`, and pass `onClose` to make it dismissible.
+
+## When to use
+
+Use Notification for messages that concern the whole page or service: planned downtime, a policy change, or an account issue that blocks progress. Place it above the page content, once, and keep the `lead` to a few words.
+
+For a message tied to one section, use InlineAlert. For confirmations that fade, use NotificationToast.
 
 ## Example: Basic
 
@@ -97,3 +104,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The banner uses `role="alert"` for error and warning types and `role="status"` for the rest, so screen readers announce it on arrival. Actions are real buttons or links and the dismiss control has an accessible name.
+
+Keep the banner in the document flow so keyboard users encounter it before the content it affects.

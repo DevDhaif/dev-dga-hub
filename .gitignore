@@ -17,6 +17,7 @@ next-env.d.ts
 /public/illustrations/
 /src/lib/illustrations.generated.ts
 /src/lib/tokens.generated.ts
+/src/lib/props.generated.ts
 
 # Vercel / misc
 .vercel

@@ -3,10 +3,15 @@ title: Menubar
 slug: menubar
 category: Overlays
 status: stable
-description: 'A desktop-style horizontal menu bar.'
+description: 'React desktop-style horizontal menu bar built on Radix, with nested menus, checkbox and radio items, and outline triggers. Arrow keys move across and within menus.'
+seoTitle: 'Menubar: React desktop-style menu bar (Radix)'
 ---
 
 Menubar is the File / Edit / View pattern. Each `MenubarMenu` holds a trigger and a menu of items; arrow keys move across and within menus.
+
+## When to use
+
+Use Menubar in dense desktop tools such as document editors or back-office consoles where users expect File, Edit, and View style menus. For a single action menu, use DropdownMenu. For primary site navigation, use Sidebar or SlideoutMenu.
 
 ## Example: File / Edit / View
 
@@ -150,3 +155,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The bar renders `role="menubar"` with menu triggers. The left and right arrow keys move between menus, the up and down keys move within one, and Escape closes the open menu. Typing jumps to a matching item.
+
+Checkbox and radio items expose `aria-checked`. The arrow keys follow the reading direction in RTL.

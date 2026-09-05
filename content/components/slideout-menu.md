@@ -3,10 +3,17 @@ title: SlideoutMenu
 slug: slideout-menu
 category: Overlays
 status: new
-description: 'A slide-in panel for site navigation.'
+description: 'React slide-in navigation panel with a header, grouped items, current-page links, and a footer, using real nav and list semantics. Side flips in RTL.'
+seoTitle: 'SlideoutMenu: React slide-in navigation panel'
 ---
 
 SlideoutMenu is a nav panel with a header, grouped items, and a footer. Unlike Drawer it uses real list and link semantics; `side` flips with direction.
+
+## When to use
+
+Use SlideoutMenu for app-level navigation on mobile or in a compact header: sections of a portal, account links, and language or sign-out actions. Group items and keep the top level short.
+
+For secondary flows with forms, use Drawer. For persistent desktop navigation, use Sidebar.
 
 ## Example: Grouped navigation
 
@@ -227,3 +234,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The panel renders a `<nav>` with a real list of links, so screen readers expose it as a navigation landmark. The current page is marked with `aria-current="page"`, and separators use `role="separator"`.
+
+The close button and trigger have accessible names, and the panel opens from the inline start so it matches the reading direction.

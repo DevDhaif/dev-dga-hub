@@ -3,10 +3,17 @@ title: Tag
 slug: tag
 category: Data display
 status: stable
-description: 'A compact label for categories and keywords.'
+description: 'Compact React tag for categories and keywords, in the SDGA tone set, three sizes, with icons and a dismissible mode. RTL ready.'
+seoTitle: 'Tag: React label for categories, status, and metadata'
 ---
 
 Tag labels content. Pick a tone (the `*-subtle` fills are the SDGA set), add icons, or make it removable with `dismissible`.
+
+## When to use
+
+Use Tag to label content with a category, keyword, or short attribute such as "Draft" or "Riyadh". Use StatusTag when the label communicates state with a colored dot, and Chip when the user toggles it.
+
+Make a tag `dismissible` only when removing it changes something, such as an applied filter.
 
 ## Example: Variants
 
@@ -111,3 +118,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Tag is text, so it is read as part of the content. Icons are `aria-hidden`; the label must carry the meaning.
+
+The dismiss button has an accessible name that includes the tag text, and the tone colors meet contrast requirements in light and dark mode.

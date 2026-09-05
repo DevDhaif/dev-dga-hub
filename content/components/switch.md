@@ -3,10 +3,17 @@ title: Switch
 slug: switch
 category: Form inputs
 status: stable
-description: 'An on/off toggle that applies immediately.'
+description: 'Accessible React switch for a single binary setting that applies immediately, with label, helper text, and states. Built on Radix and mirrored in RTL.'
+seoTitle: 'Switch: accessible React on/off toggle switch'
 ---
 
 Switch flips one boolean that takes effect right away. For a choice confirmed on submit, use Checkbox instead.
+
+## When to use
+
+Use Switch for a setting that takes effect the moment it changes: notifications on or off, dark mode, or showing archived items. If the choice is saved when a form is submitted, use Checkbox, because a switch implies an immediate result.
+
+Label the setting, not the states. "Email alerts" is clearer than "On/Off".
 
 ## Example: Setting toggle
 
@@ -59,3 +66,9 @@ export default function Demo() {
   return <Switch label="تفعيل الإشعارات" defaultChecked />;
 }
 ```
+
+## Accessibility
+
+Switch exposes `role="switch"` with `aria-checked`, so screen readers announce it as a switch and read its state. Space toggles it, and the label is associated so clicking it works.
+
+The thumb moves along the reading direction, so the on position sits at the inline end in RTL. The thumb position carries the state as well as the color.

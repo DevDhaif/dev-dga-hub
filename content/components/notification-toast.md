@@ -3,10 +3,17 @@ title: Notification Toast
 slug: notification-toast
 category: Feedback
 status: stable
-description: 'Transient toasts fired with a function call.'
+description: 'React toast notifications fired from a toast() function: variants, actions such as undo, updates in place, and a single viewport mounted near the app root.'
+seoTitle: 'NotificationToast: React toast system with toast() API'
 ---
 
 Call `toast(message, options)` or `toast.success(...)` from anywhere; the `<NotificationToast />` viewport is mounted once near the app root.
+
+## When to use
+
+Use NotificationToast for short confirmations that need no reply: "Request submitted", "Copied", "Saved". Call `toast()` or `toast.success()` from event handlers and mount one `<NotificationToast />` near the root.
+
+Offer an undo action for reversible operations. For messages the user must read or act on, use InlineAlert or Notification, which do not disappear.
 
 ## Example: Basic
 
@@ -135,3 +142,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Toasts are announced through the viewport's live region, so screen reader users hear them without losing focus. Each toast's dismiss button has an accessible name, and actions are real buttons.
+
+Because toasts are transient, never put required information only in a toast. Repeat outcomes in the page content where users can find them later.

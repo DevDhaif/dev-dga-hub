@@ -3,10 +3,17 @@ title: Progress Indicator
 slug: progress-indicator
 category: Navigation
 status: new
-description: 'A stepper for multi-step flows.'
+description: 'React stepper for multi-step flows with completed, current, and upcoming states, horizontal and vertical layouts, and a dot appearance. Marks the current step for screen readers.'
+seoTitle: 'ProgressIndicator: React stepper for multi-step forms'
 ---
 
 Each `Step` declares its `state`: completed, current, or upcoming. Switch layout with `orientation` and the marker style with `appearance`.
+
+## When to use
+
+Use ProgressIndicator for flows with a fixed number of steps, such as a permit application with personal data, documents, review, and payment. Show it on every step so users know where they are and how much is left.
+
+Use the vertical layout when steps have descriptions. For a percentage, use Progress.
 
 ## Example: Horizontal steps
 
@@ -155,3 +162,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The steps render as an ordered list, and the current step carries `aria-current="step"`. Completed and upcoming states are described in text, not only by color or icon.
+
+Keep step titles short and unique so they read well in the list.

@@ -3,10 +3,17 @@ title: DatePicker
 slug: date-picker
 category: Form inputs
 status: new
-description: 'A date picker with a Gregorian and Hijri toggle.'
+description: 'Accessible React date picker with an in-calendar Hijri (Umm al-Qura) and Gregorian toggle, min and max bounds, and Arabic support. Value is always a Date.'
+seoTitle: 'DatePicker: React date picker with Hijri and Gregorian calendars'
 ---
 
 DatePicker selects a single date, with an in-calendar Gregorian/Hijri toggle. The value is always `Date | null`; the Hijri view is display only.
+
+## When to use
+
+Use DatePicker for a single date such as a birth date, an appointment, or a document issue date. Saudi services often need both calendars: enable the Hijri view and `showSecondaryCalendar` so each day shows its counterpart.
+
+Bound the range with `minValue` and `maxValue` to prevent invalid dates. For a start and end, use DateRangePicker.
 
 ## Example: Basic
 
@@ -71,3 +78,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The calendar follows the grid pattern from React Aria. Arrow keys move between days, Page Up and Page Down change the month, and Escape closes the popover. The field label, helper text, and error are wired like TextInput, and the calendar toggle has an accessible name.
+
+Dates are announced in the active calendar system, so Hijri users hear Hijri dates.

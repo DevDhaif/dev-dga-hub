@@ -3,10 +3,17 @@ title: Content Switcher
 slug: content-switcher
 category: Actions & buttons
 status: stable
-description: 'A segmented control for switching between views.'
+description: 'React segmented control that switches between mutually exclusive views, with sizes and an on-color variant for dark surfaces. Keyboard and RTL ready.'
+seoTitle: 'ContentSwitcher: React segmented control for views'
 ---
 
 ContentSwitcher picks one view at a time from a set of segments. Give the group an `aria-label`; for page-level panels use Tabs instead.
+
+## When to use
+
+Use ContentSwitcher to flip between two to four alternative views of the same content, such as list versus map or monthly versus yearly. Use Tabs for page-level panels with their own content, and RadioGroup inside a form where the choice is submitted later.
+
+Keep labels short; the segments share one row.
 
 ## Example: Basic
 
@@ -99,3 +106,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The group needs an `aria-label` or `aria-labelledby` so its purpose is announced. Tab reaches the group and the arrow keys move between segments, following the reading direction in RTL.
+
+The selected segment is exposed to assistive technology, and the selection is shown with a fill change rather than color alone.

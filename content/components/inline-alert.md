@@ -3,10 +3,17 @@ title: Inline Alert
 slug: inline-alert
 category: Feedback
 status: stable
-description: 'A message card inside the page content.'
+description: 'React inline alert for in-page messages: info, success, warning, and error types, a title, actions, and a dismiss button. Announced through live regions.'
+seoTitle: 'InlineAlert: React inline alert with semantic types'
 ---
 
 InlineAlert highlights a message without leaving the page. Set `type` for the meaning, pass a `title`, and add `onClose` to make it dismissible.
+
+## When to use
+
+Use InlineAlert to explain something about the content next to it. Examples: a validation summary above a form, a maintenance notice, or a success confirmation after saving. Set `type` to match the meaning and keep the text to one or two sentences.
+
+For a page-wide system message, use Notification. For a transient confirmation, use NotificationToast.
 
 ## Example: Basic
 
@@ -93,3 +100,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Error and warning alerts render `role="alert"` so they interrupt, and info and success alerts render `role="status"` so they are announced politely. The icon is decorative; the type is also carried by the title and text.
+
+The dismiss button has an accessible name. Place the alert near the content it describes so the reading order makes sense.

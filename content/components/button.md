@@ -3,10 +3,17 @@ title: Button
 slug: button
 category: Actions & buttons
 status: stable
-description: 'The primary interactive control for actions.'
+description: 'Accessible React button for Saudi government platforms: nine variants, sizes, icons, a loading state, and asChild for router links. RTL and dark ready.'
+seoTitle: 'Button: accessible React button with variants and loading'
 ---
 
 Button triggers an action. Pick a `variant` and `size`, add `startIcon`/`endIcon` or `loading`, and use `asChild` to render a link that looks like a button.
+
+## When to use
+
+Use Button for an action that changes something: submit a form, open a dialog, confirm a step. For navigation to another page, use Link, or wrap a router link with `asChild` so it looks like a button but stays an anchor.
+
+Reserve the `primary` variant for the one main action on a screen and use `secondary` or `outline` for the rest. The `destructive` variants flag irreversible actions such as deleting a record. In government forms, keep the primary action at the inline end of the row so it lands on the same side in Arabic and English.
 
 ## Example: Variants
 
@@ -105,3 +112,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Button renders a native `<button>`, so focus, Enter, and Space work without extra wiring. While `loading` is set, the button exposes `aria-busy` and ignores clicks.
+
+Icon-only buttons need an `aria-label`, because the icon alone gives screen readers nothing to announce. In `asChild` mode the disabled state uses `aria-disabled` and removes the element from the tab order; you must still block the underlying action yourself. A visible focus ring shows in light and dark mode.

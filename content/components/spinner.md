@@ -3,10 +3,17 @@ title: Spinner
 slug: spinner
 category: Feedback
 status: stable
-description: 'An indeterminate loading indicator.'
+description: 'React indeterminate loading spinner that follows the current text size and color, with sizes, tones, and an accessible label by default.'
+seoTitle: 'Spinner: React loading spinner in several sizes'
 ---
 
 Spinner shows work with no known duration. By default it is `1em` and follows `currentColor`, so it scales with the text around it.
+
+## When to use
+
+Use Spinner while something loads and the duration is unknown: fetching a list, submitting a request, checking a status. Inside a Button, use the `loading` prop instead, which places the spinner for you.
+
+When the duration or progress is known, use Progress. For content placeholders, use Skeleton.
 
 ## Example: Sizes
 
@@ -63,3 +70,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Spinner announces "Loading" by default through `aria-label`; pass your own label to say what is loading. Inside a control that already has a label, pass `aria-hidden="true"` to avoid a double announcement.
+
+Pair the spinner with `aria-busy="true"` on the region that is loading so the state is exposed to assistive technology.

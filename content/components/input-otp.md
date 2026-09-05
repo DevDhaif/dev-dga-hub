@@ -3,10 +3,17 @@ title: InputOTP
 slug: input-otp
 category: Form inputs
 status: stable
-description: 'One-time code entry for sign-in flows.'
+description: 'React one-time passcode input for sign-in and verification: six-digit SMS codes, grouping, masked PIN, paste, autofill, and onComplete. Digits stay LTR in Arabic.'
+seoTitle: 'InputOTP: React one-time passcode input for SMS codes'
 ---
 
 InputOTP enters a numeric code (Saudi SMS OTP is 6 digits). SMS autofill, paste, and Backspace all work; `onComplete` fires when the last slot fills. Digits stay left to right in Arabic.
+
+## When to use
+
+Use InputOTP for verification codes sent by SMS or email, including the six-digit codes common in Saudi services. Set `length` to match the code, group digits for readability, and use the masked mode for PINs. Fire your verification from `onComplete` so users do not need a separate submit.
+
+For passwords, use a TextInput with the password type.
 
 ## Example: Verification code
 
@@ -49,3 +56,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Each slot is a labelled input, and the group carries the field label, helper text, and error through the same wiring as TextInput. Typing advances automatically, Backspace moves back, and pasting a full code fills every slot.
+
+SMS autofill and paste both fill the slots. Digits keep a left-to-right order inside Arabic pages.

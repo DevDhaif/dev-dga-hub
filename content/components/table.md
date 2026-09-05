@@ -3,10 +3,17 @@ title: Table
 slug: table
 category: Data display
 status: stable
-description: 'A semantic table with sortable and filterable headers.'
+description: 'Composable React data table with header, body, footer, caption, sortable and filterable headers, selectable rows, sizes, striping, and a sticky header.'
+seoTitle: 'Table: accessible React data table with sortable headers'
 ---
 
 Build a Table from Header, Body, Row, Head, and Cell parts. Cell content is whatever you compose; headers gain `sortable` and `filterable` affordances, with the logic in your code.
+
+## When to use
+
+Use Table for records with several attributes that users compare, sort, or select: applications, invoices, users. Keep the logic in your code and use the header affordances to expose it.
+
+Use StructuredList for simple lists and DescriptionList for a single record.
 
 ## Example: Minimal table
 
@@ -267,3 +274,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Table renders a native `<table>`; add a `TableCaption` to name it. The scroll wrapper becomes a focusable `role="region"` when you pass `aria-label`, so keyboard users can scroll wide tables.
+
+Sortable headers expose `aria-sort`, and the toggle buttons announce their state. Selectable rows use real checkboxes with labels.

@@ -3,10 +3,17 @@ title: Popover
 slug: popover
 category: Overlays
 status: stable
-description: 'A floating panel with interactive content.'
+description: 'React popover built on Radix for rich content anchored to a trigger: inline edit forms, filters, and previews, with an optional arrow and modal focus trapping.'
+seoTitle: 'Popover: React non-modal popover anchored to a trigger'
 ---
 
 Popover anchors rich content to a trigger. It renders `role="dialog"`, so give it an `aria-label`; pass `modal` to trap focus.
+
+## When to use
+
+Use Popover when a control needs a small panel of interactive content next to it. Examples: an inline edit form, a date preset list, or a quick filter. Use Tooltip for read-only hints and Modal for tasks that must block the page.
+
+Pass `modal` when the panel holds a form the user must finish.
 
 ## Example: Default
 
@@ -90,3 +97,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The panel renders `role="dialog"`, so give it an `aria-label` or `aria-labelledby`. Escape closes it and focus returns to the trigger. With `modal`, focus is trapped inside the panel.
+
+Anchor the popover to a focusable trigger so keyboard users can open it.

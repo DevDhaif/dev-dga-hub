@@ -3,10 +3,17 @@ title: Digital Stamp
 slug: digital-stamp
 category: Data display
 status: new
-description: 'The official verification banner for Saudi government sites.'
+description: 'React DigitalStamp for Saudi government websites: the flag and statement bar, .gov.sa explainer panel, and DGA registration number, in Arabic and English.'
+seoTitle: 'DigitalStamp: official Saudi government verification bar'
 ---
 
 DigitalStamp shows the flag and statement bar with an explainer panel. Set `extension` for the domain copy and `registrationNumber` for the DGA registration panel.
+
+## When to use
+
+Use DigitalStamp at the top of every page of an official Saudi government website, as the Platforms Code requires. Set `extension` to match your domain and `registrationNumber` when the site is registered with the DGA.
+
+Show it once per page, above the header.
 
 ## Example: Verification bar
 
@@ -142,3 +149,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The explainer toggle is a button with `aria-expanded` and `aria-controls`, so the panel state is announced. The flag and marks are decorative and the statement is text.
+
+Both Arabic and English copy are provided, and the bar follows the page direction.

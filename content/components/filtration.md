@@ -3,10 +3,17 @@ title: Filtration
 slug: filtration
 category: Overlays
 status: new
-description: 'A filter panel with sections and an apply footer.'
+description: 'React faceted filter panel, overlay or inline, with sections, checkbox filters, a results count, and Apply and Clear buttons. State stays in your code.'
+seoTitle: 'Filtration: React faceted filter panel with staged apply'
 ---
 
 Filtration opens a panel of filter sections closed by Apply and Clear buttons. State is yours: each section wraps a controlled primitive.
+
+## When to use
+
+Use Filtration above search results, tables, and service catalogs when users combine several criteria: status, region, date, category. Stage the changes and apply them together so the results do not jump after every click.
+
+Use the inline panel on wide screens and the overlay on mobile. For a single filter, a Select or Chip row is enough.
 
 ## Example: Overlay filter (controlled)
 
@@ -139,3 +146,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Each section is a `role="group"` named by its heading, and the overlay trigger exposes `aria-expanded` and `aria-controls`. Filters inside are real checkboxes and inputs with labels.
+
+Apply and Clear are buttons, and the results count is text so screen readers can read how many matches remain.

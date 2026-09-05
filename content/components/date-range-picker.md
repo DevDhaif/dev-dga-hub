@@ -3,10 +3,17 @@ title: DateRangePicker
 slug: date-range-picker
 category: Form inputs
 status: new
-description: 'Start and end date selection on one calendar.'
+description: 'Accessible React date range picker for start and end dates on one calendar, with presets, Hijri and Gregorian views, and bounds. Shares the DatePicker core.'
+seoTitle: 'DateRangePicker: React date range picker with Hijri support'
 ---
 
 DateRangePicker selects a `{ start, end }` range and highlights the days between. It shares the Gregorian/Hijri toggle and calendar core with DatePicker.
+
+## When to use
+
+Use DateRangePicker for reporting periods, leave requests, booking windows, or any filter with a start and end. Offer presets such as "Last 30 days" for common ranges. If only one date is needed, use DatePicker.
+
+Both pickers share the Hijri toggle, so the same range works with the Umm al-Qura calendar.
 
 ## Example: Basic
 
@@ -69,3 +76,9 @@ export default function Demo() {
   return <DateRangePicker label="تواريخ الرحلة" defaultCalendar="hijri" showSecondaryCalendar />;
 }
 ```
+
+## Accessibility
+
+The range calendar uses the same keyboard model as DatePicker. Arrow keys move, Page Up and Page Down change months, and Enter selects the start and then the end. The selected span is announced.
+
+The field label, helper text, and error follow the TextInput wiring. Presets are ordinary buttons, so they are reachable by keyboard.

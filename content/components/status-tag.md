@@ -3,10 +3,17 @@ title: StatusTag
 slug: status-tag
 category: Data display
 status: stable
-description: 'A dot-and-label pill for showing state.'
+description: 'React status pill with a colored dot and label for request and process states: success, warning, error, info, and neutral tones in filled or subtle styles.'
+seoTitle: 'StatusTag: React status pill for success, warning, error, info'
 ---
 
 StatusTag pairs a colored dot with a short label. Set `tone` for the meaning and `status` for the fill; use Tag for categories instead.
+
+## When to use
+
+Use StatusTag wherever a record has a state: "Under review", "Approved", "Rejected", "Paid". Pick the `tone` for meaning and keep the wording consistent across screens so users learn the vocabulary.
+
+Use Tag for categories that are not states.
 
 ## Example: Tones
 
@@ -69,3 +76,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The state is carried by the text. The colored dot is decorative and `aria-hidden`, so meaning never depends on color alone.
+
+Tones are chosen to meet contrast in both fills and both themes. Keep labels short and identical in every table and card that shows the same state.

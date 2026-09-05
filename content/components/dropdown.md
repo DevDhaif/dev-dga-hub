@@ -3,10 +3,17 @@ title: Dropdown
 slug: dropdown
 category: Form inputs
 status: stable
-description: 'A select field with search and multi-select.'
+description: 'React dropdown field with single and multiple selection, in-panel search, grouped options, and full field wiring. Built on cmdk for fast filtering in Arabic and English.'
+seoTitle: 'Dropdown: React select with search and multi-select'
 ---
 
 Dropdown is a select field composed from `DropdownItem` children. Add `multiple` for multi-select or `searchable` for an in-panel filter.
+
+## When to use
+
+Use Dropdown when a select needs search, multiple values, or grouped options: choosing several services, filtering by many cities, or picking from a long reference list. Use Select for a plain single choice and Chip for a visible set of filters.
+
+Provide `emptyMessage` so a search with no results still explains itself.
 
 ## Example: Single select
 
@@ -102,3 +109,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The trigger reports `aria-haspopup`, and the field label, helper text, and error use the same wiring as TextInput. Inside the panel, the search input and option list follow the combobox pattern from cmdk. Arrow keys move through options, Enter toggles the highlighted one, and Escape closes.
+
+Selected values are announced, and in multiple mode each selection stays visible in the trigger.

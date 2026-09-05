@@ -3,10 +3,17 @@ title: Chip
 slug: chip
 category: Form inputs
 status: new
-description: 'A selectable pill for filters and multi-select.'
+description: 'Selectable React chip for filter bars, multi-select lists, and removable tokens, with variants, icons, and a rounded style. Exposes aria-pressed.'
+seoTitle: 'Chip: React filter chip and selectable token'
 ---
 
 Chip is a toggle button for filter bars and multi-select lists. For a static label use Tag instead.
+
+## When to use
+
+Use Chip when a set of options must stay visible and toggle on tap. Typical places: filters above a list, categories on a search page, or selected values that can be removed. Use Tag for a static label with no interaction.
+
+Keep chips to one line and order them by frequency of use.
 
 ## Example: Variants
 
@@ -101,3 +108,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Chip is a toggle button with `aria-pressed`, so its selected state is announced. Space and Enter toggle it, and disabled chips use `aria-disabled` so they stay in the reading order.
+
+The selected state changes fill and border, not only color. A removable chip's close button has its own accessible name.

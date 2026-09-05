@@ -3,10 +3,17 @@ title: Structured List
 slug: structured-list
 category: Data display
 status: stable
-description: 'A light table for header and text rows.'
+description: 'Lightweight React structured list for header and text rows, with selectable rows, compact density, and no sorting overhead. Renders a real table.'
+seoTitle: 'StructuredList: lightweight React table for rows'
 ---
 
 StructuredList is lighter than Table: no sorting or filtering. Add `selectable` for per-row checkboxes that toggle on row click.
+
+## When to use
+
+Use StructuredList for simple row data that needs no sorting or filtering: a list of documents, contacts, or options with a few attributes. Add `selectable` when users pick rows.
+
+When the data needs sorting, filtering, or many columns, use Table.
 
 ## Example: Basic list
 
@@ -177,3 +184,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The list renders a native `<table>` with header cells, so columns are announced with each value. Selectable rows expose `role="checkbox"` with the checked state and toggle on click or Space.
+
+Give the table an `aria-label` that names the data set.

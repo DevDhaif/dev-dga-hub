@@ -6,7 +6,7 @@
   "description": "Showcase + documentation site for the @dev-dga design system - bilingual (Arabic/English), RTL-native, dark-ready.",
   "scripts": {
     "sync": "node scripts/sync-catalog.mjs",
-    "gen": "node scripts/gen-demos.mjs && node scripts/optimize-illustrations.mjs && node scripts/gen-illustrations.mjs && node scripts/gen-tokens.mjs",
+    "gen": "node scripts/gen-demos.mjs && node scripts/gen-props.mjs && node scripts/optimize-illustrations.mjs && node scripts/gen-illustrations.mjs && node scripts/gen-tokens.mjs",
     "dev": "pnpm gen && next dev -p 3100",
     "build": "pnpm gen && next build",
     "start": "next start -p 3100",

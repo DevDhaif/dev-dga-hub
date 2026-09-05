@@ -3,10 +3,17 @@ title: DropdownMenu
 slug: dropdown-menu
 category: Overlays
 status: stable
-description: 'A floating menu of actions.'
+description: 'React dropdown action menu built on Radix with items, checkbox and radio items, labels, separators, sub-menus, and trailing slots. Full keyboard and RTL support.'
+seoTitle: 'DropdownMenu: accessible React action menu (Radix)'
 ---
 
 DropdownMenu opens a menu from a trigger: items, checkboxes, radio groups, separators, and sub-menus. Keyboard navigation and ARIA come from Radix.
+
+## When to use
+
+Use DropdownMenu for a set of actions behind one trigger: an account menu, row actions in a table, or export options. Put a destructive action last and separate it. For choosing a form value, use Select or Dropdown instead.
+
+Keep menus to a dozen items and use sub-menus sparingly.
 
 ## Example: Account menu
 
@@ -199,3 +206,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Radix provides the menu pattern: the trigger opens a `role="menu"` list, arrow keys move between items, typing jumps to a match, Enter activates, and Escape closes and returns focus. Checkbox and radio items expose `aria-checked`.
+
+Sub-menus open with the arrow key that points into the reading direction, so they work in RTL.

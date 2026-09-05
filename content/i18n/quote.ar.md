@@ -1,8 +1,15 @@
 ---
-description: 'بطاقة اقتباس مع نسبة القائل.'
+description: 'اقتباس بارز في React بعنوان اختياري ومؤلّف وصفة المؤلّف وصورة رمزية، بأحجام وتلوينات. يعرض عنصر blockquote الدلالي.'
+seoTitle: 'اقتباس: مكوّن Quote اقتباس منسوب'
 ---
 
 يستقبل Quote الاقتباس عبر `children`، مع خيارات `quoteTitle` و`author` و`authorTitle` و`avatar`. ويعرض عنصر blockquote دلاليًا.
+
+## When to use
+
+استخدم Quote للشهادات، أو تصريح قيادي في صفحة خدمة، أو مقتطف بارز من سياسة. أبقِ الاقتباسات قصيرة وانسبها إلى قائلها.
+
+للتنبيه الذي ليس اقتباسًا، استخدم InlineAlert.
 
 ## Example: Title, quote & author
 
@@ -60,3 +67,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+يعرض Quote عنصر `<blockquote>` الأصلي، فيعلنه قارئ الشاشة اقتباسًا. المؤلّف والصفة نص، والصورة الرمزية زخرفية.
+
+علامات الاقتباس الزخرفية `aria-hidden`.

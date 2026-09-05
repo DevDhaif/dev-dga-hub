@@ -3,10 +3,17 @@ title: Tooltip
 slug: tooltip
 category: Feedback
 status: stable
-description: 'A short hint on hover or focus.'
+description: 'Accessible React tooltip built on Radix that shows on hover and focus, with a HelpIcon trigger, a title and icon variant, and an inverted surface. RTL ready.'
+seoTitle: 'Tooltip: accessible React tooltip with HelpIcon trigger'
 ---
 
 Wrap the trigger with `TooltipTrigger asChild` and put the message in `TooltipContent`. `HelpIcon` bundles a ready-made "?" trigger.
+
+## When to use
+
+Use Tooltip for a short hint that clarifies an icon button or a field label, such as what a reference number means. Use `HelpIcon` next to form labels for a ready-made "?" trigger.
+
+Do not put essential instructions in a tooltip; they are hidden by default and unavailable on touch. Use `helperText` on the field instead.
 
 ## Example: Basic
 
@@ -85,3 +92,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The tooltip opens on hover and on keyboard focus, and Escape closes it. Radix associates the content with the trigger, so screen readers read the hint when the trigger is focused.
+
+The trigger must itself be focusable, so wrap a button or link with `TooltipTrigger asChild`. Keep the text short; tooltips are not for paragraphs.

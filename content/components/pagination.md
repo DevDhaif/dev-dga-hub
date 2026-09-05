@@ -3,10 +3,17 @@ title: Pagination
 slug: pagination
 category: Navigation
 status: stable
-description: 'Page navigation for lists and tables.'
+description: 'Accessible React pagination with previous and next, page links, an underline-bar current page, ellipses, and the paginationRange helper for a stable width.'
+seoTitle: 'Pagination: accessible React pagination control'
 ---
 
 Mark the current page with `isActive`, and use the `paginationRange` helper to keep the pager a stable width across pages.
+
+## When to use
+
+Use Pagination under tables and lists that page on the server, such as request archives. Keep the pager the same width across pages with `paginationRange` so controls do not move under the cursor.
+
+For infinite feeds, load more on scroll instead. Show the total count nearby.
 
 ## Example: Static pager
 
@@ -177,3 +184,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Pagination renders a `<nav>` with an `aria-label` and a list of links. The active page carries `aria-current="page"`, and disabled previous and next controls expose `aria-disabled`.
+
+Previous and next have accessible names, and their icons flip in RTL so they point the right way.

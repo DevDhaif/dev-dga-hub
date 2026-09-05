@@ -10,6 +10,7 @@ import { useCopy } from '@/lib/i18n';
 import { MasarDashboard } from '@/components/examples/MasarDashboard';
 import { ArrowRight, Code } from '@/components/icons';
 import { useHref } from '@/lib/use-href';
+import { componentName } from '@/lib/component-names';
 
 const CODE_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 
@@ -222,16 +223,20 @@ export function ExampleShowcase() {
   );
 }
 
+// Each category card links to the filtered gallery and lists every component in
+// it as a real link, so the home page passes link equity to all component pages.
 export function CategoryTeaser() {
-  const { c } = useCopy();
+  const { c, locale } = useCopy();
+  const hrefFor = useHref();
   return (
     <div className="teaser-grid">
       {CATEGORIES.map((cat) => {
         const t = c.categories[cat.id as keyof typeof c.categories];
         const emblem = categoryIllustrations[cat.id];
         const art = emblem ? enrichIllustration(emblem.svg, cat.id) : null;
+        const title = t?.title ?? cat.title;
         return (
-          <Link key={cat.id} href={`/components?category=${cat.id}`} className="teaser">
+          <div key={cat.id} className="teaser">
             <span
               className="teaser__count"
               aria-label={`${cat.components.length} ${c.gallery.components}`}
@@ -246,12 +251,26 @@ export function CategoryTeaser() {
                 dangerouslySetInnerHTML={{ __html: art.html }}
               />
             )}
-            <span className="teaser__name">{t?.title ?? cat.title}</span>
+            <Link
+              href={`${hrefFor('/components')}?category=${cat.id}`}
+              className="teaser__name teaser__link"
+            >
+              {title}
+              <span className="teaser__go" aria-hidden>
+                <ArrowRight width={16} height={16} />
+              </span>
+            </Link>
             <span className="teaser__desc">{t?.description ?? cat.description}</span>
-            <span className="teaser__go" aria-hidden>
-              <ArrowRight width={16} height={16} />
-            </span>
-          </Link>
+            <ul className="teaser__list" aria-label={title}>
+              {cat.components.map((comp) => (
+                <li key={comp.slug}>
+                  <Link href={hrefFor(`/components/${comp.slug}`)}>
+                    {componentName(comp.slug, comp.name, locale)}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         );
       })}
     </div>

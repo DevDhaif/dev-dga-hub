@@ -3,10 +3,17 @@ title: Card
 slug: card
 category: Data display
 status: stable
-description: 'A composable surface for grouped content.'
+description: 'Composable React card surface with image, icon, header, content, footer, and expandable sections. Selectable and interactive variants for dashboards and portals.'
+seoTitle: 'Card: composable React card with header, body, and footer'
 ---
 
 Card is a set of parts. Combine a header, content, and footer as needed.
+
+## When to use
+
+Use Card to group related content into one surface: a service summary, a request in a list, or a dashboard tile. Compose only the parts you need. Make a card interactive when the whole card leads to one destination, and selectable when users pick among cards.
+
+Avoid nesting cards; use Divider or spacing inside instead.
 
 ## Example: Basic card
 
@@ -87,3 +94,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+A plain Card is a generic container with no role. Interactive cards expose `role="button"` and respond to Enter, and selectable cards expose `role="checkbox"` with `aria-checked`. Expandable content links its trigger with `aria-expanded` and `aria-controls`.
+
+Give the card a heading through `CardTitle` so screen reader users can navigate by headings.

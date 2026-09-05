@@ -4,6 +4,7 @@ import { ALL_COMPONENTS, componentBySlug } from '@/lib/catalog';
 import { getArabicContent, getComponentContent } from '@/lib/content';
 import { absoluteUrl, pageSeo, serializeJsonLd } from '@/lib/seo';
 import { ComponentPage } from '@/components/showcase/ComponentPage';
+import { componentProps } from '@/lib/props.generated';
 
 function breadcrumbs(slug: string, name: string) {
   const trail = [
@@ -35,9 +36,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const found = componentBySlug(slug);
   if (!found) return {};
+  const content = getComponentContent(slug);
   return {
-    title: found.meta.name,
-    description: found.meta.blurb,
+    title: content?.frontmatter.seoTitle ?? found.meta.name,
+    description: content?.frontmatter.description ?? found.meta.blurb,
     ...pageSeo(`/components/${slug}`, 'en'),
   };
 }
@@ -69,9 +71,11 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
         en={{
           description: content?.frontmatter.description ?? meta.blurb,
           intro: content?.intro ?? '',
+          sections: content?.sections ?? {},
         }}
-        ar={ar ? { description: ar.description, intro: ar.intro } : null}
+        ar={ar ? { description: ar.description, intro: ar.intro, sections: ar.sections } : null}
         examples={content?.examples ?? []}
+        propsDoc={componentProps[slug] ?? []}
         prev={prev ? { slug: prev.slug, name: prev.name } : null}
         next={next ? { slug: next.slug, name: next.name } : null}
       />

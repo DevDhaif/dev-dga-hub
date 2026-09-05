@@ -3,10 +3,17 @@ title: Quote
 slug: quote
 category: Data display
 status: stable
-description: 'A quotation card with author attribution.'
+description: 'React pull quote and blockquote with optional title, author, author title, and avatar, in sizes and tints. Renders semantic blockquote markup.'
+seoTitle: 'Quote: React blockquote with attribution'
 ---
 
 Quote takes the quotation as `children`, plus optional `quoteTitle`, `author`, `authorTitle`, and `avatar`. It renders a semantic blockquote.
+
+## When to use
+
+Use Quote for testimonials, a leadership statement on a service page, or a highlighted excerpt from a policy. Keep quotes short and attribute them.
+
+For a callout that is not a quotation, use InlineAlert.
 
 ## Example: Title, quote & author
 
@@ -85,3 +92,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Quote renders a native `<blockquote>`, so screen readers announce it as a quotation. The author and title are text, and the avatar is decorative.
+
+Decorative quotation marks are `aria-hidden`.

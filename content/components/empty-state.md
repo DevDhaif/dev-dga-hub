@@ -3,10 +3,17 @@ title: Empty State
 slug: empty-state
 category: Feedback
 status: stable
-description: 'A placeholder for empty screens.'
+description: 'React empty state for no data, no results, and error screens, with media, title, description, and actions, or composable parts. RTL ready.'
+seoTitle: 'EmptyState: React empty state with media and actions'
 ---
 
 EmptyState fills empty lists, searches, and error screens. Pass `title`, `description`, and `action`, or compose the parts directly.
+
+## When to use
+
+Use EmptyState when a list, search, or dashboard has nothing to show: no requests yet, no matches, or a failed load. Say what happened, why, and what to do next, and offer the next action as a button.
+
+Use the semantic variants for errors and use plain variants for first-run screens.
 
 ## Example: No data
 
@@ -119,3 +126,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The title is a heading and the description is text, so the state is announced in order. Media is decorative and hidden from assistive technology.
+
+Actions are real buttons or links, so keyboard users can recover without leaving the page.

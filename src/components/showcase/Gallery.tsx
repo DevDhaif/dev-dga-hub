@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Chip, SearchBox, Tag } from '@dev-dga/react';
@@ -55,15 +55,22 @@ function CategoryArt({ id }: { id: string }) {
   );
 }
 
+// Reads ?category= in its own Suspense boundary so the rest of the gallery still
+// renders on the server. Calling useSearchParams at the top level of Gallery would
+// bail the whole grid (all 65 links and the H1) out of static rendering.
+function CategoryFromQuery({ onCategory }: { onCategory: (id: string | null) => void }) {
+  const cat = useSearchParams().get('category');
+  useEffect(() => {
+    onCategory(cat && CATEGORY_IDS.has(cat) ? cat : null);
+  }, [cat, onCategory]);
+  return null;
+}
+
 export function Gallery() {
   const { c, locale } = useCopy();
   const hrefFor = useHref();
-  const searchParams = useSearchParams();
   const [query, setQuery] = useState('');
-  const [active, setActive] = useState<string | null>(() => {
-    const cat = searchParams.get('category');
-    return cat && CATEGORY_IDS.has(cat) ? cat : null;
-  });
+  const [active, setActive] = useState<string | null>(null);
 
   const q = query.trim().toLowerCase();
 
@@ -96,6 +103,9 @@ export function Gallery() {
 
   return (
     <div className="gallery">
+      <Suspense fallback={null}>
+        <CategoryFromQuery onCategory={setActive} />
+      </Suspense>
       <header className="gallery__intro">
         <p className="eyebrow">{c.gallery.eyebrow}</p>
         <h1 className="cmp-title" style={{ marginBlock: '0.75rem 0.5rem' }}>

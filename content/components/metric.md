@@ -3,10 +3,17 @@ title: Metric
 slug: metric
 category: Data display
 status: stable
-description: 'A KPI card with value, trend, and sparkline.'
+description: 'React KPI metric card with label, value, change delta, trend, an optional sparkline, icon, and action slots. Group tiles with MetricGroup for dashboards.'
+seoTitle: 'Metric: React KPI card with trend and sparkline'
 ---
 
 Metric shows a stat from slots: `icon`, `label`, `value`, `change` with `trend`, and an optional `MetricChart` sparkline. Arrange cards with `MetricGroup`.
+
+## When to use
+
+Use Metric for the headline numbers of a dashboard: requests this month, average processing time, satisfaction score. Show the change against a period so numbers have context. Arrange several with `MetricGroup`.
+
+For a full series, use Charts instead of a sparkline.
 
 ## Example: Label, value, change
 
@@ -154,3 +161,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The label and value are text, so they read in order. The trend icon is decorative; the `change` text must include the direction, such as "+12%", so it is not conveyed by color or icon alone.
+
+The sparkline is hidden from assistive technology and the value carries the meaning. Separators between tiles use `role="separator"`.

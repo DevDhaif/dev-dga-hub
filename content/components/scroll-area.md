@@ -3,10 +3,17 @@ title: Scroll Area
 slug: scroll-area
 category: Navigation
 status: stable
-description: 'A scroll container with themed scrollbars.'
+description: 'React scroll area with themed cross-browser scrollbars for vertical, horizontal, or both axes. Bounded like native overflow and keyboard scrollable when named.'
+seoTitle: 'ScrollArea: React custom scroll container'
 ---
 
 ScrollArea needs a bounded height or width to scroll, exactly like native overflow. Pass `aria-label` to name the focusable region.
+
+## When to use
+
+Use ScrollArea for bounded panels that scroll independently of the page. Examples: a sidebar menu, a long list inside a card, or a wide table on narrow screens. Give it a fixed height or width, exactly as you would with native overflow.
+
+For page-level scrolling, rely on the browser.
 
 ## Example: Vertical
 
@@ -146,3 +153,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Pass `aria-label` or `aria-labelledby` to name the region; the viewport then becomes focusable so keyboard users can scroll it with the arrow keys.
+
+The custom scrollbars are visual only. Content inside stays in the normal reading order.

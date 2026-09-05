@@ -3,10 +3,17 @@ title: Timeline
 slug: timeline
 category: Data display
 status: stable
-description: 'A chronological list with status markers.'
+description: 'React vertical timeline for order history, request tracking, and activity feeds, with status markers, icons, and avatars. Ordered list semantics.'
+seoTitle: 'Timeline: React vertical timeline with status markers'
 ---
 
 Compose `TimelineItem`s, each with a marker and content. The marker `status` is visual only, so keep the meaning in the text.
+
+## When to use
+
+Use Timeline to show the history of a request: submitted, under review, approved, delivered. Use the marker `status` for a quick visual read and put the date and outcome in the text.
+
+For upcoming steps in a form, use ProgressIndicator.
 
 ## Example: Order history
 
@@ -210,3 +217,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Timeline renders an ordered list, so the number and order of events are announced. Marker status and icons are decorative, so each item's text must state what happened and when.
+
+Keep the newest or oldest first consistently across the product.

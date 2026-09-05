@@ -3,10 +3,17 @@ title: Toggle
 slug: toggle
 category: Actions & buttons
 status: stable
-description: 'A two-state button, like a toolbar control.'
+description: 'Two-state React toggle button for toolbars and formatting controls, with variants and sizes. Exposes aria-pressed and supports icon-only use with a label.'
+seoTitle: 'Toggle: React pressed-state toggle button (aria-pressed)'
 ---
 
 Toggle holds pressed state, like a formatting or pin button. Icon-only toggles need an `aria-label`; for settings use Switch.
+
+## When to use
+
+Use Toggle for a control that is either pressed or not and takes effect immediately, like bold in an editor or pinning an item. For a setting that reads as on or off, use Switch. For picking one of several views, use ContentSwitcher or Tabs.
+
+Group related toggles in a toolbar so users understand they act on the same content.
 
 ## Example: Labeled toggle
 
@@ -109,3 +116,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Toggle is a native button that exposes its state through `aria-pressed`, so screen readers announce "pressed" or "not pressed". Space and Enter flip the state.
+
+Icon-only toggles need an `aria-label` that names the control, not the state; the state comes from `aria-pressed`. The pressed state changes the fill as well as the color, so it does not depend on color alone.

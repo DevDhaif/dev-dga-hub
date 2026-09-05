@@ -3,10 +3,17 @@ title: Divider
 slug: divider
 category: Data display
 status: stable
-description: 'A separator line between content.'
+description: 'React divider for horizontal or vertical separation, with optional inline label, tones, and a decorative mode. Uses the separator role.'
+seoTitle: 'Divider: React horizontal and vertical separator'
 ---
 
 Divider separates content, horizontally or vertically. Pass children for an inline label, or `decorative` when it is purely visual.
+
+## When to use
+
+Use Divider to separate sections inside a card, a form, or a toolbar. Add a label for "or" style separators between alternative actions.
+
+Prefer spacing over dividers when the layout already reads well; too many lines add noise.
 
 ## Example: Horizontal and vertical
 
@@ -63,3 +70,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Divider renders `role="separator"` with `aria-orientation` so assistive technology knows its direction. Pass `decorative` for purely visual lines to render `role="none"` and keep them out of the accessibility tree.
+
+A labelled divider reads its label as text.

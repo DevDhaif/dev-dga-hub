@@ -3,10 +3,17 @@ title: Aspect Ratio
 slug: aspect-ratio
 category: Data display
 status: stable
-description: 'Keeps content at a fixed width-to-height ratio.'
+description: 'React aspect ratio container that locks children to a ratio such as 16/9, so images, maps, and embeds do not shift layout while loading.'
+seoTitle: 'AspectRatio: React container with a fixed ratio'
 ---
 
 AspectRatio locks its child to a fixed ratio, so layouts do not shift while media loads. Pass `ratio` like `"16/9"` and set the width; the height follows.
+
+## When to use
+
+Use AspectRatio around images, videos, maps, and iframes so the space is reserved before the media loads. Pass `ratio` and set the width; the height follows.
+
+Use `asChild` to apply the ratio directly to an image element.
 
 ## Example: 16 / 9 box
 
@@ -93,3 +100,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+AspectRatio adds no semantics of its own. The media inside needs its own `alt` text or title.
+
+Reserving space avoids layout shifts that disorient users with low vision or motion sensitivity.

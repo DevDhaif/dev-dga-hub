@@ -3,10 +3,17 @@ title: Accordion
 slug: accordion
 category: Navigation
 status: stable
-description: 'Collapsible sections for grouping content.'
+description: 'Accessible React accordion built on Radix with single or multiple open sections, collapsible mode, sizes, icon alignment, and a flush style. RTL ready.'
+seoTitle: 'Accordion: accessible React accordion (Radix)'
 ---
 
 Accordion groups content into expandable sections. Use `type="single"` to open one at a time, or `type="multiple"` to keep several open.
+
+## When to use
+
+Use Accordion for FAQs, requirement lists, and long forms that users scan section by section. Use `type="single"` when one open section keeps the page short, and `type="multiple"` when users compare sections.
+
+If every section must be read, use headings and plain content instead. For a single show-hide region, use Collapsible.
 
 ## Example: FAQ (single)
 
@@ -89,3 +96,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Each trigger is a button with `aria-expanded` and `aria-controls`, and each panel is a region named by its trigger. The arrow keys move between triggers and Home and End jump to the first and last.
+
+Headings inside triggers keep the document outline usable. The chevron is decorative and flips with the open state.

@@ -3,10 +3,17 @@ title: Link
 slug: link
 category: Actions & buttons
 status: stable
-description: 'A text link in three tones and two sizes.'
+description: 'Accessible React text link in three tones and two sizes, with inline and external modes for Saudi government sites. Mirrors its trailing icon in RTL.'
+seoTitle: 'Link: accessible React text link with external indicator'
 ---
 
 Link is for navigation; use Button for actions. Set `inline` for links inside prose so they stay underlined, and `external` for outbound links.
+
+## When to use
+
+Use Link to move the user somewhere: another page, an anchor, or an external site. Use Button for actions that change state.
+
+Set `inline` for links inside paragraphs so they stay underlined and readable in body text. Set `external` for outbound links so the user knows they are leaving the service. Standalone links with a trailing arrow work well for "View all" patterns in dashboards.
 
 ## Example: In-text links
 
@@ -91,3 +98,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Link renders a native `<a>`, so it is keyboard focusable and announced as a link. External links show a visual indicator; the icon is `aria-hidden`, so add context in the link text when the destination is not obvious.
+
+Directional icons flip in RTL so the arrow still points along the reading direction. Write link text that describes the destination rather than "click here".

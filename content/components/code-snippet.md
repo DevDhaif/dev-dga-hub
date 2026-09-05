@@ -3,10 +3,15 @@ title: Code Snippet
 slug: code-snippet
 category: Data display
 status: new
-description: 'A code block with tabs, line numbers, and a copy button.'
+description: 'React code block with language tabs, line numbers, a copy button, Show More collapsing, and an inline variant. Code stays left to right in Arabic pages.'
+seoTitle: 'CodeSnippet: React code block with tabs and copy'
 ---
 
 CodeSnippet takes a `languages` array; more than one entry shows tabs. Use `maxLines` for a Show More toggle, and `CodeSnippetInline` for one-line commands. Code always renders left to right.
+
+## When to use
+
+Use CodeSnippet in developer documentation, API portals, and integration guides. Pass several `languages` to show tabs, use `maxLines` for long samples, and `CodeSnippetInline` for single commands or values inside a sentence.
 
 ## Example: Multiple languages
 
@@ -105,3 +110,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The copy button has an accessible name and announces success through a live region. The Show More toggle exposes `aria-expanded`.
+
+Code is rendered inside `<pre>` and `<code>` with a forced left-to-right direction, so it reads correctly inside Arabic content. Tabs are keyboard operable.

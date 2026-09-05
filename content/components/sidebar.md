@@ -3,10 +3,17 @@ title: Sidebar
 slug: sidebar
 category: App shell
 status: stable
-description: 'App navigation with a collapsible rail and mobile drawer.'
+description: 'React application sidebar with groups, menus, sub-menus, badges, and a collapsible icon rail on desktop that becomes a drawer on mobile. Flips sides in RTL.'
+seoTitle: 'Sidebar: React collapsible app sidebar with rail'
 ---
 
 Wrap the app in `SidebarProvider`, then place a `Sidebar` and a `SidebarInset`. It collapses to an icon rail on desktop and a drawer on mobile, and flips sides in RTL.
+
+## When to use
+
+Use Sidebar as the primary navigation of an authenticated application: an admin console, a case management tool, or a citizen dashboard with several sections. Wrap the app in `SidebarProvider`, place the `Sidebar`, and render pages inside `SidebarInset`.
+
+For public sites with a few links, a header with SlideoutMenu on mobile is lighter.
 
 ## Example: App shell
 
@@ -212,3 +219,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Menus render as lists of buttons and links, and the active item is marked with `aria-current`. Collapsible groups expose `aria-expanded`. When collapsed to the icon rail, each item shows a tooltip so the label is still available.
+
+The trigger has an accessible name, and `SidebarProvider` offers a keyboard shortcut you can set with `keyboardShortcut`. On mobile, the sidebar opens as a drawer with focus trapping.

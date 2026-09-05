@@ -3,10 +3,17 @@ title: SearchBox
 slug: search-box
 category: Form inputs
 status: new
-description: 'A search field with mic, clear, and Enter to search.'
+description: 'React search field built on TextInput with a magnifier, voice search, a clear button, and Enter to search. Works for live filtering and full search pages.'
+seoTitle: 'SearchBox: React search field with voice and clear'
 ---
 
 SearchBox builds on TextInput and adds a magnifier, a voice mic, and a clear button. `onSearch` fires on Enter.
+
+## When to use
+
+Use SearchBox at the top of lists, tables, and service catalogs. Use `onSearch` for a submitted query and the controlled `value` for live filtering as the user types. Show the result count nearby so users know the search worked.
+
+For a global command palette, use Command instead.
 
 ## Example: Basic search
 
@@ -85,3 +92,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The input keeps a visible label or an `aria-label`, and the magnifier icon is decorative. Enter runs the search and Escape clears the field. The clear and voice buttons are real buttons with accessible names.
+
+When filtering live, announce the result count in a live region so screen reader users get feedback.

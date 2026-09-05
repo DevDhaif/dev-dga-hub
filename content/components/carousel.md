@@ -3,10 +3,17 @@ title: Carousel
 slug: carousel
 category: Navigation
 status: new
-description: 'Slides with arrows, dots, keyboard, and swipe navigation.'
+description: 'Accessible React carousel with arrows, dots, keyboard, swipe, and loop, using the carousel role pattern with live announcements. RTL-aware navigation.'
+seoTitle: 'Carousel: accessible React carousel with arrows and dots'
 ---
 
 Carousel shows one slide at a time inside `CarouselViewport`. Navigation works with arrows, dots, keyboard, and swipe; add `loop` to wrap around.
+
+## When to use
+
+Use Carousel for a small set of equally important slides, such as featured services or announcements on a portal home page. Keep it to a handful of slides and never autoplay content the user needs to read.
+
+If users must compare items, a grid is better than a carousel.
 
 ## Example: Dots
 
@@ -153,3 +160,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+The carousel renders `role="region"` with `aria-roledescription="carousel"`, and each slide is a `role="group"` with a slide description. The left and right arrow keys move between slides, and Home and End jump to the ends. Inactive slides are marked inert, so hidden content is not focusable.
+
+Slide changes are announced politely, previous and next have accessible names, and the current dot carries `aria-current`.

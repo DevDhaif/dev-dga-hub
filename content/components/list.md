@@ -3,10 +3,17 @@ title: List
 slug: list
 category: Data display
 status: stable
-description: 'Styled ordered, unordered, and icon lists.'
+description: 'React list component for bullet, numbered, and icon lists with consistent rhythm, nesting, tones, and Arabic abjad counters in RTL.'
+seoTitle: 'List: React ordered, unordered, and icon lists'
 ---
 
 List renders bullet, numbered, or icon lists with the right `<ul>`/`<ol>` element. `ListItem` supports a second nesting level and per-item icons.
+
+## When to use
+
+Use List for steps, requirements, and short enumerations in guidance pages and forms. Choose the ordered variant when sequence matters, such as application steps. Use icons to mark completed or blocked items.
+
+For interactive rows, use StructuredList.
 
 ## Example: Variants
 
@@ -93,3 +100,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+List renders native `<ul>` or `<ol>`, so item counts and positions are announced. Icons are `aria-hidden`, and the item text carries the meaning.
+
+Nested lists keep proper structure so screen readers report levels correctly. In Arabic, ordered lists count with abjad letters.

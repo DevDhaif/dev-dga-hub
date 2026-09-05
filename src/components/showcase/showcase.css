@@ -325,3 +325,114 @@
   text-align: end;
   align-items: flex-end;
 }
+
+/* ---- Component page sections: When to use / Examples / Props / Accessibility ---- */
+.cmp-section {
+  margin-block-start: 3rem;
+}
+.cmp-section__title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-block: 0 0.75rem;
+  color: var(--ddga-text-primary);
+}
+[dir='rtl'] .cmp-section__title {
+  letter-spacing: normal;
+}
+.cmp-section > .prose {
+  margin-block-start: 0;
+}
+.cmp-section > .examples {
+  margin-block-start: 1.25rem;
+}
+.cmp-section__lead {
+  margin: 0 0 1rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ddga-text-secondary);
+  max-inline-size: 68ch;
+}
+
+.props-part + .props-part {
+  margin-block-start: 1.75rem;
+}
+.props-part__name {
+  margin: 0 0 0.5rem;
+  font-family: var(--ddga-font-mono), var(--ddga-font-ar), monospace;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ddga-text-primary);
+}
+.props-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--ddga-color-border);
+  border-radius: var(--ddga-radius-lg);
+  background: var(--ddga-color-card);
+}
+.props-table {
+  inline-size: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.props-table th,
+.props-table td {
+  text-align: start;
+  vertical-align: top;
+  padding: 0.6rem 0.85rem;
+  border-block-end: 1px solid var(--ddga-color-border);
+}
+.props-table th {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--ddga-text-secondary);
+  background: var(--ddga-color-muted);
+  white-space: nowrap;
+}
+.props-table tbody tr:last-child td {
+  border-block-end: 0;
+}
+.props-table code {
+  font-family: var(--ddga-font-mono), var(--ddga-font-ar), monospace;
+  font-size: 0.8125rem;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+.props-table__name code {
+  font-weight: 600;
+  color: var(--ddga-text-primary);
+  white-space: nowrap;
+}
+.props-table__type code {
+  color: var(--ddga-text-secondary);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.props-table__type,
+.props-table__default {
+  min-inline-size: 9rem;
+}
+.props-table__required {
+  display: inline-block;
+  margin-inline-start: 0.4rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ddga-color-primary);
+}
+[dir='rtl'] .props-table__required {
+  letter-spacing: normal;
+  text-transform: none;
+}
+.props-table__desc {
+  color: var(--ddga-text-secondary);
+  min-inline-size: 16rem;
+}
+.props-table__desc code {
+  background: var(--ddga-color-muted);
+  padding: 0.05em 0.3em;
+  border-radius: var(--ddga-radius-xs);
+}

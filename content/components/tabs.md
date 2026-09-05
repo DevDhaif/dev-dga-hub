@@ -3,10 +3,17 @@ title: Tabs
 slug: tabs
 category: Navigation
 status: stable
-description: 'Tabbed panels that share one context.'
+description: 'Accessible React tabs built on Radix with a roving tablist, icons, full-width and flush styles, overflow handling, and Arabic labels. Arrow keys move between tabs.'
+seoTitle: 'Tabs: accessible React tabs with a roving tablist'
 ---
 
 Each `TabsTrigger` pairs with a `TabsContent` by `value`; `defaultValue` picks the first panel and arrow keys move between tabs.
+
+## When to use
+
+Use Tabs to split one page into related panels that share context, such as a request's details, documents, and history. Keep tab labels to one or two words and put the default panel first.
+
+For switching views of the same data, use ContentSwitcher. For long content that all needs to be visible, use headings and Accordion.
 
 ## Example: Basic tabs
 
@@ -150,3 +157,9 @@ export default function Demo() {
   );
 }
 ```
+
+## Accessibility
+
+Tabs follow the tabs pattern: `role="tablist"`, `role="tab"`, and `role="tabpanel"` with the selected tab exposed. The arrow keys move focus between tabs, Home and End jump to the ends, and the arrow keys follow the reading direction in RTL.
+
+Give the list an `aria-label`. Overflowing tabs move into a "More" menu whose label you control with `moreLabel`.
