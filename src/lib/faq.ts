@@ -29,6 +29,12 @@ export const FAQ: Record<Locale, FaqItem[]> = {
       hrefLabel: 'See the coverage matrix',
     },
     {
+      q: 'How is dev-dga different from platformscode-new-react?',
+      a: 'platformscode-new-react is an npm package that wraps @platformscode/core, a Stencil web component library, through Stencil’s React output target, so each component is a custom element with a generated React shim around it. Its npm listing carries no README, homepage, or source repository, and we could not establish who publishes it. The Digital Government Authority’s own Platforms Code pages distribute a PDF specification and name no npm package or repository at all, so confirm the provenance of any package yourself before depending on it. dev-dga is a native React 19 implementation with no custom-element runtime, React’s own props and types, and support for React Server Components. It is independent and does not claim to be official either.',
+      href: '/compliance',
+      hrefLabel: 'Compare against the specification',
+    },
+    {
       q: 'How do I install the DGA React components?',
       a: 'Install the three packages with npm i @dev-dga/react @dev-dga/css @dev-dga/tokens, import the stylesheet once at your app root, and wrap your tree in DgaProvider. The provider carries text direction, dark mode, and the brand theme. Tailwind is optional and both majors are supported through a token bridge.',
       href: '/installation',
@@ -69,6 +75,12 @@ export const FAQ: Record<Locale, FaqItem[]> = {
       a: 'كود المنصّات نظام التصميم الموحّد للخدمات الحكومية الرقمية في السعودية، وتصدره هيئة الحكومة الرقمية. يحدّد الألوان والخطوط والمسافات ومكوّنات الواجهة التي تشترك فيها المنصّات الحكومية، فتبدو خدمات الجهات المختلفة نظامًا واحدًا.',
       href: '/compliance',
       hrefLabel: 'اطّلع على جدول التغطية',
+    },
+    {
+      q: 'ما الفرق بين dev-dga وحزمة platformscode-new-react؟',
+      a: 'حزمة platformscode-new-react حزمة على npm تغلّف @platformscode/core، وهي مكتبة مكوّنات ويب مبنية بـ Stencil، عبر مُخرَج React في Stencil، فيكون كل مكوّن عنصرًا مخصّصًا (custom element) بغلاف React مولَّد حوله. وصفحتها على npm بلا README ولا موقع ولا مستودع مصدري، ولم نتمكّن من التأكّد من الجهة الناشرة لها. كما أن صفحات كود المنصّات في هيئة الحكومة الرقمية تنشر دليلًا بصيغة PDF ولا تذكر أي حزمة npm أو مستودع، فتحقّق بنفسك من مصدر أي حزمة قبل الاعتماد عليها. أما dev-dga فتطبيق بـ React 19 أصالةً: بلا بيئة تشغيل للعناصر المخصّصة، والخصائص والأنواع من React نفسها، مع دعم React Server Components. وهي مستقلة ولا تدّعي الصفة الرسمية كذلك.',
+      href: '/compliance',
+      hrefLabel: 'قارن بالمواصفة',
     },
     {
       q: 'كيف أثبّت مكوّنات React لكود المنصّات؟',
