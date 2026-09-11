@@ -3,41 +3,8 @@
 @import 'tailwindcss/theme.css' layer(theme);
 @import 'tailwindcss/utilities.css' layer(utilities);
 
-@theme {
-  --font-sans: var(--ddga-font-ar);
-  --font-mono: var(--ddga-font-mono);
-
-  --color-background: var(--ddga-color-background);
-  --color-foreground: var(--ddga-color-foreground);
-  --color-ink: var(--ddga-text-primary);
-  --color-ink-2: var(--ddga-text-secondary);
-  --color-ink-3: var(--ddga-text-tertiary);
-  --color-border: var(--ddga-color-border);
-  --color-card: var(--ddga-color-card);
-  --color-muted: var(--ddga-color-muted);
-  --color-muted-foreground: var(--ddga-color-muted-foreground);
-
-  --color-brand: var(--ddga-color-primary);
-  --color-brand-hover: var(--ddga-color-primary-hover);
-  --color-brand-active: var(--ddga-color-primary-active);
-  --color-brand-fg: var(--ddga-color-primary-foreground);
-
-  --color-sa-25: var(--ddga-sa-25);
-  --color-sa-50: var(--ddga-sa-50);
-  --color-sa-100: var(--ddga-sa-100);
-  --color-sa-200: var(--ddga-sa-200);
-  --color-sa-500: var(--ddga-sa-500);
-  --color-sa-600: var(--ddga-sa-600);
-  --color-sa-700: var(--ddga-sa-700);
-  --color-sa-900: var(--ddga-sa-900);
-  --color-sa-950: var(--ddga-sa-950);
-
-  --radius-xs: var(--ddga-radius-xs);
-  --radius-sm: var(--ddga-radius-sm);
-  --radius-md: var(--ddga-radius-md);
-  --radius-lg: var(--ddga-radius-lg);
-  --radius-xl: var(--ddga-radius-xl);
-}
+/* DGA tokens as utilities (bg-primary, text-ink, rounded-lg, text-display-md, max-w-dga, every palette step). */
+@import '@dev-dga/css/tailwind.css';
 
 @layer base {
   html {

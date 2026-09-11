@@ -287,3 +287,10 @@
     gap: 3rem;
   }
 }
+
+/* Command palette: keep an external-link glyph on the same line as its label. */
+.command-ext {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}

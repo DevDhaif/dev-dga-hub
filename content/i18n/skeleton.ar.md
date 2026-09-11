@@ -11,6 +11,30 @@ seoTitle: 'هيكل تحميل: مكوّن Skeleton عنصر نائب بلمعا
 
 للانتظار المجهول أو القصير يكفي Spinner. لا تعرض الهياكل أكثر من ثوانٍ قليلة دون تغذية راجعة.
 
+## Example: Card placeholder
+
+```tsx
+import { Skeleton } from '@dev-dga/react';
+
+export default function Demo() {
+  return (
+    <div
+      aria-busy="true"
+      aria-label="جارٍ تحميل الخدمة"
+      style={{ display: 'flex', flexDirection: 'column', gap: 16, width: 280 }}
+    >
+      <Skeleton shape="square" width="100%" height={160} />
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <Skeleton shape="text" />
+        <Skeleton shape="text" />
+        <Skeleton shape="text" width="60%" />
+      </div>
+      <Skeleton shape="rectangle" width={96} height={40} />
+    </div>
+  );
+}
+```
+
 ## Example: Inline placeholder
 
 ```tsx

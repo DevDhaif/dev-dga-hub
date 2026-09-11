@@ -11,6 +11,70 @@ seoTitle: 'نسبة الأبعاد: مكوّن AspectRatio حاوية بنسبة
 
 استخدم `asChild` لتطبيق النسبة على عنصر الصورة مباشرة.
 
+## Example: 16 / 9 box
+
+```tsx
+import { AspectRatio } from '@dev-dga/react';
+
+export default function Demo() {
+  return (
+    <div style={{ inlineSize: '24rem', maxInlineSize: '100%' }}>
+      <AspectRatio ratio="16/9">
+        <div
+          style={{
+            display: 'grid',
+            placeItems: 'center',
+            background: 'linear-gradient(135deg, var(--ddga-sa-500), var(--ddga-sa-700))',
+            color: '#fff',
+            fontWeight: 600,
+          }}
+        >
+          نسبة 16 / 9
+        </div>
+      </AspectRatio>
+    </div>
+  );
+}
+```
+
+## Example: Common ratios
+
+```tsx
+import { AspectRatio } from '@dev-dga/react';
+
+const ratios = ['1/1', '4/3', '16/9', '21/9'];
+
+export default function Demo() {
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gap: '1rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(12rem, 1fr))',
+        inlineSize: '40rem',
+        maxInlineSize: '100%',
+      }}
+    >
+      {ratios.map((ratio) => (
+        <AspectRatio key={ratio} ratio={ratio}>
+          <div
+            style={{
+              display: 'grid',
+              placeItems: 'center',
+              background: 'linear-gradient(135deg, var(--ddga-sa-500), var(--ddga-sa-700))',
+              color: '#fff',
+              fontWeight: 600,
+            }}
+          >
+            النسبة {ratio}
+          </div>
+        </AspectRatio>
+      ))}
+    </div>
+  );
+}
+```
+
 ## Example: On an image (asChild)
 
 ```tsx

@@ -9,6 +9,7 @@ import { ProofStrip } from './ProofStrip';
 import { Pillars } from './Pillars';
 import { ThemingDemo } from './ThemingDemo';
 import { RtlDemo, DarkModeDemo } from './ParityDemos';
+import { TemplateShowcase } from './TemplateShowcase';
 import {
   AboutFeatures,
   Architecture,
@@ -129,11 +130,14 @@ export function Landing() {
         <ExampleShowcase />
       </Section>
 
+      <Section eyebrow={c.templates.eyebrow} title={c.templates.title} lead={c.templates.lead} tint>
+        <TemplateShowcase />
+      </Section>
+
       <Section
         eyebrow={c.gallery.eyebrow}
         title={c.gallery.teaserTitle}
         lead={c.gallery.teaserLead}
-        tint
       >
         <CategoryTeaser />
       </Section>

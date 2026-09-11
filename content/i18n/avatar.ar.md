@@ -37,6 +37,34 @@ export default function Demo() {
 }
 ```
 
+## Example: Sizes and shapes
+
+```tsx
+import { Avatar, AvatarFallback } from '@dev-dga/react';
+
+export default function Demo() {
+  return (
+    <div style={{ display: 'flex', gap: 12, alignItems: 'flex-end', flexWrap: 'wrap' }}>
+      <Avatar size="xs">
+        <AvatarFallback>أح</AvatarFallback>
+      </Avatar>
+      <Avatar size="sm">
+        <AvatarFallback>أح</AvatarFallback>
+      </Avatar>
+      <Avatar size="md">
+        <AvatarFallback>أح</AvatarFallback>
+      </Avatar>
+      <Avatar size="lg">
+        <AvatarFallback>أح</AvatarFallback>
+      </Avatar>
+      <Avatar size="xl" shape="square">
+        <AvatarFallback>أح</AvatarFallback>
+      </Avatar>
+    </div>
+  );
+}
+```
+
 ## Example: Colored fallbacks with status
 
 ```tsx
@@ -58,6 +86,34 @@ export default function Demo() {
         <AvatarFallback colorScheme="info">IN</AvatarFallback>
       </Avatar>
     </div>
+  );
+}
+```
+
+## Example: Group with overflow
+
+```tsx
+import { AvatarGroup, Avatar, AvatarFallback } from '@dev-dga/react';
+
+export default function Demo() {
+  return (
+    <AvatarGroup max={3} size="md">
+      <Avatar>
+        <AvatarFallback>أح</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>نخ</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>سر</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>مد</AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarFallback>عم</AvatarFallback>
+      </Avatar>
+    </AvatarGroup>
   );
 }
 ```

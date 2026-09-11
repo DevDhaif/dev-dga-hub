@@ -19,6 +19,7 @@ const en = {
     installation: 'Installation',
     blocks: 'Blocks',
     examples: 'Examples',
+    templates: 'Templates',
     storybook: 'Storybook',
     search: 'Search',
     github: 'GitHub',
@@ -123,9 +124,10 @@ const en = {
     tokens: 'source of truth',
     css: 'cascade layers',
     react: 'ships no css',
-    tokensDesc: 'Design tokens as typed TS objects - colors, type, spacing, radius, shadow.',
+    tokensDesc:
+      'Design tokens as typed TS objects - colors, type, spacing, radius, shadow. Also exports tailwind-preset: the same keys as a Tailwind v3 preset.',
     cssDesc:
-      'Generated --ddga-* custom properties, reset, dark theme, and per-component styles in @layer.',
+      'Generated --ddga-* custom properties, reset, dark theme, and per-component styles in @layer. Its tailwind.css bridges every token to Tailwind v4 utilities.',
     reactDesc:
       'React 19 components (cva + cn) emitting ddga-* classes that resolve the CSS variables.',
   },
@@ -141,6 +143,19 @@ const en = {
     masarTag: 'Dashboard',
     masarDesc:
       'A government services dashboard - KPIs, charts, a services table, and activity - assembled only from dev-dga components.',
+  },
+  templates: {
+    eyebrow: 'Templates',
+    title: 'A complete government home page, from the library alone.',
+    lead: 'The DGA home page template assembles every section of the official Platforms Code home page from @dev-dga components: government banner, header, hero, about, services, news, partners, and footer. Arabic and English, light and dark, responsive.',
+    tag: 'Template',
+    name: 'DGA home page template',
+    desc: 'Every section from the government banner to the footer, composed from @dev-dga with no custom components. Copy the structure, swap the content, and ship.',
+    open: 'Open the template',
+    facts: ['@dev-dga only', 'Arabic and English', 'Light and dark', 'Responsive'],
+    altDesktop:
+      'The DGA home page template in English and dark mode: hero, about, services, news, and partners sections.',
+    altMobile: 'The DGA home page template in Arabic on a phone screen.',
   },
   gallery: {
     eyebrow: 'The library',
@@ -175,7 +190,8 @@ const en = {
     whenToUse: 'When to use',
     examplesHeading: 'Examples',
     props: 'Props',
-    propsLead: (name: string) => `Props declared by ${name}. Native attributes of the underlying element pass through.`,
+    propsLead: (name: string) =>
+      `Props declared by ${name}. Native attributes of the underlying element pass through.`,
     propName: 'Prop',
     propType: 'Type',
     propDefault: 'Default',
@@ -200,6 +216,7 @@ const en = {
     installation: 'Installation',
     blocks: 'Blocks',
     examples: 'Examples',
+    templates: 'Templates',
     storybook: 'Storybook',
     compliance: 'Compliance',
     accessibility: 'Accessibility',
@@ -315,6 +332,8 @@ const en = {
     allComponents: 'All components',
     installation: 'Installation guide',
     blocks: 'Prebuilt blocks',
+    styling: 'Styling with Tailwind',
+    templates: 'Templates: DGA home page',
   },
   chrome: {
     navPrimary: 'Primary',
@@ -360,6 +379,62 @@ const en = {
       title: 'Import the styles once',
       lead: 'Import the stylesheet a single time at the root of your app (e.g. your root layout or entry file). It ships the reset, tokens, dark theme, and every component style.',
       note: 'Because the design system lives in @layer ddga-base / ddga-components, any unlayered rule of yours overrides it without !important.',
+    },
+    styling: {
+      title: 'Style with or without Tailwind',
+      lead: '@dev-dga/css is plain CSS in two cascade layers, ddga-base and ddga-components. Tailwind is optional. Use component props for a component’s internals, and utilities or your own CSS for the layout around them. Restyling a component’s internals with utility classes is brittle: cascade-layer order, not specificity, decides which rule wins.',
+      bridge:
+        'Both Tailwind majors get the DGA scale as utilities through a token bridge: bg-primary, text-ink, text-ink-secondary, rounded-lg, shadow-md, text-display-md, max-w-dga, and every palette step (bg-sa-600, border-gray-200). Every value is a var(--ddga-*) reference, so DgaProvider themes and dark mode flow through the utilities.',
+      none: {
+        title: 'No Tailwind',
+        lead: 'Import the stylesheet once and compose the components. Style the layout around them with your own CSS.',
+      },
+      v3: {
+        title: 'Tailwind v3',
+        install: 'Install @dev-dga/tokens so the preset import is explicit:',
+        config: 'Add the preset to your Tailwind config:',
+        css: 'Layer the stylesheets in this order:',
+        order:
+          'The order statement must come first, and the @layer tailwind-base wrap is mandatory. An unlayered @tailwind base (preflight sets border-width: 0 on every element) beats every layered rule and strips the border from every component. The library declares its own two layers at the top of its stylesheet, so an order statement placed after the import sorts tailwind-base above the components.',
+        opacity:
+          'Opacity modifiers on bridge colors (bg-primary/50) need v4. Tailwind v3 skips them for var() values.',
+      },
+      v4: {
+        title: 'Tailwind v4',
+        lead: 'No config file and no @source needed. Preflight is skipped; the library reset covers it.',
+        preflight:
+          'To add preflight, import it into the base layer. The order statement keeps base below ddga-base:',
+        strict:
+          'The bridge keeps Tailwind’s own palette and scales. To keep only the DGA tokens (strict mode), reset the namespaces before the bridge import, not after it:',
+      },
+      rulesTitle: 'Rules for both majors',
+      rules: [
+        'Props style a component’s internals. Utilities and your own CSS style the layout around it.',
+        'cn() in @dev-dga/react is clsx only. For stacked conflicting utilities on your own elements, use tailwind-merge on your side.',
+        'dark: follows [data-theme="dark"] from DgaProvider, not the OS preference.',
+        "Tailwind v3: the @layer order statement must come before @import '@dev-dga/css', and @tailwind base must sit inside @layer tailwind-base. An unlayered preflight strips every component border.",
+        'Tailwind v4 strict mode (--color-*: initial) must come before the bridge import.',
+        'Tailwind v3 skips opacity modifiers such as bg-primary/50 on var() colors.',
+        'The bridge overrides some Tailwind defaults on purpose: rounded-lg is 16px and rounded-xl is 24px, shadow-* is the DGA navy scale, gray-* is the DGA gray ramp, text-xs to text-xl carry the DGA line-heights, and max-w-xs to max-w-6xl are the DGA widths.',
+        'Spacing and breakpoints equal Tailwind’s defaults, so the bridge maps neither.',
+      ],
+      demo: {
+        title: 'Live: utilities follow the theme',
+        lead: 'This card is bridge utilities only: no library component and no custom CSS. Switch dark mode or the brand palette and every utility re-tones, because each one resolves a --ddga-* variable.',
+        label: 'Bridge demo',
+        badge: 'Utilities only',
+        light: 'light mode',
+        dark: 'dark: active',
+        heading: 'Commercial registration',
+        body: 'Register a new establishment, update its activities, or renew its record. The service completes in one session and issues the certificate as a PDF.',
+        cta: 'Start the service',
+        facts: [
+          { label: 'Fee', value: 'SAR 200' },
+          { label: 'Duration', value: '3 working days' },
+          { label: 'Channel', value: 'Online' },
+        ],
+        source: 'Source',
+      },
     },
     provider: {
       title: 'Wrap your app in the provider',
@@ -425,7 +500,8 @@ const en = {
       groups: [
         {
           group: 'Color',
-          sample: '--ddga-color-primary · --ddga-color-background · --ddga-text-primary · --ddga-color-border',
+          sample:
+            '--ddga-color-primary · --ddga-color-background · --ddga-text-primary · --ddga-color-border',
           desc: 'Surfaces, text, borders, and semantic colors.',
         },
         {
@@ -454,7 +530,8 @@ const en = {
           desc: 'The categorical palette for data visualization.',
         },
       ],
-      scopeNote: 'Scope overrides to a subtree by setting the variables on any wrapper element - the cascade does the rest, in light and dark.',
+      scopeNote:
+        'Scope overrides to a subtree by setting the variables on any wrapper element - the cascade does the rest, in light and dark.',
     },
     dark: {
       title: 'Dark mode',
@@ -702,9 +779,11 @@ const en = {
     parity: {
       title: 'Two kinds of match',
       coverage: 'Coverage',
-      coverageDesc: 'Same parts, variants, and states as the official component. That’s what this page tracks.',
+      coverageDesc:
+        'Same parts, variants, and states as the official component. That’s what this page tracks.',
       value: 'Exact values',
-      valueDesc: 'Pixel, color, and token measurements against the official file. A separate check, still running.',
+      valueDesc:
+        'Pixel, color, and token measurements against the official file. A separate check, still running.',
     },
     extensions: {
       title: 'Extensions',
@@ -780,7 +859,10 @@ const en = {
       lead: 'We assess conformance ourselves, with automated and manual tests.',
       methods: [
         { m: 'axe-core', c: 'Automated checks on all 64 components, in both English and Arabic.' },
-        { m: 'Playwright', c: '47 end-to-end tests for keyboard, focus, arrow keys, Escape, and RTL.' },
+        {
+          m: 'Playwright',
+          c: '47 end-to-end tests for keyboard, focus, arrow keys, Escape, and RTL.',
+        },
         { m: 'RTL gate', c: 'A test fails the build on any left/right CSS.' },
         { m: 'Unit tests', c: '1,700+ tests across the components.' },
       ],
@@ -845,9 +927,10 @@ const en = {
     howtoTitle: 'How much control? All of it.',
     howto: [
       'Pick a scale step for any role, or choose Custom for an exact color.',
-      'Every token here is a plain CSS variable - override any of them (even ones not listed) straight from your own CSS or Tailwind:',
+      'Every token here is a plain CSS variable. Override any of them, even ones not listed, straight from your own CSS or from a Tailwind arbitrary property. For the Tailwind setup, see {styling}:',
       'Brand-ramp and scale edits re-tone light and dark together; a role edit exports a dark block so you can tune dark on its own.',
     ],
+    howtoLink: 'Styling with Tailwind',
     showAdvanced: 'Show primitive scales',
     hideAdvanced: 'Hide primitive scales',
     tiers: {
@@ -1153,7 +1236,11 @@ const en = {
           desc: 'Issue and download an official health certificate.',
           tag: 'Health',
         },
-        { name: 'Address update', desc: 'Update your national address in one place.', tag: 'Identity' },
+        {
+          name: 'Address update',
+          desc: 'Update your national address in one place.',
+          tag: 'Identity',
+        },
       ],
     },
     hero: {
@@ -1268,6 +1355,7 @@ const ar: typeof en = {
     installation: 'التثبيت',
     blocks: 'الكتل',
     examples: 'أمثلة',
+    templates: 'القوالب',
     storybook: 'Storybook',
     search: 'بحث',
     github: 'GitHub',
@@ -1373,8 +1461,9 @@ const ar: typeof en = {
     css: 'طبقات متتالية',
     react: 'بلا CSS',
     tokensDesc:
-      'رموز تصميمية ككائنات TypeScript مُوثّقة: الألوان والخطوط والمسافات والاستدارة والظلال.',
-    cssDesc: 'متغيّرات  --ddga-*  مُولّدة، وتصفير، وسمة داكنة، وأنماط لكل مكوّن ضمن  @layer .',
+      'رموز تصميمية ككائنات TypeScript مُوثّقة: الألوان والخطوط والمسافات والاستدارة والظلال. وتصدّر أيضًا tailwind-preset: المفاتيح نفسها كإعداد مسبق لـ Tailwind v3.',
+    cssDesc:
+      'متغيّرات  --ddga-*  مُولّدة، وتصفير، وسمة داكنة، وأنماط لكل مكوّن ضمن  @layer . ويربط ملف tailwind.css كل رمز بأصناف Tailwind v4.',
     reactDesc: 'مكوّنات React 19‏ (cva + cn) تُصدر أصناف  ddga-*  التي تحلّ متغيّرات CSS.',
   },
   examples: {
@@ -1389,6 +1478,19 @@ const ar: typeof en = {
     masarTag: 'لوحة تحكّم',
     masarDesc:
       'لوحة خدمات حكومية فيها مؤشرات ورسوم بيانية وجدول خدمات ونشاط، مبنية بالكامل من مكوّنات dev-dga.',
+  },
+  templates: {
+    eyebrow: 'القوالب',
+    title: 'صفحة رئيسية حكومية كاملة، من المكتبة وحدها.',
+    lead: 'يجمع قالب الصفحة الرئيسية كل أقسام الصفحة الرئيسية في كود منصّات هيئة الحكومة الرقمية من مكوّنات dev-dga: الشريط الحكومي، والترويسة، والقسم الرئيسي، ومن نحن، والخدمات، والأخبار، والشركاء، والتذييل. عربي وإنجليزي، فاتح وداكن، ومتجاوب.',
+    tag: 'قالب',
+    name: 'قالب الصفحة الرئيسية الحكومية',
+    desc: 'كل قسم من الشريط الحكومي إلى التذييل مركّب من dev-dga دون أي مكوّن مخصّص. انسخ البنية، وبدّل المحتوى، وانشر.',
+    open: 'افتح القالب',
+    facts: ['dev-dga فقط', 'عربي وإنجليزي', 'فاتح وداكن', 'متجاوب'],
+    altDesktop:
+      'قالب الصفحة الرئيسية بالعربية في الوضع الفاتح: القسم الرئيسي ومن نحن والخدمات والأخبار والشركاء.',
+    altMobile: 'قالب الصفحة الرئيسية بالعربية على شاشة الجوال.',
   },
   gallery: {
     eyebrow: 'المكتبة',
@@ -1448,6 +1550,7 @@ const ar: typeof en = {
     installation: 'التثبيت',
     blocks: 'الكتل',
     examples: 'أمثلة',
+    templates: 'القوالب',
     storybook: 'Storybook',
     compliance: 'التوافق',
     accessibility: 'إمكانية الوصول',
@@ -1557,6 +1660,8 @@ const ar: typeof en = {
     allComponents: 'كل المكوّنات',
     installation: 'دليل التثبيت',
     blocks: 'الكتل الجاهزة',
+    styling: 'التنسيق مع Tailwind',
+    templates: 'القوالب: الصفحة الرئيسية الحكومية',
   },
   chrome: {
     navPrimary: 'التنقّل الرئيسي',
@@ -1602,6 +1707,61 @@ const ar: typeof en = {
       title: 'استورد الأنماط مرة واحدة',
       lead: 'استورد ملف الأنماط مرة واحدة في جذر التطبيق (في التخطيط الجذري أو ملف الدخول). يشحن التصفير والرموز والسمة الداكنة وكل أنماط المكوّنات.',
       note: 'لأن نظام التصميم يعيش في @layer ddga-base / ddga-components، فأي قاعدة غير مُطبَّقة في طبقة عندك تتجاوزه دون الحاجة إلى  !important .',
+    },
+    styling: {
+      title: 'التنسيق مع Tailwind أو بدونه',
+      lead: 'حزمة @dev-dga/css ملف CSS عادي في طبقتين متتاليتين: ddga-base و ddga-components. و Tailwind اختياري. استخدم خصائص المكوّن لما بداخله، والأصناف أو CSS الخاص بك للتخطيط من حوله. إعادة تنسيق داخل المكوّن بأصناف Tailwind هشّة: ترتيب الطبقات، وليس التخصيص، هو ما يحدّد القاعدة الغالبة.',
+      bridge:
+        'يحصل إصدارا Tailwind الثالث والرابع على سلّم DGA كأصناف عبر جسر الرموز: bg-primary و text-ink و text-ink-secondary و rounded-lg و shadow-md و text-display-md و max-w-dga وكل درجة في اللوحة (bg-sa-600 و border-gray-200). كل قيمة إحالة إلى var(--ddga-*)، فتسري سمات DgaProvider والوضع الداكن عبر الأصناف.',
+      none: {
+        title: 'بدون Tailwind',
+        lead: 'استورد ملف الأنماط مرة واحدة وركّب المكوّنات. ونسّق التخطيط من حولها بـ CSS الخاص بك.',
+      },
+      v3: {
+        title: 'Tailwind v3',
+        install: 'ثبّت @dev-dga/tokens ليكون استيراد الإعداد المسبق صريحًا:',
+        config: 'أضِف الإعداد المسبق إلى ملف إعداد Tailwind:',
+        css: 'رتّب ملفات الأنماط بهذا الترتيب:',
+        order:
+          'يجب أن يأتي بيان الترتيب أولًا، ولفّ @tailwind base داخل @layer tailwind-base إلزامي. فـ @tailwind base خارج أي طبقة (يضبط preflight الخاصية border-width: 0 على كل عنصر) يغلب كل قاعدة داخل طبقة ويزيل الحدود من كل مكوّن. تعلن المكتبة طبقتيها في أعلى ملفها، لذا فبيان ترتيب يوضع بعد الاستيراد يرتّب tailwind-base فوق المكوّنات.',
+        opacity:
+          'مُعدِّلات الشفافية على ألوان الجسر (bg-primary/50) تحتاج الإصدار الرابع. يتخطّاها Tailwind v3 مع قيم var().',
+      },
+      v4: {
+        title: 'Tailwind v4',
+        lead: 'لا ملف إعداد ولا @source. ويُتخطّى preflight لأن تصفير المكتبة يغني عنه.',
+        preflight: 'لإضافة preflight، استورده في طبقة base. يبقي بيان الترتيب base تحت ddga-base:',
+        strict:
+          'يحتفظ الجسر بلوحة Tailwind وسلالمه. للإبقاء على رموز DGA وحدها (الوضع الصارم)، صفّر مساحات الأسماء قبل استيراد الجسر، وليس بعده:',
+      },
+      rulesTitle: 'قواعد للإصدارين',
+      rules: [
+        'الخصائص تنسّق داخل المكوّن. والأصناف أو CSS الخاص بك تنسّق التخطيط من حوله.',
+        'دالة cn() في @dev-dga/react هي clsx فقط. للأصناف المتعارضة المتراكمة على عناصرك، استخدم tailwind-merge من جهتك.',
+        'يتبع dark: السمة [data-theme="dark"] من DgaProvider، وليس تفضيل نظام التشغيل.',
+        "في Tailwind v3: يجب أن يسبق بيان ترتيب @layer الاستيراد @import '@dev-dga/css'، وأن يكون @tailwind base داخل @layer tailwind-base. فـ preflight خارج أي طبقة يزيل حدود كل مكوّن.",
+        'في Tailwind v4: يجب أن يسبق الوضع الصارم (--color-*: initial) استيراد الجسر.',
+        'يتخطّى Tailwind v3 مُعدِّلات الشفافية مثل bg-primary/50 على ألوان var().',
+        'يتجاوز الجسر بعض افتراضات Tailwind عمدًا: rounded-lg يساوي 16px و rounded-xl يساوي 24px، و shadow-* سلّم DGA الكحلي، و gray-* سلّم DGA الرمادي، و text-xs إلى text-xl تحمل ارتفاعات أسطر DGA، و max-w-xs إلى max-w-6xl عروض DGA.',
+        'المسافات ونقاط التوقّف تساوي افتراضات Tailwind، فلا يربط الجسر أيًّا منها.',
+      ],
+      demo: {
+        title: 'مباشر: الأصناف تتبع السمة',
+        lead: 'هذه البطاقة أصناف الجسر فقط: بلا مكوّن من المكتبة وبلا CSS مخصّص. بدّل الوضع الداكن أو لوحة العلامة فتتبدّل ألوان كل صنف، لأن كل صنف يحلّ متغيّر --ddga-*.',
+        label: 'عرض الجسر',
+        badge: 'أصناف فقط',
+        light: 'الوضع الفاتح',
+        dark: 'dark: فعّال',
+        heading: 'السجل التجاري',
+        body: 'سجّل منشأة جديدة، أو حدّث أنشطتها، أو جدّد سجلّها. تكتمل الخدمة في جلسة واحدة وتُصدر الشهادة بصيغة PDF.',
+        cta: 'ابدأ الخدمة',
+        facts: [
+          { label: 'الرسوم', value: '200 ر.س' },
+          { label: 'المدة', value: '3 أيام عمل' },
+          { label: 'القناة', value: 'إلكترونيًا' },
+        ],
+        source: 'المصدر',
+      },
     },
     provider: {
       title: 'ضَع تطبيقك داخل المزوّد',
@@ -1667,7 +1827,8 @@ const ar: typeof en = {
       groups: [
         {
           group: 'الألوان',
-          sample: '--ddga-color-primary · --ddga-color-background · --ddga-text-primary · --ddga-color-border',
+          sample:
+            '--ddga-color-primary · --ddga-color-background · --ddga-text-primary · --ddga-color-border',
           desc: 'الأسطح والنصوص والحدود والألوان الدلالية.',
         },
         {
@@ -1696,7 +1857,8 @@ const ar: typeof en = {
           desc: 'اللوحة التصنيفية لتمثيل البيانات.',
         },
       ],
-      scopeNote: 'احصر التجاوزات في شجرة فرعية بضبط المتغيّرات على أي عنصر مُغلِّف - ويتكفّل التتالي بالباقي، في الوضعين الفاتح والداكن.',
+      scopeNote:
+        'احصر التجاوزات في شجرة فرعية بضبط المتغيّرات على أي عنصر مُغلِّف - ويتكفّل التتالي بالباقي، في الوضعين الفاتح والداكن.',
     },
     dark: {
       title: 'الوضع الداكن',
@@ -2022,7 +2184,10 @@ const ar: typeof en = {
       lead: 'نُقيّم التوافق بأنفسنا، باختبارات آلية ويدوية.',
       methods: [
         { m: 'axe-core', c: 'فحوص آلية على كل المكوّنات الـ64، بالإنجليزية والعربية.' },
-        { m: 'Playwright', c: '47 اختبارًا شاملًا للوحة المفاتيح والتركيز والأسهم و Escape والعربية.' },
+        {
+          m: 'Playwright',
+          c: '47 اختبارًا شاملًا للوحة المفاتيح والتركيز والأسهم و Escape والعربية.',
+        },
         { m: 'بوّابة RTL', c: 'اختبار يُفشل البناء عند أي CSS يمين/يسار.' },
         { m: 'اختبارات الوحدة', c: 'أكثر من 1700 اختبار عبر المكوّنات.' },
       ],
@@ -2087,9 +2252,10 @@ const ar: typeof en = {
     howtoTitle: 'كم من التحكّم؟ كلّه.',
     howto: [
       'اختر خطوة من السلّم لأي دور، أو اختر «مخصّص» للون دقيق.',
-      'كل رمز هنا متغيّر CSS عادي - تجاوز أيًّا منها (حتى غير المذكورة) مباشرةً من CSS أو Tailwind:',
+      'كل رمز هنا متغيّر CSS عادي. تجاوز أيًّا منها، حتى غير المذكورة، مباشرةً من CSS عندك أو من أصناف Tailwind. ولإعداد Tailwind راجع {styling}:',
       'تجاوزات سلّم العلامة والسلالم تعيد التلوين في الوضعين معًا؛ وتجاوز الدور يُصدِّر كتلة داكنة لضبط الوضع الداكن وحده.',
     ],
+    howtoLink: 'التنسيق مع Tailwind',
     showAdvanced: 'إظهار السلالم الأولية',
     hideAdvanced: 'إخفاء السلالم الأولية',
     tiers: {

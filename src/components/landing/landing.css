@@ -1,5 +1,3 @@
-
-
 .section {
   position: relative;
   isolation: isolate;
@@ -1179,4 +1177,39 @@
   justify-content: center;
   margin-block-start: 2rem;
   flex-wrap: wrap;
+}
+
+/* Templates: the DGA home page template inside the example-card frame. */
+.template-card__shot {
+  object-fit: cover;
+  object-position: top;
+}
+.template-card__phone {
+  position: absolute;
+  inset-inline-end: 1.25rem;
+  inset-block-end: 1.25rem;
+  inline-size: clamp(92px, 22%, 132px);
+  aspect-ratio: 9 / 18;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 5px solid var(--ddga-gray-900, #111827);
+  background: var(--ddga-color-card);
+  box-shadow: var(--ddga-shadow-xl);
+}
+.template-card__facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.template-card__facts li {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--ddga-radius-full);
+  border: 1px solid var(--ddga-color-border);
+  background: var(--ddga-color-muted);
+  color: var(--ddga-text-secondary);
 }

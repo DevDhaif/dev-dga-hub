@@ -503,3 +503,75 @@
   border-radius: var(--ddga-radius-full);
   background: var(--ddga-color-info);
 }
+
+/* Styling section: the three recipes, the rules list, and the bridge demo. */
+.doc-recipe {
+  margin-block-start: 2.25rem;
+}
+.doc-recipe__title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+.doc-recipe__text {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--ddga-text-secondary);
+  margin-block: 0.75rem;
+  max-inline-size: 64ch;
+}
+.doc-recipe > div[dir='ltr'] + .doc-recipe__text {
+  margin-block-start: 1.1rem;
+}
+.doc-recipe > .doc-note {
+  margin-block-start: 1rem;
+}
+.doc-rules {
+  margin: 0;
+  padding-inline-start: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ddga-text-secondary);
+  max-inline-size: 64ch;
+}
+.doc-rules li::marker {
+  color: var(--ddga-color-primary);
+}
+
+.tw-demo {
+  margin-block-start: 1rem;
+}
+.tw-demo__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-block-end: 0.75rem;
+}
+.tw-demo__label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ddga-text-tertiary);
+}
+[dir='rtl'] .tw-demo__label {
+  letter-spacing: normal;
+}
+/* The header hides the palette swatches on narrow screens; the demo needs them at every width. */
+.tw-demo .controls__swatches {
+  display: flex;
+}
+.tw-demo__stage {
+  padding: clamp(1rem, 3vw, 1.75rem);
+  border: 1px solid var(--ddga-color-border);
+  border-radius: var(--ddga-radius-lg);
+  background-color: var(--ddga-color-muted);
+  background-image: radial-gradient(var(--ddga-color-border) 1px, transparent 1px);
+  background-size: 18px 18px;
+}

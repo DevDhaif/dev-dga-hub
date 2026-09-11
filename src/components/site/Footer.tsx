@@ -7,6 +7,7 @@ import { localizeHref } from '@/lib/locale-routes';
 
 const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
+const TEMPLATES_URL = 'https://dev-dga-templates.vercel.app/';
 
 const AUTHOR_NAME = 'Dhaifallah Alfarawi';
 const AUTHOR_PORTFOLIO = 'https://devdhaif.vercel.app/';
@@ -30,6 +31,9 @@ export function Footer() {
           <Link href={href('/theme')}>{c.themePage.eyebrow}</Link>
           <Link href={href('/blocks')}>{c.footer.blocks}</Link>
           <Link href={href('/examples/masar')}>{c.nav.examples}</Link>
+          <a href={TEMPLATES_URL} target="_blank" rel="noreferrer">
+            {c.footer.templates}
+          </a>
           <a href={STORYBOOK_URL} target="_blank" rel="noreferrer">
             {c.footer.storybook}
           </a>

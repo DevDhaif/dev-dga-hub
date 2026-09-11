@@ -25,6 +25,53 @@ export default function Demo() {
 }
 ```
 
+## Example: Icon-only toggles
+
+```tsx
+import { Toggle } from '@dev-dga/react';
+
+const BoldIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    aria-hidden="true"
+  >
+    <path d="M6 4h7a4 4 0 0 1 0 8H6zM6 12h8a4 4 0 0 1 0 8H6z" strokeLinejoin="round" />
+  </svg>
+);
+
+const ItalicIcon = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    aria-hidden="true"
+  >
+    <path d="M19 4h-9M14 20H5M15 4 9 20" strokeLinecap="round" />
+  </svg>
+);
+
+export default function Demo() {
+  return (
+    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+      <Toggle aria-label="عريض" defaultPressed>
+        <BoldIcon />
+      </Toggle>
+      <Toggle aria-label="مائل">
+        <ItalicIcon />
+      </Toggle>
+    </div>
+  );
+}
+```
+
 ## Example: Variants
 
 ```tsx

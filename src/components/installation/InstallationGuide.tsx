@@ -18,6 +18,7 @@ import {
 import { useCopy } from '@/lib/i18n';
 import { ArrowRight, ExternalLink } from '@/components/icons';
 import { ThemeBuilder } from './ThemeBuilder';
+import { TailwindBridgeDemo } from './TailwindBridgeDemo';
 import './installation.css';
 
 const STORYBOOK = 'https://dev-dga.vercel.app/';
@@ -81,6 +82,43 @@ const DARK_CODE = `// Controlled by the provider
 const RTL_CODE = `<DgaProvider dir="rtl" locale="ar">
 </DgaProvider>`;
 
+// Styling recipes, verbatim from the library README ("Styling").
+const NO_TAILWIND_CODE = `import '@dev-dga/css';
+import { DgaProvider, Button } from '@dev-dga/react';`;
+
+const V3_INSTALL_CODE = `npm install @dev-dga/tokens`;
+
+const V3_CONFIG_CODE = `// tailwind.config.js
+import { dgaPreset } from '@dev-dga/tokens/tailwind-preset';
+export default { presets: [dgaPreset], content: ['./src/**/*.{ts,tsx}'] };`;
+
+const V3_CSS_CODE = `/* app.css */
+@layer tailwind-base, ddga-base, ddga-components, tailwind-utilities;
+@import '@dev-dga/css';
+@layer tailwind-base {
+  @tailwind base;
+}
+@layer tailwind-utilities {
+  @tailwind components;
+  @tailwind utilities;
+}`;
+
+const V4_CSS_CODE = `/* app.css */
+@layer theme, base, ddga-base, ddga-components, components, utilities;
+@import 'tailwindcss/theme.css' layer(theme);
+@import 'tailwindcss/utilities.css' layer(utilities);
+@import '@dev-dga/css';
+@import '@dev-dga/css/tailwind.css';`;
+
+const V4_PREFLIGHT_CODE = `@import 'tailwindcss/preflight.css' layer(base);`;
+
+const V4_STRICT_CODE = `@import '@dev-dga/css';
+@theme inline {
+  --color-*: initial;
+  --color-white: #fff;
+}
+@import '@dev-dga/css/tailwind.css';`;
+
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section id={id} className="doc-section" aria-labelledby={`${id}-h`}>
@@ -104,6 +142,7 @@ export function InstallationGuide() {
     { id: 'requirements', title: t.requirements.title },
     { id: 'install', title: t.install.title },
     { id: 'styles', title: t.styles.title },
+    { id: 'styling', title: t.styling.title },
     { id: 'provider', title: t.provider.title },
     { id: 'theming', title: t.theming.title },
     { id: 'tokens', title: t.tokens.title },
@@ -152,6 +191,80 @@ export function InstallationGuide() {
               />
             </div>
             <p className="doc-note">{t.styles.note}</p>
+          </Section>
+
+          <Section id="styling" title={t.styling.title}>
+            <p className="doc-lead">{t.styling.lead}</p>
+            <p className="doc-lead">{t.styling.bridge}</p>
+
+            <div className="doc-recipe">
+              <h3 className="doc-recipe__title">{t.styling.none.title}</h3>
+              <p className="doc-recipe__text">{t.styling.none.lead}</p>
+              <div dir="ltr">
+                <CodeSnippet
+                  languages={[{ value: 'tsx', label: 'App.tsx', code: NO_TAILWIND_CODE }]}
+                  lineNumbers={false}
+                />
+              </div>
+            </div>
+
+            <div className="doc-recipe">
+              <h3 className="doc-recipe__title">{t.styling.v3.title}</h3>
+              <p className="doc-recipe__text">{t.styling.v3.install}</p>
+              <div dir="ltr">
+                <CodeSnippet
+                  languages={[{ value: 'bash', label: 'npm', code: V3_INSTALL_CODE }]}
+                  lineNumbers={false}
+                />
+              </div>
+              <p className="doc-recipe__text">{t.styling.v3.config}</p>
+              <div dir="ltr">
+                <CodeSnippet
+                  languages={[{ value: 'js', label: 'tailwind.config.js', code: V3_CONFIG_CODE }]}
+                  lineNumbers={false}
+                />
+              </div>
+              <p className="doc-recipe__text">{t.styling.v3.css}</p>
+              <div dir="ltr">
+                <CodeSnippet languages={[{ value: 'css', label: 'app.css', code: V3_CSS_CODE }]} />
+              </div>
+              <p className="doc-recipe__text">{t.styling.v3.order}</p>
+              <p className="doc-note">{t.styling.v3.opacity}</p>
+            </div>
+
+            <div className="doc-recipe">
+              <h3 className="doc-recipe__title">{t.styling.v4.title}</h3>
+              <p className="doc-recipe__text">{t.styling.v4.lead}</p>
+              <div dir="ltr">
+                <CodeSnippet languages={[{ value: 'css', label: 'app.css', code: V4_CSS_CODE }]} />
+              </div>
+              <p className="doc-recipe__text">{t.styling.v4.preflight}</p>
+              <div dir="ltr">
+                <CodeSnippet
+                  languages={[{ value: 'css', label: 'app.css', code: V4_PREFLIGHT_CODE }]}
+                  lineNumbers={false}
+                />
+              </div>
+              <p className="doc-recipe__text">{t.styling.v4.strict}</p>
+              <div dir="ltr">
+                <CodeSnippet
+                  languages={[{ value: 'css', label: 'app.css', code: V4_STRICT_CODE }]}
+                />
+              </div>
+            </div>
+
+            <p className="doc-subhead">{t.styling.rulesTitle}</p>
+            <ul className="doc-rules">
+              {t.styling.rules.map((rule) => (
+                <li key={rule}>{rule}</li>
+              ))}
+            </ul>
+
+            <div className="doc-recipe" id="styling-demo">
+              <h3 className="doc-recipe__title">{t.styling.demo.title}</h3>
+              <p className="doc-recipe__text">{t.styling.demo.lead}</p>
+              <TailwindBridgeDemo />
+            </div>
           </Section>
 
           <Section id="provider" title={t.provider.title}>
@@ -244,9 +357,7 @@ export function InstallationGuide() {
               </TableBody>
             </Table>
             <div dir="ltr">
-              <CodeSnippet
-                languages={[{ value: 'css', label: 'globals.css', code: TOKEN_CODE }]}
-              />
+              <CodeSnippet languages={[{ value: 'css', label: 'globals.css', code: TOKEN_CODE }]} />
             </div>
             <p className="doc-note">{t.tokens.scopeNote}</p>
           </Section>

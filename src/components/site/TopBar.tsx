@@ -13,6 +13,7 @@ import { GitHub, ExternalLink, Menu, Close } from '@/components/icons';
 
 const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
+const TEMPLATES_URL = 'https://dev-dga-templates.vercel.app/';
 
 export function TopBar() {
   const pathname = usePathname();
@@ -56,6 +57,14 @@ export function TopBar() {
               </Link>
             );
           })}
+          <a
+            className="topbar__link topbar__link--ext"
+            href={TEMPLATES_URL}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {c.nav.templates} <ExternalLink width={14} height={14} />
+          </a>
           <a
             className="topbar__link topbar__link--ext"
             href={STORYBOOK_URL}
@@ -113,6 +122,9 @@ export function TopBar() {
                 {item.label}
               </Link>
             ))}
+            <a href={TEMPLATES_URL} target="_blank" rel="noreferrer">
+              {c.nav.templates}
+            </a>
             <a href={STORYBOOK_URL} target="_blank" rel="noreferrer">
               {c.nav.storybook}
             </a>

@@ -154,4 +154,4 @@ export default function Demo() {
 
 The explainer toggle is a button with `aria-expanded` and `aria-controls`, so the panel state is announced. The flag and marks are decorative and the statement is text.
 
-Both Arabic and English copy are provided, and the bar follows the page direction.
+The default copy is the English SDGA text. Pass the Arabic statement and panel copy through props, as the Arabic example shows; the bar itself follows the page direction.

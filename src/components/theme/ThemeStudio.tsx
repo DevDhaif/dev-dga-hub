@@ -33,6 +33,7 @@ import {
   TextInput,
 } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
+import { useHref } from '@/lib/use-href';
 import { TOKEN_GROUPS, TOKEN_COUNT, type Token, type TokenTier } from '@/lib/tokens.generated';
 import { ArrowRight } from '@/components/icons';
 import './theme.css';
@@ -82,7 +83,14 @@ function scaleSteps(scale: string): string[] {
 
 function hex6(v: string): string {
   const m = v.trim().match(/^#([0-9a-fA-F]{3})$/);
-  if (m) return '#' + m[1].split('').map((c) => c + c).join('');
+  if (m)
+    return (
+      '#' +
+      m[1]
+        .split('')
+        .map((c) => c + c)
+        .join('')
+    );
   return v;
 }
 function splitLen(v: string): { n: string; unit: string } {
@@ -90,8 +98,23 @@ function splitLen(v: string): { n: string; unit: string } {
   return m ? { n: m[1], unit: m[2] ?? '' } : { n: v, unit: '' };
 }
 
+// A howto line may carry a {styling} placeholder: render it as a localized link to the recipes.
+function HowtoLine({ line, linkLabel }: { line: string; linkLabel: string }) {
+  const hrefFor = useHref();
+  const [before, after] = line.split('{styling}');
+  if (after === undefined) return <li>{line}</li>;
+  return (
+    <li>
+      {before}
+      <Link href={`${hrefFor('/installation')}#styling`}>{linkLabel}</Link>
+      {after}
+    </li>
+  );
+}
+
 export function ThemeStudio() {
   const { c } = useCopy();
+  const hrefFor = useHref();
   const t = c.themePage;
   const groupLabels = t.groups as Record<string, string>;
   const s = t.sample;
@@ -120,7 +143,8 @@ export function ThemeStudio() {
     [q],
   );
 
-  const header = "@import '@dev-dga/css'; /* the DGA design system (index.css) - load it first */\n\n";
+  const header =
+    "@import '@dev-dga/css'; /* the DGA design system (index.css) - load it first */\n\n";
   let exportCss: string;
   if (!overrides.length) {
     exportCss = `${header}:root {\n  ${t.emptyHint}\n}`;
@@ -155,7 +179,11 @@ export function ThemeStudio() {
           </code>
         </span>
         <span className="ts-field__scale">
-          <span className="ts-field__chip" style={{ background: swatch } as CSSProperties} aria-hidden />
+          <span
+            className="ts-field__chip"
+            style={{ background: swatch } as CSSProperties}
+            aria-hidden
+          />
           <Select
             size="sm"
             aria-label={tk.name}
@@ -235,7 +263,11 @@ export function ThemeStudio() {
         <label className="ts-field ts-field--color" key={tk.name}>
           <span className="ts-field__label">{nameEl}</span>
           <span className="ts-field__swatch">
-            <span className="ts-field__chip" style={{ background: val } as CSSProperties} aria-hidden />
+            <span
+              className="ts-field__chip"
+              style={{ background: val } as CSSProperties}
+              aria-hidden
+            />
             <input
               type="text"
               className="ts-field__hex"
@@ -389,7 +421,7 @@ export function ThemeStudio() {
             <p className="ts__howto-title">{t.howtoTitle}</p>
             <ul className="ts__howto-list">
               {t.howto.map((line, i) => (
-                <li key={i}>{line}</li>
+                <HowtoLine key={i} line={line} linkLabel={t.howtoLink} />
               ))}
             </ul>
             <code className="ts__howto-code" dir="ltr">
@@ -558,7 +590,7 @@ export function ThemeStudio() {
           />
         </div>
         <p className="ts__back">
-          <Link href="/installation#builder" className="ts__back-link">
+          <Link href={`${hrefFor('/installation')}#builder`} className="ts__back-link">
             <ArrowRight width={15} height={15} className="rtl-flip-x" />
             {t.back}
           </Link>
