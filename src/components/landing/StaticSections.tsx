@@ -188,7 +188,7 @@ export function ExampleShowcase() {
             <span />
             <span />
           </span>
-          <span className="example-card__url">masar.dga.gov.sa</span>
+          <span className="example-card__url">masar.example.com</span>
         </div>
         <div className="example-card__viewport">
           {inView ? (
