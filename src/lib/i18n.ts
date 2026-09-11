@@ -754,7 +754,7 @@ const en = {
       body: 'It covers Platforms Code components only. It tracks coverage: whether each component has the same parts, variants, and states as the official one. It does not claim exact pixel and token values, that check is separate and still running. Components with no official page are listed as extensions, and we don’t claim them as DGA-compliant.',
     },
     independence:
-      'dev-dga is an independent library, maintained by the community. It is not affiliated with, nor endorsed by, the Saudi Digital Government Authority (DGA).',
+      'dev-dga is an independent library, built and maintained outside the DGA. It is not affiliated with, nor endorsed by, the Saudi Digital Government Authority (DGA).',
     summary: {
       aligned: 'components aligned',
       officialPages: 'official pages covered',
@@ -2089,7 +2089,7 @@ const ar: typeof en = {
       body: 'تشمل مكوّنات كود المنصّات فقط. تتابع التغطية: هل يملك كل مكوّن الأجزاء والتنويعات والحالات نفسها الموجودة في المكوّن الرسمي. ولا تدّعي تطابقًا دقيقًا في القيم (البكسل واللون والرموز)، فذلك فحص منفصل ما زال جاريًا. والمكوّنات التي لا صفحة رسمية لها مذكورة كإضافات، ولا نَدّعي توافقها مع الهيئة.',
     },
     independence:
-      'dev-dga مكتبة مستقلة يطوّرها المجتمع. وهي غير تابعة لهيئة الحكومة الرقمية السعودية ولا مُعتمَدة منها.',
+      'dev-dga مكتبة مستقلة تُطوَّر خارج هيئة الحكومة الرقمية. وهي غير تابعة للهيئة السعودية ولا مُعتمَدة منها.',
     summary: {
       aligned: 'مكوّن مطابق',
       officialPages: 'صفحة رسمية مغطّاة',

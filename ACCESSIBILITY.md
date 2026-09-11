@@ -5,7 +5,7 @@
 **Statement version:** as of `0.13.0` (2026-07-12)
 **Conformance basis:** self-assessment through automated and manual testing (see [Conformance basis](#conformance-basis)). **Not independently audited.**
 
-`@dev-dga` is an independent, community-maintained React implementation of Saudi Arabia's DGA (Digital Government Authority) **Platforms Code** design system. It is not affiliated with or endorsed by the DGA. Accessibility is a primary design goal: the official Bootstrap reference system publishes no accessibility statement, and Saudi (and international) government procurement increasingly requires WCAG conformance, so this document sets out exactly what the library provides, how it is verified, and where responsibility passes to you, the consumer.
+`@dev-dga` is an independent React implementation of Saudi Arabia's DGA (Digital Government Authority) **Platforms Code** design system, built and maintained outside the DGA. It is not affiliated with or endorsed by the DGA. Accessibility is a primary design goal: the official Bootstrap reference system publishes no accessibility statement, and Saudi (and international) government procurement increasingly requires WCAG conformance, so this document sets out exactly what the library provides, how it is verified, and where responsibility passes to you, the consumer.
 
 ---
 

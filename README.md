@@ -26,7 +26,8 @@ Setup guide: [dev-dga-hub.vercel.app/installation](https://dev-dga-hub.vercel.ap
 ## Explore
 
 - **Components** - all 65 DGA React components, live and themeable: [/components](https://dev-dga-hub.vercel.app/components)
-- **Installation** - install the packages and style with or without Tailwind: [/installation](https://dev-dga-hub.vercel.app/installation)
+- **Installation** - install the packages, then style with or without Tailwind: [/installation](https://dev-dga-hub.vercel.app/installation)
+- **Styling** - the three Tailwind recipes (none, v3, v4) and a live token-bridge demo: [/installation#styling](https://dev-dga-hub.vercel.app/installation#styling)
 - **Compliance** - every component mapped to the official DGA Platforms Code, with a coverage status: [/compliance](https://dev-dga-hub.vercel.app/compliance)
 - **Accessibility** - the WCAG 2.2 AA conformance statement (self-assessed): [/accessibility](https://dev-dga-hub.vercel.app/accessibility) · [full statement](ACCESSIBILITY.md)
 - **Arabic & RTL** - RTL as a first language, with live demos: [/rtl](https://dev-dga-hub.vercel.app/rtl)
