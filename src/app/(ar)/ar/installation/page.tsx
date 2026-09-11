@@ -3,7 +3,7 @@ import { InstallationGuide } from '@/components/installation/InstallationGuide';
 import { pageSeo } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'التثبيت',
+  title: 'تثبيت مكتبة مكوّنات React لكود المنصّات',
   description:
     'ثبّت نظام dev-dga، وغلّف تطبيقك بالمزوّد، وتحكّم بكل رمز تصميم: اللوحة اللونية، ونصف القطر، والخطوط، والوضع الداكن، واتجاه الكتابة، من طبقة واحدة من متغيّرات CSS.',
   ...pageSeo('/installation', 'ar'),

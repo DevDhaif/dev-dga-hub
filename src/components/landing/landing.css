@@ -217,23 +217,25 @@
   max-inline-size: 46ch;
 }
 
-.hero__title {
+.hero__title-block {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
   margin-block: 1.25rem 0;
 }
-.hero__title-lead {
+.hero__title {
   font-size: clamp(2.25rem, 6vw, 3.75rem);
   font-weight: 600;
   letter-spacing: -0.03em;
   line-height: 1.04;
+  margin: 0;
 }
-.hero__title-lead em {
+.hero__title em {
   font-style: normal;
   color: var(--ddga-color-primary);
 }
 .hero__title-echo {
+  margin: 0;
   font-size: clamp(1.1rem, 2.6vw, 1.6rem);
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -341,10 +343,6 @@
   background: var(--ddga-color-primary);
 }
 
-.hero__stamp {
-  margin-block-start: 0.85rem;
-}
-
 .hero__install {
   margin-block-start: clamp(2.5rem, 5vw, 3.75rem);
   display: flex;
@@ -400,7 +398,7 @@
   .hero__eyebrow {
     animation: hero-rise 0.55s 0.05s both;
   }
-  .hero__title-lead {
+  .hero__title {
     animation: hero-rise 0.6s 0.12s both;
   }
   .hero__title-echo {
@@ -1212,4 +1210,125 @@
   border: 1px solid var(--ddga-color-border);
   background: var(--ddga-color-muted);
   color: var(--ddga-text-secondary);
+}
+
+/* FAQ: native <details> so every answer ships in the server HTML for crawlers. */
+.faq {
+  display: flex;
+  flex-direction: column;
+  border-block-start: 1px solid var(--ddga-color-border);
+  max-inline-size: 60rem;
+}
+.faq__item {
+  border-block-end: 1px solid var(--ddga-color-border);
+}
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.15rem;
+  cursor: pointer;
+  list-style: none;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--ddga-text-primary);
+  transition: color 0.15s ease;
+}
+.faq__q::-webkit-details-marker {
+  display: none;
+}
+.faq__q:hover {
+  color: var(--ddga-color-primary);
+}
+.faq__q:focus-visible {
+  outline: 2px solid var(--ddga-text-primary);
+  outline-offset: 2px;
+}
+.faq__marker {
+  flex: none;
+  position: relative;
+  inline-size: 1.25rem;
+  block-size: 1.25rem;
+}
+.faq__marker::before,
+.faq__marker::after {
+  content: '';
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: 0.85rem;
+  block-size: 2px;
+  border-radius: 2px;
+  background: var(--ddga-color-primary);
+  translate: -50% -50%;
+  transition: rotate 0.2s ease;
+}
+.faq__marker::after {
+  rotate: 90deg;
+}
+.faq__item[open] .faq__marker::after {
+  rotate: 0deg;
+}
+.faq__a {
+  padding-block-end: 1.35rem;
+  max-inline-size: 68ch;
+}
+.faq__a p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--ddga-text-secondary);
+}
+.faq__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-block-start: 0.85rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ddga-color-primary);
+  text-decoration: none;
+}
+.faq__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Independence statement: above the fold, quiet but legible. The page title
+   claims "DGA React components", so this cannot live only in the footer. */
+.hero__independent {
+  margin-block-start: 1rem;
+  padding-inline-start: 0.85rem;
+  border-inline-start: 2px solid var(--ddga-color-border);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--ddga-text-tertiary);
+  max-inline-size: 52ch;
+}
+
+/* The DigitalStamp asserts a government registration. Label it as a component
+   preview so nobody reads it as a claim about this site. */
+.hero__stamp {
+  margin-block-start: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.hero__stamp-label,
+.hero__stamp-note {
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--ddga-text-tertiary);
+}
+.hero__stamp-label {
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+[dir='rtl'] .hero__stamp-label {
+  letter-spacing: normal;
+  text-transform: none;
+  font-size: 0.75rem;
 }

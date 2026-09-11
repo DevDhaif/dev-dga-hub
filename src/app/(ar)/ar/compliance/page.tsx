@@ -6,7 +6,7 @@ const DESCRIPTION =
   'جدول تغطية عام يربط كل مكوّن من @dev-dga بصفحته الرسمية في كود منصّات هيئة الحكومة الرقمية السعودية، مع حالته: مطابق أو جزئي أو إضافة. مستقل، وغير تابع للهيئة.';
 
 export const metadata: Metadata = {
-  title: 'التوافق مع كود المنصّات',
+  title: 'توافق مكوّنات React مع كود المنصّات',
   description: DESCRIPTION,
   keywords: [
     'كود المنصّات',

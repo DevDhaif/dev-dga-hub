@@ -10,6 +10,7 @@ import { Pillars } from './Pillars';
 import { ThemingDemo } from './ThemingDemo';
 import { RtlDemo, DarkModeDemo } from './ParityDemos';
 import { TemplateShowcase } from './TemplateShowcase';
+import { Faq } from './Faq';
 import {
   AboutFeatures,
   Architecture,
@@ -140,6 +141,10 @@ export function Landing() {
         lead={c.gallery.teaserLead}
       >
         <CategoryTeaser />
+      </Section>
+
+      <Section eyebrow={c.faq.eyebrow} title={c.faq.title} lead={c.faq.lead} tint>
+        <Faq />
       </Section>
 
       <Closer />

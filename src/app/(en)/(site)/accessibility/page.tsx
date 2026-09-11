@@ -6,7 +6,7 @@ const DESCRIPTION =
   'The public WCAG 2.2 AA accessibility statement for the @dev-dga design system: what we support, how we test it (axe-core + Playwright), and what stays your responsibility. Self-assessed, not third-party audited; color contrast is designed to the thresholds, not measured.';
 
 export const metadata: Metadata = {
-  title: 'Accessibility',
+  title: 'Accessible React components: WCAG 2.2 AA',
   description: DESCRIPTION,
   keywords: [
     'WCAG 2.2 AA',

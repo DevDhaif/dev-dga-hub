@@ -6,7 +6,7 @@ const DESCRIPTION =
   'Arabic and RTL done as a first language, not a dir toggle: Hijri / Umm al-Qura date pickers, abjad list counters, protected cursive letter-joining, inverted RTL keyboard semantics, logical-property mirroring, and bidi-safe Saudi data (National ID, IBAN, +966). Live, bilingual examples with copy-paste code.';
 
 export const metadata: Metadata = {
-  title: 'Arabic & RTL',
+  title: 'Arabic and RTL React components',
   description: DESCRIPTION,
   keywords: [
     'Arabic React components',

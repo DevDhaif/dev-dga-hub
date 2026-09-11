@@ -6,7 +6,7 @@ const DESCRIPTION =
   'بيان توافق WCAG 2.2 AA العلني لمكتبة @dev-dga: ما ندعمه، وكيف نختبره (axe-core و Playwright)، وما يبقى على عاتقك. تقييم ذاتي لا تدقيق خارجي، وتباين الألوان مصمّم للحدود لا مقيس.';
 
 export const metadata: Metadata = {
-  title: 'إمكانية الوصول',
+  title: 'مكوّنات React قابلة للوصول: WCAG 2.2 AA',
   description: DESCRIPTION,
   keywords: [
     'WCAG 2.2 AA',

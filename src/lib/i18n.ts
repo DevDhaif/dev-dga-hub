@@ -31,13 +31,17 @@ const en = {
   },
   hero: {
     eyebrow: 'SDGA Platforms Code → React 19',
-    titleA: 'Saudi Arabia’s design system,',
-    titleEm: 'as React.',
-    lead: `An independent, MIT-licensed implementation of the DGA Platforms Code, ${COMPONENT_COUNT} accessible React 19 components. RTL-native, dark-ready, WCAG 2.2 AA.`,
+    titleA: 'Saudi Arabia’s DGA design system,',
+    titleEm: 'as React components.',
+    lead: `A free, MIT-licensed UI component library for Saudi Arabia’s DGA Platforms Code: ${COMPONENT_COUNT} accessible React 19 components. RTL-native, Arabic-first, dark-ready, WCAG 2.2 AA.`,
     browse: 'Browse components',
     installEyebrow: 'Install',
     installHint: 'Three packages: components, styles, and tokens.',
     liveTag: 'Live · flip the theme ↑',
+    independent:
+      'Independent project. Not affiliated with, nor endorsed by, the Saudi Digital Government Authority (DGA).',
+    stampLabel: 'Component preview · DigitalStamp',
+    stampNote: 'Sample data. This site is not a registered government service.',
   },
   proof: {
     components: 'components',
@@ -159,8 +163,8 @@ const en = {
   },
   gallery: {
     eyebrow: 'The library',
-    title: 'Components',
-    lead: 'Accessible, RTL-native React components - every one live, themeable, and dark-ready. Search or filter by category, then open any component for interactive examples and copy-paste code.',
+    title: 'DGA React components',
+    lead: 'Every UI component in the library, live and themeable: accessible, RTL-native React 19 components implementing the Saudi SDGA Platforms Code. Search or filter by category, then open any component for interactive examples and copy-paste code.',
     searchPlaceholder: 'Search components…',
     all: 'All',
     components: 'components',
@@ -200,6 +204,11 @@ const en = {
     noProps: 'No props of its own beyond the native element attributes.',
     accessibility: 'Accessibility',
     related: 'Related',
+  },
+  faq: {
+    eyebrow: 'FAQ',
+    title: 'DGA React components, answered.',
+    lead: 'What teams ask before adopting the library: what Platforms Code is, how to install it, and how far the Arabic, accessibility, and licensing guarantees go.',
   },
   closer: {
     eyebrow: 'MIT · free to use · React 19',
@@ -1369,11 +1378,14 @@ const ar: typeof en = {
     eyebrow: 'كود منصّات هيئة الحكومة الرقمية ← React 19',
     titleA: 'نظام التصميم الحكومي السعودي،',
     titleEm: 'بمكوّنات React.',
-    lead: `تطبيق React 19 مستقل وحر الاستخدام برخصة MIT لكود منصّات هيئة الحكومة الرقمية. ${COMPONENT_COUNT} مكوّنًا قابلًا للوصول، عربي الاتجاه، جاهز للوضع الداكن، ومتوافق مع WCAG 2.2 AA.`,
+    lead: `مكتبة واجهات حرّة الاستخدام برخصة MIT لكود منصّات هيئة الحكومة الرقمية: ${COMPONENT_COUNT} مكوّن React 19 قابل للوصول، عربي الاتجاه أصالةً، جاهز للوضع الداكن، ومتوافق مع WCAG 2.2 AA.`,
     browse: 'تصفّح المكوّنات',
     installEyebrow: 'التثبيت',
     installHint: 'ثلاث حزم: المكوّنات، والأنماط، والرموز التصميمية.',
     liveTag: 'مباشر · جرّب تبديل السمة ↑',
+    independent: 'مشروع مستقل. غير تابع لهيئة الحكومة الرقمية السعودية ولا معتمد منها.',
+    stampLabel: 'معاينة مكوّن · DigitalStamp',
+    stampNote: 'بيانات تجريبية. هذا الموقع ليس خدمة حكومية مسجّلة.',
   },
   proof: {
     components: 'مكوّنًا',
@@ -1494,8 +1506,8 @@ const ar: typeof en = {
   },
   gallery: {
     eyebrow: 'المكتبة',
-    title: 'المكوّنات',
-    lead: 'مكوّنات React قابلة للوصول وعربية الاتجاه، كلها حيّة وقابلة للتنسيق وجاهزة للوضع الداكن. ابحث أو صفِّ حسب الفئة، ثم افتح أي مكوّن لأمثلة تفاعلية وكود جاهز للنسخ.',
+    title: 'مكوّنات React لكود المنصّات',
+    lead: 'كل مكوّنات الواجهة في المكتبة، حيّة وقابلة للتنسيق: مكوّنات React 19 قابلة للوصول وعربية الاتجاه تطبّق كود منصّات هيئة الحكومة الرقمية. ابحث أو صفِّ حسب الفئة، ثم افتح أي مكوّن لأمثلة تفاعلية وكود جاهز للنسخ.',
     searchPlaceholder: 'ابحث في المكوّنات…',
     all: 'الكل',
     components: 'مكوّنًا',
@@ -1534,6 +1546,11 @@ const ar: typeof en = {
     noProps: 'لا خصائص خاصة به سوى سمات العنصر الأصلي.',
     accessibility: 'إمكانية الوصول',
     related: 'ذات صلة',
+  },
+  faq: {
+    eyebrow: 'أسئلة شائعة',
+    title: 'أسئلة عن مكوّنات React لكود المنصّات.',
+    lead: 'ما تسأل عنه الفرق قبل اعتماد المكتبة: ما كود المنصّات، وكيف تثبّتها، وإلى أي مدى تصل ضمانات العربية وإمكانية الوصول والترخيص.',
   },
   closer: {
     eyebrow: 'MIT · حر الاستخدام · React 19',

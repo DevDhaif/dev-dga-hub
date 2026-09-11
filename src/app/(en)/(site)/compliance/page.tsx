@@ -6,7 +6,7 @@ const DESCRIPTION =
   'A public coverage matrix: every @dev-dga React component matched to its official Saudi DGA Platforms Code page, with a status. Covers Platforms Code components only. Independent, not affiliated with the DGA.';
 
 export const metadata: Metadata = {
-  title: 'Compliance & coverage',
+  title: 'DGA Platforms Code compliance for React',
   description: DESCRIPTION,
   keywords: [
     'DGA Platforms Code',

@@ -19,6 +19,7 @@ import { Providers } from './providers';
 import { STORAGE_KEY } from '@/lib/storage-key';
 import { SITE_URL, languageAlternates, serializeJsonLd } from '@/lib/seo';
 import { dirFor, type Locale } from '@/lib/locale';
+import { ALL_COMPONENTS, COMPONENT_COUNT } from '@/lib/catalog';
 import pkg from '../../package.json';
 
 // The only public repo: the library source lives in a private one.
@@ -27,17 +28,25 @@ const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 const LIB_VERSION = pkg.dependencies['@dev-dga/react'].replace(/^\D*/, '');
 
 export const DESCRIPTION: Record<Locale, string> = {
-  en: 'An independent, MIT-licensed React 19 implementation of Saudi Arabia’s DGA Platforms Code design system. RTL-native, dark-ready, WCAG 2.2 AA. Not affiliated with the official DGA.',
-  ar: 'تطبيق React 19 مستقل لكود منصّات هيئة الحكومة الرقمية السعودية. عربي الاتجاه أصالةً، جاهز للوضع الداكن، ومتوافق مع WCAG 2.2 AA. غير تابع لهيئة الحكومة الرقمية الرسمية.',
+  en: `An independent, MIT-licensed UI component library implementing Saudi Arabia’s SDGA Platforms Code in React 19: ${COMPONENT_COUNT} accessible DGA React components, RTL-native, Arabic-first, dark-ready, WCAG 2.2 AA. Not affiliated with the official DGA.`,
+  ar: `مكتبة واجهات مستقلة برخصة MIT تطبّق كود منصّات هيئة الحكومة الرقمية بـ React 19: ${COMPONENT_COUNT} مكوّنًا قابلًا للوصول، عربية الاتجاه أصالةً، جاهزة للوضع الداكن، ومتوافقة مع WCAG 2.2 AA. غير تابعة للهيئة الرسمية.`,
 };
 
 const TITLE: Record<Locale, string> = {
-  en: 'dev-dga · Saudi DGA Platforms Code, as React',
-  ar: 'dev-dga · نظام التصميم الحكومي السعودي بمكوّنات React',
+  en: 'DGA React Components · SDGA Platforms Code UI Library',
+  ar: 'مكوّنات React لكود المنصّات · مكتبة واجهات حكومية سعودية',
 };
 
 const KEYWORDS: Record<Locale, string[]> = {
   en: [
+    'DGA React components',
+    'SDGA UI components',
+    'SDGA components',
+    'DGA UI library',
+    'DGA component library',
+    'DGA Platforms Code React',
+    'Saudi government UI components',
+    'Arabic UI component library',
     'DGA',
     'DGA Platforms Code',
     'Saudi design system',
@@ -50,6 +59,10 @@ const KEYWORDS: Record<Locale, string[]> = {
     'Hijri date picker',
   ],
   ar: [
+    'مكوّنات React لكود المنصّات',
+    'مكتبة مكوّنات حكومية',
+    'مكوّنات واجهة سعودية',
+    'كود المنصّات React',
     'نظام التصميم الحكومي',
     'كود المنصّات',
     'هيئة الحكومة الرقمية',
@@ -120,12 +133,27 @@ function jsonLdFor(locale: Locale) {
       {
         '@type': 'SoftwareApplication',
         name: 'dev-dga',
-        alternateName: '@dev-dga',
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Web',
         description: DESCRIPTION[locale],
         url: home,
+        alternateName: [
+          '@dev-dga',
+          'DGA React Components',
+          'SDGA UI Components',
+          'DGA Platforms Code React',
+          'مكوّنات React لكود المنصّات',
+        ],
         softwareVersion: LIB_VERSION,
+        softwareRequirements: 'React 19',
+        keywords: KEYWORDS[locale].join(', '),
+        featureList: ALL_COMPONENTS.map((comp) => comp.name).join(', '),
+        isBasedOn: {
+          '@type': 'CreativeWork',
+          name: 'DGA Platforms Code',
+          alternateName: 'كود المنصّات',
+          url: 'https://dga.gov.sa/ar/digital-knowledge/national-design-system-of-Saudi-Arabia',
+        },
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
         license: 'https://opensource.org/licenses/MIT',
         isAccessibleForFree: true,

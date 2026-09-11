@@ -9,7 +9,7 @@ import { componentProps } from '@/lib/props.generated';
 function breadcrumbs(slug: string, name: string) {
   const trail = [
     { name: 'dev-dga', item: absoluteUrl('/') },
-    { name: 'Components', item: absoluteUrl('/components') },
+    { name: 'DGA React components', item: absoluteUrl('/components') },
     { name, item: absoluteUrl(`/components/${slug}`) },
   ];
   return {

@@ -127,16 +127,24 @@ export function Hero() {
           <div className="hero__copy">
             <p className="eyebrow hero__eyebrow">{c.hero.eyebrow}</p>
 
-            <h1 className="hero__title">
-              <span className="hero__title-lead">
+            <div className="hero__title-block">
+              <h1 className="hero__title">
                 {c.hero.titleA} <em>{c.hero.titleEm}</em>
-              </span>
-              <span className="hero__title-echo" aria-hidden>
+              </h1>
+              {/* Decorative mirror of the headline in the other language. It sits
+                  OUTSIDE the h1 so the heading text a crawler reads is one clean
+                  sentence: aria-hidden hides it from AT, not from text extraction. */}
+              <p className="hero__title-echo" aria-hidden>
                 {echo.titleA} {echo.titleEm}
-              </span>
-            </h1>
+              </p>
+            </div>
 
             <p className="hero__lead">{c.hero.lead}</p>
+
+            {/* Above the fold and permanent: the page title claims "DGA React
+                components", so the independence statement has to sit next to it,
+                not only in the footer. */}
+            <p className="hero__independent">{c.hero.independent}</p>
 
             <div className="hero__cta">
               <Button asChild size="lg">
@@ -171,7 +179,9 @@ export function Hero() {
               </div>
 
               <div className="hero__stamp">
-                <DigitalStamp registrationNumber="20230103200" logo={<DgaMark />} {...stampProps} />
+                <span className="hero__stamp-label">{c.hero.stampLabel}</span>
+                <DigitalStamp registrationNumber="00000000000" logo={<DgaMark />} {...stampProps} />
+                <span className="hero__stamp-note">{c.hero.stampNote}</span>
               </div>
             </div>
           </div>

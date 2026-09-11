@@ -51,7 +51,7 @@ export default function Demo() {
         }
         securityDescription="تأكد من أن الموقع يستخدم بروتوكول HTTPS."
         registrationLabel="مسجّل لدى هيئة الحكومة الرقمية:"
-        registrationNumber="20230103200"
+        registrationNumber="00000000000"
         registrationHref="https://example.gov.sa"
         logo={<DgaMark />}
       />
@@ -101,7 +101,7 @@ export default function Demo() {
         }
         securityDescription="تأكد من أن الموقع يستخدم بروتوكول HTTPS."
         registrationLabel="مسجّل لدى هيئة الحكومة الرقمية:"
-        registrationNumber="20230103200"
+        registrationNumber="00000000000"
         registrationHref="https://example.gov.sa"
         logo={<DgaMark />}
       />

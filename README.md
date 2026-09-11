@@ -1,13 +1,16 @@
-# dev-dga
+# dev-dga - DGA React components for the Saudi SDGA Platforms Code
 
 [![npm](https://img.shields.io/npm/v/@dev-dga/react?label=%40dev-dga%2Freact)](https://www.npmjs.com/package/@dev-dga/react)
 [![license](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-React components for Saudi Arabia's DGA "Platforms Code" design system.
-Bilingual (Arabic / English), RTL-native, dark-ready. MIT-licensed, free to use.
+A free, MIT-licensed **UI component library** implementing Saudi Arabia's
+**DGA Platforms Code** (كود المنصات) national design system in **React 19**.
+65 accessible components: bilingual (Arabic and English), RTL-native, dark-ready,
+WCAG 2.2 AA.
 
 **Docs and live demos: [dev-dga-hub.vercel.app](https://dev-dga-hub.vercel.app)** ·
-Storybook: [dev-dga.vercel.app](https://dev-dga.vercel.app)
+Storybook: [dev-dga.vercel.app](https://dev-dga.vercel.app) ·
+Templates: [dev-dga-templates.vercel.app](https://dev-dga-templates.vercel.app)
 
 > Independent implementation. Not affiliated with, nor endorsed by, the Saudi
 > Digital Government Authority (DGA).
@@ -22,10 +25,12 @@ Setup guide: [dev-dga-hub.vercel.app/installation](https://dev-dga-hub.vercel.ap
 
 ## Explore
 
-- **Components** - the full gallery, live and themeable: [/components](https://dev-dga-hub.vercel.app/components)
+- **Components** - all 65 DGA React components, live and themeable: [/components](https://dev-dga-hub.vercel.app/components)
+- **Installation** - install the packages and style with or without Tailwind: [/installation](https://dev-dga-hub.vercel.app/installation)
 - **Compliance** - every component mapped to the official DGA Platforms Code, with a coverage status: [/compliance](https://dev-dga-hub.vercel.app/compliance)
 - **Accessibility** - the WCAG 2.2 AA conformance statement (self-assessed): [/accessibility](https://dev-dga-hub.vercel.app/accessibility) · [full statement](ACCESSIBILITY.md)
 - **Arabic & RTL** - RTL as a first language, with live demos: [/rtl](https://dev-dga-hub.vercel.app/rtl)
+- **Templates** - a full DGA home page built only from the library: [dev-dga-templates.vercel.app](https://dev-dga-templates.vercel.app)
 - **Storybook** - [dev-dga.vercel.app](https://dev-dga.vercel.app)
 
 ## This repo

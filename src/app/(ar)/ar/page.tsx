@@ -1,14 +1,18 @@
 import type { Metadata } from 'next';
 import { Landing } from '@/components/landing/Landing';
-import { pageAlternates } from '@/lib/seo';
+import { pageAlternates, serializeJsonLd } from '@/lib/seo';
+import { faqJsonLd } from '@/lib/faq';
 
 const DESCRIPTION =
-  'تطبيق React 19 مستقل لكود منصّات هيئة الحكومة الرقمية السعودية. عربي الاتجاه أصالةً، جاهز للوضع الداكن، ومتوافق مع WCAG 2.2 AA. غير تابع لهيئة الحكومة الرقمية الرسمية.';
+  'مكتبة واجهات مستقلة برخصة MIT تطبّق كود منصّات هيئة الحكومة الرقمية بـ React 19: مكوّنات قابلة للوصول، عربية الاتجاه أصالةً، جاهزة للوضع الداكن، ومتوافقة مع WCAG 2.2 AA. غير تابعة للهيئة الرسمية.';
 
 export const metadata: Metadata = {
-  title: { absolute: 'dev-dga · نظام التصميم الحكومي السعودي بمكوّنات React' },
+  title: { absolute: 'مكوّنات React لكود المنصّات · مكتبة واجهات حكومية سعودية' },
   description: DESCRIPTION,
   keywords: [
+    'مكوّنات React لكود المنصّات',
+    'مكتبة مكوّنات حكومية',
+    'مكوّنات واجهة سعودية',
     'نظام التصميم الحكومي',
     'كود المنصّات',
     'هيئة الحكومة الرقمية',
@@ -21,7 +25,7 @@ export const metadata: Metadata = {
   alternates: pageAlternates('/', 'ar'),
   openGraph: {
     type: 'website',
-    title: 'dev-dga · نظام التصميم الحكومي السعودي بمكوّنات React',
+    title: 'مكوّنات React لكود المنصّات · مكتبة واجهات حكومية سعودية',
     description: DESCRIPTION,
     locale: 'ar',
     alternateLocale: 'en',
@@ -30,5 +34,14 @@ export const metadata: Metadata = {
 };
 
 export default function ArHome() {
-  return <Landing />;
+  return (
+    <>
+      {/* FAQPage: matches the visible questions rendered by <Faq />. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd('ar')) }}
+      />
+      <Landing />
+    </>
+  );
 }

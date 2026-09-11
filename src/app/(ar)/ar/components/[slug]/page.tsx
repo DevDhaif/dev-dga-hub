@@ -31,7 +31,7 @@ export async function generateMetadata({
 function breadcrumbs(slug: string, name: string) {
   const trail = [
     { name: 'dev-dga', item: absoluteUrl('/ar') },
-    { name: 'المكوّنات', item: absoluteUrl('/ar/components') },
+    { name: 'مكوّنات React لكود المنصّات', item: absoluteUrl('/ar/components') },
     { name, item: absoluteUrl(`/ar/components/${slug}`) },
   ];
   return {
