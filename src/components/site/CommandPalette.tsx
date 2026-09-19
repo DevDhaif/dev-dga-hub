@@ -52,7 +52,7 @@ export function CommandPalette() {
       value: 'templates',
       label: c.command.templates,
       href: TEMPLATES_URL,
-      keywords: ['templates', 'template', 'home page'],
+      keywords: ['templates', 'template', 'home page', 'national day', 'اليوم الوطني'],
       external: true,
     },
   ];

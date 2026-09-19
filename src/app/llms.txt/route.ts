@@ -32,7 +32,7 @@ Every page below also exists in Arabic under the \`/ar\` prefix
 - [Arabic & RTL](${absoluteUrl('/rtl')}): Hijri calendars, abjad counters, bidi-safe Saudi data.
 - [Accessibility](${absoluteUrl('/accessibility')}): WCAG 2.2 AA conformance statement.
 - [Platforms Code compliance](${absoluteUrl('/compliance')}): component-by-component parity with the official DGA Figma.
-- [Templates](https://dev-dga-templates.vercel.app/): the DGA home page template, built only from @dev-dga. Arabic and English, light and dark.
+- [Templates](https://dev-dga-templates.vercel.app/): the DGA home page template and a Saudi National Day template, built only from @dev-dga. Arabic and English, light and dark.
 
 ## Styling
 

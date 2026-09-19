@@ -1,5 +1,6 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -38,8 +39,20 @@ export interface ComponentPageProps {
   next: { slug: string; name: string } | null;
 }
 
+const MARKDOWN_COMPONENTS = {
+  table: ({ children }: { children?: ReactNode }) => (
+    <div className="prose-table-wrap">
+      <table>{children}</table>
+    </div>
+  ),
+};
+
 function Markdown({ children }: { children: string }) {
-  return <ReactMarkdown remarkPlugins={[remarkGfm]}>{children}</ReactMarkdown>;
+  return (
+    <ReactMarkdown remarkPlugins={[remarkGfm]} components={MARKDOWN_COMPONENTS}>
+      {children}
+    </ReactMarkdown>
+  );
 }
 
 // JSDoc prop descriptions: markdown, rendered without block wrappers so they sit in a cell.
@@ -72,7 +85,9 @@ function PropsTable({ part }: { part: PropsPart }) {
             <tr key={p.name}>
               <td className="props-table__name">
                 <code>{p.name}</code>
-                {p.required && <span className="props-table__required">{c.component.required}</span>}
+                {p.required && (
+                  <span className="props-table__required">{c.component.required}</span>
+                )}
               </td>
               <td className="props-table__type">
                 <code>{p.type}</code>
@@ -102,6 +117,7 @@ export function ComponentPage(props: ComponentPageProps) {
   const section = (key: string) => prose.sections[key] ?? en.sections[key];
   const whenToUse = section('when-to-use');
   const accessibility = section('accessibility');
+  const parity = section('platforms-code-parity');
   const category = c.categories[categoryId as keyof typeof c.categories]?.title ?? categoryId;
   const demos = demoRegistry[slug] ?? [];
   const arDemos = arDemoRegistry[slug] ?? [];
@@ -114,7 +130,11 @@ export function ComponentPage(props: ComponentPageProps) {
       <article className="cmp-main" style={{ paddingBlockEnd: '2rem' }}>
         <header className="cmp-header">
           <div className="cmp-header__top">
-            <Link href={hrefFor('/components')} className="eyebrow" style={{ textDecoration: 'none' }}>
+            <Link
+              href={hrefFor('/components')}
+              className="eyebrow"
+              style={{ textDecoration: 'none' }}
+            >
               {category}
             </Link>
             {status === 'new' && <Tag variant="primary">{locale === 'ar' ? 'جديد' : 'New'}</Tag>}
@@ -206,6 +226,17 @@ export function ComponentPage(props: ComponentPageProps) {
             </h2>
             <div className="prose">
               <Markdown>{accessibility}</Markdown>
+            </div>
+          </section>
+        )}
+
+        {parity && (
+          <section className="cmp-section" aria-labelledby="platforms-code-parity">
+            <h2 id="platforms-code-parity" className="cmp-section__title">
+              {c.component.parity}
+            </h2>
+            <div className="prose prose--wide">
+              <Markdown>{parity}</Markdown>
             </div>
           </section>
         )}

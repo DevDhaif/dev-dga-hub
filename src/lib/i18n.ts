@@ -150,16 +150,40 @@ const en = {
   },
   templates: {
     eyebrow: 'Templates',
-    title: 'A complete government home page, from the library alone.',
-    lead: 'The DGA home page template assembles every section of the official Platforms Code home page from @dev-dga components: government banner, header, hero, about, services, news, partners, and footer. Arabic and English, light and dark, responsive.',
+    title: 'Complete government pages, from the library alone.',
+    lead: 'Each template assembles every section of an official Platforms Code page from @dev-dga components: government banner, header, hero, about, services, news, partners, and footer. Arabic and English, light and dark, responsive.',
     tag: 'Template',
-    name: 'DGA home page template',
-    desc: 'Every section from the government banner to the footer, composed from @dev-dga with no custom components. Copy the structure, swap the content, and ship.',
     open: 'Open the template',
-    facts: ['@dev-dga only', 'Arabic and English', 'Light and dark', 'Responsive'],
-    altDesktop:
-      'The DGA home page template in English and dark mode: hero, about, services, news, and partners sections.',
-    altMobile: 'The DGA home page template in Arabic on a phone screen.',
+    items: [
+      {
+        name: 'DGA home page template',
+        desc: 'Every section from the government banner to the footer, composed from @dev-dga with no custom components. Copy the structure, swap the content, and ship.',
+        facts: ['@dev-dga only', 'Arabic and English', 'Light and dark', 'Responsive'],
+        href: 'https://dev-dga-templates.vercel.app/ar/home',
+        shots: {
+          en: '/templates/home-en-desktop-dark.jpg',
+          ar: '/templates/home-ar-desktop-light.jpg',
+          mobile: '/templates/home-ar-mobile-light.jpg',
+        },
+        altDesktop:
+          'The DGA home page template in English and dark mode: hero, about, services, news, and partners sections.',
+        altMobile: 'The DGA home page template in Arabic on a phone screen.',
+      },
+      {
+        name: 'Saudi National Day template',
+        desc: 'The same page under the National Day brand layer, with a six-card hero deck that steps through the campaign themes, motif bands between sections, and a patterned footer.',
+        facts: ['@dev-dga only', 'Arabic and English', 'Animated hero', 'Reduced motion'],
+        href: 'https://dev-dga-templates.vercel.app/ar/national-day',
+        shots: {
+          en: '/templates/national-day-en-desktop-dark.jpg',
+          ar: '/templates/national-day-ar-desktop-light.jpg',
+          mobile: '/templates/national-day-ar-mobile-light.jpg',
+        },
+        altDesktop:
+          'The Saudi National Day template in English and dark mode: the card deck hero, about, and services sections.',
+        altMobile: 'The Saudi National Day template in Arabic on a phone screen.',
+      },
+    ],
   },
   gallery: {
     eyebrow: 'The library',
@@ -203,6 +227,7 @@ const en = {
     required: 'required',
     noProps: 'No props of its own beyond the native element attributes.',
     accessibility: 'Accessibility',
+    parity: 'Platforms Code parity',
     related: 'Related',
   },
   faq: {
@@ -342,7 +367,7 @@ const en = {
     installation: 'Installation guide',
     blocks: 'Prebuilt blocks',
     styling: 'Styling with Tailwind',
-    templates: 'Templates: DGA home page',
+    templates: 'Templates: home page and National Day',
   },
   chrome: {
     navPrimary: 'Primary',
@@ -1493,16 +1518,40 @@ const ar: typeof en = {
   },
   templates: {
     eyebrow: 'القوالب',
-    title: 'صفحة رئيسية حكومية كاملة، من المكتبة وحدها.',
-    lead: 'يجمع قالب الصفحة الرئيسية كل أقسام الصفحة الرئيسية في كود منصّات هيئة الحكومة الرقمية من مكوّنات dev-dga: الشريط الحكومي، والترويسة، والقسم الرئيسي، ومن نحن، والخدمات، والأخبار، والشركاء، والتذييل. عربي وإنجليزي، فاتح وداكن، ومتجاوب.',
+    title: 'صفحات حكومية كاملة، من المكتبة وحدها.',
+    lead: 'يجمع كل قالب أقسام صفحة من كود منصّات هيئة الحكومة الرقمية من مكوّنات dev-dga: الشريط الحكومي، والترويسة، والقسم الرئيسي، ومن نحن، والخدمات، والأخبار، والشركاء، والتذييل. عربي وإنجليزي، فاتح وداكن، ومتجاوب.',
     tag: 'قالب',
-    name: 'قالب الصفحة الرئيسية الحكومية',
-    desc: 'كل قسم من الشريط الحكومي إلى التذييل مركّب من dev-dga دون أي مكوّن مخصّص. انسخ البنية، وبدّل المحتوى، وانشر.',
     open: 'افتح القالب',
-    facts: ['dev-dga فقط', 'عربي وإنجليزي', 'فاتح وداكن', 'متجاوب'],
-    altDesktop:
-      'قالب الصفحة الرئيسية بالعربية في الوضع الفاتح: القسم الرئيسي ومن نحن والخدمات والأخبار والشركاء.',
-    altMobile: 'قالب الصفحة الرئيسية بالعربية على شاشة الجوال.',
+    items: [
+      {
+        name: 'قالب الصفحة الرئيسية الحكومية',
+        desc: 'كل قسم من الشريط الحكومي إلى التذييل مركّب من dev-dga دون أي مكوّن مخصّص. انسخ البنية، وبدّل المحتوى، وانشر.',
+        facts: ['dev-dga فقط', 'عربي وإنجليزي', 'فاتح وداكن', 'متجاوب'],
+        href: 'https://dev-dga-templates.vercel.app/ar/home',
+        shots: {
+          en: '/templates/home-en-desktop-dark.jpg',
+          ar: '/templates/home-ar-desktop-light.jpg',
+          mobile: '/templates/home-ar-mobile-light.jpg',
+        },
+        altDesktop:
+          'قالب الصفحة الرئيسية بالعربية في الوضع الفاتح: القسم الرئيسي ومن نحن والخدمات والأخبار والشركاء.',
+        altMobile: 'قالب الصفحة الرئيسية بالعربية على شاشة الجوال.',
+      },
+      {
+        name: 'قالب اليوم الوطني السعودي',
+        desc: 'الصفحة نفسها بهوية اليوم الوطني، مع واجهة من ست بطاقات تتنقل بين محاور الحملة، وأشرطة زخرفية بين الأقسام، وتذييل مزخرف.',
+        facts: ['dev-dga فقط', 'عربي وإنجليزي', 'واجهة متحركة', 'يحترم تقليل الحركة'],
+        href: 'https://dev-dga-templates.vercel.app/ar/national-day',
+        shots: {
+          en: '/templates/national-day-en-desktop-dark.jpg',
+          ar: '/templates/national-day-ar-desktop-light.jpg',
+          mobile: '/templates/national-day-ar-mobile-light.jpg',
+        },
+        altDesktop:
+          'قالب اليوم الوطني السعودي بالعربية في الوضع الفاتح: واجهة البطاقات ومن نحن والخدمات.',
+        altMobile: 'قالب اليوم الوطني السعودي بالعربية على شاشة الجوال.',
+      },
+    ],
   },
   gallery: {
     eyebrow: 'المكتبة',
@@ -1545,6 +1594,7 @@ const ar: typeof en = {
     required: 'إلزامي',
     noProps: 'لا خصائص خاصة به سوى سمات العنصر الأصلي.',
     accessibility: 'إمكانية الوصول',
+    parity: 'مطابقة Platforms Code',
     related: 'ذات صلة',
   },
   faq: {
@@ -1678,7 +1728,7 @@ const ar: typeof en = {
     installation: 'دليل التثبيت',
     blocks: 'الكتل الجاهزة',
     styling: 'التنسيق مع Tailwind',
-    templates: 'القوالب: الصفحة الرئيسية الحكومية',
+    templates: 'القوالب: الصفحة الرئيسية واليوم الوطني',
   },
   chrome: {
     navPrimary: 'التنقّل الرئيسي',

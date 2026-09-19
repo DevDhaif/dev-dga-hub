@@ -1177,7 +1177,12 @@
   flex-wrap: wrap;
 }
 
-/* Templates: the DGA home page template inside the example-card frame. */
+
+.template-cards {
+  display: grid;
+  gap: 1.5rem;
+}
+/* Templates: shot and phone framing shared by every template card. */
 .template-card__shot {
   object-fit: cover;
   object-position: top;
