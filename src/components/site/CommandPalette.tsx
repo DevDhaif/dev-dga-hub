@@ -41,6 +41,18 @@ export function CommandPalette() {
     { value: 'rtl', label: c.nav.rtl, href: '/rtl' },
     { value: 'installation', label: c.command.installation, href: '/installation' },
     {
+      value: 'forms',
+      label: c.command.forms,
+      href: '/forms',
+      keywords: ['form', 'formdata', 'inertia', 'server actions', 'validation'],
+    },
+    {
+      value: 'adopt',
+      label: c.command.adopt,
+      href: '/adopt',
+      keywords: ['adopt', 'existing app', 'migrate', 'laravel', 'inertia', 'next.js'],
+    },
+    {
       value: 'styling',
       label: c.command.styling,
       href: '/installation#styling',
