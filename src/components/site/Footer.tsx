@@ -28,6 +28,8 @@ export function Footer() {
           <p className="footer__heading">{c.footer.explore}</p>
           <Link href={href('/components')}>{c.footer.components}</Link>
           <Link href={href('/installation')}>{c.footer.installation}</Link>
+          <Link href={href('/forms')}>{c.footer.forms}</Link>
+          <Link href={href('/adopt')}>{c.footer.adopt}</Link>
           <Link href={href('/theme')}>{c.themePage.eyebrow}</Link>
           <Link href={href('/blocks')}>{c.footer.blocks}</Link>
           <Link href={href('/examples/masar')}>{c.nav.examples}</Link>

@@ -1,0 +1,4 @@
+/* Guide tables list several components per cell; let them wrap so the notes column keeps room. */
+.guide-table .doc-code {
+  white-space: normal;
+}

@@ -5,6 +5,8 @@ export const LOCALIZED_PATHS = [
   '/accessibility',
   '/rtl',
   '/installation',
+  '/forms',
+  '/adopt',
   '/blocks',
   '/theme',
   '/examples/masar',

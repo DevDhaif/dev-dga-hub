@@ -248,6 +248,8 @@ const en = {
     proof: 'Proof',
     components: 'Components',
     installation: 'Installation',
+    forms: 'Forms',
+    adopt: 'Adopt in an existing app',
     blocks: 'Blocks',
     examples: 'Examples',
     templates: 'Templates',
@@ -365,6 +367,8 @@ const en = {
     home: 'Home',
     allComponents: 'All components',
     installation: 'Installation guide',
+    forms: 'Forms guide',
+    adopt: 'Adopt in an existing app',
     blocks: 'Prebuilt blocks',
     styling: 'Styling with Tailwind',
     templates: 'Templates: home page and National Day',
@@ -1034,6 +1038,215 @@ const en = {
       rowB: 'Tax filing',
     },
   },
+  formsPage: {
+    eyebrow: 'Forms',
+    title: 'Every control submits like a native input.',
+    lead: 'Give a control a name and it submits through FormData, the shape a plain form, Inertia <Form>, React Router actions, and server actions all read. No onChange wiring, no hidden-input glue.',
+    onThisPage: 'On this page',
+    version:
+      'Native submission for DatePicker, DateRangePicker, TagInput, FileUpload, Dropdown, and Rating, plus parseDateOnly, needs @dev-dga/react 1.4.0 or later.',
+    contract: {
+      title: 'What each control submits',
+      lead: 'The rules match native inputs: a disabled control submits nothing, required blocks submission while the control is empty, and a form reset restores the initial value.',
+      cols: { control: 'Control', submits: 'Submits', notes: 'Notes' },
+      rows: [
+        {
+          control: 'TextInput, Textarea, SearchBox',
+          submits: 'The text',
+          notes: 'Native input; every input prop passes through.',
+        },
+        {
+          control: 'NumberInput',
+          submits: 'Plain decimal string, such as "1234.5"',
+          notes: 'No digit grouping, always Latin digits. Empty submits "".',
+        },
+        { control: 'Select', submits: 'The selected value', notes: 'Empty submits "".' },
+        {
+          control: 'Dropdown',
+          submits: 'The selected value',
+          notes: 'With multiple, one entry per value under the same name. Empty single submits "".',
+        },
+        {
+          control: 'Checkbox',
+          submits: 'value, or "on"',
+          notes: 'Unchecked submits nothing. Give a group one name and read it with getAll.',
+        },
+        {
+          control: 'RadioGroup',
+          submits: 'The selected value',
+          notes: 'No selection submits nothing.',
+        },
+        { control: 'Switch', submits: '"on"', notes: 'Off submits nothing.' },
+        {
+          control: 'Slider',
+          submits: 'The value',
+          notes: 'A range submits name[] once per thumb; Radix appends the brackets.',
+        },
+        {
+          control: 'Rating',
+          submits: 'Number string, such as "4" or "3.5"',
+          notes: 'Unrated submits "0".',
+        },
+        {
+          control: 'TagInput',
+          submits: 'One entry per tag',
+          notes: 'No tags submits nothing. The uncommitted draft text never submits.',
+        },
+        {
+          control: 'InputOTP',
+          submits: 'The entered code',
+          notes: 'Native input under the slots.',
+        },
+        {
+          control: 'DatePicker',
+          submits: 'Gregorian YYYY-MM-DD',
+          notes: 'Even while Hijri is displayed. Empty submits "".',
+        },
+        {
+          control: 'DateRangePicker',
+          submits: 'Gregorian YYYY-MM-DD under startName and endName',
+          notes: 'Each end submits separately.',
+        },
+        {
+          control: 'FileUpload',
+          submits: 'Every listed file (multipart)',
+          notes:
+            'The native input mirrors files, dropped ones included. A reset leaves files to you.',
+        },
+        {
+          control: 'ContentSwitcher, Toggle',
+          submits: 'Nothing',
+          notes:
+            'View switchers, not form controls. For a form choice, use RadioGroup or Checkbox.',
+        },
+      ],
+    },
+    arrays: {
+      title: 'Multiple values',
+      lead: 'TagInput, Dropdown with multiple, and Checkbox groups submit one FormData entry per value under the exact name you pass, like a native <select multiple>. Read them with formData.getAll(name). PHP and Laravel only build an array from names ending in [], so pass name="tags[]" there.',
+    },
+    native: {
+      title: 'Plain forms',
+      lead: 'Wrap the controls in a <form> and read FormData in the submit handler. This is the contract every integration below builds on.',
+    },
+    inertia: {
+      title: 'Inertia <Form>',
+      lead: 'Inertia builds its payload from new FormData(form), so named controls need no extra wiring. Its errors map straight onto each control’s error and errorMessage props.',
+      note: 'A full reset() fires a reset event that the controls listen for. A per-field reset, such as resetOnSuccess={["name"]}, fires no event, so controls that keep their own state (date pickers, TagInput, Dropdown, Rating, NumberInput, InputOTP) keep their current value. Reset the whole form, or control those fields yourself.',
+    },
+    router: {
+      title: 'React Router actions',
+      lead: 'React Router’s <Form> posts the same FormData to the route action. Read it with request.formData() and return validation errors from the action.',
+    },
+    actions: {
+      title: 'Server actions',
+      lead: 'Pass a server action to the form’s action prop. useActionState returns the action’s result, so the server’s field errors flow back into the controls.',
+    },
+    errors: {
+      title: 'Server validation errors',
+      lead: 'Every field takes error (the invalid state) and errorMessage (the text below the field). Together they set aria-invalid and point aria-describedby at the message, so screen readers announce the server’s message with the field.',
+      note: 'Set error and errorMessage together. errorMessage without error stays hidden, and error alone marks the field without telling the user why.',
+    },
+    dates: {
+      title: 'Dates from the server',
+      lead: 'Servers send dates as YYYY-MM-DD strings. Convert them with parseDateOnly, which builds a local-midnight Date and throws a RangeError on any other shape. new Date("2026-10-20") parses as UTC, so anywhere west of UTC it shows October 19.',
+    },
+  },
+  adoptPage: {
+    eyebrow: 'Adoption',
+    title: 'Bring @dev-dga into an existing app.',
+    lead: 'Add the styles, wrap the root in DgaProvider, and replace screens one at a time. These steps work for a Laravel and Inertia app, a Next.js app, or any React 19 project.',
+    onThisPage: 'On this page',
+    css: {
+      title: 'Set up the stylesheet',
+      lead: 'Import @dev-dga/css once. With Tailwind v4, declare the cascade layers first so the library sits between Tailwind’s base and its utilities, then add the token bridge for bg-primary, text-ink, and the rest of the DGA scale.',
+      after:
+        'Keep your own @source lines. The library ships its own reset, so Tailwind preflight is optional.',
+    },
+    provider: {
+      title: 'Wrap the app in DgaProvider',
+      lead: 'DgaProvider sets the direction, the locale, the DGA font, and light or dark mode through data-theme. Portaled overlays such as Modal, Select, and DatePicker render inside it, so they inherit the theme and direction.',
+    },
+    mapping: {
+      title: 'Pick the components',
+      lead: 'Each need maps to one or more @dev-dga components. Labels, helper text, and errors are props on the field itself, so you don’t wire ids by hand.',
+      cols: { need: 'You need', components: '@dev-dga components', notes: 'Notes' },
+      rows: [
+        {
+          need: 'Actions and links',
+          components: 'Button, Link',
+          notes: 'asChild renders a router link as the button itself.',
+        },
+        {
+          need: 'Text fields',
+          components: 'TextInput, Textarea, NumberInput, SearchBox',
+          notes: 'label, helperText, error, and errorMessage are props.',
+        },
+        {
+          need: 'Choices',
+          components: 'Select, Dropdown, Checkbox, RadioGroup, Switch',
+          notes: 'Dropdown adds search and multi-select.',
+        },
+        {
+          need: 'Dates',
+          components: 'DatePicker, DateRangePicker',
+          notes: 'Gregorian and Hijri; name submits YYYY-MM-DD.',
+        },
+        {
+          need: 'Dialogs and panels',
+          components: 'Modal, Drawer, SlideoutMenu',
+          notes: 'SlideoutMenu is the mobile navigation panel.',
+        },
+        {
+          need: 'Navigation',
+          components: 'Header, Sidebar, DropdownMenu, Breadcrumb, Tabs',
+          notes: 'SidebarMenuButton takes asChild for router links.',
+        },
+        {
+          need: 'Feedback',
+          components: 'NotificationToast + toast(), InlineAlert, Tag, StatusTag',
+          notes: 'Mount NotificationToast once, call toast() anywhere.',
+        },
+        {
+          need: 'Data',
+          components: 'Table, Pagination, Filtration, EmptyState, Skeleton',
+          notes: 'See the server-driven table recipe in Storybook.',
+        },
+        {
+          need: 'Segmented views',
+          components: 'ContentSwitcher, Toggle',
+          notes: 'They switch views and don’t submit; in a form, use RadioGroup or Checkbox.',
+        },
+      ],
+    },
+    links: {
+      title: 'Router links',
+      lead: 'Components that render a link or a menu button take asChild, so an Inertia or Next.js <Link> becomes the element itself: one focusable element, client-side navigation, and the active styles from isActive.',
+    },
+    forms: {
+      title: 'Forms',
+      lead: 'Every form control submits through FormData when you give it a name, so plain forms, Inertia <Form>, React Router actions, and server actions work without extra wiring.',
+      link: 'Read the Forms guide',
+    },
+    otherKit: {
+      title: 'Coming from another Tailwind UI kit',
+      lead: 'Replace the kit in one step rather than running both. Kits such as shadcn/ui, which the Laravel and Next.js starter kits ship, define Tailwind theme names like --color-primary and --color-border in an @theme block. The @dev-dga token bridge defines the same names, so whichever file loads last recolors the other.',
+      items: [
+        'Delete the kit’s @theme block and its :root and .dark color variables.',
+        'Remove the kit’s animation plugin and its dark-mode class variant; DgaProvider mode controls dark mode.',
+        'Replace the kit’s components screen by screen, then delete its component folder.',
+      ],
+    },
+    checklist: {
+      title: 'Before you ship',
+      items: [
+        'The stylesheet declares the layers before importing @dev-dga/css.',
+        'DgaProvider wraps the root, and dark mode switches through its mode prop.',
+        'Each form submits the payload your server expects: see the Forms guide.',
+        'Every page is checked in LTR and RTL, light and dark.',
+      ],
+    },
+  },
   blocks: {
     eyebrow: 'Blocks',
     title: 'Prebuilt blocks, assembled from the primitives.',
@@ -1615,6 +1828,8 @@ const ar: typeof en = {
     proof: 'البراهين',
     components: 'المكوّنات',
     installation: 'التثبيت',
+    forms: 'النماذج',
+    adopt: 'التبنّي في تطبيق قائم',
     blocks: 'الكتل',
     examples: 'أمثلة',
     templates: 'القوالب',
@@ -1726,6 +1941,8 @@ const ar: typeof en = {
     home: 'الرئيسية',
     allComponents: 'كل المكوّنات',
     installation: 'دليل التثبيت',
+    forms: 'دليل النماذج',
+    adopt: 'التبنّي في تطبيق قائم',
     blocks: 'الكتل الجاهزة',
     styling: 'التنسيق مع Tailwind',
     templates: 'القوالب: الصفحة الرئيسية واليوم الوطني',
@@ -2390,6 +2607,207 @@ const ar: typeof en = {
       colStatus: 'الحالة',
       rowA: 'السجل التجاري',
       rowB: 'الإقرار الضريبي',
+    },
+  },
+  formsPage: {
+    eyebrow: 'النماذج',
+    title: 'كل عنصر يُرسَل كما يُرسَل الحقل الأصلي.',
+    lead: 'أعطِ العنصر اسمًا عبر ⁦name⁩ فيُرسَل ضمن ⁦FormData⁩، وهي الصيغة التي يقرؤها النموذج العادي و⁦<Form>⁩ في ⁦Inertia⁩ وإجراءات ⁦React Router⁩ وإجراءات الخادم. لا حاجة إلى ربط ⁦onChange⁩ ولا إلى حقول مخفية إضافية.',
+    onThisPage: 'في هذه الصفحة',
+    version:
+      'الإرسال الأصلي في ⁦DatePicker⁩ و⁦DateRangePicker⁩ و⁦TagInput⁩ و⁦FileUpload⁩ و⁦Dropdown⁩ و⁦Rating⁩، والدالة ⁦parseDateOnly⁩، يتطلب ⁦@dev-dga/react 1.4.0⁩ أو أحدث.',
+    contract: {
+      title: 'ما يرسله كل عنصر',
+      lead: 'القواعد مطابقة للحقول الأصلية: العنصر المعطَّل لا يُرسَل، و⁦required⁩ يمنع الإرسال ما دام العنصر فارغًا، وإعادة تعيين النموذج تُرجع القيمة الأولى.',
+      cols: { control: 'العنصر', submits: 'يرسل', notes: 'ملاحظات' },
+      rows: [
+        {
+          control: '⁦TextInput⁩ و⁦Textarea⁩ و⁦SearchBox⁩',
+          submits: 'النص',
+          notes: 'حقل أصلي، وكل خصائص الحقل تمر إليه.',
+        },
+        {
+          control: 'NumberInput',
+          submits: 'رقم عشري بلا تنسيق، مثل ⁦"1234.5"⁩',
+          notes: 'بلا فواصل آلاف، وبأرقام لاتينية دائمًا. الفارغ يرسل ⁦""⁩.',
+        },
+        { control: 'Select', submits: 'القيمة المختارة', notes: 'الفارغ يرسل ⁦""⁩.' },
+        {
+          control: 'Dropdown',
+          submits: 'القيمة المختارة',
+          notes: 'مع ⁦multiple⁩ يرسل قيدًا لكل قيمة بالاسم نفسه. الاختيار الواحد الفارغ يرسل ⁦""⁩.',
+        },
+        {
+          control: 'Checkbox',
+          submits: 'قيمة ⁦value⁩ أو ⁦"on"⁩',
+          notes: 'غير المحدَّد لا يُرسَل. أعطِ المجموعة اسمًا واحدًا واقرأها بـ ⁦getAll⁩.',
+        },
+        { control: 'RadioGroup', submits: 'القيمة المختارة', notes: 'بلا اختيار لا يُرسَل شيء.' },
+        { control: 'Switch', submits: '"on"', notes: 'المطفأ لا يُرسَل.' },
+        {
+          control: 'Slider',
+          submits: 'القيمة',
+          notes: 'النطاق يرسل ⁦name[]⁩ مرة لكل مقبض، و⁦Radix⁩ هو من يضيف القوسين.',
+        },
+        {
+          control: 'Rating',
+          submits: 'رقم نصي، مثل ⁦"4"⁩ أو ⁦"3.5"⁩',
+          notes: 'بلا تقييم يرسل ⁦"0"⁩.',
+        },
+        {
+          control: 'TagInput',
+          submits: 'قيدًا لكل وسم',
+          notes: 'بلا وسوم لا يُرسَل شيء. النص المكتوب قبل اعتماده لا يُرسَل أبدًا.',
+        },
+        { control: 'InputOTP', submits: 'الرمز المُدخَل', notes: 'حقل أصلي تحت الخانات.' },
+        {
+          control: 'DatePicker',
+          submits: 'تاريخ ميلادي ⁦YYYY-MM-DD⁩',
+          notes: 'حتى عند عرض الهجري. الفارغ يرسل ⁦""⁩.',
+        },
+        {
+          control: 'DateRangePicker',
+          submits: 'تاريخ ميلادي ⁦YYYY-MM-DD⁩ باسمي ⁦startName⁩ و⁦endName⁩',
+          notes: 'كل طرف يُرسَل وحده.',
+        },
+        {
+          control: 'FileUpload',
+          submits: 'كل ملف في القائمة (⁦multipart⁩)',
+          notes:
+            'الحقل الأصلي يعكس ⁦files⁩، بما فيها الملفات المسحوبة. إعادة التعيين تترك ⁦files⁩ لك.',
+        },
+        {
+          control: '⁦ContentSwitcher⁩ و⁦Toggle⁩',
+          submits: 'لا شيء',
+          notes:
+            'مبدّلات عرض، لا عناصر نماذج. للاختيار داخل نموذج استخدم ⁦RadioGroup⁩ أو ⁦Checkbox⁩.',
+        },
+      ],
+    },
+    arrays: {
+      title: 'القيم المتعددة',
+      lead: 'يرسل ⁦TagInput⁩ و⁦Dropdown⁩ مع ⁦multiple⁩ ومجموعات ⁦Checkbox⁩ قيدًا واحدًا في ⁦FormData⁩ لكل قيمة، بالاسم الذي تمرره كما هو، مثل ⁦<select multiple>⁩ الأصلي. اقرأها بـ ⁦formData.getAll(name⁩). لا تبني ⁦PHP⁩ و⁦Laravel⁩ مصفوفة إلا من أسماء تنتهي بـ ⁦[]⁩، فمرّر ⁦name="tags[]"⁩ هناك.',
+    },
+    native: {
+      title: 'النماذج العادية',
+      lead: 'ضع العناصر داخل ⁦<form>⁩ واقرأ ⁦FormData⁩ في معالج الإرسال. هذا هو العقد الذي تقوم عليه كل التكاملات التالية.',
+    },
+    inertia: {
+      title: '⁦<Form>⁩ في ⁦Inertia⁩',
+      lead: 'تبني ⁦Inertia⁩ بياناتها من ⁦new FormData(form⁩)، فالعناصر المسمّاة لا تحتاج إلى ربط إضافي. وأخطاؤها تُمرَّر مباشرة إلى خاصيتي ⁦error⁩ و⁦errorMessage⁩ في كل عنصر.',
+      note: 'الدالة ⁦reset(⁩) الكاملة تطلق حدث ⁦reset⁩ تستمع إليه العناصر. أما إعادة تعيين حقول بعينها، مثل ⁦resetOnSuccess={["name"]}⁩، فلا تطلق حدثًا، فتحتفظ العناصر التي تدير حالتها بنفسها (منتقيا التاريخ و⁦TagInput⁩ و⁦Dropdown⁩ و⁦Rating⁩ و⁦NumberInput⁩ و⁦InputOTP⁩) بقيمتها الحالية. أعد تعيين النموذج كله، أو تحكّم في هذه الحقول بنفسك.',
+    },
+    router: {
+      title: 'إجراءات ⁦React Router⁩',
+      lead: 'يرسل ⁦<Form>⁩ في ⁦React Router⁩ بيانات ⁦FormData⁩ نفسها إلى إجراء المسار. اقرأها بـ ⁦request.formData(⁩) وأعِد أخطاء التحقق من الإجراء.',
+    },
+    actions: {
+      title: 'إجراءات الخادم',
+      lead: 'مرّر إجراء الخادم إلى خاصية ⁦action⁩ في النموذج. تُرجع ⁦useActionState⁩ نتيجة الإجراء، فتعود أخطاء الحقول من الخادم إلى العناصر.',
+    },
+    errors: {
+      title: 'أخطاء التحقق من الخادم',
+      lead: 'كل حقل يقبل ⁦error (⁩حالة الخطأ) و⁦errorMessage (⁩النص تحت الحقل). معًا يضبطان ⁦aria-invalid⁩ ويربطان ⁦aria-describedby⁩ بالرسالة، فتقرأ قارئات الشاشة رسالة الخادم مع الحقل.',
+      note: 'اضبط ⁦error⁩ و⁦errorMessage⁩ معًا. الرسالة دون ⁦error⁩ تبقى مخفية، و⁦error⁩ وحده يعلّم الحقل دون أن يخبر المستخدم بالسبب.',
+    },
+    dates: {
+      title: 'التواريخ القادمة من الخادم',
+      lead: 'يرسل الخادم التواريخ نصوصًا بصيغة ⁦YYYY-MM-DD⁩. حوّلها بـ ⁦parseDateOnly⁩، فهي تبني ⁦Date⁩ عند منتصف الليل بالتوقيت المحلي وتطلق ⁦RangeError⁩ لأي صيغة أخرى. أما ⁦new Date("2026-10-20"⁩) فتقرأ النص بتوقيت ⁦UTC⁩، فيظهر ⁦19⁩ أكتوبر في أي منطقة غرب ⁦UTC⁩.',
+    },
+  },
+  adoptPage: {
+    eyebrow: 'التبنّي',
+    title: 'أدخِل ⁦@dev-dga⁩ إلى تطبيق قائم.',
+    lead: 'أضف الأنماط، وغلّف الجذر بـ ⁦DgaProvider⁩، واستبدل الشاشات واحدة تلو الأخرى. تصلح هذه الخطوات لتطبيق ⁦Laravel⁩ مع ⁦Inertia⁩، أو تطبيق ⁦Next.js⁩، أو أي مشروع ⁦React 19⁩.',
+    onThisPage: 'في هذه الصفحة',
+    css: {
+      title: 'أعدّ ملف الأنماط',
+      lead: 'استورد ⁦@dev-dga/css⁩ مرة واحدة. ومع ⁦Tailwind v4⁩ عرّف طبقات ⁦CSS⁩ أولًا لتقع المكتبة بين أساس ⁦Tailwind⁩ وأدواته، ثم أضف جسر الرموز لتحصل على ⁦bg-primary⁩ و⁦text-ink⁩ وبقية مقياس ⁦DGA⁩.',
+      after:
+        'أبقِ أسطر ⁦@source⁩ الخاصة بك. المكتبة تأتي بإعادة ضبطها الخاصة، فـ ⁦preflight⁩ في ⁦Tailwind⁩ اختياري.',
+    },
+    provider: {
+      title: 'غلّف التطبيق بـ ⁦DgaProvider⁩',
+      lead: 'يضبط ⁦DgaProvider⁩ الاتجاه واللغة وخط ⁦DGA⁩ والوضع الفاتح أو الداكن عبر ⁦data-theme⁩. والطبقات العائمة مثل ⁦Modal⁩ و⁦Select⁩ و⁦DatePicker⁩ تُعرض داخله، فترث السمة والاتجاه.',
+    },
+    mapping: {
+      title: 'اختر المكوّنات',
+      lead: 'كل حاجة تقابلها مكوّنات من ⁦@dev-dga⁩. التسمية والنص المساعد والأخطاء خصائص في الحقل نفسه، فلا تربط المعرّفات يدويًا.',
+      cols: { need: 'تحتاج إلى', components: 'مكوّنات ⁦@dev-dga⁩', notes: 'ملاحظات' },
+      rows: [
+        {
+          need: 'الإجراءات والروابط',
+          components: 'Button, Link',
+          notes: '⁦asChild⁩ يجعل رابط الموجّه هو الزر نفسه.',
+        },
+        {
+          need: 'حقول النص',
+          components: 'TextInput, Textarea, NumberInput, SearchBox',
+          notes: '⁦label⁩ و⁦helperText⁩ و⁦error⁩ و⁦errorMessage⁩ خصائص.',
+        },
+        {
+          need: 'الاختيارات',
+          components: 'Select, Dropdown, Checkbox, RadioGroup, Switch',
+          notes: '⁦Dropdown⁩ يضيف البحث والاختيار المتعدد.',
+        },
+        {
+          need: 'التواريخ',
+          components: 'DatePicker, DateRangePicker',
+          notes: 'ميلادي وهجري، و⁦name⁩ يرسل ⁦YYYY-MM-DD⁩.',
+        },
+        {
+          need: 'النوافذ واللوحات',
+          components: 'Modal, Drawer, SlideoutMenu',
+          notes: '⁦SlideoutMenu⁩ هي لوحة التنقل في الجوال.',
+        },
+        {
+          need: 'التنقل',
+          components: 'Header, Sidebar, DropdownMenu, Breadcrumb, Tabs',
+          notes: '⁦SidebarMenuButton⁩ يقبل ⁦asChild⁩ لروابط الموجّه.',
+        },
+        {
+          need: 'التنبيهات',
+          components: 'NotificationToast + toast(), InlineAlert, Tag, StatusTag',
+          notes: 'ركّب ⁦NotificationToast⁩ مرة واحدة، واستدعِ ⁦toast(⁩) في أي مكان.',
+        },
+        {
+          need: 'البيانات',
+          components: 'Table, Pagination, Filtration, EmptyState, Skeleton',
+          notes: 'راجع وصفة الجدول المعتمد على الخادم في ⁦Storybook⁩.',
+        },
+        {
+          need: 'مبدّلات العرض',
+          components: 'ContentSwitcher, Toggle',
+          notes: 'تبدّل العرض ولا تُرسَل؛ داخل النماذج استخدم ⁦RadioGroup⁩ أو ⁦Checkbox⁩.',
+        },
+      ],
+    },
+    links: {
+      title: 'روابط الموجّه',
+      lead: 'المكوّنات التي تعرض رابطًا أو زر قائمة تقبل ⁦asChild⁩، فيصبح ⁦<Link>⁩ في ⁦Inertia⁩ أو ⁦Next.js⁩ هو العنصر نفسه: عنصر واحد قابل للتركيز، وتنقّل من جهة العميل، وأنماط الحالة النشطة من ⁦isActive⁩.',
+    },
+    forms: {
+      title: 'النماذج',
+      lead: 'كل عناصر النماذج تُرسَل عبر ⁦FormData⁩ متى أعطيتها اسمًا، فتعمل النماذج العادية و⁦<Form>⁩ في ⁦Inertia⁩ وإجراءات ⁦React Router⁩ وإجراءات الخادم دون ربط إضافي.',
+      link: 'اقرأ دليل النماذج',
+    },
+    otherKit: {
+      title: 'القادم من مجموعة واجهات أخرى مبنية على ⁦Tailwind⁩',
+      lead: 'استبدل المجموعة دفعة واحدة بدل تشغيل الاثنتين. مجموعات مثل ⁦shadcn/ui⁩، التي تأتي مع قوالب ⁦Laravel⁩ و⁦Next.js⁩ الجاهزة، تعرّف أسماء سمات ⁦Tailwind⁩ مثل ⁦--color-primary⁩ و⁦--color-border⁩ في كتلة ⁦@theme⁩. وجسر رموز ⁦@dev-dga⁩ يعرّف الأسماء نفسها، فأيّهما يُحمَّل أخيرًا يغيّر ألوان الآخر.',
+      items: [
+        'احذف كتلة ⁦@theme⁩ الخاصة بالمجموعة ومتغيّرات الألوان في ⁦:root⁩ و⁦.dark⁩.',
+        'احذف إضافة الحركة الخاصة بالمجموعة وصيغة الوضع الداكن بالفئة؛ فخاصية ⁦mode⁩ في ⁦DgaProvider⁩ تتحكّم في الوضع الداكن.',
+        'استبدل مكوّنات المجموعة شاشةً شاشة، ثم احذف مجلد مكوّناتها.',
+      ],
+    },
+    checklist: {
+      title: 'قبل الإطلاق',
+      items: [
+        'ملف الأنماط يعرّف الطبقات قبل استيراد ⁦@dev-dga/css⁩.',
+        '⁦DgaProvider⁩ يغلّف الجذر، والوضع الداكن يتبدّل عبر خاصية ⁦mode⁩.',
+        'كل نموذج يرسل البيانات التي ينتظرها الخادم: راجع دليل النماذج.',
+        'كل صفحة مراجَعة في الاتجاهين ⁦LTR⁩ و⁦RTL⁩، وفي الوضعين الفاتح والداكن.',
+      ],
     },
   },
   blocks: {
