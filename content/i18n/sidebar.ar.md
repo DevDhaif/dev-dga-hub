@@ -1,15 +1,15 @@
 ---
-description: 'شريط جانبي للتطبيقات في React بمجموعات وقوائم وقوائم فرعية وشارات وسكّة أيقونات قابلة للطي في سطح المكتب تتحوّل إلى لوح في الجوال. ينعكس الجانب في الاتجاه العربي.'
-seoTitle: 'شريط جانبي: مكوّن Sidebar شريط تطبيق قابل للطي بسكّة'
+description: 'شريط جانبي للتطبيقات في React: مجموعات، قوائم، قوائم فرعية، شارات، وشريط أيقونات قابلة للطي على سطح المكتب. يتحول الشريط إلى درج في الجوال، وينعكس جانبه في الاتجاه من اليمين إلى اليسار.'
+seoTitle: 'شريط جانبي: مكون Sidebar لشريط تطبيق قابل للطي بشريط أيقونات'
 ---
 
-لف التطبيق بـ `SidebarProvider` ثم ضع `Sidebar` و`SidebarInset`. ينطوي إلى شريط أيقونات على سطح المكتب ودرج على الجوال، وينعكس جانبه في RTL.
+ضع التطبيق داخل `SidebarProvider`، ثم أضف `Sidebar` و`SidebarInset`. ينطوي الشريط إلى شريط أيقونات على سطح المكتب، ويتحول إلى درج على الجوال. ينعكس جانبه في RTL.
 
 ## When to use
 
-استخدم Sidebar تنقّلًا رئيسيًا لتطبيق يتطلّب تسجيل الدخول: لوحة إدارة، أو أداة إدارة معاملات، أو لوحة تحكّم للمستفيد بعدّة أقسام. غلّف التطبيق بـ `SidebarProvider`، وضع `Sidebar`، واعرض الصفحات داخل `SidebarInset`.
+استخدم Sidebar للتنقل الرئيسي في تطبيق يتطلب تسجيل الدخول: لوحة إدارة، أداة لإدارة المعاملات، أو لوحة تحكم للمستفيد بعدة أقسام. ضع التطبيق داخل `SidebarProvider`، وأضف `Sidebar`، واعرض الصفحات داخل `SidebarInset`.
 
-للمواقع العامة ذات الروابط القليلة، ترويسة مع SlideoutMenu في الجوال أخفّ.
+للمواقع العامة ذات الروابط القليلة، تكون الترويسة مع SlideoutMenu في الجوال أخف.
 
 ## Example: App shell
 
@@ -136,13 +136,13 @@ export default function Demo() {
         background: 'var(--ddga-color-background)',
       }}
     >
-      <Sidebar aria-label="التنقّل الرئيسي">
+      <Sidebar aria-label="التنقل الرئيسي">
         <SidebarHeader>
           <strong style={{ paddingInline: 'var(--ddga-space-2)' }}>بوابة الحكومة الرقمية</strong>
         </SidebarHeader>
         <SidebarContent>
           <SidebarGroup>
-            <SidebarGroupLabel>المنصّة</SidebarGroupLabel>
+            <SidebarGroupLabel>المنصة</SidebarGroupLabel>
             <SidebarGroupContent>
               <SidebarMenu>
                 <SidebarMenuItem>
@@ -208,7 +208,7 @@ export default function Demo() {
           <strong>لوحة التحكم</strong>
         </header>
         <div style={{ padding: 'var(--ddga-space-4)' }}>
-          بدِّل الشريط بالزر أعلاه، أو اضغط Cmd/Ctrl+B.
+          بدل الشريط بالزر أعلاه، أو اضغط Cmd/Ctrl+B.
         </div>
       </SidebarInset>
     </SidebarProvider>
@@ -218,6 +218,6 @@ export default function Demo() {
 
 ## Accessibility
 
-تُعرض القوائم قوائمَ من الأزرار والروابط، ويُعلّم العنصر النشط بـ `aria-current`. تعرض المجموعات القابلة للطي `aria-expanded`. عند الطي إلى سكّة الأيقونات، يعرض كل عنصر تلميحًا لتبقى التسمية متاحة.
+تعرض القوائم عناصرها في قوائم HTML من الأزرار والروابط، ويحمل العنصر النشط `aria-current`. تحمل المجموعات القابلة للطي `aria-expanded`. عند الطي إلى شريط الأيقونات، يعرض كل عنصر تلميحاً لتبقى التسمية متاحة.
 
-للمشغّل اسم متاح، ويوفّر `SidebarProvider` اختصار لوحة مفاتيح تضبطه بـ `keyboardShortcut`. في الجوال يفتح الشريط لوحًا بحصر التركيز.
+للمشغل اسم متاح. يوفر `SidebarProvider` اختصار لوحة مفاتيح تضبطه بـ `keyboardShortcut`. في الجوال، يفتح الشريط درجاً يحصر التركيز.

@@ -1,15 +1,15 @@
 ---
-description: 'مكوّن DigitalStamp للمواقع الحكومية السعودية في React: شريط العلم والعبارة، ولوحة شرح نطاق .gov.sa، ورقم تسجيل الهيئة، بالعربية والإنجليزية.'
-seoTitle: 'الختم الرقمي: شريط التحقّق الرسمي للمواقع الحكومية السعودية'
+description: 'مكون DigitalStamp للمواقع الحكومية السعودية في React: شريط العلم والعبارة، ولوحة شرح نطاق .gov.sa، ورقم تسجيل الهيئة، بالعربية والإنجليزية.'
+seoTitle: 'الختم الرقمي: شريط التحقق الرسمي للمواقع الحكومية السعودية'
 ---
 
-يعرض DigitalStamp شريط العلم والعبارة الرسمية مع لوحة توضيحية. حدد `extension` لنص النطاق و`registrationNumber` لإظهار لوحة تسجيل الهيئة.
+يعرض DigitalStamp شريط العلم والعبارة الرسمية مع لوحة شرح. حدد `extension` لنص النطاق، و`registrationNumber` لإظهار لوحة تسجيل الهيئة.
 
 ## When to use
 
-استخدم DigitalStamp في أعلى كل صفحة من موقع حكومي سعودي رسمي، كما يشترط كود المنصّات. اضبط `extension` ليطابق نطاقك و`registrationNumber` حين يكون الموقع مسجّلًا لدى هيئة الحكومة الرقمية.
+استخدم DigitalStamp في أعلى كل صفحة من موقع حكومي سعودي رسمي، كما يشترط كود المنصات. اضبط `extension` ليطابق نطاقك، و`registrationNumber` حين يكون الموقع مسجلاً لدى هيئة الحكومة الرقمية.
 
-اعرضه مرّة واحدة في الصفحة، فوق الترويسة.
+اعرضه مرة واحدة في الصفحة، فوق الترويسة.
 
 ## Example: Verification bar
 
@@ -36,21 +36,21 @@ export default function Demo() {
     <div style={{ width: 720, maxWidth: '100%' }}>
       <DigitalStamp
         aria-label="التحقق من الموقع الحكومي"
-        statement="موقع حكومي مسجّل لدى هيئة الحكومة الرقمية."
+        statement="موقع حكومي مسجل لدى هيئة الحكومة الرقمية."
         triggerLabel="كيف تتحقق؟"
         domainTitle={
           <>
             تنتهي روابط المواقع الحكومية الرسمية السعودية بـ <strong>.gov.sa</strong>
           </>
         }
-        domainDescription="يعود الموقع إلى جهة حكومية رسمية في المملكة العربية السعودية وينتهي دائمًا بـ .gov.sa ."
+        domainDescription="يعود الموقع إلى جهة حكومية رسمية في المملكة العربية السعودية وينتهي دائماً بـ .gov.sa ."
         securityTitle={
           <>
             المواقع الرسمية الموثوقة تستخدم <strong>HTTPS</strong>
           </>
         }
         securityDescription="تأكد من أن الموقع يستخدم بروتوكول HTTPS."
-        registrationLabel="مسجّل لدى هيئة الحكومة الرقمية:"
+        registrationLabel="مسجل لدى هيئة الحكومة الرقمية:"
         registrationNumber="00000000000"
         registrationHref="https://example.gov.sa"
         logo={<DgaMark />}
@@ -86,21 +86,21 @@ export default function Demo() {
       <DigitalStamp
         defaultOpen
         aria-label="التحقق من الموقع الحكومي"
-        statement="موقع حكومي مسجّل لدى هيئة الحكومة الرقمية."
+        statement="موقع حكومي مسجل لدى هيئة الحكومة الرقمية."
         triggerLabel="كيف تتحقق؟"
         domainTitle={
           <>
             تنتهي روابط المواقع الحكومية الرسمية السعودية بـ <strong>.gov.sa</strong>
           </>
         }
-        domainDescription="يعود الموقع إلى جهة حكومية رسمية في المملكة العربية السعودية وينتهي دائمًا بـ .gov.sa ."
+        domainDescription="يعود الموقع إلى جهة حكومية رسمية في المملكة العربية السعودية وينتهي دائماً بـ .gov.sa ."
         securityTitle={
           <>
             المواقع الرسمية الموثوقة تستخدم <strong>HTTPS</strong>
           </>
         }
         securityDescription="تأكد من أن الموقع يستخدم بروتوكول HTTPS."
-        registrationLabel="مسجّل لدى هيئة الحكومة الرقمية:"
+        registrationLabel="مسجل لدى هيئة الحكومة الرقمية:"
         registrationNumber="00000000000"
         registrationHref="https://example.gov.sa"
         logo={<DgaMark />}
@@ -121,7 +121,7 @@ export default function Demo() {
       <DigitalStamp
         extension="edu.sa"
         defaultOpen
-        statement="موقع تعليمي معتمد مسجّل لدى هيئة الحكومة الرقمية."
+        statement="موقع تعليمي معتمد مسجل لدى هيئة الحكومة الرقمية."
       />
     </div>
   );
@@ -130,6 +130,6 @@ export default function Demo() {
 
 ## Accessibility
 
-زر الشرح زر بـ `aria-expanded` و`aria-controls`، فتُعلن حالة اللوحة. العلم والعلامات زخرفية والعبارة نص.
+يعرض زر الشرح `aria-expanded` و`aria-controls`، مما يتيح للتقنيات المساعدة إعلان حالة اللوحة. العلم والعلامات زخرفية، بينما العبارة نص.
 
-النص الافتراضي هو نص SDGA الإنجليزي. مرّر العبارة العربية ونصوص اللوحة عبر الخصائص كما في المثال العربي؛ ويتبع الشريط نفسه اتجاه الصفحة.
+يعرض المكون نص SDGA الإنجليزي افتراضياً. مرر العبارة العربية ونصوص اللوحة عبر الخصائص كما في المثال العربي. ويتبع الشريط نفسه اتجاه الصفحة.

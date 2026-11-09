@@ -1,15 +1,15 @@
 ---
-description: 'حقل بحث في React مبني على TextInput مع عدسة وبحث صوتي وزر مسح وEnter للبحث. يناسب التصفية الحيّة وصفحات البحث الكاملة.'
-seoTitle: 'مربّع بحث: مكوّن SearchBox بالبحث الصوتي وزر المسح'
+description: 'حقل بحث في React مبني على TextInput: عدسة، بحث صوتي، زر مسح، وEnter للبحث. يناسب التصفية الحية وصفحات البحث الكاملة.'
+seoTitle: 'مربع بحث: مكون SearchBox بالبحث الصوتي وزر المسح'
 ---
 
-يبني SearchBox على TextInput ويضيف عدسة ومايكروفونًا وزر مسح. يستدعى `onSearch` عند الضغط على Enter.
+يعتمد SearchBox على TextInput، ويضيف إليه عدسة، ميكروفوناً، وزر مسح. يستدعي SearchBox الدالة `onSearch` عند الضغط على Enter.
 
 ## When to use
 
-استخدم SearchBox في أعلى القوائم والجداول وأدلّة الخدمات. استخدم `onSearch` للاستعلام المرسل و`value` المتحكَّم به للتصفية الحيّة أثناء الكتابة. اعرض عدد النتائج قريبًا ليعرف المستخدم أن البحث نجح.
+استخدم SearchBox في أعلى القوائم، الجداول، وأدلة الخدمات. استخدم `onSearch` للاستعلام المرسل، و`value` المتحكم به للتصفية الحية أثناء الكتابة. اعرض عدد النتائج قرب الحقل ليعرف المستخدم أن البحث نجح.
 
-للوحة أوامر عامة استخدم Command.
+للوحة أوامر عامة، استخدم Command.
 
 ## Example: Basic search
 
@@ -64,8 +64,8 @@ export default function Demo() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 360 }}>
       <SearchBox variant="default" label="افتراضي" placeholder="بحث…" />
-      <SearchBox variant="filled-lighter" label="معبّأ أفتح" placeholder="بحث…" />
-      <SearchBox variant="filled-darker" label="معبّأ أغمق" defaultValue="الرياض" />
+      <SearchBox variant="filled-lighter" label="معبأ أفتح" placeholder="بحث…" />
+      <SearchBox variant="filled-darker" label="معبأ أغمق" defaultValue="الرياض" />
     </div>
   );
 }
@@ -73,6 +73,6 @@ export default function Demo() {
 
 ## Accessibility
 
-يحتفظ الحقل بتسمية ظاهرة أو `aria-label`، وأيقونة العدسة زخرفية. ينفّذ Enter البحث ويمسح Escape الحقل. زرا المسح والصوت زران حقيقيان بأسماء متاحة.
+يحتفظ الحقل بتسمية ظاهرة أو `aria-label`، وأيقونة العدسة زخرفية. ينفذ مفتاح Enter البحث، ويمسح مفتاح Escape الحقل. زرا المسح والبحث الصوتي زران حقيقيان بأسماء متاحة.
 
-عند التصفية الحيّة أعلن عدد النتائج في منطقة حيّة ليحصل مستخدم قارئ الشاشة على تغذية راجعة.
+عند التصفية الحية، أعلن عدد النتائج في منطقة حية ليحصل مستخدم قارئ الشاشة على تغذية راجعة.

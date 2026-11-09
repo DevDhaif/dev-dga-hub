@@ -3,9 +3,9 @@ import { InstallationGuide } from '@/components/installation/InstallationGuide';
 import { pageSeo } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'تثبيت مكتبة مكوّنات React لكود المنصّات',
+  title: 'تثبيت مكتبة مكونات React لكود المنصات',
   description:
-    'ثبّت نظام dev-dga، وغلّف تطبيقك بالمزوّد، وتحكّم بكل رمز تصميم: اللوحة اللونية، ونصف القطر، والخطوط، والوضع الداكن، واتجاه الكتابة، من طبقة واحدة من متغيّرات CSS.',
+    'ثبّت dev-dga، وغلف تطبيقك بالمزود، ثم تحكم بكل رمز تصميم من طبقة واحدة من متغيرات CSS: اللوحة اللونية، الاستدارة، الخطوط، الوضع الداكن، واتجاه الكتابة.',
   ...pageSeo('/installation', 'ar'),
 };
 

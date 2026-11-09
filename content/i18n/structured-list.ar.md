@@ -1,15 +1,15 @@
 ---
-description: 'قائمة مُنظّمة خفيفة في React لصفوف الترويسة والنص، مع صفوف قابلة للاختيار وكثافة مضغوطة وبلا عبء فرز. تعرض جدولًا حقيقيًا.'
-seoTitle: 'قائمة مُنظّمة: مكوّن StructuredList جدول خفيف للصفوف'
+description: 'قائمة منظمة خفيفة في React لصفوف الترويسة والنص، مع صفوف قابلة للاختيار وكثافة مضغوطة ودون عبء الفرز. تعرض جدولاً حقيقياً.'
+seoTitle: 'قائمة منظمة: مكون StructuredList جدول خفيف للصفوف'
 ---
 
-StructuredList أخف من Table: بلا فرز أو تصفية. أضف `selectable` لخانات اختيار في الصفوف تتبدل بالنقر على الصف.
+يخلو StructuredList من الفرز والتصفية، لذا هو أخف من Table. أضف `selectable` لتظهر في كل صف مربعات اختيار تتبدل بالنقر على الصف.
 
 ## When to use
 
-استخدم StructuredList لبيانات الصفوف البسيطة التي لا تحتاج فرزًا أو تصفية: قائمة مستندات أو جهات اتصال أو خيارات بصفات قليلة. أضف `selectable` حين يختار المستخدم صفوفًا.
+استخدم StructuredList لبيانات الصفوف البسيطة التي لا تحتاج فرزاً أو تصفية: قائمة مستندات أو جهات اتصال أو خيارات بصفات قليلة. أضف `selectable` حين يختار المستخدم صفوفاً.
 
-حين تحتاج البيانات فرزًا أو تصفية أو أعمدة كثيرة، استخدم Table.
+حين تحتاج البيانات فرزاً أو تصفية أو أعمدة كثيرة، استخدم Table.
 
 ## Example: Basic list
 
@@ -47,7 +47,7 @@ export default function Demo() {
         <StructuredListRow>
           <StructuredListCell>مها يوسف</StructuredListCell>
           <StructuredListCell>maha@dev-dga.com</StructuredListCell>
-          <StructuredListCell>مشاهِد</StructuredListCell>
+          <StructuredListCell>مشاهد</StructuredListCell>
         </StructuredListRow>
       </StructuredListBody>
     </StructuredList>
@@ -71,7 +71,7 @@ import {
 const rows = [
   { email: 'sara@dev-dga.com', name: 'سارة العتيبي', role: 'مدير' },
   { email: 'khalid@dev-dga.com', name: 'خالد ناصر', role: 'محرر' },
-  { email: 'maha@dev-dga.com', name: 'مها يوسف', role: 'مشاهِد' },
+  { email: 'maha@dev-dga.com', name: 'مها يوسف', role: 'مشاهد' },
 ];
 
 export default function Demo() {
@@ -117,7 +117,7 @@ import {
 export default function Demo() {
   return (
     <StructuredList
-      aria-label="ملخّص الطلب"
+      aria-label="ملخص الطلب"
       compact
       contained
       rowDivider={false}
@@ -145,6 +145,6 @@ export default function Demo() {
 
 ## Accessibility
 
-تعرض القائمة `<table>` أصليًا بخلايا ترويسة، فتُعلن الأعمدة مع كل قيمة. تعرض الصفوف القابلة للاختيار `role="checkbox"` بحالة التحديد وتتبدّل بالنقر أو Space.
+تعرض القائمة عنصر `<table>` أصلياً بخلايا ترويسة، لذا يعلن قارئ الشاشة العمود مع كل قيمة. تعرض الصفوف القابلة للاختيار `role="checkbox"` بحالة التحديد، وتتبدل بالنقر أو بمفتاح Space.
 
-أعطِ الجدول `aria-label` يسمّي مجموعة البيانات.
+أعط الجدول `aria-label` يسمي مجموعة البيانات.

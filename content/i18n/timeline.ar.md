@@ -1,13 +1,13 @@
 ---
-description: 'مخطّط زمني عمودي في React لسجل الطلبات وتتبّع المعاملات وموجز النشاط، بعلامات حالة وأيقونات وصور رمزية. دلالات قائمة مرتّبة.'
-seoTitle: 'مخطّط زمني: مكوّن Timeline عمودي بعلامات حالة'
+description: 'مخطط زمني عمودي في React لسجل الطلبات وتتبع المعاملات وموجز النشاط، بعلامات حالة وأيقونات وصور رمزية. يستخدم دلالات القائمة المرتبة.'
+seoTitle: 'مخطط زمني: مكون Timeline عمودي بعلامات حالة'
 ---
 
-ركب عناصر `TimelineItem`، لكل منها علامة ومحتوى. حالة العلامة `status` شكلية فقط، فاجعل المعنى في النص.
+ركّب عناصر `TimelineItem`، لكل منها علامة ومحتوى. تؤثر الخاصية `status` في مظهر العلامة فقط، لذا ضع المعنى في النص.
 
 ## When to use
 
-استخدم Timeline لعرض تاريخ الطلب: أُرسل، قيد المراجعة، اعتُمد، سُلّم. استخدم `status` العلامة للقراءة البصرية السريعة وضع التاريخ والنتيجة في النص.
+استخدم Timeline لعرض سجل الطلب: الإرسال، المراجعة، الاعتماد، والتسليم. استخدم `status` في العلامة لقراءة بصرية سريعة، وضع التاريخ والنتيجة في النص.
 
 للخطوات القادمة في نموذج، استخدم ProgressIndicator.
 
@@ -30,7 +30,7 @@ export default function Demo() {
       <TimelineItem>
         <TimelineMarker status="success" />
         <TimelineContent>
-          <TimelineTime dateTime="2026-06-01T09:00">9:00 صباحًا</TimelineTime>
+          <TimelineTime dateTime="2026-06-01T09:00">9:00 صباحاً</TimelineTime>
           <TimelineTitle>تم تقديم الطلب</TimelineTitle>
           <TimelineDescription>تم تأكيد 3 عناصر</TimelineDescription>
         </TimelineContent>
@@ -38,7 +38,7 @@ export default function Demo() {
       <TimelineItem>
         <TimelineMarker status="success" />
         <TimelineContent>
-          <TimelineTime dateTime="2026-06-01T11:30">11:30 صباحًا</TimelineTime>
+          <TimelineTime dateTime="2026-06-01T11:30">11:30 صباحاً</TimelineTime>
           <TimelineTitle>تم الشحن</TimelineTitle>
           <TimelineDescription>الناقل: أرامكس</TimelineDescription>
         </TimelineContent>
@@ -205,7 +205,7 @@ export default function Demo() {
           </Avatar>
         </TimelineMarker>
         <TimelineContent>
-          <TimelineTitle>علّق محمد على المستند</TimelineTitle>
+          <TimelineTitle>علق محمد على المستند</TimelineTitle>
           <TimelineTime dateTime="2026-06-01T06:30">قبل 3 ساعات</TimelineTime>
         </TimelineContent>
       </TimelineItem>
@@ -216,6 +216,6 @@ export default function Demo() {
 
 ## Accessibility
 
-يعرض Timeline قائمة مرتّبة، فيُعلن عدد الأحداث وترتيبها. حالة العلامة والأيقونات زخرفية، فيجب أن يذكر نص كل عنصر ما حدث ومتى.
+يعرض Timeline قائمة مرتبة، لذا يعلن قارئ الشاشة عدد الأحداث وترتيبها. يجب أن يذكر نص كل عنصر ما حدث ومتى، لأن حالة العلامة والأيقونات زخرفية.
 
-ثبّت الترتيب من الأحدث أو الأقدم في المنتج كلّه.
+ثبّت ترتيباً واحداً في المنتج كله: الأحدث أولاً أو الأقدم أولاً.

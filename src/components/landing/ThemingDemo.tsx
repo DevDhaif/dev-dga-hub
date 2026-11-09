@@ -48,7 +48,7 @@ export function ThemingDemo() {
             <Button variant="ghost">{t('Ghost', 'شفاف')}</Button>
           </div>
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', alignItems: 'center' }}>
-            <Tag variant="primary">{t('Featured', 'مميّز')}</Tag>
+            <Tag variant="primary">{t('Featured', 'مميز')}</Tag>
             <Tag variant="primary-subtle">{t('Beta', 'تجريبي')}</Tag>
             <Switch defaultChecked label={t('Notifications', 'الإشعارات')} />
           </div>

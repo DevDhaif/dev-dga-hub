@@ -29,12 +29,12 @@ const LIB_VERSION = pkg.dependencies['@dev-dga/react'].replace(/^\D*/, '');
 
 export const DESCRIPTION: Record<Locale, string> = {
   en: `An independent, MIT-licensed UI component library implementing Saudi Arabia’s SDGA Platforms Code in React 19: ${COMPONENT_COUNT} accessible DGA React components, RTL-native, Arabic-first, dark-ready, WCAG 2.2 AA. Not affiliated with the official DGA.`,
-  ar: `مكتبة واجهات مستقلة برخصة MIT تطبّق كود منصّات هيئة الحكومة الرقمية بـ React 19: ${COMPONENT_COUNT} مكوّنًا قابلًا للوصول، عربية الاتجاه أصالةً، جاهزة للوضع الداكن، ومتوافقة مع WCAG 2.2 AA. غير تابعة للهيئة الرسمية.`,
+  ar: `مكتبة واجهات مستقلة برخصة MIT تطبق كود منصات هيئة الحكومة الرقمية بـ React 19، وتضم ${COMPONENT_COUNT} مكون متاح الوصول. وهي مبنية للعربية والاتجاه من اليمين إلى اليسار من الأساس، وتدعم الوضع الداكن، وتتوافق مع WCAG 2.2 AA. غير تابعة للهيئة الرسمية.`,
 };
 
 const TITLE: Record<Locale, string> = {
   en: 'DGA React Components · SDGA Platforms Code UI Library',
-  ar: 'مكوّنات React لكود المنصّات · مكتبة واجهات حكومية سعودية',
+  ar: 'مكونات React لكود المنصات · مكتبة واجهات حكومية سعودية',
 };
 
 const KEYWORDS: Record<Locale, string[]> = {
@@ -59,14 +59,14 @@ const KEYWORDS: Record<Locale, string[]> = {
     'Hijri date picker',
   ],
   ar: [
-    'مكوّنات React لكود المنصّات',
-    'مكتبة مكوّنات حكومية',
-    'مكوّنات واجهة سعودية',
-    'كود المنصّات React',
+    'مكونات React لكود المنصات',
+    'مكتبة مكونات حكومية',
+    'مكونات واجهة سعودية',
+    'كود المنصات React',
     'نظام التصميم الحكومي',
-    'كود المنصّات',
+    'كود المنصات',
     'هيئة الحكومة الرقمية',
-    'مكوّنات React عربية',
+    'مكونات React عربية',
     'تصميم حكومي سعودي',
     'واجهات عربية RTL',
     'WCAG 2.2 AA',
@@ -142,7 +142,7 @@ function jsonLdFor(locale: Locale) {
           'DGA React Components',
           'SDGA UI Components',
           'DGA Platforms Code React',
-          'مكوّنات React لكود المنصّات',
+          'مكونات React لكود المنصات',
         ],
         softwareVersion: LIB_VERSION,
         softwareRequirements: 'React 19',
@@ -151,7 +151,7 @@ function jsonLdFor(locale: Locale) {
         isBasedOn: {
           '@type': 'CreativeWork',
           name: 'DGA Platforms Code',
-          alternateName: 'كود المنصّات',
+          alternateName: 'كود المنصات',
           url: 'https://dga.gov.sa/ar/digital-knowledge/national-design-system-of-Saudi-Arabia',
         },
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },

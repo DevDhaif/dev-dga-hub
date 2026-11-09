@@ -1,15 +1,15 @@
 ---
-description: 'شريط تقدّم خطّي وحلقة تقدّم دائرية في React بحالات محدّدة وغير محدّدة، وحالات تغذية راجعة، وتسمية، ونص مساعد، وعرض للقيمة.'
-seoTitle: 'تقدّم: مكوّن Progress شريط تقدّم وحلقة دائرية'
+description: 'شريط تقدم خطي وحلقة تقدم دائرية في React: حالة محددة وغير محددة، حالات تغذية راجعة، تسمية، نص مساعد، وعرض للقيمة.'
+seoTitle: 'تقدم: مكون Progress لشريط تقدم وحلقة دائرية'
 ---
 
-`Progress` شريط خطي و`CircularProgress` حلقة. مرر `value`، أو أغفلها للحالة غير المحددة؛ وتحتاج الحلقة إلى `aria-label`.
+يعرض `Progress` شريطاً خطياً، ويعرض `CircularProgress` حلقة. مرر `value` للحالة المحددة، ولا تمررها للحالة غير المحددة. تحتاج الحلقة إلى `aria-label`.
 
 ## When to use
 
-استخدم Progress حين يمكن التعبير عن الاكتمال برقم: رفع ملف، أو فحص عدّة ملفّات، أو حصّة. استخدم الحالة غير المحدّدة فقط ما دام الإجمالي مجهولًا. استخدم `CircularProgress` في المساحات الضيّقة مثل البطاقات وخلايا الجداول.
+استخدم Progress حين يمكن التعبير عن الاكتمال برقم: رفع ملف، فحص عدة ملفات، أو حصة. لا تستخدم الحالة غير المحددة إلا حين يكون الإجمالي مجهولاً. استخدم `CircularProgress` في المساحات الضيقة مثل البطاقات وخلايا الجداول.
 
-لتدفّقات الخطوات، استخدم ProgressIndicator.
+لتدفقات الخطوات، استخدم ProgressIndicator.
 
 ## Example: Linear bar
 
@@ -35,9 +35,9 @@ import { Progress } from '@dev-dga/react';
 export default function Demo() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 24, width: 320 }}>
-      <Progress value={40} label="جارٍ الرفع" helperText="نص مساعد" />
-      <Progress value={100} state="success" label="جارٍ الرفع" helperText="اكتمل" />
-      <Progress value={0} state="error" label="جارٍ الرفع" helperText="فشل الرفع" />
+      <Progress value={40} label="جار الرفع" helperText="نص مساعد" />
+      <Progress value={100} state="success" label="جار الرفع" helperText="اكتمل" />
+      <Progress value={0} state="error" label="جار الرفع" helperText="فشل الرفع" />
     </div>
   );
 }
@@ -61,6 +61,6 @@ export default function Demo() {
 
 ## Accessibility
 
-يعرض Progress الدور `role="progressbar"` مع `aria-valuenow` و`aria-valuemin` و`aria-valuemax`، ويحذف القيمة الحالية في الحالة غير المحدّدة. التسمية `label` الظاهرة تسمّي الشريط؛ أما الحلقة فلا تسمية ظاهرة لها، فمرّر `aria-label` أو `aria-labelledby`.
+يعرض Progress `role="progressbar"` مع `aria-valuenow`، `aria-valuemin`، و`aria-valuemax`. في الحالة غير المحددة، يحذف Progress القيمة الحالية. تسمي `label` الظاهرة الشريط، بينما لا تسمية ظاهرة للحلقة. لذلك مرر للحلقة `aria-label` أو `aria-labelledby`.
 
-استخدم `getValueLabel` لإعلان قيمة أوضح مثل «3 من 5 ملفّات».
+استخدم `getValueLabel` لإعلان قيمة أوضح مثل "3 من 5 ملفات".
