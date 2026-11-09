@@ -521,3 +521,22 @@
 .ts__back-link:hover {
   text-decoration: underline;
 }
+
+/* One-color brand field: fills the 12 brand steps above the per-step controls. */
+.ts-seed {
+  margin-block-end: 1.75rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--ddga-color-border);
+  border-radius: var(--ddga-radius-md);
+  background: var(--ddga-color-card);
+}
+.ts-seed__label {
+  font-weight: 600;
+  color: var(--ddga-text-primary);
+}
+.ts-seed__hint {
+  margin: 0.6rem 0 0;
+  font-size: var(--ddga-font-size-sm);
+  line-height: 1.55;
+  color: var(--ddga-text-secondary);
+}

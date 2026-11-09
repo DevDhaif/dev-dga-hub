@@ -8,6 +8,13 @@ import { GuideCode, GuideLayout, GuideSection, codeDir } from './GuideLayout';
 
 const INSTALL_CODE = `npm i @dev-dga/react @dev-dga/css @dev-dga/tokens`;
 
+const STORYBOOK = 'https://dev-dga.vercel.app/?path=/story/';
+const COMPOSITE_RECIPES = [
+  { key: 'pagination', story: 'components-pagination--laravel-paginator' },
+  { key: 'metric', story: 'components-metric--as-link' },
+  { key: 'emptyState', story: 'components-emptystate--in-a-table' },
+] as const;
+
 const LAYERS_CODE = `/* resources/css/app.css (Laravel) or app/globals.css (Next.js) */
 @layer theme, base, ddga-base, ddga-components, components, utilities;
 @import 'tailwindcss/theme.css' layer(theme);
@@ -140,6 +147,21 @@ export function AdoptionGuide() {
           {t.otherKit.items.map((item) => (
             <li key={item}>{item}</li>
           ))}
+        </ul>
+        <p className="doc-note">{t.otherKit.composites}</p>
+        <ul className="doc-rules">
+          {COMPOSITE_RECIPES.map((recipe) => (
+            <li key={recipe.key}>
+              <a href={`${STORYBOOK}${recipe.story}`} target="_blank" rel="noreferrer">
+                {t.otherKit.recipes[recipe.key]}
+              </a>
+            </li>
+          ))}
+          <li>
+            <Link href={hrefFor('/components/progress-indicator')}>
+              {t.otherKit.recipes.stepper}
+            </Link>
+          </li>
         </ul>
       </GuideSection>
 

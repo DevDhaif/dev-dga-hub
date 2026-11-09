@@ -1,0 +1,56 @@
+/* Guide and studio pair, shown at the top of /theming and /theme. */
+.topic-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  gap: var(--ddga-space-3);
+  margin-block-start: var(--ddga-space-5);
+}
+
+.topic-nav__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ddga-space-1);
+  min-inline-size: 0;
+  padding: var(--ddga-space-3) var(--ddga-space-4);
+  border: 1px solid var(--ddga-color-border);
+  border-radius: var(--ddga-radius-md);
+  background: var(--ddga-color-card);
+  color: var(--ddga-color-foreground);
+  text-decoration: none;
+  transition: border-color 150ms ease;
+}
+
+.topic-nav__item:hover {
+  border-color: var(--ddga-color-primary);
+}
+
+.topic-nav__item:focus-visible {
+  outline: 2px solid var(--ddga-color-ring);
+  outline-offset: 2px;
+}
+
+.topic-nav__item[data-active='true'] {
+  border-color: var(--ddga-color-primary);
+  background: color-mix(in srgb, var(--ddga-color-primary) 6%, var(--ddga-color-card));
+}
+
+.topic-nav__name {
+  font-size: var(--ddga-font-size-base);
+  font-weight: 600;
+}
+
+/* Primary is step 600 in light and step 400 in dark, so it stays legible as text on the card. */
+.topic-nav__item[data-active='true'] .topic-nav__name {
+  color: var(--ddga-color-primary);
+}
+
+.topic-nav__desc {
+  font-size: var(--ddga-font-size-sm);
+  color: var(--ddga-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topic-nav__item {
+    transition: none;
+  }
+}
