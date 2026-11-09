@@ -101,22 +101,22 @@ export function Hero() {
     locale === 'ar'
       ? {
           'aria-label': 'التحقق من الموقع الحكومي',
-          statement: 'خدمة حكومية مسجّلة لدى هيئة الحكومة الرقمية.',
+          statement: 'خدمة حكومية مسجلة لدى هيئة الحكومة الرقمية.',
           triggerLabel: 'كيف تتحقق؟',
-          registrationLabel: 'مسجّلة لدى هيئة الحكومة الرقمية:',
+          registrationLabel: 'مسجلة لدى هيئة الحكومة الرقمية:',
           domainTitle: (
             <>
-              المواقع الحكومية الرسمية في السعودية تنتهي بـ <strong>gov.sa.</strong>
+              تنتهي المواقع الحكومية الرسمية في السعودية بـ <strong>gov.sa.</strong>
             </>
           ),
           domainDescription:
-            'المواقع التابعة لجهةٍ حكومية رسمية في المملكة العربية السعودية تنتهي دائمًا بالنطاق gov.sa.',
+            'تنتهي مواقع الجهات الحكومية الرسمية في المملكة العربية السعودية دائماً بالنطاق gov.sa.',
           securityTitle: (
             <>
-              المواقع الموثوقة تستخدم <strong>HTTPS</strong>
+              تستخدم المواقع الموثوقة <strong>HTTPS</strong>
             </>
           ),
-          securityDescription: 'تأكّد من أن الموقع يستخدم بروتوكول HTTPS.',
+          securityDescription: 'تأكد من أن الموقع يستخدم بروتوكول HTTPS.',
         }
       : {};
 

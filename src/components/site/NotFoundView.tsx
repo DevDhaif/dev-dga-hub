@@ -97,7 +97,7 @@ export function NotFoundView() {
             }}
           >
             {ar
-              ? 'يبدو أنّ هذه الصفحة قد فُقدت. تحقّق من الرابط، أو عُد إلى نقطة بداية معروفة.'
+              ? 'عذراً، لم نعثر على هذه الصفحة. تحقق من الرابط، أو ابدأ من الصفحة الرئيسية أو قائمة المكونات.'
               : 'This page seems to have gone missing. Check the link, or head back to a known surface.'}
           </p>
           <div
@@ -110,10 +110,10 @@ export function NotFoundView() {
             }}
           >
             <Button asChild size="lg">
-              <Link href={href('/')}>{ar ? 'العودة للرئيسية' : 'Back home'}</Link>
+              <Link href={href('/')}>{ar ? 'العودة إلى الرئيسية' : 'Back home'}</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href={href('/components')}>{ar ? 'تصفّح المكوّنات' : 'Browse components'}</Link>
+              <Link href={href('/components')}>{ar ? 'تصفح المكونات' : 'Browse components'}</Link>
             </Button>
           </div>
         </section>

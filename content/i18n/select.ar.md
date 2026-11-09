@@ -1,15 +1,15 @@
 ---
-description: 'حقل اختيار مفرد متاح الوصول في React مبني على Radix، مع تسمية ونص مساعد وحالة خطأ ونص نائب وخيارات معطّلة. يرث الوضع الداكن والاتجاه العربي.'
-seoTitle: 'قائمة اختيار: مكوّن Select متاح الوصول (Radix)'
+description: 'حقل اختيار مفرد متاح الوصول في React مبني على Radix، مع تسمية، نص مساعد، حالة خطأ، نص نائب، وخيارات معطلة. يرث الوضع الداكن والاتجاه من اليمين إلى اليسار.'
+seoTitle: 'قائمة اختيار: مكون Select متاح الوصول (Radix)'
 ---
 
-ركب `Select` مع عناصر `SelectItem`، لكل منها `value` ثابتة. ترث القائمة الوضع الداكن وRTL من الموفر.
+استخدم `Select` مع عناصر `SelectItem`، ولكل عنصر `value` ثابتة. ترث القائمة الوضع الداكن وRTL من المزود.
 
 ## When to use
 
-استخدم Select حين يختار المستخدم خيارًا واحدًا من قائمة معروفة من خمسة إلى خمسة عشر عنصرًا تقريبًا، مثل المنطقة أو نوع الوثيقة. للقوائم الطويلة التي تحتاج بحثًا، أو للاختيار المتعدّد، استخدم Dropdown. لأربعة خيارات أو أقل، RadioGroup أسرع في القراءة.
+استخدم Select حين يختار المستخدم خياراً واحداً من قائمة معروفة فيها 5 إلى 15 عنصر تقريباً، مثل المنطقة أو نوع الوثيقة. للقوائم الطويلة التي تحتاج بحثاً، أو للاختيار المتعدد، استخدم Dropdown. مع 4 خيارات أو أقل، يكون RadioGroup أسرع في القراءة.
 
-مرّر `placeholder` يصف الاختيار لا تعليمات.
+مرر `placeholder` يصف الاختيار، واكتب التعليمات خارجه.
 
 ## Example: Country picker
 
@@ -24,7 +24,7 @@ export default function Demo() {
       <SelectItem value="bh">البحرين</SelectItem>
       <SelectItem value="kw">الكويت</SelectItem>
       <SelectItem value="qa">قطر</SelectItem>
-      <SelectItem value="om">عُمان</SelectItem>
+      <SelectItem value="om">عمان</SelectItem>
     </Select>
   );
 }
@@ -41,7 +41,7 @@ export default function Demo() {
       label="المنطقة"
       placeholder="اختر منطقة"
       defaultValue="riyadh"
-      helperText="يُستخدَم لتوجيه طلبك."
+      helperText="يستخدم لتوجيه طلبك."
     >
       <SelectItem value="riyadh">الرياض</SelectItem>
       <SelectItem value="makkah">مكة المكرمة</SelectItem>
@@ -65,7 +65,7 @@ export default function Demo() {
       placeholder="اختر دولة"
       required
       error
-      errorMessage="يُرجى اختيار دولتك."
+      errorMessage="يرجى اختيار دولتك."
     >
       <SelectItem value="sa">المملكة العربية السعودية</SelectItem>
       <SelectItem value="ae">الإمارات العربية المتحدة</SelectItem>
@@ -77,6 +77,6 @@ export default function Demo() {
 
 ## Accessibility
 
-المشغّل زر مرتبط بالتسمية `label` الظاهرة، وتفتح القائمة بوصفها listbox بتنقّل لوحة المفاتيح من Radix: مفاتيح الأسهم تتحرّك، والكتابة تقفز إلى الخيار المطابق، وEnter يختار، وEscape يغلق.
+المشغل زر مرتبط بالتسمية `label` الظاهرة، ويفتح قائمة listbox بتنقل لوحة المفاتيح من Radix. تنقل مفاتيح الأسهم التركيز بين الخيارات، وتنقله الكتابة إلى الخيار المطابق. يختار مفتاح Enter الخيار، ويغلق مفتاح Escape القائمة.
 
-يُعلن النص المساعد والخطأ عبر `aria-describedby` و`aria-invalid`. تُعرض القائمة المفتوحة داخل بوّابة المزوّد، فترث الاتجاه والوضع الداكن.
+يعلن قارئ الشاشة النص المساعد والخطأ عبر `aria-describedby` و`aria-invalid`. تظهر القائمة المفتوحة داخل بوابة المزود، لذلك ترث الاتجاه والوضع الداكن.

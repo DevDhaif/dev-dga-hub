@@ -1,15 +1,15 @@
 ---
-description: 'اقتباس بارز في React بعنوان اختياري ومؤلّف وصفة المؤلّف وصورة رمزية، بأحجام وتلوينات. يعرض عنصر blockquote الدلالي.'
-seoTitle: 'اقتباس: مكوّن Quote اقتباس منسوب'
+description: 'اقتباس بارز في React: عنوان اختياري، مؤلف، صفة المؤلف، صورة رمزية، أحجام، وتلوينات. يعرض عنصر blockquote الدلالي.'
+seoTitle: 'اقتباس: مكون Quote لاقتباس منسوب'
 ---
 
-يستقبل Quote الاقتباس عبر `children`، مع خيارات `quoteTitle` و`author` و`authorTitle` و`avatar`. ويعرض عنصر blockquote دلاليًا.
+يستقبل Quote نص الاقتباس عبر `children`، مع خيارات `quoteTitle`، `author`، `authorTitle`، و`avatar`. يعرض المكون عنصر blockquote الدلالي.
 
 ## When to use
 
-استخدم Quote للشهادات، أو تصريح قيادي في صفحة خدمة، أو مقتطف بارز من سياسة. أبقِ الاقتباسات قصيرة وانسبها إلى قائلها.
+استخدم Quote للشهادات، تصريح قيادي في صفحة خدمة، أو مقتطف بارز من سياسة. أبق الاقتباسات قصيرة وانسبها إلى قائلها.
 
-للتنبيه الذي ليس اقتباسًا، استخدم InlineAlert.
+لإبراز تنبيه غير مقتبس، استخدم InlineAlert.
 
 ## Example: Title, quote & author
 
@@ -19,7 +19,7 @@ import { Quote } from '@dev-dga/react';
 export default function Demo() {
   return (
     <Quote
-      quoteTitle="الرقمنة أولًا بشكل افتراضي"
+      quoteTitle="الرقمنة أولاً بشكل افتراضي"
       author="سارة العتيبي"
       authorTitle="مديرة منتج، هيئة الحكومة الرقمية"
     >
@@ -47,7 +47,7 @@ export default function Demo() {
       author="سارة العتيبي"
       authorTitle="مديرة منتج، هيئة الحكومة الرقمية"
     >
-      يُوضع الاقتباس هنا لتسليط الضوء على مقولة معينة أو لتقديم اقتباس مختصر يعبّر عن فكرة أو مفهوم
+      يوضع الاقتباس هنا لتسليط الضوء على مقولة معينة أو لتقديم اقتباس مختصر يعبر عن فكرة أو مفهوم
       مهم.
     </Quote>
   );
@@ -62,7 +62,7 @@ import { Quote } from '@dev-dga/react';
 export default function Demo() {
   return (
     <Quote size="sm" whiteBackground={false}>
-      النظام المصمَّم جيدًا هو ما لا تضطر أبدًا للتفكير فيه.
+      النظام المصمم جيداً هو ما لا تضطر أبداً للتفكير فيه.
     </Quote>
   );
 }
@@ -70,6 +70,6 @@ export default function Demo() {
 
 ## Accessibility
 
-يعرض Quote عنصر `<blockquote>` الأصلي، فيعلنه قارئ الشاشة اقتباسًا. المؤلّف والصفة نص، والصورة الرمزية زخرفية.
+يعرض Quote عنصر `<blockquote>` الأصلي، لذلك يعلنه قارئ الشاشة اقتباساً. يظهر المؤلف وصفته نصاً، والصورة الرمزية زخرفية.
 
-علامات الاقتباس الزخرفية `aria-hidden`.
+تحمل علامات الاقتباس الزخرفية `aria-hidden`.

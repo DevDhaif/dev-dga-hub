@@ -1,15 +1,15 @@
 ---
-description: 'لوحة أوامر في React مبنية على cmdk ببحث تقريبي ومجموعات واختصارات وCommandDialog يربط Cmd+K وCtrl+K. تعمل مضمّنة أو منبثقة.'
-seoTitle: 'لوحة أوامر: مكوّن Command لوحة أوامر ⌘K ببحث تقريبي'
+description: 'لوحة أوامر في React مبنية على cmdk، تدعم البحث التقريبي، المجموعات، الاختصارات، وCommandDialog الذي يربط Cmd+K وCtrl+K. تعمل مضمنة أو منبثقة.'
+seoTitle: 'لوحة أوامر: مكون Command لوحة أوامر ⌘K ببحث تقريبي'
 ---
 
-يعرض Command الإجراءات خلف حقل بحث، وينفذ كل `CommandItem` حدث `onSelect`. أما `CommandDialog` فهو اللوحة نفسها داخل نافذة ويتكفل باختصار ⌘K.
+يعرض Command الإجراءات خلف حقل بحث، ويطلق كل `CommandItem` الحدث `onSelect`. ويعرض `CommandDialog` اللوحة نفسها داخل نافذة منبثقة، ويربط اختصار ⌘K بنفسه.
 
 ## When to use
 
-استخدم Command ليقفز المستخدمون المتمرّسون إلى الصفحات والإجراءات بالكتابة: فتح طلب برقمه، أو تبديل خدمة، أو تنفيذ إجراء إداري. ثبّت `CommandDialog` مرّة واحدة للوحة عامة، أو استخدم `Command` مضمّنًا لقائمة إجراءات قابلة للبحث.
+استخدم Command ليقفز المستخدمون المتمرسون إلى الصفحات والإجراءات بالكتابة: فتح طلب برقمه، تبديل خدمة، أو تنفيذ إجراء إداري. ثبت `CommandDialog` مرة واحدة للوحة عامة، أو استخدم `Command` مضمناً لقائمة إجراءات قابلة للبحث.
 
-للبحث في المحتوى لا الأوامر، استخدم SearchBox.
+للبحث في المحتوى بدلاً من الأوامر، استخدم SearchBox.
 
 ## Example: Inline palette
 
@@ -126,7 +126,7 @@ export default function Demo() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', alignItems: 'center' }}>
       <Button onClick={() => setOpen(true)}>افتح اللوحة (⌘K)</Button>
       <p style={{ fontSize: 14, color: 'var(--ddga-text-secondary)', margin: 0 }}>
-        {last ? `شُغِّل: ${last}` : 'اضغط ⌘K (أو Ctrl+K) في أي مكان.'}
+        {last ? `شغل: ${last}` : 'اضغط ⌘K (أو Ctrl+K) في أي مكان.'}
       </p>
       <CommandDialog open={open} onOpenChange={setOpen} label="لوحة الأوامر">
         <CommandInput placeholder="اكتب أمراً أو ابحث…" />
@@ -145,7 +145,7 @@ export default function Demo() {
               مستند جديد
             </CommandItem>
             <CommandItem value="logout" disabled onSelect={() => run('تسجيل الخروج')}>
-              تسجيل الخروج (معطّل)
+              تسجيل الخروج (معطل)
             </CommandItem>
           </CommandGroup>
         </CommandList>
@@ -157,6 +157,6 @@ export default function Demo() {
 
 ## Accessibility
 
-الحقل `role="combobox"` مرتبط بـ `role="listbox"` للنتائج، فتتحرّك مفاتيح الأسهم بين المطابقات، ويشغّل Enter العنصر المظلّل، ويغلق Escape. أعطِ الحقل `aria-label`.
+يحمل الحقل `role="combobox"`، ويرتبط بقائمة نتائج تحمل `role="listbox"`. تتنقل مفاتيح الأسهم بين المطابقات، ويشغل Enter العنصر المظلل. ويغلق Escape اللوحة. أعط الحقل `aria-label`.
 
-يحصر نمط الحوار التركيز ويعيده عند الإغلاق. الاختصارات المعروضة بجانب العناصر تلميحات؛ وكل عنصر يعمل بالفأرة ولوحة المفاتيح أيضًا.
+يحصر نمط الحوار التركيز ويعيده عند الإغلاق. تعمل الاختصارات المعروضة بجانب العناصر كتلميحات فقط، ويعمل كل عنصر بالفأرة ولوحة المفاتيح أيضاً.

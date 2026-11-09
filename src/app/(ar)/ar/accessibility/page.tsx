@@ -3,14 +3,14 @@ import { Accessibility } from '@/components/accessibility/Accessibility';
 import { pageAlternates } from '@/lib/seo';
 
 const DESCRIPTION =
-  'بيان توافق WCAG 2.2 AA العلني لمكتبة @dev-dga: ما ندعمه، وكيف نختبره (axe-core و Playwright)، وما يبقى على عاتقك. تقييم ذاتي لا تدقيق خارجي، وتباين الألوان مصمّم للحدود لا مقيس.';
+  'بيان توافق WCAG 2.2 AA العلني لمكتبة @dev-dga: ما ندعمه، كيف نختبره (axe-core و Playwright)، وما يبقى على عاتقك. تقييم ذاتي دون تدقيق خارجي، وتباين ألوان مصمم وفق الحدود دون قياس فعلي.';
 
 export const metadata: Metadata = {
-  title: 'مكوّنات React قابلة للوصول: WCAG 2.2 AA',
+  title: 'مكونات React متاحة الوصول: WCAG 2.2 AA',
   description: DESCRIPTION,
   keywords: [
     'WCAG 2.2 AA',
-    'مكوّنات React قابلة للوصول',
+    'مكونات React متاحة الوصول',
     'بيان إمكانية الوصول',
     'إمكانية وصول نظام تصميم سعودي',
     'إمكانية الوصول بالعربية و RTL',
