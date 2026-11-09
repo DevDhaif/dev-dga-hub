@@ -32,6 +32,8 @@ export function TopBar() {
   const mobileExtras = [
     { href: '/blocks', label: c.nav.blocks },
     { href: '/examples/masar', label: c.nav.examples },
+    { href: '/theming', label: c.topics.guide },
+    { href: '/theme', label: c.topics.studio },
   ];
 
   return (

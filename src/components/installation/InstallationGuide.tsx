@@ -46,8 +46,10 @@ export default function App({ children }) {
 const THEME_CODE = `// 1 - a built-in palette name
 <DgaProvider theme={{ primary: 'info' }}>…</DgaProvider>
 
+// 2 - any CSS color: becomes brand step 600
 <DgaProvider theme={{ primary: '#7C3AED' }}>…</DgaProvider>
 
+// 3 - a triplet: exact primary role values
 <DgaProvider
   theme={{
     primary: {
@@ -61,12 +63,13 @@ const THEME_CODE = `// 1 - a built-in palette name
   …
 </DgaProvider>`;
 
-const TOKEN_CODE = `/* your globals.css - imported AFTER '@dev-dga/css' */
+const TOKEN_CODE = `/* globals.css: after '@dev-dga/css', outside any @layer */
 :root {
-  --ddga-radius-md: 4px;          /* squarer corners, system-wide */
-  --ddga-color-primary: #0f766e;  /* teal brand */
-  --ddga-font-ar: 'Cairo', sans-serif;
+  --ddga-radius-md: 4px; /* one token: squarer corners, system-wide */
 }
+
+/* Brand color: set the 12 --ddga-brand-* steps, not --ddga-color-primary.
+   Copy the brand-ramp block from /theming#one-block. */
 
 .compact {
   --ddga-card-padding: var(--ddga-space-3);
@@ -325,6 +328,13 @@ export function InstallationGuide() {
             <div dir="ltr">
               <CodeSnippet languages={[{ value: 'tsx', label: 'theme.tsx', code: THEME_CODE }]} />
             </div>
+            <p className="doc-note">
+              {t.theming.more}{' '}
+              <Link href={hrefFor('/theming')}>{c.topics.guide}</Link>
+              {t.theming.moreJoin}
+              <Link href={hrefFor('/theme')}>{c.topics.studio}</Link>
+              {t.theming.moreEnd}
+            </p>
           </Section>
 
           <Section id="tokens" title={t.tokens.title}>
@@ -359,6 +369,11 @@ export function InstallationGuide() {
             <div dir="ltr">
               <CodeSnippet languages={[{ value: 'css', label: 'globals.css', code: TOKEN_CODE }]} />
             </div>
+            <p className="doc-note">
+              {t.tokens.brandNote}{' '}
+              <Link href={`${hrefFor('/theming')}#one-block`}>{t.tokens.brandLink}</Link>
+              {t.tokens.brandEnd}
+            </p>
             <p className="doc-note">{t.tokens.scopeNote}</p>
           </Section>
 

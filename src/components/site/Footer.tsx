@@ -30,7 +30,8 @@ export function Footer() {
           <Link href={href('/installation')}>{c.footer.installation}</Link>
           <Link href={href('/forms')}>{c.footer.forms}</Link>
           <Link href={href('/adopt')}>{c.footer.adopt}</Link>
-          <Link href={href('/theme')}>{c.themePage.eyebrow}</Link>
+          <Link href={href('/theming')}>{c.topics.guide}</Link>
+          <Link href={href('/theme')}>{c.topics.studio}</Link>
           <Link href={href('/blocks')}>{c.footer.blocks}</Link>
           <Link href={href('/examples/masar')}>{c.nav.examples}</Link>
           <a href={TEMPLATES_URL} target="_blank" rel="noreferrer">

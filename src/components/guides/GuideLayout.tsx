@@ -42,6 +42,7 @@ export function GuideLayout({
   lead,
   onThisPage,
   toc,
+  intro,
   children,
 }: {
   eyebrow: string;
@@ -49,6 +50,8 @@ export function GuideLayout({
   lead: string;
   onThisPage: string;
   toc: { id: string; title: string }[];
+  /** Rendered under the lead, before the first section. */
+  intro?: ReactNode;
   children: ReactNode;
 }) {
   return (
@@ -58,6 +61,7 @@ export function GuideLayout({
           <p className="eyebrow">{eyebrow}</p>
           <h1 className="doc__title display">{title}</h1>
           <p className="doc__lead">{lead}</p>
+          {intro}
         </header>
         <main className="doc__main">{children}</main>
         <aside className="doc__toc" aria-label={onThisPage}>

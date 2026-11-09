@@ -7,6 +7,7 @@ export const LOCALIZED_PATHS = [
   '/installation',
   '/forms',
   '/adopt',
+  '/theming',
   '/blocks',
   '/theme',
   '/examples/masar',

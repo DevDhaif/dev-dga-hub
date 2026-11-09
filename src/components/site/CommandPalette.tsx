@@ -53,12 +53,23 @@ export function CommandPalette() {
       keywords: ['adopt', 'existing app', 'migrate', 'laravel', 'inertia', 'next.js'],
     },
     {
+      value: 'theming',
+      label: c.command.theming,
+      href: '/theming',
+      keywords: ['theming', 'brand', 'color', 'palette', 'dark mode', 'color-mix', 'entity'],
+    },
+    {
+      value: 'theme-studio',
+      label: c.command.themeStudio,
+      href: '/theme',
+      keywords: ['theme', 'studio', 'tokens', 'brand', 'color', 'export', 'css variables'],
+    },
+    {
       value: 'styling',
       label: c.command.styling,
       href: '/installation#styling',
       keywords: ['tailwind', 'styling', 'css', 'utilities', 'bridge'],
     },
-    { value: 'theme', label: c.themePage.eyebrow, href: '/theme' },
     { value: 'blocks', label: c.command.blocks, href: '/blocks' },
     {
       value: 'templates',

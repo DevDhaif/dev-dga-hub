@@ -132,6 +132,146 @@ export function VisitForm() {
   );
 }`;
 
+const MODAL_INERTIA_CODE = `import { useId, useState } from 'react';
+import { Form } from '@inertiajs/react';
+import {
+  Button,
+  InlineAlert,
+  Modal,
+  ModalClose,
+  ModalContent,
+  ModalTrigger,
+  TextInput,
+} from '@dev-dga/react';
+
+export function RenameTeam({ team }: { team: Team }) {
+  const formId = useId();
+  const [open, setOpen] = useState(false);
+  const [processing, setProcessing] = useState(false);
+
+  return (
+    <Modal open={open} onOpenChange={setOpen}>
+      <ModalTrigger asChild>
+        <Button>Rename team</Button>
+      </ModalTrigger>
+      <ModalContent
+        title="Rename team"
+        footer={
+          <>
+            <ModalClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </ModalClose>
+            <Button type="submit" form={formId} loading={processing}>
+              Save
+            </Button>
+          </>
+        }
+      >
+        <Form
+          id={formId}
+          action={\`/teams/\${team.id}\`}
+          method="patch"
+          onStart={() => setProcessing(true)}
+          onFinish={() => setProcessing(false)}
+          onSuccess={() => setOpen(false)}
+        >
+          {({ errors }) => (
+            <>
+              {errors.form && <InlineAlert type="destructive" title={errors.form} live="polite" />}
+              <TextInput
+                label="Team name"
+                name="name"
+                defaultValue={team.name}
+                required
+                error={!!errors.name}
+                errorMessage={errors.name}
+              />
+            </>
+          )}
+        </Form>
+      </ModalContent>
+    </Modal>
+  );
+}
+
+// Laravel: return back()->withErrors(['form' => 'This name is already in use.']);`;
+
+const MODAL_ACTION_CODE = `// app/teams/actions.ts
+'use server';
+
+export type RenameState = { error?: string; errors: { name?: string } };
+
+export async function renameTeam(_prev: RenameState, formData: FormData): Promise<RenameState> {
+  const name = formData.get('name');
+  if (typeof name !== 'string' || name.trim() === '') return { errors: { name: 'Enter a team name.' } };
+  // save… on a non-field failure: return { error: 'This name is already in use.', errors: {} };
+  return { errors: {} };
+}
+
+// app/teams/rename-team.tsx
+'use client';
+
+import { useActionState, useId, useState } from 'react';
+import {
+  Button,
+  InlineAlert,
+  Modal,
+  ModalClose,
+  ModalContent,
+  ModalTrigger,
+  TextInput,
+} from '@dev-dga/react';
+import { renameTeam, type RenameState } from './actions';
+
+export function RenameTeam() {
+  const formId = useId();
+  const [open, setOpen] = useState(false);
+  const [state, formAction, isPending] = useActionState(
+    async (prev: RenameState, formData: FormData) => {
+      const next = await renameTeam(prev, formData);
+      if (!next.error && !next.errors.name) setOpen(false);
+      return next;
+    },
+    { errors: {} },
+  );
+
+  return (
+    <Modal open={open} onOpenChange={setOpen}>
+      <ModalTrigger asChild>
+        <Button>Rename team</Button>
+      </ModalTrigger>
+      <ModalContent
+        title="Rename team"
+        footer={
+          <>
+            <ModalClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </ModalClose>
+            <Button type="submit" form={formId} loading={isPending}>
+              Save
+            </Button>
+          </>
+        }
+      >
+        <form id={formId} action={formAction}>
+          {state.error && <InlineAlert type="destructive" title={state.error} live="polite" />}
+          <TextInput
+            label="Team name"
+            name="name"
+            required
+            error={!!state.errors.name}
+            errorMessage={state.errors.name}
+          />
+        </form>
+      </ModalContent>
+    </Modal>
+  );
+}`;
+
+const STORYBOOK_STORY = 'https://dev-dga.vercel.app/?path=/story/';
+const MODAL_INERTIA_STORY = `${STORYBOOK_STORY}components-modal--form-recipe-inertia`;
+const MODAL_ACTION_STORY = `${STORYBOOK_STORY}components-modal--form-recipe-server-action`;
+
 const ERRORS_CODE = `<TextInput
   label="National ID"
   name="nationalId"
@@ -162,6 +302,7 @@ export function FormsGuide() {
     { id: 'inertia', title: t.inertia.title },
     { id: 'react-router', title: t.router.title },
     { id: 'server-actions', title: t.actions.title },
+    { id: 'modal', title: t.modal.title },
     { id: 'errors', title: t.errors.title },
     { id: 'dates', title: t.dates.title },
   ];
@@ -226,6 +367,40 @@ export function FormsGuide() {
       <GuideSection id="server-actions" title={t.actions.title}>
         <p className="doc-lead">{t.actions.lead}</p>
         <GuideCode label="app/visits" lang="tsx" code={ACTIONS_CODE} />
+      </GuideSection>
+
+      <GuideSection id="modal" title={t.modal.title}>
+        <p className="doc-lead">{t.modal.lead}</p>
+        <ul className="doc-rules">
+          {t.modal.rules.map((rule) => (
+            <li key={rule}>{rule}</li>
+          ))}
+        </ul>
+        <p className="doc-subhead">{t.modal.inertia}</p>
+        <GuideCode label="RenameTeam.tsx" lang="tsx" code={MODAL_INERTIA_CODE} />
+        <p className="doc-note">
+          <a
+            href={MODAL_INERTIA_STORY}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={t.modal.liveInertiaLabel}
+          >
+            {t.modal.live}
+          </a>
+        </p>
+        <p className="doc-subhead">{t.modal.actions}</p>
+        <GuideCode label="app/teams" lang="tsx" code={MODAL_ACTION_CODE} />
+        <p className="doc-note">
+          <a
+            href={MODAL_ACTION_STORY}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={t.modal.liveActionsLabel}
+          >
+            {t.modal.live}
+          </a>
+        </p>
+        <p className="doc-note">{t.modal.note}</p>
       </GuideSection>
 
       <GuideSection id="errors" title={t.errors.title}>

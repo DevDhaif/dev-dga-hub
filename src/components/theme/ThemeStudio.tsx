@@ -32,10 +32,12 @@ import {
   Tag,
   TextInput,
 } from '@dev-dga/react';
+import { buildTheme } from '@dev-dga/tokens';
 import { useCopy } from '@/lib/i18n';
 import { useHref } from '@/lib/use-href';
 import { TOKEN_GROUPS, TOKEN_COUNT, type Token, type TokenTier } from '@/lib/tokens.generated';
 import { ArrowRight } from '@/components/icons';
+import { ThemingTopicNav } from './ThemingTopicNav';
 import './theme.css';
 
 const ALL: Token[] = TOKEN_GROUPS.flatMap((g) => g.tokens);
@@ -93,6 +95,22 @@ function hex6(v: string): string {
     );
   return v;
 }
+// WCAG 2 contrast of white text on a #rgb or #rrggbb color; null for any other format.
+function whiteContrast(color: string): number | null {
+  const hex = hex6(color);
+  const m = hex.match(/^#([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i);
+  if (!m) return null;
+  const [r, g, b] = m.slice(1).map((h) => {
+    const c = parseInt(h, 16) / 255;
+    return c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  const lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return 1.05 / (lum + 0.05);
+}
+
+const BRAND_FOREGROUND = '--ddga-brand-foreground';
+const DARK_TEXT = 'var(--ddga-gray-950)';
+
 function splitLen(v: string): { n: string; unit: string } {
   const m = v.trim().match(/^(-?\d*\.?\d+)(px|rem|em)?$/);
   return m ? { n: m[1], unit: m[2] ?? '' } : { n: v, unit: '' };
@@ -123,14 +141,38 @@ export function ThemeStudio() {
   const [query, setQuery] = useState('');
   const [dark, setDark] = useState(false);
   const [showPrimitives, setShowPrimitives] = useState(false);
+  // The one-color brand field. Not a token of its own: it writes the 12 --ddga-brand-* steps.
+  const [brandSeed, setBrandSeed] = useState('');
+  // Light-mode text on primary; only set when white fails 4.5:1 on the seed color.
+  const [brandForeground, setBrandForeground] = useState<string | null>(null);
 
   const set = (name: string, val: string) => setValues((prev) => ({ ...prev, [name]: val }));
+
+  // Same ramp DgaProvider builds for theme.primary in 1.6.0: buildTheme mixes the color with
+  // white or black in oklab by brandRampMix, with the color itself as step 600.
+  const fillBrand = (color: string) => {
+    setBrandSeed(color);
+    const value = color.trim();
+    if (!value || (typeof CSS !== 'undefined' && !CSS.supports('color', value))) return;
+    const ramp = buildTheme({ primary: value });
+    setValues((prev) => ({ ...prev, ...ramp }));
+    const ratio = whiteContrast(value);
+    setBrandForeground(ratio !== null && ratio < 4.5 ? DARK_TEXT : null);
+  };
+
+  const resetAll = () => {
+    setValues(DEFAULTS);
+    setBrandSeed('');
+    setBrandForeground(null);
+  };
 
   const overrides = ALL.filter((tk) => values[tk.name] !== DEFAULTS[tk.name]);
   const previewStyle: Record<string, string> = {};
   overrides.forEach((tk) => {
     previewStyle[tk.name] = values[tk.name];
   });
+  if (brandForeground) previewStyle[BRAND_FOREGROUND] = brandForeground;
+  const changedCount = overrides.length + (brandForeground ? 1 : 0);
 
   const q = query.trim().toLowerCase();
   const filtered = useMemo(
@@ -155,6 +197,9 @@ export function ThemeStudio() {
       if (!group.length) continue;
       rootLines.push(`  /* ${TIER_COMMENT[tier]} */`);
       for (const tk of group) rootLines.push(`  ${tk.name}: ${values[tk.name]};`);
+      if (tier === 'brand' && brandForeground) {
+        rootLines.push(`  ${BRAND_FOREGROUND}: ${brandForeground}; /* text on primary, light mode */`);
+      }
     }
     exportCss = `${header}:root {\n${rootLines.join('\n')}\n}`;
     const darkVars = overrides.filter((tk) => isDarkSensitive(tk.name));
@@ -221,6 +266,37 @@ export function ThemeStudio() {
       </label>
     );
   };
+
+  const seedSwatch = resolveColor(values['--ddga-brand-600'] ?? '', values);
+  const renderBrandSeed = (): ReactNode => (
+    <div className="ts-seed">
+      <label className="ts-field ts-field--color">
+        <span className="ts-field__label">
+          <span className="ts-seed__label">{t.brandSeed.label}</span>
+        </span>
+        <span className="ts-field__swatch">
+          <input
+            type="color"
+            value={/^#[0-9a-f]{6}$/i.test(hex6(seedSwatch)) ? hex6(seedSwatch) : '#1b8354'}
+            aria-label={t.brandSeed.label}
+            onChange={(e) => fillBrand(e.target.value)}
+          />
+          <input
+            type="text"
+            className="ts-field__hex"
+            value={brandSeed}
+            placeholder="#0a5c8a"
+            aria-label={t.brandSeed.label}
+            dir="ltr"
+            spellCheck={false}
+            onChange={(e) => fillBrand(e.target.value)}
+          />
+        </span>
+      </label>
+      <p className="ts-seed__hint">{t.brandSeed.hint}</p>
+      {brandForeground && <p className="ts-seed__hint">{t.brandSeed.darkText}</p>}
+    </div>
+  );
 
   const renderControl = (tk: Token): ReactNode => {
     const scale = aliasParts(DEFAULTS[tk.name])?.scale;
@@ -387,6 +463,7 @@ export function ThemeStudio() {
         <p className="eyebrow">{t.eyebrow}</p>
         <h1 className="ts__title display">{t.title}</h1>
         <p className="ts__lead">{t.lead}</p>
+        <ThemingTopicNav current="studio" />
       </header>
 
       <div className="ts__layout">
@@ -403,15 +480,15 @@ export function ThemeStudio() {
               onClear={() => setQuery('')}
             />
             <span className="ts__count">
-              {overrides.length
-                ? t.changed.replace('{n}', String(overrides.length))
+              {changedCount
+                ? t.changed.replace('{n}', String(changedCount))
                 : t.tokenCount.replace('{n}', String(TOKEN_COUNT))}
             </span>
             <button
               type="button"
               className="ts__reset"
-              onClick={() => setValues(DEFAULTS)}
-              disabled={overrides.length === 0}
+              onClick={resetAll}
+              disabled={changedCount === 0}
             >
               {t.reset}
             </button>
@@ -428,6 +505,8 @@ export function ThemeStudio() {
               [--ddga-color-primary:#7c3aed]
             </code>
           </div>
+
+          {!q && renderBrandSeed()}
 
           {filtered.length === 0 ? (
             <p className="ts__empty">{t.noMatch}</p>

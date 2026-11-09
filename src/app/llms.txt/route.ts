@@ -26,8 +26,9 @@ Every page below also exists in Arabic under the \`/ar\` prefix
 
 - [Installation](${absoluteUrl('/installation')}): install, wrap in DgaProvider, theme via CSS variables.
 - [Styling with Tailwind](${absoluteUrl('/installation#styling')}): three recipes (no Tailwind, Tailwind v3, Tailwind v4), the cascade-layer rules, and a live bridge demo.
-- [Forms](${absoluteUrl('/forms')}): what each control submits through FormData; plain forms, Inertia <Form>, React Router actions, server actions; server validation errors; parseDateOnly for server dates.
+- [Forms](${absoluteUrl('/forms')}): what each control submits through FormData; plain forms, Inertia <Form>, React Router actions, server actions; a form inside a Modal; server validation errors; parseDateOnly for server dates.
 - [Adopt in an existing app](${absoluteUrl('/adopt')}): stylesheet and cascade layers, DgaProvider, which component fits each need, router links with asChild, and forms.
+- [Theming](${absoluteUrl('/theming')}): brand an entity in one CSS block (one color fills the 12 --ddga-brand-* steps with color-mix), which step each primary role reads in light and dark, text contrast on primary buttons, DgaProvider theme and buildTheme, and the 1.6.0 behavior changes.
 - [Components](${absoluteUrl('/components')}): all ${COMPONENT_COUNT} components. Each page has when-to-use guidance, live examples, a props table generated from the typings, and accessibility notes.
 - [Blocks](${absoluteUrl('/blocks')}): prebuilt UI blocks composed from the components.
 - [Theme Studio](${absoluteUrl('/theme')}): edit every --ddga-* design token live and export CSS.
