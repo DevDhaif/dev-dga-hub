@@ -289,7 +289,7 @@ export function Closer() {
           inlineSize: 54,
           marginInline: 'auto',
           marginBlockEnd: '1.25rem',
-          color: 'var(--ddga-color-primary)',
+          color: 'var(--ddga-text-brand)',
         }}
       >
         <svg

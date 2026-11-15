@@ -26,9 +26,9 @@ Every page below also exists in Arabic under the \`/ar\` prefix
 
 - [Installation](${absoluteUrl('/installation')}): install, wrap in DgaProvider, theme via CSS variables.
 - [Styling with Tailwind](${absoluteUrl('/installation#styling')}): three recipes (no Tailwind, Tailwind v3, Tailwind v4), the cascade-layer rules, and a live bridge demo.
-- [Forms](${absoluteUrl('/forms')}): what each control submits through FormData; plain forms, Inertia <Form>, React Router actions, server actions; a form inside a Modal; server validation errors; parseDateOnly for server dates.
+- [Forms](${absoluteUrl('/forms')}): what each control submits through FormData; plain forms, Inertia <Form>, React Router actions, server actions; a form inside a Modal; server validation errors and form-level errors with FieldMessage; uncontrolled FileUpload; parseDateOnly for server dates.
 - [Adopt in an existing app](${absoluteUrl('/adopt')}): stylesheet and cascade layers, DgaProvider, which component fits each need, router links with asChild, and forms.
-- [Theming](${absoluteUrl('/theming')}): brand an entity in one CSS block (one color fills the 12 --ddga-brand-* steps with color-mix), which step each primary role reads in light and dark, text contrast on primary buttons, DgaProvider theme and buildTheme, and the 1.6.0 behavior changes.
+- [Theming](${absoluteUrl('/theming')}): brand an entity in one CSS block (one color fills the 12 --ddga-brand-* steps with color-mix), which step each primary role reads in light and dark (fills keep step 600 in dark mode since 1.7.0; --ddga-text-brand lifts to 400), text contrast on primary buttons, DgaProvider theme and buildTheme, and the 1.7.0 upgrade notes.
 - [Components](${absoluteUrl('/components')}): all ${COMPONENT_COUNT} components. Each page has when-to-use guidance, live examples, a props table generated from the typings, and accessibility notes.
 - [Blocks](${absoluteUrl('/blocks')}): prebuilt UI blocks composed from the components.
 - [Theme Studio](${absoluteUrl('/theme')}): edit every --ddga-* design token live and export CSS.
@@ -44,6 +44,12 @@ both majors get every DGA token as utilities (bg-primary, text-ink, rounded-lg, 
 
 - \`@dev-dga/css/tailwind.css\`: Tailwind v4 bridge, an \`@theme inline\` block plus \`@custom-variant dark\` on [data-theme='dark']; import it after '@dev-dga/css'.
 - \`@dev-dga/tokens/tailwind-preset\`: the same keys as a Tailwind v3 preset (ESM and CJS), darkMode ['selector', '[data-theme="dark"]'].
+
+Tokens follow the SDGA Figma variables (1.7.0). Text roles: --ddga-text-primary, -secondary, -tertiary, -placeholder,
+-brand, and -success/-warning/-error/-info (step 700 in light, 400 in dark); --ddga-color-* are fills. Alpha scales:
+--ddga-alpha-{white,black,brand}-{0..100} and --ddga-alpha-{error,warning,success,info}-{10,20}. Responsive roles change
+at 960px and 600px: --ddga-type-<role>-size and -line-height (display-2xl to text-2xs) and --ddga-space-section-padding,
+-section-gap, -content-gap, -icon-text-gap. Keep form fields on the fixed --ddga-font-size-* tokens.
 
 ${sections}
 

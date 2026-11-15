@@ -59,7 +59,7 @@
   font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 600;
   line-height: 1;
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 .cmpl-stat__label {
   display: block;
@@ -115,7 +115,7 @@
     border-color 0.15s ease;
 }
 .cmpl__toc-link:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   border-inline-start-color: color-mix(in srgb, var(--ddga-color-primary) 45%, transparent);
 }
 
@@ -192,7 +192,7 @@
 .cmpl-section__anchor {
   position: absolute;
   inset-inline-start: -1.25rem;
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   text-decoration: none;
   opacity: 0;
   transition: opacity 0.15s ease;
@@ -271,7 +271,7 @@
     border-color 0.15s ease;
 }
 .cmpl-comp-link:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   border-block-end-color: color-mix(in srgb, var(--ddga-color-primary) 45%, transparent);
 }
 .cmpl-td-component [dir='ltr'] {
@@ -389,7 +389,7 @@
   transition: color 0.15s ease;
 }
 .cmpl-ext__link:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 
 .cmpl-independence {

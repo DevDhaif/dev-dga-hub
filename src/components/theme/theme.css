@@ -78,7 +78,7 @@
     border-color 0.15s ease;
 }
 .ts__reset:hover:not(:disabled) {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   border-color: color-mix(in srgb, var(--ddga-color-primary) 40%, var(--ddga-color-border));
 }
 .ts__reset:disabled {
@@ -166,7 +166,7 @@
     color 0.15s ease;
 }
 .ts-tier__toggle:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   border-color: color-mix(in srgb, var(--ddga-color-primary) 45%, var(--ddga-color-border));
 }
 
@@ -293,7 +293,7 @@
 }
 .ts-field__step:hover:not(:disabled) {
   background: var(--ddga-color-muted);
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 .ts-field__step:disabled {
   opacity: 0.4;
@@ -374,7 +374,7 @@
   padding: 0.2rem 0.5rem;
   font-family: var(--ddga-font-mono), var(--ddga-font-ar), monospace;
   font-size: 0.75rem;
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   background: var(--ddga-color-card);
   border: 1px solid var(--ddga-color-border);
   border-radius: var(--ddga-radius-sm);
@@ -418,7 +418,7 @@
     border-color 0.15s ease;
 }
 .ts__mode:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   border-color: color-mix(in srgb, var(--ddga-color-primary) 40%, var(--ddga-color-border));
 }
 .ts-preview {
@@ -513,7 +513,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   text-decoration: none;
   font-size: 0.9375rem;
   font-weight: 500;

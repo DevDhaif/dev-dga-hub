@@ -39,9 +39,9 @@
   font-weight: 600;
 }
 
-/* Primary is step 600 in light and step 400 in dark, so it stays legible as text on the card. */
+/* Brand text: step 600 in light, 400 in dark, so it stays legible on the card. */
 .topic-nav__item[data-active='true'] .topic-nav__name {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 
 .topic-nav__desc {

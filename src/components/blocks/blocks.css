@@ -42,7 +42,7 @@
     border-color 0.15s ease;
 }
 .blocks__chip:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   border-color: color-mix(in srgb, var(--ddga-color-primary) 40%, var(--ddga-color-border));
 }
 .blocks__chip-count {
@@ -627,7 +627,7 @@
 }
 .block-wizard__steps .ddga-progress-indicator__step--current .ddga-progress-indicator__indicator {
   border-color: var(--ddga-color-primary);
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 .block-wizard__steps .ddga-progress-indicator__step--completed .ddga-progress-indicator__indicator {
   border-color: var(--ddga-color-primary);
@@ -740,7 +740,7 @@
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 .block-hero__stat-label {
   font-size: 0.8125rem;
