@@ -213,7 +213,7 @@
   transition: color 0.15s ease;
 }
 .tile:hover .tile__go {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 [dir='rtl'] .tile__go svg {
   transform: scaleX(-1);

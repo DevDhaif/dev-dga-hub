@@ -88,7 +88,7 @@
     border-color 0.15s ease;
 }
 .rtlp__toc-link:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   border-inline-start-color: color-mix(in srgb, var(--ddga-color-primary) 45%, transparent);
 }
 
@@ -172,7 +172,7 @@
 }
 .rtlp-seg__btn[data-active='true'] {
   background: var(--ddga-color-card);
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   box-shadow: var(--ddga-shadow-xs);
 }
 
@@ -199,7 +199,7 @@
 .rtlp-section__anchor {
   position: absolute;
   inset-inline-start: -1.25rem;
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   text-decoration: none;
   opacity: 0;
   transition: opacity 0.15s ease;
@@ -469,7 +469,7 @@
 .rtlp-mirror__go {
   flex-shrink: 0;
   margin-inline-start: auto;
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 
 .rtlp-fields {

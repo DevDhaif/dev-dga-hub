@@ -78,7 +78,7 @@
   padding-inline: 0.9rem 0;
 }
 .doc__toc-link:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   border-inline-start-color: color-mix(in srgb, var(--ddga-color-primary) 45%, transparent);
 }
 
@@ -122,7 +122,7 @@
 .doc-section__anchor {
   position: absolute;
   inset-inline-start: -1.25rem;
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   text-decoration: none;
   opacity: 0;
   transition: opacity 0.15s ease;
@@ -307,7 +307,7 @@
     border-color 0.15s ease;
 }
 .tb__reset:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   border-color: color-mix(in srgb, var(--ddga-color-primary) 40%, var(--ddga-color-border));
 }
 
@@ -539,7 +539,7 @@
   max-inline-size: 64ch;
 }
 .doc-rules li::marker {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 
 .tw-demo {

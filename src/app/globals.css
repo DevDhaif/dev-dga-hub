@@ -53,7 +53,7 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
 
-    color: var(--ddga-color-primary);
+    color: var(--ddga-text-brand);
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;

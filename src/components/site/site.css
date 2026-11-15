@@ -39,7 +39,7 @@
   color: var(--ddga-text-primary);
 }
 .topbar__link[data-active='true'] {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
   font-weight: 500;
 }
 .topbar__link--ext {
@@ -126,7 +126,7 @@
   background: var(--ddga-color-muted);
 }
 .seg span[data-on='true'] {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 .seg__sep {
   opacity: 0.4;
@@ -208,7 +208,7 @@
   direction: ltr;
 }
 .wordmark__dim {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 
 .site-main {
@@ -253,7 +253,7 @@
   width: fit-content;
 }
 .footer__col a:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 .footer__legal {
   display: flex;
@@ -278,7 +278,7 @@
   text-decoration: none;
 }
 .footer__author a:hover {
-  color: var(--ddga-color-primary);
+  color: var(--ddga-text-brand);
 }
 
 @media (min-width: 720px) {

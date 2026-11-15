@@ -532,7 +532,7 @@ const en = {
         },
         {
           title: 'Any CSS color',
-          body: 'A hex, rgb(), or oklch() color becomes step 600. The other 11 steps mix it with white or black in oklab, and dark mode reads step 400.',
+          body: 'A hex, rgb(), or oklch() color becomes step 600 in both modes. The other 11 steps mix it with white or black in oklab, and brand text reads step 400 in dark mode.',
         },
         {
           title: 'An explicit triplet',
@@ -1134,7 +1134,7 @@ const en = {
           control: 'FileUpload',
           submits: 'Every listed file (multipart)',
           notes:
-            'The native input mirrors files, dropped ones included. A reset leaves files to you.',
+            'The native input mirrors files, dropped ones included. A reset leaves controlled files to you. Omit files (1.7.0 or later) and the field keeps its own list, which a reset clears.',
         },
         {
           control: 'ContentSwitcher, Toggle',
@@ -1171,7 +1171,7 @@ const en = {
       rules: [
         'Give the form an id and the footer button form={formId}. The button submits that form, and Enter in a field submits through it.',
         'Pass the pending state to the button’s loading prop. A loading button is disabled, so a second click or Enter can’t send the form twice.',
-        'Show a server error that belongs to no field in an InlineAlert above the fields, and each field error on its field.',
+        'Show a server error that belongs to no field in an InlineAlert above the fields, or in a FieldMessage with no id (1.7.0 or later), and each field error on its field.',
       ],
       inertia: 'Inertia <Form>',
       actions: 'Server action',
@@ -1196,7 +1196,7 @@ const en = {
     lead: 'One color fills the whole brand ramp, so buttons, focus rings, selection, tints, and dark mode all follow it. Set it in one CSS block or on DgaProvider.',
     onThisPage: 'On this page',
     version:
-      'The 12-step ramp from one color, --ddga-brand-foreground, and the contrast warning need @dev-dga/react, @dev-dga/css, and @dev-dga/tokens 1.6.0 or later.',
+      'The 12-step ramp from one color, --ddga-brand-foreground, and the contrast warning need @dev-dga/react, @dev-dga/css, and @dev-dga/tokens 1.6.0 or later. Dark fills on step 600 and --ddga-text-brand need 1.7.0 or later.',
     recipe: {
       title: 'Brand an entity in one CSS block',
       lead: 'Set your entity color once and derive the 12 --ddga-brand-* steps from it with color-mix(). The color is step 600. Lighter steps mix it with white and darker steps with black, in the same proportions as the built-in palettes. No JavaScript runs.',
@@ -1204,30 +1204,30 @@ const en = {
         'Put the block after the @dev-dga/css import and outside any @layer. The library declares its variables in the ddga-base layer, and unlayered styles win over layered ones. Don’t also pass theme to DgaProvider: its inline values win over the block.',
       previewLabel: 'The CSS block in light and dark mode',
       light: 'Light mode: primary is step 600',
-      dark: 'Dark mode: primary is step 400',
+      dark: 'Dark mode: primary stays step 600',
       previewPrimary: 'Submit request',
       previewSecondary: 'Save draft',
       previewCheckbox: 'Notify me by email',
     },
     roles: {
       title: 'Which step each role reads',
-      lead: 'Components read role variables, never the steps themselves. Each role points at a step of the brand ramp, and dark mode moves it to a lighter step so it stays legible on dark surfaces.',
+      lead: 'Components read role variables, never the steps themselves. Each role points at a step of the brand ramp. Fills keep the same step in both modes, as SDGA does, and brand-colored text moves to a lighter step in dark mode so it stays legible.',
       cols: { role: 'Role', light: 'Light mode', dark: 'Dark mode' },
       rows: [
         {
           role: '--ddga-color-primary',
           light: '--ddga-brand-600',
-          dark: '--ddga-brand-400',
+          dark: '--ddga-brand-600',
         },
         {
           role: '--ddga-color-primary-hover',
           light: '--ddga-brand-700',
-          dark: '--ddga-brand-300',
+          dark: '--ddga-brand-700',
         },
         {
           role: '--ddga-color-primary-active',
           light: '--ddga-brand-900',
-          dark: '--ddga-brand-500',
+          dark: '--ddga-brand-900',
         },
         {
           role: '--ddga-color-ring',
@@ -1237,14 +1237,19 @@ const en = {
         {
           role: '--ddga-color-primary-foreground',
           light: '--ddga-brand-foreground',
-          dark: '--ddga-gray-950',
+          dark: '--ddga-brand-foreground',
+        },
+        {
+          role: '--ddga-text-brand',
+          light: '--ddga-brand-600',
+          dark: '--ddga-brand-400',
         },
       ],
       note: 'Without --ddga-brand-foreground, text on primary is white in light mode. The roles resolve at :root and on every element with data-theme. DgaProvider sets data-theme on its root, so dark mode reads the same ramp.',
     },
     contrast: {
       title: 'Check the text on primary buttons',
-      lead: 'In light mode, primary buttons show white text on your color. If white doesn’t reach 4.5:1 on it, as with a yellow or a light green, set --ddga-brand-foreground to dark text. Dark mode always uses gray-950 text on step 400.',
+      lead: 'Primary buttons show white text on your color in both modes. If white doesn’t reach 4.5:1 on it, as with a yellow or a light green, set --ddga-brand-foreground to dark text. The same foreground applies in light and dark mode.',
       note: 'In development, DgaProvider warns when a theme color fails 4.5:1, but a CSS block never reaches the provider. Check your color in a contrast checker before you ship.',
     },
     provider: {
@@ -1256,15 +1261,14 @@ const en = {
       studioLink: 'Theme studio',
     },
     upgrade: {
-      title: 'Upgrading from 1.5',
-      lead: 'Apps that already pass a color to theme.primary see these changes:',
+      title: 'Upgrading to 1.7',
+      lead: 'Dark mode now follows the SDGA Figma variables. Apps that use dark mode see these changes:',
       items: [
-        'Tints, focus rings, selection, and dark mode follow your color instead of SA Green.',
-        'Hover is step 700 and pressed is step 900, slightly different from the old color-mix(in srgb) values.',
-        'Dark mode shows gray-950 text on primary fills instead of white, for palettes and custom colors.',
-        'In light mode, the warning and success palettes switch to gray-950 text.',
-        'buildTheme with a color returns only --ddga-brand-* values; spread it on an element with data-theme.',
-        'The explicit { base, hover, active, foreground } triplet is unchanged.',
+        'Primary and status fills keep step 600 in dark mode, with hover on 700 and pressed on 900. They were step 400.',
+        'Text on primary fills uses the same foreground as light mode: white, or --ddga-brand-foreground for a light brand color. It was always gray-950.',
+        'Brand-colored text and icons read --ddga-text-brand, step 600 in light and step 400 in dark.',
+        'The dark page background is gray-950 and the dark input border is gray-500.',
+        'The { base, hover, active, foreground } triplet is unchanged.',
       ],
     },
   },
@@ -2228,7 +2232,7 @@ const ar: typeof en = {
         },
         {
           title: 'أي لون CSS',
-          body: 'يصبح لون hex أو rgb() أو oklch() الدرجة 600، وتمزج منه الدرجات الإحدى عشرة الأخرى مع الأبيض أو الأسود في oklab. ويقرأ الوضع الداكن الدرجة 400.',
+          body: 'يصبح لون hex أو rgb() أو oklch() الدرجة 600 في الوضعين، وتمزج منه الدرجات الإحدى عشرة الأخرى مع الأبيض أو الأسود في oklab. ويقرأ نص العلامة الدرجة 400 في الوضع الداكن.',
         },
         {
           title: 'ثلاثية صريحة',
@@ -2530,7 +2534,8 @@ const ar: typeof en = {
     parity: {
       title: 'نوعان من المطابقة',
       coverage: 'التغطية',
-      coverageDesc: 'الأجزاء والتنويعات والحالات نفسها الموجودة في المكون الرسمي. هذا ما تتابعه هذه الصفحة.',
+      coverageDesc:
+        'الأجزاء والتنويعات والحالات نفسها الموجودة في المكون الرسمي. هذا ما تتابعه هذه الصفحة.',
       value: 'القيم الدقيقة',
       valueDesc: 'قياسات البكسل واللون والرموز مقابل الملف الرسمي. فحص منفصل ما زال جارياً.',
     },
@@ -2820,13 +2825,12 @@ const ar: typeof en = {
           control: 'FileUpload',
           submits: 'كل ملف في القائمة (⁦multipart⁩)',
           notes:
-            'الحقل الأصلي يعكس ⁦files⁩، بما فيها الملفات المسحوبة. إعادة التعيين تترك ⁦files⁩ لك.',
+            'الحقل الأصلي يعكس ⁦files⁩، بما فيها الملفات المسحوبة. إعادة التعيين تترك ⁦files⁩ المتحكم بها لك. إذا حذفت ⁦files⁩ (من الإصدار ⁦1.7.0⁩) يحتفظ الحقل بقائمته، وتفرغها إعادة التعيين.',
         },
         {
           control: '⁦ContentSwitcher⁩ و⁦Toggle⁩',
           submits: 'لا شيء',
-          notes:
-            'هذه مبدلات للعرض فقط. للاختيار داخل نموذج استخدم ⁦RadioGroup⁩ أو ⁦Checkbox⁩.',
+          notes: 'هذه مبدلات للعرض فقط. للاختيار داخل نموذج استخدم ⁦RadioGroup⁩ أو ⁦Checkbox⁩.',
         },
       ],
     },
@@ -2857,7 +2861,7 @@ const ar: typeof en = {
       rules: [
         'أعط النموذج معرف ⁦id⁩، وأعط زر التذييل ⁦form={formId}⁩. يرسل الزر ذلك النموذج، ويرسله مفتاح ⁦Enter⁩ من أي حقل عبر الزر نفسه.',
         'مرر حالة الانتظار إلى خاصية ⁦loading⁩ في الزر. الزر في حالة التحميل معطل، مما يمنع إرسال النموذج مرتين بنقرة ثانية أو بمفتاح ⁦Enter⁩.',
-        'اعرض خطأ الخادم الذي لا يخص حقلاً بعينه في ⁦InlineAlert⁩ فوق الحقول، واعرض خطأ كل حقل على حقله.',
+        'اعرض خطأ الخادم الذي لا يخص حقلاً بعينه في ⁦InlineAlert⁩ فوق الحقول، أو في ⁦FieldMessage⁩ دون ⁦id⁩ (من الإصدار ⁦1.7.0⁩)، واعرض خطأ كل حقل على حقله.',
       ],
       inertia: '⁦<Form>⁩ في ⁦Inertia⁩',
       actions: 'إجراء الخادم',
@@ -2882,7 +2886,7 @@ const ar: typeof en = {
     lead: 'يملأ لون واحد سلم العلامة كله، مما يجعل الأزرار، حلقات التركيز، التحديد، الدرجات الفاتحة، والوضع الداكن تتبعه. اضبطه في كتلة ⁦CSS⁩ واحدة أو في ⁦DgaProvider⁩.',
     onThisPage: 'في هذه الصفحة',
     version:
-      'يتطلب السلم المبني من لون واحد، متغير ⁦--ddga-brand-foreground⁩، وتحذير التباين الإصدار ⁦1.6.0⁩ أو أحدث من ⁦@dev-dga/react⁩، ⁦@dev-dga/css⁩، و⁦@dev-dga/tokens⁩.',
+      'يتطلب السلم المبني من لون واحد، متغير ⁦--ddga-brand-foreground⁩، وتحذير التباين الإصدار ⁦1.6.0⁩ أو أحدث من ⁦@dev-dga/react⁩، ⁦@dev-dga/css⁩، و⁦@dev-dga/tokens⁩. وتتطلب تعبئات الوضع الداكن على الدرجة ⁦600⁩ ومتغير ⁦--ddga-text-brand⁩ الإصدار ⁦1.7.0⁩ أو أحدث.',
     recipe: {
       title: 'هوية جهة حكومية في كتلة ⁦CSS⁩ واحدة',
       lead: 'عرّف لون جهتك مرة واحدة، واشتق منه درجات ⁦--ddga-brand-*⁩ الاثنتي عشرة عبر ⁦color-mix()⁩. اللون هو الدرجة ⁦600⁩. تمزجه الدرجات الأفتح بالأبيض والأغمق بالأسود، بنسب اللوحات المدمجة نفسها، ودون تشغيل أي ⁦JavaScript⁩.',
@@ -2890,30 +2894,30 @@ const ar: typeof en = {
         'ضع الكتلة بعد استيراد ⁦@dev-dga/css⁩ وخارج أي ⁦@layer⁩. تعرّف المكتبة متغيراتها في طبقة ⁦ddga-base⁩، والأنماط خارج الطبقات تتقدم على الأنماط داخلها. لا تمرر ⁦theme⁩ إلى ⁦DgaProvider⁩ مع الكتلة، لأن قيمه المضمنة تتقدم عليها.',
       previewLabel: 'الكتلة في الوضعين الفاتح والداكن',
       light: 'الوضع الفاتح: اللون الرئيس هو الدرجة ⁦600⁩',
-      dark: 'الوضع الداكن: اللون الرئيس هو الدرجة ⁦400⁩',
+      dark: 'الوضع الداكن: يبقى اللون الرئيس على الدرجة ⁦600⁩',
       previewPrimary: 'إرسال الطلب',
       previewSecondary: 'حفظ المسودة',
       previewCheckbox: 'أبلغني بالبريد الإلكتروني',
     },
     roles: {
       title: 'الدرجة التي يقرؤها كل دور',
-      lead: 'تقرأ المكونات متغيرات الأدوار وحدها. يشير كل دور إلى درجة من سلم العلامة، وينقله الوضع الداكن إلى درجة أفتح ليبقى واضحاً على الأسطح الداكنة.',
+      lead: 'تقرأ المكونات متغيرات الأدوار وحدها. يشير كل دور إلى درجة من سلم العلامة. تحتفظ التعبئات بالدرجة نفسها في الوضعين كما في ⁦SDGA⁩، وينتقل نص العلامة إلى درجة أفتح في الوضع الداكن ليبقى واضحاً.',
       cols: { role: 'الدور', light: 'الوضع الفاتح', dark: 'الوضع الداكن' },
       rows: [
         {
           role: '--ddga-color-primary',
           light: '--ddga-brand-600',
-          dark: '--ddga-brand-400',
+          dark: '--ddga-brand-600',
         },
         {
           role: '--ddga-color-primary-hover',
           light: '--ddga-brand-700',
-          dark: '--ddga-brand-300',
+          dark: '--ddga-brand-700',
         },
         {
           role: '--ddga-color-primary-active',
           light: '--ddga-brand-900',
-          dark: '--ddga-brand-500',
+          dark: '--ddga-brand-900',
         },
         {
           role: '--ddga-color-ring',
@@ -2923,14 +2927,19 @@ const ar: typeof en = {
         {
           role: '--ddga-color-primary-foreground',
           light: '--ddga-brand-foreground',
-          dark: '--ddga-gray-950',
+          dark: '--ddga-brand-foreground',
+        },
+        {
+          role: '--ddga-text-brand',
+          light: '--ddga-brand-600',
+          dark: '--ddga-brand-400',
         },
       ],
       note: 'إذا لم تضبط ⁦--ddga-brand-foreground⁩، يكون النص على اللون الرئيس أبيض في الوضع الفاتح. تحسب الأدوار عند ⁦:root⁩ وعند كل عنصر يحمل ⁦data-theme⁩. يضع ⁦DgaProvider⁩ الخاصية ⁦data-theme⁩ على جذره، مما يجعل الوضع الداكن يقرأ السلم نفسه.',
     },
     contrast: {
       title: 'تحقق من النص على الأزرار الرئيسة',
-      lead: 'في الوضع الفاتح تعرض الأزرار الرئيسة نصاً أبيض على لونك. إذا لم يبلغ الأبيض نسبة ⁦4.5:1⁩ عليه، كما في الأصفر أو الأخضر الفاتح، اضبط ⁦--ddga-brand-foreground⁩ على نص داكن. ويستخدم الوضع الداكن دائماً نص ⁦gray-950⁩ على الدرجة ⁦400⁩.',
+      lead: 'تعرض الأزرار الرئيسة نصاً أبيض على لونك في الوضعين. إذا لم يبلغ الأبيض نسبة ⁦4.5:1⁩ عليه، كما في الأصفر أو الأخضر الفاتح، اضبط ⁦--ddga-brand-foreground⁩ على نص داكن. ويسري هذا اللون في الوضعين الفاتح والداكن.',
       note: 'يحذر ⁦DgaProvider⁩ أثناء التطوير حين يقل تباين لون السمة عن ⁦4.5:1⁩، لكن كتلة ⁦CSS⁩ لا تمر عبره. افحص لونك بأداة لقياس التباين قبل الإطلاق.',
     },
     provider: {
@@ -2942,15 +2951,14 @@ const ar: typeof en = {
       studioLink: 'منسق السمة',
     },
     upgrade: {
-      title: 'الترقية من ⁦1.5⁩',
-      lead: 'التطبيقات التي تمرر لوناً إلى ⁦theme.primary⁩ ستلاحظ هذه التغييرات:',
+      title: 'الترقية إلى ⁦1.7⁩',
+      lead: 'يتبع الوضع الداكن الآن متغيرات ⁦SDGA⁩ في ⁦Figma⁩. ستلاحظ التطبيقات التي تستخدم الوضع الداكن هذه التغييرات:',
       items: [
-        'تتبع لونك الدرجات الفاتحة، حلقات التركيز، التحديد، والوضع الداكن، بدل الأخضر السعودي.',
-        'حالة التمرير هي الدرجة ⁦700⁩ وحالة الضغط هي الدرجة ⁦900⁩، بفارق طفيف عن قيم ⁦color-mix(in srgb)⁩ السابقة.',
-        'يعرض الوضع الداكن نص ⁦gray-950⁩ على تعبئات اللون الرئيس بدل الأبيض، في اللوحات والألوان المخصصة.',
-        'في الوضع الفاتح تنتقل لوحتا ⁦warning⁩ و⁦success⁩ إلى نص ⁦gray-950⁩.',
-        'ترجع ⁦buildTheme⁩ مع لون قيم ⁦--ddga-brand-*⁩ وحدها؛ مررها إلى عنصر يحمل ⁦data-theme⁩.',
-        'الثلاثية الصريحة ⁦{ base, hover, active, foreground }⁩ لم تتغير.',
+        'تحتفظ تعبئات اللون الرئيس وألوان الحالة بالدرجة ⁦600⁩ في الوضع الداكن، مع التمرير على ⁦700⁩ والضغط على ⁦900⁩. كانت على الدرجة ⁦400⁩.',
+        'يستخدم النص على تعبئات اللون الرئيس لون الوضع الفاتح نفسه: الأبيض، أو ⁦--ddga-brand-foreground⁩ للون علامة فاتح. كان دائماً ⁦gray-950⁩.',
+        'يقرأ نص العلامة وأيقوناتها ⁦--ddga-text-brand⁩: الدرجة ⁦600⁩ في الوضع الفاتح و⁦400⁩ في الداكن.',
+        'خلفية الصفحة الداكنة ⁦gray-950⁩، وحد الحقل الداكن ⁦gray-500⁩.',
+        'الثلاثية ⁦{ base, hover, active, foreground }⁩ لم تتغير.',
       ],
     },
   },
