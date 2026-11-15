@@ -58,7 +58,7 @@ const en = {
     points: [
       {
         title: 'Faithful to the spec',
-        body: 'Colors, typography, spacing and components mirror the official DGA Platforms Code, measured value-for-value.',
+        body: 'Color, typography, and spacing tokens match the official DGA Figma variables, and components follow the official Platforms Code pages.',
       },
       {
         title: 'Arabic-first',
@@ -539,7 +539,7 @@ const en = {
           body: '{ base, hover, active, foreground } sets the primary roles to exact values in both modes. The brand ramp, and the tints it drives, stay SA Green.',
         },
       ],
-      more: 'For the CSS-only recipe, the contrast rule for text on primary, and the 1.5 upgrade notes, read the',
+      more: 'For the CSS-only recipe, the contrast rule for text on primary, and the 1.7 upgrade notes, read the',
       moreJoin: '. To try a color and copy the CSS, open the ',
       moreEnd: '.',
     },
@@ -797,7 +797,7 @@ const en = {
     onThisPage: 'On this page',
     scope: {
       title: 'What this page claims, and what it doesn’t.',
-      body: 'It covers Platforms Code components only. It tracks coverage: whether each component has the same parts, variants, and states as the official one. It does not claim exact pixel and token values, that check is separate and still running. Components with no official page are listed as extensions, and we don’t claim them as DGA-compliant.',
+      body: 'It covers Platforms Code components only. It tracks coverage: whether each component has the same parts, variants, and states as the official one. Design tokens are measured separately against the official Figma variables. Per-component pixel measurements are still to come. Components with no official page are listed as extensions, and we don’t claim them as DGA-compliant.',
     },
     independence:
       'dev-dga is an independent library, built and maintained outside the DGA. It is not affiliated with, nor endorsed by, the Saudi Digital Government Authority (DGA).',
@@ -838,7 +838,7 @@ const en = {
         'Same parts, variants, and states as the official component. That’s what this page tracks.',
       value: 'Exact values',
       valueDesc:
-        'Pixel, color, and token measurements against the official file. A separate check, still running.',
+        'Token values match the official Figma variables since 1.7.0. Per-component pixel measurements are still to come.',
     },
     extensions: {
       title: 'Extensions',
@@ -862,7 +862,7 @@ const en = {
     },
     honesty: {
       title: 'Read this first.',
-      body: 'This is our own honest assessment, not an outside audit, and there is no certified VPAT. Automated tools catch only about a third of issues. Color contrast is designed to meet the thresholds but is not measured in our tests, and changing the theme can change it. Passing automated checks is a starting point, not a guarantee.',
+      body: 'This is our own honest assessment, not an outside audit, and there is no certified VPAT. Automated tools catch only about a third of issues. Contrast is tested in CI for token pairs, but rendered components are not measured, and changing the theme can change it. Passing automated checks is a starting point, not a guarantee.',
     },
     summary: {
       title: 'Summary',
@@ -875,7 +875,11 @@ const en = {
         { area: 'Arabic & RTL', status: 'Supported', tone: 'ok' },
         { area: 'High-contrast mode', status: 'Supported', tone: 'ok' },
         { area: 'Reduced motion', status: 'Supported', tone: 'ok' },
-        { area: 'Color contrast', status: 'By design, not measured', tone: 'partial' },
+        {
+          area: 'Color contrast',
+          status: 'Token pairs tested, components not measured',
+          tone: 'partial',
+        },
         { area: 'Target size, page structure', status: 'Shared with you', tone: 'partial' },
       ],
     },
@@ -926,7 +930,7 @@ const en = {
       title: 'Known limits',
       items: [
         'No outside audit or certified VPAT, this is a self-assessment.',
-        'Color contrast is not measured in our tests. Default colors target the thresholds, but changing the theme or using custom backgrounds can fall short, so check it yourself.',
+        'Rendered contrast is not measured in our tests; only token pairs are. Default colors target the thresholds, but changing the theme or using custom backgrounds can fall short, so check it yourself.',
         'Minimum target size is met for form controls, but not audited across every component and size.',
         'Automated checks are a starting point. Test with a real screen reader and real content.',
       ],
@@ -988,7 +992,7 @@ const en = {
     howtoLink: 'Styling with Tailwind',
     brandSeed: {
       label: 'Brand color',
-      hint: 'One color fills all 12 brand steps the way DgaProvider does in 1.6.0. The color becomes step 600, and the other steps mix it with white or black in oklab. Fine-tune any step below.',
+      hint: 'One color fills all 12 brand steps the way DgaProvider does since 1.6.0. The color becomes step 600, and the other steps mix it with white or black in oklab. Fine-tune any step below.',
       darkText:
         'White text on this color is below 4.5:1, so the studio sets --ddga-brand-foreground to gray-950 for primary buttons in light mode.',
     },
@@ -1768,7 +1772,7 @@ const ar: typeof en = {
     points: [
       {
         title: 'مطابق للمواصفة',
-        body: 'الألوان والخطوط والمسافات والمكونات تطابق كود منصات هيئة الحكومة الرقمية، قيمة بقيمة.',
+        body: 'تطابق رموز الألوان والخطوط والمسافات متغيرات Figma الرسمية لهيئة الحكومة الرقمية، وتتبع المكونات صفحات كود المنصات الرسمية.',
       },
       {
         title: 'عربي أولاً',
@@ -2239,7 +2243,7 @@ const ar: typeof en = {
           body: 'تضبط { base, hover, active, foreground } أدوار اللون الرئيس بقيم محددة في الوضعين. يبقى سلم العلامة والدرجات الفاتحة المبنية عليه بالأخضر السعودي.',
         },
       ],
-      more: 'لوصفة CSS وحدها، وقاعدة التباين للنص على اللون الرئيس، وملاحظات الترقية من 1.5، اقرأ',
+      more: 'لوصفة CSS وحدها، وقاعدة التباين للنص على اللون الرئيس، وملاحظات الترقية إلى 1.7، اقرأ',
       moreJoin: '. ولتجربة لون ونسخ CSS، افتح ',
       moreEnd: '.',
     },
@@ -2497,7 +2501,7 @@ const ar: typeof en = {
     onThisPage: 'في هذه الصفحة',
     scope: {
       title: 'ما تؤكده هذه الصفحة، وما لا تؤكده.',
-      body: 'تشمل الصفحة مكونات كود المنصات فقط، وتتابع التغطية: هل يملك كل مكون الأجزاء والتنويعات والحالات نفسها الموجودة في المكون الرسمي. ولا تدعي الصفحة تطابقاً دقيقاً في القيم (البكسل واللون والرموز)، لأن هذا فحص منفصل ما زال جارياً. والمكونات التي ليس لها صفحة رسمية مذكورة كإضافات، ولا ندعي توافقها مع الهيئة.',
+      body: 'تشمل الصفحة مكونات كود المنصات فقط، وتتابع التغطية: هل يملك كل مكون الأجزاء والتنويعات والحالات نفسها الموجودة في المكون الرسمي. وتقاس رموز التصميم منفصلة مقابل متغيرات Figma الرسمية، وستأتي قياسات البكسل لكل مكون لاحقاً. والمكونات التي ليس لها صفحة رسمية مذكورة كإضافات، ولا ندعي توافقها مع الهيئة.',
     },
     independence:
       'dev-dga مكتبة مستقلة تطور خارج هيئة الحكومة الرقمية. وهي غير تابعة للهيئة السعودية ولا معتمدة منها.',
@@ -2537,7 +2541,8 @@ const ar: typeof en = {
       coverageDesc:
         'الأجزاء والتنويعات والحالات نفسها الموجودة في المكون الرسمي. هذا ما تتابعه هذه الصفحة.',
       value: 'القيم الدقيقة',
-      valueDesc: 'قياسات البكسل واللون والرموز مقابل الملف الرسمي. فحص منفصل ما زال جارياً.',
+      valueDesc:
+        'تطابق قيم الرموز متغيرات Figma الرسمية منذ الإصدار 1.7.0. وستأتي قياسات البكسل لكل مكون لاحقاً.',
     },
     extensions: {
       title: 'الإضافات',
@@ -2561,7 +2566,7 @@ const ar: typeof en = {
     },
     honesty: {
       title: 'اقرأ هذا أولاً.',
-      body: 'هذا تقييمنا الذاتي الصادق. لم يخضع لتدقيق خارجي، ولا يوجد VPAT معتمد. تلتقط الأدوات الآلية نحو ثلث المشكلات فقط. نصمم تباين الألوان ليحقق الحدود المطلوبة، لكننا لا نقيسه في اختباراتنا. وقد يتغير التباين عند تغيير السمة. اجتياز الفحوص الآلية مجرد بداية.',
+      body: 'هذا تقييمنا الذاتي الصادق. لم يخضع لتدقيق خارجي، ولا يوجد VPAT معتمد. تلتقط الأدوات الآلية نحو ثلث المشكلات فقط. نختبر تباين أزواج الرموز في CI، لكننا لا نقيس تباين المكونات المعروضة. وقد يتغير التباين عند تغيير السمة. اجتياز الفحوص الآلية مجرد بداية.',
     },
     summary: {
       title: 'ملخص',
@@ -2574,7 +2579,11 @@ const ar: typeof en = {
         { area: 'العربية والاتجاه', status: 'مدعوم', tone: 'ok' },
         { area: 'وضع التباين العالي', status: 'مدعوم', tone: 'ok' },
         { area: 'تقليل الحركة', status: 'مدعوم', tone: 'ok' },
-        { area: 'تباين الألوان', status: 'بالتصميم، غير مقيس', tone: 'partial' },
+        {
+          area: 'تباين الألوان',
+          status: 'أزواج الرموز مختبرة، والمكونات غير مقيسة',
+          tone: 'partial',
+        },
         { area: 'حجم الهدف وبنية الصفحة', status: 'مشترك معك', tone: 'partial' },
       ],
     },
@@ -2625,7 +2634,7 @@ const ar: typeof en = {
       title: 'حدود معلومة',
       items: [
         'لم تخضع المكتبة لتدقيق خارجي، ولا يوجد VPAT معتمد. هذا تقييم ذاتي.',
-        'لا نقيس تباين الألوان في اختباراتنا. تستهدف الألوان الافتراضية الحدود المطلوبة، لكن تغيير السمة أو الخلفيات المخصصة قد يقصر عنها. لذا تحقق منها بنفسك.',
+        'لا نقيس تباين المكونات المعروضة في اختباراتنا، ونختبر أزواج الرموز فقط. تستهدف الألوان الافتراضية الحدود المطلوبة، لكن تغيير السمة أو الخلفيات المخصصة قد يقصر عنها. لذا تحقق منها بنفسك.',
         'يتحقق الحد الأدنى لحجم الهدف في حقول النماذج، لكنه غير مدقق عبر كل مكون ومقاس.',
         'الفحوص الآلية بداية. اختبر بقارئ شاشة حقيقي ومحتوى حقيقي.',
       ],
@@ -2687,7 +2696,7 @@ const ar: typeof en = {
     howtoLink: 'التنسيق مع Tailwind',
     brandSeed: {
       label: 'لون العلامة',
-      hint: 'يملأ لون واحد درجات العلامة الاثنتي عشرة كلها بالطريقة التي يتبعها DgaProvider في 1.6.0. يصبح اللون الدرجة 600، وتمزج الدرجات الأخرى منه مع الأبيض أو الأسود في oklab. اضبط أي درجة بعدها من القائمة أدناه.',
+      hint: 'يملأ لون واحد درجات العلامة الاثنتي عشرة كلها بالطريقة التي يتبعها DgaProvider منذ الإصدار 1.6.0. يصبح اللون الدرجة 600، وتمزج الدرجات الأخرى منه مع الأبيض أو الأسود في oklab. اضبط أي درجة بعدها من القائمة أدناه.',
       darkText:
         'تباين النص الأبيض على هذا اللون أقل من 4.5:1، لذلك يضبط المنسق --ddga-brand-foreground على gray-950 لأزرار اللون الرئيس في الوضع الفاتح.',
     },

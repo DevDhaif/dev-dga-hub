@@ -1,9 +1,9 @@
 ---
-description: 'مكون رفع ملفات في React بالسحب والإفلات، مع التحقق من النوع والحجم، حالة وتقدم لكل ملف، ونمط زر مضغوط. خاضع للتحكم بالكامل وجاهز للاتجاه العربي.'
+description: 'مكون رفع ملفات في React بالسحب والإفلات، مع التحقق من النوع والحجم، حالة وتقدم لكل ملف، ونمط زر مضغوط. يعمل خاضعاً للتحكم أو دونه، وجاهز للاتجاه العربي.'
 seoTitle: 'رفع الملفات: مكون FileUpload بالسحب والإفلات'
 ---
 
-يعمل FileUpload خاضعاً للتحكم بالكامل: تملك أنت مصفوفة `files`، وتنفذ الرفع بنفسك، وتحدّث `status` لكل ملف. يتحقق المكون من الملفات عبر `accept`، `maxSize`، و`maxFiles`.
+يعمل FileUpload خاضعاً للتحكم أو دونه. مع التحكم تملك أنت مصفوفة `files`، وتنفذ الرفع بنفسك، وتحدّث `status` لكل ملف. وعند حذف `files` يحتفظ الحقل بقائمته ويرسلها مع النموذج. يتحقق المكون من الملفات عبر `accept`، `maxSize`، و`maxFiles` في الحالتين.
 
 ## When to use
 
@@ -118,6 +118,49 @@ export default function Demo() {
         </p>
       )}
     </div>
+  );
+}
+```
+
+## Example: Uncontrolled in a form
+
+احذف `files` حين يرسل النموذج الملفات بنفسه: نموذج عادي، أو `<Form>` في Inertia، أو إجراء خادم. يحتفظ الحقل بقائمته، ويعرض زر حذف لكل ملف، ويفرغها عند إعادة تعيين النموذج. يتطلب ذلك الإصدار 1.7.0 أو أحدث من `@dev-dga/react`.
+
+```tsx
+import { useState } from 'react';
+import { Button, FileUpload } from '@dev-dga/react';
+
+export default function Demo() {
+  const [submitted, setSubmitted] = useState<string[] | null>(null);
+
+  return (
+    <form
+      style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 360 }}
+      onSubmit={(event) => {
+        event.preventDefault();
+        const names = new FormData(event.currentTarget)
+          .getAll('attachments')
+          .map((entry) => (entry instanceof File ? entry.name : String(entry)));
+        setSubmitted(names);
+      }}
+      onReset={() => setSubmitted(null)}
+    >
+      <FileUpload
+        name="attachments"
+        required
+        label="Supporting documents"
+        description="PDF only, up to 5MB each."
+        accept=".pdf"
+        maxSize={5 * 1024 * 1024}
+      />
+      <div style={{ display: 'flex', gap: 8 }}>
+        <Button type="submit">Submit</Button>
+        <Button type="reset" variant="secondary">
+          Reset
+        </Button>
+      </div>
+      <output>{submitted ? submitted.join(', ') : 'Not submitted yet'}</output>
+    </form>
   );
 }
 ```

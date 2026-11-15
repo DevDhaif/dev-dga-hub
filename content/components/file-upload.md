@@ -3,11 +3,11 @@ title: FileUpload
 slug: file-upload
 category: Form inputs
 status: stable
-description: 'React file upload with drag and drop, accept and size validation, per-file status and progress, and a compact button variant. Fully controlled, RTL ready.'
+description: 'React file upload with drag and drop, accept and size validation, per-file status and progress, and a compact button variant. Controlled or uncontrolled, RTL ready.'
 seoTitle: 'FileUpload: React drag-and-drop file uploader'
 ---
 
-FileUpload is fully controlled: you own the `files` array, run the upload yourself, and report each file's `status`. Validation uses `accept`, `maxSize`, and `maxFiles`.
+FileUpload works controlled or uncontrolled. Controlled, you own the `files` array, run the upload yourself, and report each file's `status`. Uncontrolled, you omit `files` and the field keeps its own list, which submits with the form. Validation uses `accept`, `maxSize`, and `maxFiles` in both modes.
 
 ## When to use
 
@@ -122,6 +122,49 @@ export default function Demo() {
         </p>
       )}
     </div>
+  );
+}
+```
+
+## Example: Uncontrolled in a form
+
+Omit `files` when the form submits the files itself: a plain form, Inertia `<Form>`, or a server action. The field keeps its list, shows a remove button for each file, and clears on form reset. This needs `@dev-dga/react` 1.7.0 or later.
+
+```tsx
+import { useState } from 'react';
+import { Button, FileUpload } from '@dev-dga/react';
+
+export default function Demo() {
+  const [submitted, setSubmitted] = useState<string[] | null>(null);
+
+  return (
+    <form
+      style={{ display: 'flex', flexDirection: 'column', gap: 12, maxWidth: 360 }}
+      onSubmit={(event) => {
+        event.preventDefault();
+        const names = new FormData(event.currentTarget)
+          .getAll('attachments')
+          .map((entry) => (entry instanceof File ? entry.name : String(entry)));
+        setSubmitted(names);
+      }}
+      onReset={() => setSubmitted(null)}
+    >
+      <FileUpload
+        name="attachments"
+        required
+        label="Supporting documents"
+        description="PDF only, up to 5MB each."
+        accept=".pdf"
+        maxSize={5 * 1024 * 1024}
+      />
+      <div style={{ display: 'flex', gap: 8 }}>
+        <Button type="submit">Submit</Button>
+        <Button type="reset" variant="secondary">
+          Reset
+        </Button>
+      </div>
+      <output>{submitted ? submitted.join(', ') : 'Not submitted yet'}</output>
+    </form>
   );
 }
 ```
