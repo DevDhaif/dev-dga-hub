@@ -3,15 +3,19 @@
 import {
   Button,
   Card,
+  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardIcon,
   CardTitle,
+  Carousel,
+  CarouselDots,
+  CarouselSlide,
+  CarouselViewport,
   Tag,
 } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
-import { ArrowRight } from '@/components/icons';
 
 const ICONS = [
   'M3 8h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8Z|M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2', // business
@@ -22,15 +26,16 @@ const ICONS = [
   'M3 6h18a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z|M7 10h4M7 14h6|M15.5 9.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3', // identity
 ];
 
+// SDGA template card tags: status (green), category (blue), duration (neutral).
+const TAG_VARIANTS = ['success-subtle', 'info-subtle', 'secondary-subtle'] as const;
+
 function Glyph({ d }: { d: string }) {
   return (
     <svg
-      width="22"
-      height="22"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.75"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden
@@ -47,84 +52,108 @@ export function CatalogBlock() {
   const cat = c.blocks.catalog;
 
   return (
-    <div className="block-catalog">
+    <section className="block-catalog" aria-labelledby="block-catalog-title">
       <div className="block-catalog__intro">
-        <h3 className="block-catalog__title">{cat.title}</h3>
+        <div className="block-catalog__heading">
+          <h2 id="block-catalog-title" className="block-catalog__title">
+            {cat.title}
+          </h2>
+          <Button asChild variant="outline" size="lg">
+            <a href="#">{cat.viewAll}</a>
+          </Button>
+        </div>
         <p className="block-catalog__lead">{cat.lead}</p>
       </div>
 
-      <div className="block-catalog__grid">
-        {cat.services.map((svc, i) => (
-          <Card
-            key={svc.name}
-            interactive
-            variant="outline"
-            padding="lg"
-            className="block-catalog__card"
-          >
-            <CardHeader>
-              <div className="block-catalog__top">
-                <CardIcon featured>
-                  <Glyph d={ICONS[i % ICONS.length]} />
-                </CardIcon>
-                <Tag variant="primary-subtle" size="sm">
-                  {svc.tag}
-                </Tag>
-              </div>
-              <CardTitle>{svc.name}</CardTitle>
-              <CardDescription>{svc.desc}</CardDescription>
-            </CardHeader>
-            <CardFooter>
-              <Button
-                asChild
-                variant="ghost"
-                size="sm"
-                endIcon={<ArrowRight width={15} height={15} />}
-                iconFlip
-              >
-                <a href="#">{cat.action}</a>
-              </Button>
-            </CardFooter>
-          </Card>
-        ))}
-      </div>
-    </div>
+      <Carousel aria-label={cat.title} slideSize="320px" gap="16px" align="center" flush>
+        <CarouselViewport>
+          {cat.services.map((svc, i) => (
+            <CarouselSlide key={svc.name}>
+              <Card className="block-catalog__card">
+                <CardHeader>
+                  <CardIcon featured>
+                    <Glyph d={ICONS[i % ICONS.length]} />
+                  </CardIcon>
+                  <CardTitle>{svc.name}</CardTitle>
+                  <CardDescription>{svc.desc}</CardDescription>
+                </CardHeader>
+                <CardContent className="block-catalog__tags">
+                  {svc.tags.map((tag, t) => (
+                    <Tag key={tag} variant={TAG_VARIANTS[t % TAG_VARIANTS.length]} shape="squared">
+                      {tag}
+                    </Tag>
+                  ))}
+                </CardContent>
+                <CardFooter>
+                  <Button asChild variant="outline" size="lg">
+                    <a href="#">{cat.details}</a>
+                  </Button>
+                  <Button asChild size="lg">
+                    <a href="#">{cat.start}</a>
+                  </Button>
+                </CardFooter>
+              </Card>
+            </CarouselSlide>
+          ))}
+        </CarouselViewport>
+        <CarouselDots />
+      </Carousel>
+    </section>
   );
 }
 
 export const catalogCode = `import {
-  Button, Card, CardDescription, CardFooter, CardHeader, CardIcon, CardTitle, Tag,
+  Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardIcon, CardTitle,
+  Carousel, CarouselDots, CarouselSlide, CarouselViewport, Tag,
 } from '@dev-dga/react';
 
 const services = [
-  { name: 'Commercial registration', desc: 'Register a new business and receive your CR number.', tag: 'Business' },
-  { name: 'Building permit', desc: 'Apply for construction and renovation permits.', tag: 'Housing' },
-  { name: 'Work permit renewal', desc: 'Renew an existing work permit for an employee.', tag: 'Labor' },
+  { name: 'Commercial registration', desc: 'Register a new business and receive your CR number.', tags: ['e-Service', 'Business', '1 day'] },
+  { name: 'Building permit', desc: 'Apply for construction and renovation permits.', tags: ['e-Service', 'Individuals', '5 days'] },
+  { name: 'Work permit renewal', desc: 'Renew an existing work permit for an employee.', tags: ['e-Service', 'Business', 'Instant'] },
 ];
+const tagVariants = ['success-subtle', 'info-subtle', 'secondary-subtle'] as const;
 
-export function ServiceCatalog() {
+export function ServicesSection() {
   return (
-    <div style={{
-      display: 'grid', gap: '1.25rem',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
-    }}>
-      {services.map((svc) => (
-        <Card key={svc.name} interactive variant="outline" padding="lg">
-          <CardHeader>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <CardIcon featured><MyServiceIcon /></CardIcon>
-              <Tag variant="primary-subtle" size="sm">{svc.tag}</Tag>
-            </div>
-            <CardTitle>{svc.name}</CardTitle>
-            <CardDescription>{svc.desc}</CardDescription>
-          </CardHeader>
-          <CardFooter>
-            <Button asChild variant="ghost" size="sm" endIcon={<ArrowRight />} iconFlip>
-              <a href={\`/services/\${svc.name}\`}>Open service</a>
-            </Button>
-          </CardFooter>
-        </Card>
-      ))}
-    </div>
+    <section className="services">
+      <div className="services__heading">
+        <h2>Services</h2>
+        <Button asChild variant="outline" size="lg"><a href="/services">View all</a></Button>
+      </div>
+      <p>Start a government service online. Each card shows who the service is for and how long it takes.</p>
+
+      <Carousel aria-label="Services" slideSize="320px" gap="16px" align="center" flush>
+        <CarouselViewport>
+          {services.map((svc) => (
+            <CarouselSlide key={svc.name}>
+              <Card>
+                <CardHeader>
+                  <CardIcon featured><MyServiceIcon /></CardIcon>
+                  <CardTitle>{svc.name}</CardTitle>
+                  <CardDescription>{svc.desc}</CardDescription>
+                </CardHeader>
+                <CardContent style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--ddga-space-2)' }}>
+                  {svc.tags.map((tag, i) => (
+                    <Tag key={tag} variant={tagVariants[i]} shape="squared">{tag}</Tag>
+                  ))}
+                </CardContent>
+                <CardFooter>
+                  <Button asChild variant="outline" size="lg"><a href={\`/services/\${svc.name}\`}>Details</a></Button>
+                  <Button asChild size="lg"><a href={\`/services/\${svc.name}/start\`}>Start</a></Button>
+                </CardFooter>
+              </Card>
+            </CarouselSlide>
+          ))}
+        </CarouselViewport>
+        <CarouselDots />
+      </Carousel>
+    </section>
   );
-}`;
+}
+
+/* services.css: DGA Home Page services section.
+.services { display: grid; gap: var(--ddga-space-8); padding: var(--ddga-space-10) var(--ddga-space-20); background: var(--ddga-gray-50); }
+.services__heading { display: flex; align-items: center; justify-content: space-between; gap: var(--ddga-space-8); }
+.services__heading h2 { margin: 0; font-size: var(--ddga-font-size-display-sm); line-height: var(--ddga-font-line-height-display-sm); font-weight: 700; }
+*/`;

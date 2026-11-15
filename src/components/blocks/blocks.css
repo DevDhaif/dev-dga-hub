@@ -1,5 +1,3 @@
-
-
 .blocks {
   padding-block: clamp(2.5rem, 6vw, 4rem) 5rem;
 }
@@ -291,38 +289,6 @@
   gap: 0.5rem;
 }
 
-.block-form {
-  max-inline-size: 44rem;
-  margin-inline: auto;
-}
-.block-form__body {
-  display: grid;
-  gap: 1.25rem;
-  min-inline-size: 0;
-  grid-template-columns: minmax(0, 1fr);
-}
-.block-form__body > * {
-  min-inline-size: 0;
-}
-.block-form__grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
-}
-.block-form__grid > * {
-  min-inline-size: 0;
-}
-@media (min-width: 560px) {
-  .block-form__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-.block-form__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
 .block-dash {
   inline-size: 100%;
   display: grid;
@@ -507,276 +473,256 @@
   gap: 0.75rem;
 }
 
-.block-catalog {
+/* DGA template sections: 40px block padding, 80px inline at the 1440 frame. */
+.block-hero,
+.block-faq__header,
+.block-faq__section,
+.block-catalog,
+.block-wizard,
+.block-contact {
+  padding-block: var(--ddga-space-10);
+  padding-inline: clamp(var(--ddga-space-4), 6%, var(--ddga-space-20));
+}
+
+/* Hero: DGA Home Page template. Without a photo, the SA-950 overlay is the whole surface. */
+.block-hero {
   inline-size: 100%;
+  color: var(--ddga-alpha-white-100);
+  background-color: var(--ddga-sa-950);
 }
-.block-catalog__intro {
-  max-inline-size: 52ch;
-  margin-block-end: 1.75rem;
-}
-.block-catalog__title {
-  font-size: clamp(1.375rem, 3vw, 1.75rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin: 0 0 0.4rem;
-}
-.block-catalog__lead {
-  color: var(--ddga-text-secondary);
-  font-size: 0.9375rem;
-  line-height: 1.6;
-  margin: 0;
-}
-.block-catalog__grid {
+.block-hero__content {
   display: grid;
-  gap: 1.25rem;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: var(--ddga-space-6);
+  justify-items: start;
+  max-inline-size: 39rem;
 }
-.block-catalog__card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 1rem;
-  block-size: 100%;
+.block-hero__content > :last-child {
+  margin-block-start: var(--ddga-space-2);
 }
-.block-catalog__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-block-end: 0.85rem;
+.block-hero__title {
+  margin: 0;
+  font-size: var(--ddga-font-size-display-xl);
+  line-height: var(--ddga-font-line-height-display-xl);
+  font-weight: var(--ddga-font-weight-semibold);
+  letter-spacing: var(--ddga-font-tracking-display);
+}
+.block-hero__lead {
+  margin: 0;
+  font-size: var(--ddga-font-size-xl);
+  line-height: var(--ddga-font-line-height-xl);
+}
+@media (max-width: 640px) {
+  .block-hero__title {
+    font-size: var(--ddga-font-size-display-sm);
+    line-height: var(--ddga-font-line-height-display-sm);
+  }
+  .block-hero__lead {
+    font-size: var(--ddga-font-size-base);
+    line-height: var(--ddga-font-line-height-base);
+  }
 }
 
-.block-wizard {
-  max-inline-size: 42rem;
-  margin-inline: auto;
+/* FAQ: DGA FAQ template. */
+.block-faq {
   inline-size: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 1.5rem;
-}
-.block-wizard__head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-}
-.block-wizard__title {
-  font-size: 1.0625rem;
-  font-weight: 600;
-  margin: 0;
-}
-.block-wizard__step {
-  font-size: 0.8125rem;
-  color: var(--ddga-text-tertiary);
-  white-space: nowrap;
-}
-.block-wizard__steps {
-  inline-size: 100%;
-}
-/* DS progress-indicator styles do not apply to this markup - stepper layout owned here. */
-.block-wizard__steps > ol {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  inline-size: 100%;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  gap: 0;
-}
-.block-wizard__steps > ol > li {
-  flex: 1 1 0;
-  min-inline-size: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.55rem;
-  position: relative;
-}
-
-.block-wizard__steps > ol > li:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  inset-block-start: 14px;
-  inset-inline-start: 2.4rem;
-  inset-inline-end: 0.5rem;
-  block-size: 2px;
-  background: var(--ddga-color-border);
-}
-.block-wizard__steps .ddga-progress-indicator__indicator {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  inline-size: 30px;
-  block-size: 30px;
-  border-radius: var(--ddga-radius-full);
-  border: 2px solid var(--ddga-color-border);
-  background: var(--ddga-color-background);
-  color: var(--ddga-text-tertiary);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  flex: none;
-}
-.block-wizard__steps .ddga-progress-indicator__indicator-check {
-  display: none;
-  inline-size: 16px;
-  block-size: 16px;
-}
-.block-wizard__steps .ddga-progress-indicator__step--current .ddga-progress-indicator__indicator {
-  border-color: var(--ddga-color-primary);
-  color: var(--ddga-text-brand);
-}
-.block-wizard__steps .ddga-progress-indicator__step--completed .ddga-progress-indicator__indicator {
-  border-color: var(--ddga-color-primary);
-  background: var(--ddga-color-primary);
-  color: var(--ddga-color-primary-foreground);
-}
-.block-wizard__steps
-  .ddga-progress-indicator__step--completed
-  .ddga-progress-indicator__indicator-check {
-  display: block;
-}
-.block-wizard__steps
-  .ddga-progress-indicator__step--completed
-  .ddga-progress-indicator__indicator-number {
-  display: none;
-}
-.block-wizard__steps .ddga-progress-indicator__content {
-  display: flex;
-  flex-direction: column;
-  gap: 0.05rem;
-  min-inline-size: 0;
-}
-.block-wizard__steps .ddga-progress-indicator__title {
-  font-weight: 600;
-  font-size: 0.875rem;
+  background-color: var(--ddga-color-background);
   color: var(--ddga-text-primary);
 }
-.block-wizard__steps .ddga-progress-indicator__description {
-  font-size: 0.75rem;
-  line-height: 1.35;
-  color: var(--ddga-text-tertiary);
+.block-faq__header {
+  display: grid;
+  gap: var(--ddga-space-4);
+  background-color: var(--ddga-brand-25);
+}
+[data-theme='dark'] .block-faq__header,
+[data-theme='dark'] .block-contact {
+  --block-band: color-mix(in srgb, var(--ddga-color-primary) 12%, var(--ddga-color-background));
+}
+[data-theme='dark'] .block-faq__header {
+  background-color: var(--block-band);
+}
+.block-faq__title {
+  margin: 0;
+  font-size: var(--ddga-font-size-display-lg);
+  line-height: var(--ddga-font-line-height-display-lg);
+  font-weight: var(--ddga-font-weight-semibold);
+  letter-spacing: var(--ddga-font-tracking-display);
+}
+.block-faq__lead {
+  margin: 0;
+  max-inline-size: 45rem;
+}
+
+/* Services: DGA Home Page services section. */
+.block-catalog {
+  inline-size: 100%;
+  display: grid;
+  gap: var(--ddga-space-8);
+  background-color: var(--ddga-gray-50);
+  color: var(--ddga-text-primary);
+}
+[data-theme='dark'] .block-catalog,
+[data-theme='dark'] .block-wizard__progress {
+  background-color: color-mix(in srgb, var(--ddga-color-muted) 45%, var(--ddga-color-background));
+}
+.block-catalog__intro {
+  display: grid;
+  gap: var(--ddga-space-6);
+}
+.block-catalog__heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ddga-space-8);
+}
+.block-catalog__title,
+.block-wizard__title,
+.block-contact__title {
+  margin: 0;
+  font-size: var(--ddga-font-size-display-sm);
+  line-height: var(--ddga-font-line-height-display-sm);
+  font-weight: var(--ddga-font-weight-bold);
+  color: var(--ddga-text-primary);
+}
+.block-catalog__lead,
+.block-wizard__lead,
+.block-contact__lead {
+  margin: 0;
+  max-inline-size: 45rem;
+}
+.block-catalog__card {
+  block-size: 100%;
+}
+.block-catalog__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ddga-space-2);
+}
+
+/* Multi-step form: DGA Form template. */
+.block-wizard,
+.block-contact {
+  inline-size: 100%;
+  display: grid;
+  background-color: var(--ddga-color-background);
+  gap: var(--ddga-space-8);
+  align-items: start;
+  color: var(--ddga-text-primary);
+}
+@media (min-width: 960px) {
+  .block-wizard,
+  .block-contact {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  }
+}
+.block-wizard__form,
+.block-contact__main,
+.block-contact__form {
+  display: grid;
+  gap: var(--ddga-space-8);
+  min-inline-size: 0;
+}
+.block-wizard__intro {
+  display: grid;
+  gap: var(--ddga-space-6);
+}
+.block-wizard__heading {
+  display: grid;
+  gap: var(--ddga-space-4);
+}
+.block-wizard__required {
+  margin: 0;
+  color: var(--ddga-text-error);
+  font-size: var(--ddga-font-size-sm);
+  line-height: var(--ddga-font-line-height-sm);
 }
 .block-wizard__grid,
-.block-wizard__stack {
+.block-contact__grid {
   display: grid;
-  gap: 1rem;
-  grid-template-columns: 1fr;
+  gap: var(--ddga-space-6);
+  grid-template-columns: minmax(0, 1fr);
 }
 .block-wizard__grid > *,
-.block-wizard__stack > * {
+.block-contact__grid > * {
   min-inline-size: 0;
 }
 @media (min-width: 560px) {
-  .block-wizard__grid {
+  .block-wizard__grid,
+  .block-contact__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 .block-wizard__review {
-  color: var(--ddga-text-secondary);
-  line-height: 1.6;
+  margin: 0;
 }
 .block-wizard__actions {
   display: flex;
-  justify-content: space-between;
-  gap: 0.75rem;
   flex-wrap: wrap;
+  gap: var(--ddga-space-6);
+}
+.block-wizard__progress {
+  padding: var(--ddga-space-10);
+  border-radius: var(--ddga-radius-lg);
+  background-color: var(--ddga-gray-50);
 }
 
-.block-hero {
-  max-inline-size: 48rem;
-  margin-inline: auto;
-  text-align: center;
-  padding-block: clamp(1rem, 4vw, 2.5rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.1rem;
+/* Contact form: DGA Contact Us template. The SA-25 band runs behind the intro. */
+.block-contact {
+  --block-band: var(--ddga-brand-25);
+  background-image: linear-gradient(var(--block-band), var(--block-band));
+  background-position: top;
+  background-size: 100% 13rem;
+  background-repeat: no-repeat;
 }
-.block-hero__eyebrow {
-  justify-content: center;
+.block-contact__intro {
+  display: grid;
+  gap: var(--ddga-space-4);
 }
-.block-hero__title {
-  font-size: clamp(1.75rem, 5vw, 2.75rem);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-  margin: 0;
-  text-wrap: balance;
+.block-contact__intro > nav {
+  margin-block-end: var(--ddga-space-2);
 }
-.block-hero__lead {
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  color: var(--ddga-text-secondary);
-  max-inline-size: 44ch;
-  margin: 0;
+.block-contact__form {
+  justify-items: start;
 }
-.block-hero__cta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-block-start: 0.25rem;
-}
-.block-hero__stats {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.25rem 2.5rem;
-  margin-block-start: 1rem;
-  padding-block-start: 1.5rem;
-  border-block-start: 1px solid var(--ddga-color-border);
+.block-contact__form > * {
   inline-size: 100%;
 }
-.block-hero__stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+.block-contact__form > :last-child {
+  inline-size: auto;
 }
-.block-hero__stat-value {
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.block-contact__channels {
+  display: grid;
+  gap: var(--ddga-space-4);
+}
+.block-contact__channel {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ddga-space-2);
+}
+.block-contact__icon {
+  flex: none;
+  inline-size: 1.5rem;
+  block-size: 1.5rem;
+  margin-block-start: 2px;
   color: var(--ddga-text-brand);
 }
-.block-hero__stat-label {
-  font-size: 0.8125rem;
-  color: var(--ddga-text-tertiary);
-}
-
-.block-faq {
+.block-contact__channel-text {
   display: grid;
-  gap: 1.75rem;
-  grid-template-columns: 1fr;
-  align-items: start;
+  gap: var(--ddga-space-1);
+  justify-items: start;
 }
-@media (min-width: 860px) {
-  .block-faq {
-    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-    gap: 3rem;
-  }
-  .block-faq__intro {
-    position: sticky;
-    inset-block-start: 6rem;
-  }
+.block-contact__label {
+  font-weight: var(--ddga-font-weight-bold);
 }
-.block-faq__title {
-  font-size: clamp(1.375rem, 3vw, 1.75rem);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin: 0 0 0.5rem;
-}
-.block-faq__lead {
-  color: var(--ddga-text-secondary);
-  font-size: 0.9375rem;
-  line-height: 1.6;
+.block-contact__subtitle {
   margin: 0;
+  font-size: var(--ddga-font-size-lg);
+  line-height: var(--ddga-font-line-height-lg);
+  font-weight: var(--ddga-font-weight-bold);
 }
-.block-faq__list {
-  min-inline-size: 0;
+.block-contact__emergency {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ddga-space-2);
 }
 
 .block-team {
