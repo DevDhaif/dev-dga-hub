@@ -11,16 +11,16 @@
 
 ## Summary
 
-| Area                                               | Status                                                                                                                                                                      |
-| -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Keyboard operability                               | **Supports** - every interactive component is keyboard-operable and e2e-verified                                                                                            |
-| Focus visibility & management                      | **Supports** - visible keyboard focus rings; focus trap / restore on overlays                                                                                               |
-| Screen readers / ARIA semantics                    | **Supports** - WAI-ARIA roles, states, and properties on all interactive widgets                                                                                            |
-| RTL & Arabic                                       | **Supports** - direction-native, enforced by a build-failing lint gate                                                                                                      |
-| High-contrast mode (Windows HCM / `forced-colors`) | **Supports** - 63 of 66 component stylesheets                                                                                                                               |
-| Reduced motion                                     | **Supports** - honored by every animated component                                                                                                                          |
-| Color contrast                                     | **Partially / by design target** - default tokens are designed to DGA/WCAG thresholds but are **not independently measured in CI**; re-theming shifts responsibility to you |
-| Target size, page structure, content semantics     | **Shared responsibility** - see [Consumer responsibilities](#consumer-responsibilities)                                                                                     |
+| Area                                               | Status                                                                                                                                                                                                       |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Keyboard operability                               | **Supports** - every interactive component is keyboard-operable and e2e-verified                                                                                                                             |
+| Focus visibility & management                      | **Supports** - visible keyboard focus rings; focus trap / restore on overlays                                                                                                                                |
+| Screen readers / ARIA semantics                    | **Supports** - WAI-ARIA roles, states, and properties on all interactive widgets                                                                                                                             |
+| RTL & Arabic                                       | **Supports** - direction-native, enforced by a build-failing lint gate                                                                                                                                       |
+| High-contrast mode (Windows HCM / `forced-colors`) | **Supports** - 63 of 66 component stylesheets                                                                                                                                                                |
+| Reduced motion                                     | **Supports** - honored by every animated component                                                                                                                                                           |
+| Color contrast                                     | **Partially / by design target** - token pairs are tested in CI (text roles on surfaces, primary button text on its fill); rendered components are **not measured**; re-theming shifts responsibility to you |
+| Target size, page structure, content semantics     | **Shared responsibility** - see [Consumer responsibilities](#consumer-responsibilities)                                                                                                                      |
 
 Automated accessibility checks (axe-core) run against **all 64 components** on every test run, and **47 Playwright end-to-end specs** exercise the keyboard, focus, and RTL behaviors that a DOM-only test cannot honor.
 
@@ -38,7 +38,7 @@ We assess conformance ourselves, using:
 
 - **No independent third-party audit or certified VPAT.** This is a good-faith self-assessment.
 - **Automated tooling catches a minority of issues.** axe-core detects roughly a third of WCAG problems; it cannot judge whether an accessible name is _meaningful_, whether reading order makes sense, or whether your content is understandable.
-- **Color-contrast ratios are not measured in CI.** The default color tokens are _designed_ against the DGA/WCAG thresholds (4.5:1 body text, 3:1 large text and UI components), but there is no automated contrast gate, and re-theming (`<DgaProvider theme=…>`) can change the result. See [Known limitations](#known-limitations) and [Consumer responsibilities](#consumer-responsibilities).
+- **Color contrast is tested for token pairs, not for rendered components.** CI asserts 4.5:1 for each text token on the page, card, and muted surfaces in light and dark mode, and for primary button text on its fill for every built-in palette. Two documented exceptions: placeholder text, and brand text on gray-100. Component states, custom backgrounds, and re-theming (`<DgaProvider theme=…>`) are not measured. See [Known limitations](#known-limitations) and [Consumer responsibilities](#consumer-responsibilities).
 
 ---
 
@@ -90,7 +90,7 @@ Component-level assessment. Criteria whose satisfaction depends on _your_ conten
 | 1.3.1 Info and Relationships                                           | A        | Supports                         | Semantic HTML + ARIA from Radix/React Aria; form controls wired via `useFieldA11y` (label/description/error associations). |
 | 1.3.2 Meaningful Sequence                                              | A        | Supports                         | Logical DOM order; RTL handled via logical properties + `DirectionProvider`.                                               |
 | 1.4.1 Use of Color                                                     | A        | Supports                         | State is never conveyed by color alone (icons, text, patterns, focus rings accompany color).                               |
-| 1.4.3 Contrast (Minimum)                                               | AA       | **Partially / by design target** | Default tokens designed to DGA thresholds; **not measured in CI**; re-theming is your responsibility.                      |
+| 1.4.3 Contrast (Minimum)                                               | AA       | **Partially / by design target** | Token pairs tested in CI; rendered components **not measured**; re-theming is your responsibility.                         |
 | 1.4.10 Reflow                                                          | AA       | Supports                         | Responsive, container-aware layouts; no fixed-width traps in components.                                                   |
 | 1.4.11 Non-text Contrast                                               | AA       | **Partially / by design target** | Focus rings and control borders designed to ≥3:1 with default tokens; not independently measured.                          |
 | 1.4.12 Text Spacing                                                    | AA       | Supports                         | Components use relative units and do not clip on increased text spacing.                                                   |
@@ -103,7 +103,7 @@ Component-level assessment. Criteria whose satisfaction depends on _your_ conten
 | 2.4.11 Focus Not Obscured (Minimum)                                    | AA (2.2) | Supports                         | Portalled overlays render above content; focused elements are not hidden by component chrome.                              |
 | 2.5.8 Target Size (Minimum)                                            | AA (2.2) | **Partially**                    | Form controls use ≥24px targets (e.g. Radio/Checkbox 24px hit frames); not audited across every component/size.            |
 | 3.2.1 On Focus / 3.2.2 On Input                                        | A        | Supports                         | No context change on focus or input beyond documented, expected behavior.                                                  |
-| 3.3.1 Error Identification / 3.3.2 Labels or Instructions              | A        | Supports (with your content)     | Field a11y wires errors/help text and `aria-invalid`; you supply the label and message text.                              |
+| 3.3.1 Error Identification / 3.3.2 Labels or Instructions              | A        | Supports (with your content)     | Field a11y wires errors/help text and `aria-invalid`; you supply the label and message text.                               |
 | 4.1.2 Name, Role, Value                                                | A        | Supports                         | Roles/states/values from Radix/React Aria + native elements; dev warnings catch missing names.                             |
 | 1.1.1 Non-text Content                                                 | A        | **Shared**                       | You provide `alt`/`aria-label` for images, icons, and media you pass in.                                                   |
 | 2.4.2 Page Titled / 2.4.6 Headings and Labels / 3.1.1 Language of Page | A/AA     | **Shared**                       | Page-level concerns owned by your application.                                                                             |
@@ -115,7 +115,7 @@ Component-level assessment. Criteria whose satisfaction depends on _your_ conten
 ## Known limitations
 
 - **No independent third-party audit or certified VPAT.** This statement is a self-assessment.
-- **Color contrast is not measured in CI.** Default tokens target the DGA/WCAG thresholds, but ratios are not asserted by any automated gate. If you change the theme, palette, or place components on custom backgrounds, re-verify contrast yourself.
+- **Rendered contrast is not measured.** CI checks token pairs only. If you change the theme, palette, or place components on custom backgrounds, re-verify contrast yourself.
 - **Three stylesheets have no `forced-colors` block** by design: `field.css` (shared primitive, inherits from consumers), `list.css` (static text list, zero color surface), and `search-box.css` (composes the TextInput field, which carries the block). No interactive affordance is left unstyled under HCM.
 - **Target Size (2.5.8)** is met for form controls but not exhaustively audited across every component and size variant.
 - **Automated coverage is a floor, not a ceiling.** Passing axe does not guarantee a good screen-reader experience; test with real assistive technology and real content.
