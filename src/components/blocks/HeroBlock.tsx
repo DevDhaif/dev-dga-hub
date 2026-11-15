@@ -2,17 +2,32 @@
 
 import { Button, Carousel, CarouselDots, CarouselSlide, CarouselViewport } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
+import { fmt } from './block-format';
 
 export function HeroBlock() {
   const { c } = useCopy();
   const h = c.blocks.hero;
+  const ui = c.blocks.ui;
+  const count = h.slides.length;
 
   return (
     <section className="block-hero">
-      <Carousel aria-label={h.label} controls="dots" gap="32px" flush loop>
+      <Carousel
+        aria-label={h.label}
+        aria-roledescription={ui.carousel}
+        announce={(i, m) => fmt(ui.announce, { n: i + 1, m })}
+        controls="dots"
+        gap="32px"
+        flush
+        loop
+      >
         <CarouselViewport>
-          {h.slides.map((s) => (
-            <CarouselSlide key={s.title}>
+          {h.slides.map((s, i) => (
+            <CarouselSlide
+              key={s.title}
+              aria-roledescription={ui.slide}
+              aria-label={fmt(ui.slideOf, { n: i + 1, m: count })}
+            >
               <div className="block-hero__content">
                 <h2 className="block-hero__title">{s.title}</h2>
                 <p className="block-hero__lead">{s.lead}</p>
@@ -23,7 +38,7 @@ export function HeroBlock() {
             </CarouselSlide>
           ))}
         </CarouselViewport>
-        <CarouselDots bare />
+        <CarouselDots bare dotLabel={(i) => fmt(ui.goTo, { n: i + 1 })} />
       </Carousel>
     </section>
   );

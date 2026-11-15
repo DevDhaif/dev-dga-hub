@@ -16,6 +16,7 @@ import {
   Tag,
 } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
+import { fmt } from './block-format';
 
 const ICONS = [
   'M3 8h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8Z|M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2', // business
@@ -50,6 +51,7 @@ function Glyph({ d }: { d: string }) {
 export function CatalogBlock() {
   const { c } = useCopy();
   const cat = c.blocks.catalog;
+  const ui = c.blocks.ui;
 
   return (
     <section className="block-catalog" aria-labelledby="block-catalog-title">
@@ -65,10 +67,22 @@ export function CatalogBlock() {
         <p className="block-catalog__lead">{cat.lead}</p>
       </div>
 
-      <Carousel aria-label={cat.title} slideSize="320px" gap="16px" align="center" flush>
+      <Carousel
+        aria-label={cat.title}
+        aria-roledescription={ui.carousel}
+        announce={(i, m) => fmt(ui.announce, { n: i + 1, m })}
+        slideSize="320px"
+        gap="16px"
+        align="center"
+        flush
+      >
         <CarouselViewport>
           {cat.services.map((svc, i) => (
-            <CarouselSlide key={svc.name}>
+            <CarouselSlide
+              key={svc.name}
+              aria-roledescription={ui.slide}
+              aria-label={fmt(ui.slideOf, { n: i + 1, m: cat.services.length })}
+            >
               <Card className="block-catalog__card">
                 <CardHeader>
                   <CardIcon featured>
@@ -96,7 +110,7 @@ export function CatalogBlock() {
             </CarouselSlide>
           ))}
         </CarouselViewport>
-        <CarouselDots />
+        <CarouselDots dotLabel={(i) => fmt(ui.goTo, { n: i + 1 })} />
       </Carousel>
     </section>
   );
