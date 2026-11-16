@@ -68,22 +68,22 @@ export function TemplateShowcase() {
 
       <div className="template-more">
         <h3 className="template-more__title">{t.more}</h3>
-        <ul className="template-grid">
+        <ul className="showcase-grid">
           {t.pages.map((page) => (
-            <li key={page.slug} className="template-tile">
-              <div className="template-tile__media">
+            <li key={page.slug} className="showcase-tile">
+              <div className="showcase-tile__media">
                 <Image
                   src={`/templates/pages/${page.slug}-${locale}.jpg`}
                   alt=""
                   fill
-                  sizes="(min-width: 960px) 30vw, (min-width: 600px) 45vw, 100vw"
-                  className="template-card__shot"
+                  sizes="(min-width: 960px) 30vw, (min-width: 600px) 45vw, 50vw"
+                  className="showcase-tile__shot"
                 />
               </div>
-              <div className="template-tile__body">
-                <h4 className="template-tile__name">
+              <div className="showcase-tile__body">
+                <h4 className="showcase-tile__name">
                   <a
-                    className="template-tile__link"
+                    className="showcase-tile__link"
                     href={`${t.allHref}/${page.slug}`}
                     target="_blank"
                     rel="noreferrer"
@@ -91,7 +91,7 @@ export function TemplateShowcase() {
                     {page.name}
                   </a>
                 </h4>
-                <p className="template-tile__desc">{page.desc}</p>
+                <p className="showcase-tile__desc">{page.desc}</p>
               </div>
             </li>
           ))}

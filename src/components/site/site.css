@@ -22,7 +22,7 @@
 .topbar__nav {
   display: none;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.25rem;
   margin-inline-start: 0.5rem;
 }
 .topbar__link {
@@ -33,6 +33,7 @@
   align-items: center;
   gap: 0.3rem;
   padding-block: 0.25rem;
+  white-space: nowrap;
   transition: color 0.15s ease;
 }
 .topbar__link:hover {
@@ -148,8 +149,13 @@
   cursor: pointer;
 }
 
-.topbar__gh {
+.topbar__gh,
+.topbar__searchbtn {
   display: none;
+}
+/* Wider than the page content so the full link row fits. */
+.shell.topbar__inner {
+  max-inline-size: 85rem;
 }
 .topbar__burger {
   display: inline-flex;
@@ -174,9 +180,6 @@
 }
 
 @media (min-width: 820px) {
-  .topbar__nav {
-    display: flex;
-  }
   .controls__swatches {
     display: flex;
   }
@@ -186,8 +189,18 @@
   .topbar__gh {
     display: inline-flex;
   }
-  .topbar__burger {
+}
+/* The full link row needs this much room; narrower screens use the menu, which lists every link. */
+@media (min-width: 1280px) {
+  .topbar__nav {
+    display: flex;
+  }
+  .topbar__burger,
+  .topbar__searchwrap {
     display: none;
+  }
+  .topbar__searchbtn {
+    display: inline-flex;
   }
 }
 
@@ -293,4 +306,39 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
+}
+
+/* Count chips: the blocks page index and the landing page Blocks section. */
+.blocks__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-block: 0.4rem;
+  padding-inline: 0.9rem 0.45rem;
+  border: 1px solid var(--ddga-color-border);
+  border-radius: var(--ddga-radius-full);
+  background: var(--ddga-color-card);
+  color: var(--ddga-text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+.blocks__chip:hover {
+  color: var(--ddga-text-brand);
+  border-color: color-mix(in srgb, var(--ddga-color-primary) 40%, var(--ddga-color-border));
+}
+.blocks__chip-count {
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: 1.35rem;
+  block-size: 1.35rem;
+  padding-inline: 0.3rem;
+  border-radius: var(--ddga-radius-full);
+  background: var(--ddga-color-muted);
+  color: var(--ddga-text-tertiary);
+  font-size: 0.75rem;
+  font-weight: 600;
 }

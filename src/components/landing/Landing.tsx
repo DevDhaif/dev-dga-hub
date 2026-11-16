@@ -10,6 +10,7 @@ import { Pillars } from './Pillars';
 import { ThemingDemo } from './ThemingDemo';
 import { RtlDemo, DarkModeDemo } from './ParityDemos';
 import { TemplateShowcase } from './TemplateShowcase';
+import { BlockTeaser } from './BlockTeaser';
 import { Faq } from './Faq';
 import {
   AboutFeatures,
@@ -22,6 +23,7 @@ import {
 } from './StaticSections';
 import './landing.css';
 import '../showcase/illustration-motion.css';
+import { BLOCK_COUNT } from '@/components/blocks/categories';
 
 function Section({
   eyebrow,
@@ -136,14 +138,23 @@ export function Landing() {
       </Section>
 
       <Section
+        eyebrow={c.blocksTeaser.eyebrow}
+        title={c.blocksTeaser.title}
+        lead={c.blocksTeaser.lead.replace('{n}', String(BLOCK_COUNT))}
+      >
+        <BlockTeaser />
+      </Section>
+
+      <Section
         eyebrow={c.gallery.eyebrow}
         title={c.gallery.teaserTitle}
         lead={c.gallery.teaserLead}
+        tint
       >
         <CategoryTeaser />
       </Section>
 
-      <Section eyebrow={c.faq.eyebrow} title={c.faq.title} lead={c.faq.lead} tint>
+      <Section eyebrow={c.faq.eyebrow} title={c.faq.title} lead={c.faq.lead}>
         <Faq />
       </Section>
 

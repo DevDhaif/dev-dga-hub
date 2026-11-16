@@ -9,13 +9,15 @@ import { BiDi, Check, Code, Copy, Moon, Sun } from '@/components/icons';
 import { CodeView } from '@/components/site/CodeView';
 
 interface BlockShowcaseProps {
+  /** Anchor id, so the landing page can link straight to a block. */
+  id?: string;
   name: string;
   desc: string;
   code: string;
   Component: ComponentType;
 }
 
-export function BlockShowcase({ name, desc, code, Component }: BlockShowcaseProps) {
+export function BlockShowcase({ id, name, desc, code, Component }: BlockShowcaseProps) {
   const page = useSettings();
   const { c, dir: pageDir } = useCopy();
   const [mode, setMode] = useState<Mode | null>(null);
@@ -47,7 +49,7 @@ export function BlockShowcase({ name, desc, code, Component }: BlockShowcaseProp
   );
 
   return (
-    <section className="block" aria-label={name}>
+    <section className="block" id={id} aria-label={name}>
       <div className="block__bar">
         <div className="block__meta">
           <h2 className="block__name">{name}</h2>
