@@ -14,23 +14,7 @@ import {
   CardTitle,
 } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
-
-function MailIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <rect x="3" y="5" width="18" height="14" rx="3" />
-      <path d="m7 9 5 3.5L17 9" />
-    </svg>
-  );
-}
+import { Mail02Icon } from './dga-icons';
 
 export function FaqBlock() {
   const { c } = useCopy();
@@ -58,7 +42,7 @@ export function FaqBlock() {
         <Card>
           <CardHeader>
             <CardIcon featured>
-              <MailIcon />
+              <Mail02Icon />
             </CardIcon>
             <CardTitle>{f.contactTitle}</CardTitle>
             <CardDescription>{f.contactLead}</CardDescription>

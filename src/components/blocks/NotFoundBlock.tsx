@@ -3,17 +3,24 @@
 import type { CSSProperties } from 'react';
 import { Button } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
+import {
+  Alert02Icon,
+  Cancel01Icon,
+  Cancel02Icon,
+  CancelCircleIcon,
+  CancelSquareIcon,
+  SearchRemoveIcon,
+  UnavailableIcon,
+} from './dga-icons';
 
 const GLYPHS = {
-  x: 'M18 6 6 18M6 6l12 12',
-  xThin: 'M17 7 7 17M7 7l10 10',
-  xCircle: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z|m14.5 9.5-5 5m0-5 5 5',
-  xSquare:
-    'M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z|m14.5 9.5-5 5m0-5 5 5',
-  blocked: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z|M5.6 5.6l12.8 12.8',
-  searchX: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14Z|m20 20-4-4|m13 9-4 4m0-4 4 4',
-  alert:
-    'M10.3 4 2.6 17.5A2 2 0 0 0 4.3 20.5h15.4a2 2 0 0 0 1.7-3L13.7 4a2 2 0 0 0-3.4 0Z|M12 9v4|M12 16.5h.01',
+  x: Cancel01Icon,
+  xThin: Cancel02Icon,
+  xCircle: CancelCircleIcon,
+  xSquare: CancelSquareIcon,
+  blocked: UnavailableIcon,
+  searchX: SearchRemoveIcon,
+  alert: Alert02Icon,
 } as const;
 
 // DGA Page Not Found: 15 marks on the 458 × 324 illustration frame (x, y, size in px).
@@ -46,31 +53,24 @@ export function NotFoundBlock() {
     <section className="block-notfound" aria-labelledby="block-notfound-title">
       <div className="block-notfound__art" aria-hidden>
         <span className="block-notfound__digits">404</span>
-        {MARKS.map(([glyph, x, y, size], i) => (
-          <svg
-            key={i}
-            className="block-notfound__mark"
-            data-size={size}
-            style={
-              {
-                left: `${(x / W) * 100}%`,
-                top: `${(y / H) * 100}%`,
-                width: `${(size / W) * 100}%`,
-              } as CSSProperties
-            }
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            focusable="false"
-          >
-            {GLYPHS[glyph].split('|').map((d) => (
-              <path key={d} d={d} />
-            ))}
-          </svg>
-        ))}
+        {MARKS.map(([glyph, x, y, size], i) => {
+          const Mark = GLYPHS[glyph];
+          return (
+            <Mark
+              key={i}
+              className="block-notfound__mark"
+              data-size={size}
+              focusable="false"
+              style={
+                {
+                  left: `${(x / W) * 100}%`,
+                  top: `${(y / H) * 100}%`,
+                  width: `${(size / W) * 100}%`,
+                } as CSSProperties
+              }
+            />
+          );
+        })}
       </div>
       <div className="block-notfound__content">
         <div className="block-notfound__message">

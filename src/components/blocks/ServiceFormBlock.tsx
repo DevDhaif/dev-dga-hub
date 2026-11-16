@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type ComponentType, type SVGProps } from 'react';
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -29,26 +29,20 @@ import {
 } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
 import { fmt } from './block-format';
+import {
+  CallIcon,
+  CheckmarkCircle04Icon,
+  Copy01Icon,
+  InstagramIcon,
+  Link04Icon,
+  Linkedin01Icon,
+  Location01Icon,
+  Mail01Icon,
+  Message02Icon,
+  NewTwitterIcon,
+} from './dga-icons';
 
 const MAX_UPLOAD_BYTES = 2 * 1024 * 1024;
-
-const ICONS: Record<string, string> = {
-  phone:
-    'M5 4h3l2 5-2.5 1.5a11 11 0 0 0 6 6L15 14l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2',
-  sms: 'M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.4A8 8 0 1 1 21 12Z|M8 12h.01M12 12h.01M16 12h.01',
-  email: 'M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z|m3 7 9 6 9-6',
-  fax: 'M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z|m3 7 9 6 9-6',
-  location:
-    'M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11Z|M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5',
-  copy: 'M9 9h10a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V10a1 1 0 0 1 1-1Z|M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1',
-  check: 'm5 12.5 4.5 4.5L19 7.5',
-  link: 'M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1|M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1',
-  x: 'M4 4l16 16M20 4 4 20',
-  linkedin:
-    'M4 9h3.5v11H4Z|M5.75 4.5a1.75 1.75 0 1 1 0 3.5 1.75 1.75 0 0 1 0-3.5Z|M10 9h3.3v1.6c.5-.9 1.7-1.8 3.4-1.8 3 0 3.8 2 3.8 4.7V20H17v-5.6c0-1.4-.3-2.6-1.8-2.6s-1.7 1.1-1.7 2.5V20H10Z',
-  instagram:
-    'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z|M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z|M17.5 6.5h.01',
-};
 
 const HREF: Record<string, (v: string) => string> = {
   phone: (v) => `tel:${v}`,
@@ -63,24 +57,23 @@ const SOCIAL = [
   { kind: 'instagram', name: 'Instagram' },
 ];
 
+const ICONS: Record<string, ComponentType<SVGProps<SVGSVGElement>>> = {
+  phone: CallIcon,
+  sms: Message02Icon,
+  email: Mail01Icon,
+  fax: Mail01Icon,
+  location: Location01Icon,
+  copy: Copy01Icon,
+  check: CheckmarkCircle04Icon,
+  link: Link04Icon,
+  x: NewTwitterIcon,
+  linkedin: Linkedin01Icon,
+  instagram: InstagramIcon,
+};
+
 function Glyph({ kind, className }: { kind: string; className?: string }) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-      focusable="false"
-    >
-      {(ICONS[kind] ?? '').split('|').map((d) => (
-        <path key={d} d={d} />
-      ))}
-    </svg>
-  );
+  const Icon = ICONS[kind];
+  return Icon ? <Icon className={className} focusable="false" /> : null;
 }
 
 function CopyButton({
