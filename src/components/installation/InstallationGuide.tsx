@@ -5,7 +5,6 @@ import type { ReactNode } from 'react';
 import { useHref } from '@/lib/use-href';
 import {
   Button,
-  CodeSnippet,
   InlineAlert,
   Table,
   TableBody,
@@ -20,6 +19,7 @@ import { ArrowRight, ExternalLink } from '@/components/icons';
 import { ThemeBuilder } from './ThemeBuilder';
 import { TailwindBridgeDemo } from './TailwindBridgeDemo';
 import './installation.css';
+import { CodeView } from '@/components/site/CodeView';
 
 const STORYBOOK = 'https://dev-dga.vercel.app/';
 
@@ -180,7 +180,7 @@ export function InstallationGuide() {
           <Section id="install" title={t.install.title}>
             <p className="doc-lead">{t.install.lead}</p>
             <div dir="ltr">
-              <CodeSnippet languages={INSTALL_LANGS} lineNumbers={false} />
+              <CodeView languages={INSTALL_LANGS} lineNumbers={false} />
             </div>
             <InlineAlert type="info" title={t.install.note} live="polite" />
           </Section>
@@ -188,7 +188,7 @@ export function InstallationGuide() {
           <Section id="styles" title={t.styles.title}>
             <p className="doc-lead">{t.styles.lead}</p>
             <div dir="ltr">
-              <CodeSnippet
+              <CodeView
                 languages={[{ value: 'ts', label: 'layout.tsx', code: IMPORT_CODE }]}
                 lineNumbers={false}
               />
@@ -204,7 +204,7 @@ export function InstallationGuide() {
               <h3 className="doc-recipe__title">{t.styling.none.title}</h3>
               <p className="doc-recipe__text">{t.styling.none.lead}</p>
               <div dir="ltr">
-                <CodeSnippet
+                <CodeView
                   languages={[{ value: 'tsx', label: 'App.tsx', code: NO_TAILWIND_CODE }]}
                   lineNumbers={false}
                 />
@@ -215,21 +215,21 @@ export function InstallationGuide() {
               <h3 className="doc-recipe__title">{t.styling.v3.title}</h3>
               <p className="doc-recipe__text">{t.styling.v3.install}</p>
               <div dir="ltr">
-                <CodeSnippet
+                <CodeView
                   languages={[{ value: 'bash', label: 'npm', code: V3_INSTALL_CODE }]}
                   lineNumbers={false}
                 />
               </div>
               <p className="doc-recipe__text">{t.styling.v3.config}</p>
               <div dir="ltr">
-                <CodeSnippet
+                <CodeView
                   languages={[{ value: 'js', label: 'tailwind.config.js', code: V3_CONFIG_CODE }]}
                   lineNumbers={false}
                 />
               </div>
               <p className="doc-recipe__text">{t.styling.v3.css}</p>
               <div dir="ltr">
-                <CodeSnippet languages={[{ value: 'css', label: 'app.css', code: V3_CSS_CODE }]} />
+                <CodeView languages={[{ value: 'css', label: 'app.css', code: V3_CSS_CODE }]} />
               </div>
               <p className="doc-recipe__text">{t.styling.v3.order}</p>
               <p className="doc-note">{t.styling.v3.opacity}</p>
@@ -239,18 +239,18 @@ export function InstallationGuide() {
               <h3 className="doc-recipe__title">{t.styling.v4.title}</h3>
               <p className="doc-recipe__text">{t.styling.v4.lead}</p>
               <div dir="ltr">
-                <CodeSnippet languages={[{ value: 'css', label: 'app.css', code: V4_CSS_CODE }]} />
+                <CodeView languages={[{ value: 'css', label: 'app.css', code: V4_CSS_CODE }]} />
               </div>
               <p className="doc-recipe__text">{t.styling.v4.preflight}</p>
               <div dir="ltr">
-                <CodeSnippet
+                <CodeView
                   languages={[{ value: 'css', label: 'app.css', code: V4_PREFLIGHT_CODE }]}
                   lineNumbers={false}
                 />
               </div>
               <p className="doc-recipe__text">{t.styling.v4.strict}</p>
               <div dir="ltr">
-                <CodeSnippet
+                <CodeView
                   languages={[{ value: 'css', label: 'app.css', code: V4_STRICT_CODE }]}
                 />
               </div>
@@ -273,7 +273,7 @@ export function InstallationGuide() {
           <Section id="provider" title={t.provider.title}>
             <p className="doc-lead">{t.provider.lead}</p>
             <div dir="ltr">
-              <CodeSnippet languages={[{ value: 'tsx', label: 'App.tsx', code: PROVIDER_CODE }]} />
+              <CodeView languages={[{ value: 'tsx', label: 'App.tsx', code: PROVIDER_CODE }]} />
             </div>
             <p className="doc-subhead">{t.provider.propsTitle}</p>
             <Table aria-label={t.provider.propsTitle} className="doc-table">
@@ -326,7 +326,7 @@ export function InstallationGuide() {
               ))}
             </ol>
             <div dir="ltr">
-              <CodeSnippet languages={[{ value: 'tsx', label: 'theme.tsx', code: THEME_CODE }]} />
+              <CodeView languages={[{ value: 'tsx', label: 'theme.tsx', code: THEME_CODE }]} />
             </div>
             <p className="doc-note">
               {t.theming.more}{' '}
@@ -367,7 +367,7 @@ export function InstallationGuide() {
               </TableBody>
             </Table>
             <div dir="ltr">
-              <CodeSnippet languages={[{ value: 'css', label: 'globals.css', code: TOKEN_CODE }]} />
+              <CodeView languages={[{ value: 'css', label: 'globals.css', code: TOKEN_CODE }]} />
             </div>
             <p className="doc-note">
               {t.tokens.brandNote}{' '}
@@ -385,7 +385,7 @@ export function InstallationGuide() {
           <Section id="dark" title={t.dark.title}>
             <p className="doc-lead">{t.dark.lead}</p>
             <div dir="ltr">
-              <CodeSnippet
+              <CodeView
                 languages={[{ value: 'tsx', label: 'dark.tsx', code: DARK_CODE }]}
                 lineNumbers={false}
               />
@@ -395,7 +395,7 @@ export function InstallationGuide() {
           <Section id="rtl" title={t.rtl.title}>
             <p className="doc-lead">{t.rtl.lead}</p>
             <div dir="ltr">
-              <CodeSnippet
+              <CodeView
                 languages={[{ value: 'tsx', label: 'rtl.tsx', code: RTL_CODE }]}
                 lineNumbers={false}
               />

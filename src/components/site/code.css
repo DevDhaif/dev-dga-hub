@@ -1,0 +1,76 @@
+.code {
+  border: 1px solid var(--ddga-color-border);
+  border-radius: var(--ddga-radius-lg);
+  overflow: clip;
+  background-color: var(--ddga-color-card);
+}
+
+.code__bar {
+  display: flex;
+  align-items: center;
+  gap: var(--ddga-space-3);
+  padding: var(--ddga-space-2) var(--ddga-space-4);
+  border-block-end: 1px solid var(--ddga-color-border);
+  background-color: var(--ddga-color-muted);
+}
+
+.code__dots {
+  display: inline-flex;
+  gap: 6px;
+}
+.code__dots span {
+  inline-size: 10px;
+  block-size: 10px;
+  border-radius: 50%;
+  background-color: var(--ddga-color-border);
+}
+
+.code__file {
+  font-family: var(--ddga-font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.25rem;
+  color: var(--ddga-text-secondary);
+}
+
+.code .code__snippet {
+  border: 0;
+  border-radius: 0;
+}
+
+/* Syntax colors from the DGA palette; each pair clears 4.5:1 on its card surface. */
+.ddga-code-snippet {
+  --hl-keyword: var(--ddga-sa-700);
+  --hl-string: var(--ddga-warning-700);
+  --hl-entity: var(--ddga-info-700);
+  --hl-property: var(--ddga-lavender-600);
+  --hl-comment: var(--ddga-gray-500);
+  --hl-sign: var(--ddga-gray-600);
+}
+[data-theme='dark'] .ddga-code-snippet {
+  --hl-keyword: var(--ddga-sa-400);
+  --hl-string: var(--ddga-warning-300);
+  --hl-entity: var(--ddga-info-300);
+  --hl-property: var(--ddga-lavender-300);
+  --hl-comment: var(--ddga-gray-400);
+  --hl-sign: var(--ddga-gray-400);
+}
+
+.hl-keyword {
+  color: var(--hl-keyword);
+}
+.hl-string {
+  color: var(--hl-string);
+}
+.hl-entity {
+  color: var(--hl-entity);
+}
+.hl-property,
+.hl-class {
+  color: var(--hl-property);
+}
+.hl-comment {
+  color: var(--hl-comment);
+}
+.hl-sign {
+  color: var(--hl-sign);
+}

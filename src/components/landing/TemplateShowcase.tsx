@@ -65,6 +65,50 @@ export function TemplateShowcase() {
           </div>
         </div>
       ))}
+
+      <div className="template-more">
+        <h3 className="template-more__title">{t.more}</h3>
+        <ul className="template-grid">
+          {t.pages.map((page) => (
+            <li key={page.slug} className="template-tile">
+              <div className="template-tile__media">
+                <Image
+                  src={`/templates/pages/${page.slug}-${locale}.jpg`}
+                  alt=""
+                  fill
+                  sizes="(min-width: 960px) 30vw, (min-width: 600px) 45vw, 100vw"
+                  className="template-card__shot"
+                />
+              </div>
+              <div className="template-tile__body">
+                <h4 className="template-tile__name">
+                  <a
+                    className="template-tile__link"
+                    href={`${t.allHref}/${page.slug}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {page.name}
+                  </a>
+                </h4>
+                <p className="template-tile__desc">{page.desc}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <div className="template-more__all">
+          <Button
+            asChild
+            variant="outline"
+            size="md"
+            endIcon={<ExternalLink width={16} height={16} />}
+          >
+            <a href={t.allHref} target="_blank" rel="noreferrer">
+              {t.all}
+            </a>
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

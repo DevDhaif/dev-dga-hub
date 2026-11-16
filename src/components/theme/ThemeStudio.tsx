@@ -12,7 +12,6 @@ import {
   CardHeader,
   CardTitle,
   Checkbox,
-  CodeSnippet,
   Divider,
   InlineAlert,
   Progress,
@@ -39,6 +38,7 @@ import { TOKEN_GROUPS, TOKEN_COUNT, type Token, type TokenTier } from '@/lib/tok
 import { ArrowRight } from '@/components/icons';
 import { ThemingTopicNav } from './ThemingTopicNav';
 import './theme.css';
+import { CodeView } from '@/components/site/CodeView';
 
 const ALL: Token[] = TOKEN_GROUPS.flatMap((g) => g.tokens);
 const DEFAULTS: Record<string, string> = Object.fromEntries(ALL.map((t) => [t.name, t.value]));
@@ -663,7 +663,7 @@ export function ThemeStudio() {
             <span className="ts__file-dot" aria-hidden />
             <span className="ts__file-name">globals.css</span>
           </div>
-          <CodeSnippet
+          <CodeView
             languages={[{ value: 'css', label: 'CSS', code: exportCss }]}
             lineNumbers={false}
           />
