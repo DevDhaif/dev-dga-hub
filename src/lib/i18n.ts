@@ -20,6 +20,13 @@ const en = {
     showMore: 'Show more',
     showLess: 'Show less',
   },
+  blocksTeaser: {
+    eyebrow: 'Blocks',
+    title: 'Ready-made sections. Copy one, ship today.',
+    lead: '{n} sections that government services need on almost every page: hero banners, search with filters, service forms, a support chatbot, and dashboards. Each one is built only from @dev-dga components, works in Arabic and English, light and dark, and comes with its code.',
+    all: 'Browse all {n} blocks',
+    categories: 'Block categories',
+  },
   nav: {
     components: 'Components',
     installation: 'Installation',
@@ -2001,6 +2008,13 @@ const ar: typeof en = {
     copied: 'تم النسخ',
     showMore: 'عرض المزيد',
     showLess: 'عرض أقل',
+  },
+  blocksTeaser: {
+    eyebrow: 'الكتل',
+    title: 'أقسام جاهزة. انسخ القسم وأطلقه اليوم.',
+    lead: '{n} قسم تحتاجها الخدمات الحكومية في أغلب الصفحات: الواجهات الرئيسية، والبحث مع التصفية، ونماذج الخدمات، ومساعد المحادثة، ولوحات المعلومات. كل قسم مبني من مكونات dev-dga وحدها، ويعمل بالعربية والإنجليزية وفي الوضعين الفاتح والداكن، ومعه الكود.',
+    all: 'تصفح كل الكتل ({n})',
+    categories: 'تصنيفات الكتل',
   },
   nav: {
     components: 'المكونات',

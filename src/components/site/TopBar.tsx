@@ -9,7 +9,7 @@ import { OPEN_COMMAND_EVENT } from './CommandPalette';
 import { SearchBox } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
 import { isArabicPath, localizeHref, toEnglishPath } from '@/lib/locale-routes';
-import { GitHub, ExternalLink, Menu, Close } from '@/components/icons';
+import { GitHub, ExternalLink, Menu, Close, Search } from '@/components/icons';
 
 const REPO_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 const STORYBOOK_URL = 'https://dev-dga.vercel.app/';
@@ -24,13 +24,13 @@ export function TopBar() {
 
   const nav = [
     { href: '/components', label: c.nav.components },
+    { href: '/blocks', label: c.nav.blocks },
     { href: '/compliance', label: c.nav.compliance },
     { href: '/accessibility', label: c.nav.accessibility },
     { href: '/rtl', label: c.nav.rtl },
     { href: '/installation', label: c.nav.installation },
   ];
   const mobileExtras = [
-    { href: '/blocks', label: c.nav.blocks },
     { href: '/examples/masar', label: c.nav.examples },
     { href: '/theming', label: c.topics.guide },
     { href: '/theme', label: c.topics.studio },
@@ -78,6 +78,14 @@ export function TopBar() {
         </nav>
 
         <div className="topbar__end">
+          <button
+            type="button"
+            className="icon-btn topbar__searchbtn"
+            aria-label={c.nav.search}
+            onClick={() => window.dispatchEvent(new Event(OPEN_COMMAND_EVENT))}
+          >
+            <Search />
+          </button>
           <div className="topbar__searchwrap">
             <SearchBox
               className="topbar__search"

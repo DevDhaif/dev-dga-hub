@@ -3,6 +3,7 @@
 import type { ComponentType } from 'react';
 import { useCopy } from '@/lib/i18n';
 import { BlockShowcase } from './BlockShowcase';
+import { CATEGORIES, type BlockId } from './categories';
 import { AnalyticsBlock, analyticsCode } from './AnalyticsBlock';
 import { StatsBlock, statsCode } from './StatsBlock';
 import { RequestsBlock, requestsCode } from './RequestsBlock';
@@ -22,26 +23,6 @@ import { PageFeedbackBlock, pageFeedbackCode } from './PageFeedbackBlock';
 import { CookiesBlock, cookiesCode } from './CookiesBlock';
 import { ChatbotBlock, chatbotCode } from './ChatbotBlock';
 import './blocks.css';
-
-type BlockId =
-  | 'analytics'
-  | 'stats'
-  | 'requests'
-  | 'signIn'
-  | 'multiStep'
-  | 'serviceForm'
-  | 'hero'
-  | 'faq'
-  | 'settings'
-  | 'catalog'
-  | 'confirmation'
-  | 'search'
-  | 'sitemap'
-  | 'notFound'
-  | 'rating'
-  | 'pageFeedback'
-  | 'cookies'
-  | 'chatbot';
 
 const REGISTRY: Record<BlockId, { code: string; Component: ComponentType }> = {
   analytics: { code: analyticsCode, Component: AnalyticsBlock },
@@ -63,18 +44,6 @@ const REGISTRY: Record<BlockId, { code: string; Component: ComponentType }> = {
   cookies: { code: cookiesCode, Component: CookiesBlock },
   chatbot: { code: chatbotCode, Component: ChatbotBlock },
 };
-
-type CategoryId = 'pages' | 'forms' | 'engagement' | 'apps';
-
-const CATEGORIES: { id: CategoryId; items: BlockId[] }[] = [
-  { id: 'pages', items: ['hero', 'catalog', 'faq', 'search', 'sitemap', 'notFound'] },
-  { id: 'forms', items: ['serviceForm', 'multiStep'] },
-  { id: 'engagement', items: ['rating', 'pageFeedback', 'cookies', 'chatbot'] },
-  {
-    id: 'apps',
-    items: ['analytics', 'stats', 'requests', 'settings', 'signIn', 'confirmation'],
-  },
-];
 
 export function BlocksPage() {
   const { c } = useCopy();
@@ -119,6 +88,7 @@ export function BlocksPage() {
                 return (
                   <BlockShowcase
                     key={id}
+                    id={id}
                     name={item.name}
                     desc={item.desc}
                     code={reg.code}

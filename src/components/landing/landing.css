@@ -1227,7 +1227,7 @@
   font-size: 1.25rem;
   font-weight: 600;
 }
-.template-grid {
+.showcase-grid {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1236,7 +1236,7 @@
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
 }
 /* The heading link stretches over the whole card, so the link name stays the template name. */
-.template-tile {
+.showcase-tile {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1248,53 +1248,98 @@
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
-.template-tile:hover {
+.showcase-tile:hover {
   border-color: color-mix(in srgb, var(--ddga-color-primary) 40%, var(--ddga-color-border));
   box-shadow: var(--ddga-shadow-lg);
 }
-.template-tile:has(.template-tile__link:focus-visible) {
+.showcase-tile:has(.showcase-tile__link:focus-visible) {
   outline: 2px solid var(--ddga-text-primary);
   outline-offset: 2px;
 }
-.template-tile__media {
+.showcase-tile__media {
   position: relative;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-block-end: 1px solid var(--ddga-color-border);
   background: var(--ddga-color-muted);
 }
-.template-tile__body {
+.showcase-tile__body {
   display: grid;
   gap: 0.375rem;
   padding: 1rem 1.25rem 1.25rem;
 }
-.template-tile__name {
+.showcase-tile__name {
   margin: 0;
   font-size: 1.0625rem;
   font-weight: 600;
 }
-.template-tile__link {
+.showcase-tile__link {
   color: inherit;
   text-decoration: none;
 }
-.template-tile__link::after {
+.showcase-tile__link::after {
   content: '';
   position: absolute;
   inset: 0;
 }
-.template-tile__link:focus-visible {
+.showcase-tile__link:focus-visible {
   outline: none;
 }
-.template-tile__desc {
+.showcase-tile__desc {
   margin: 0;
   font-size: 0.9375rem;
   line-height: 1.55;
   color: var(--ddga-text-secondary);
 }
+.showcase-tile__shot {
+  object-fit: cover;
+  object-position: top;
+}
+.showcase-tile__shot--contain {
+  object-fit: contain;
+  object-position: center;
+}
+/* Phones: two compact columns (name only) instead of a long single-column scroll. */
+@media (max-width: 599px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+  .showcase-tile__body {
+    padding: 0.625rem 0.75rem 0.75rem;
+  }
+  .showcase-tile__name {
+    font-size: 0.875rem;
+  }
+  .showcase-tile__desc {
+    display: none;
+  }
+}
 .template-more__all {
   display: flex;
   justify-content: center;
   margin-block-start: 0.5rem;
+}
+
+.blocks-teaser {
+  display: grid;
+  gap: 1.5rem;
+}
+.blocks-teaser__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.showcase-tile__tag {
+  justify-self: start;
+}
+[dir='rtl'] .blocks-teaser__arrow {
+  transform: scaleX(-1);
+}
+@media (max-width: 599px) {
+  .showcase-tile__tag {
+    display: none;
+  }
 }
 
 /* FAQ: native <details> so every answer ships in the server HTML for crawlers. */
