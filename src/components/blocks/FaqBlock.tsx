@@ -1,7 +1,20 @@
 'use client';
 
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@dev-dga/react';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+  Button,
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardIcon,
+  CardTitle,
+} from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
+import { Mail02Icon } from './dga-icons';
 
 export function FaqBlock() {
   const { c } = useCopy();
@@ -9,39 +22,93 @@ export function FaqBlock() {
 
   return (
     <div className="block-faq">
-      <div className="block-faq__intro">
-        <h3 className="block-faq__title">{f.title}</h3>
+      <header className="block-faq__header">
+        <h2 className="block-faq__title">{f.title}</h2>
         <p className="block-faq__lead">{f.lead}</p>
+      </header>
+
+      <div className="block-faq__section">
+        <Accordion type="single" collapsible>
+          {f.items.map((it, i) => (
+            <AccordionItem key={it.q} value={`faq-${i}`}>
+              <AccordionTrigger>{it.q}</AccordionTrigger>
+              <AccordionContent>{it.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
-      <Accordion type="single" collapsible defaultValue="faq-0" className="block-faq__list">
-        {f.items.map((it, i) => (
-          <AccordionItem key={it.q} value={`faq-${i}`}>
-            <AccordionTrigger>{it.q}</AccordionTrigger>
-            <AccordionContent>{it.a}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
+
+      <div className="block-faq__section">
+        <Card>
+          <CardHeader>
+            <CardIcon featured>
+              <Mail02Icon />
+            </CardIcon>
+            <CardTitle>{f.contactTitle}</CardTitle>
+            <CardDescription>{f.contactLead}</CardDescription>
+          </CardHeader>
+          <CardFooter>
+            <Button asChild size="lg">
+              <a href="#">{f.contactAction}</a>
+            </Button>
+          </CardFooter>
+        </Card>
+      </div>
     </div>
   );
 }
 
-export const faqCode = `import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@dev-dga/react';
+export const faqCode = `import {
+  Accordion, AccordionContent, AccordionItem, AccordionTrigger,
+  Button, Card, CardDescription, CardFooter, CardHeader, CardIcon, CardTitle,
+} from '@dev-dga/react';
 
 const items = [
   { q: 'What do I need to sign in?', a: 'A verified Nafath account and a registered mobile number.' },
   { q: 'How long does an application take?', a: 'Most services are processed within two business days.' },
-  { q: 'Can I use it in Arabic and English?', a: 'Yes - the platform is bilingual and right-to-left native.' },
+  { q: 'Can I use it in Arabic and English?', a: 'Yes. The platform is bilingual and right-to-left native.' },
 ];
 
-export function Faq() {
+export function FaqPage() {
   return (
-    <Accordion type="single" collapsible defaultValue="faq-0">
-      {items.map((it, i) => (
-        <AccordionItem key={it.q} value={\`faq-\${i}\`}>
-          <AccordionTrigger>{it.q}</AccordionTrigger>
-          <AccordionContent>{it.a}</AccordionContent>
-        </AccordionItem>
-      ))}
-    </Accordion>
+    <>
+      <header className="faq__header">
+        <h1>FAQs</h1>
+        <p>Find answers to common questions about our services, accounts, and requests.</p>
+      </header>
+
+      <section className="faq__section">
+        <Accordion type="single" collapsible>
+          {items.map((it, i) => (
+            <AccordionItem key={it.q} value={\`faq-\${i}\`}>
+              <AccordionTrigger>{it.q}</AccordionTrigger>
+              <AccordionContent>{it.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </section>
+
+      <section className="faq__section">
+        <Card>
+          <CardHeader>
+            <CardIcon featured><MailIcon /></CardIcon>
+            <CardTitle>Comments & suggestions</CardTitle>
+            <CardDescription>
+              For any inquiry or feedback on government services, fill in the required information.
+            </CardDescription>
+          </CardHeader>
+          <CardFooter>
+            <Button asChild size="lg"><a href="/contact">Contact us</a></Button>
+          </CardFooter>
+        </Card>
+      </section>
+    </>
   );
-}`;
+}
+
+/* faq.css: DGA FAQ template spacing (40 / 80) and the SA-25 page header.
+.faq__header, .faq__section { padding: var(--ddga-space-10) var(--ddga-space-20); }
+.faq__header { display: grid; gap: var(--ddga-space-4); background: var(--ddga-brand-25); }
+.faq__header h1 { margin: 0; font-size: var(--ddga-font-size-display-lg); line-height: var(--ddga-font-line-height-display-lg); font-weight: 600; }
+.faq__header p { margin: 0; }
+*/`;

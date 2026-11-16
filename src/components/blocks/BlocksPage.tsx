@@ -10,14 +10,17 @@ import { SignInBlock, signInCode } from './SignInBlock';
 import { MultiStepBlock, multiStepCode } from './MultiStepBlock';
 import { ServiceFormBlock, serviceFormCode } from './ServiceFormBlock';
 import { HeroBlock, heroCode } from './HeroBlock';
-import { PricingBlock, pricingCode } from './PricingBlock';
 import { FaqBlock, faqCode } from './FaqBlock';
 import { SettingsBlock, settingsCode } from './SettingsBlock';
-import { TeamBlock, teamCode } from './TeamBlock';
 import { CatalogBlock, catalogCode } from './CatalogBlock';
-import { EmptyStateBlock, emptyStateCode } from './EmptyStateBlock';
-import { LoadingBlock, loadingCode } from './LoadingBlock';
 import { ConfirmationBlock, confirmationCode } from './ConfirmationBlock';
+import { SearchBlock, searchCode } from './SearchBlock';
+import { SitemapBlock, sitemapCode } from './SitemapBlock';
+import { NotFoundBlock, notFoundCode } from './NotFoundBlock';
+import { RatingBlock, ratingCode } from './RatingBlock';
+import { PageFeedbackBlock, pageFeedbackCode } from './PageFeedbackBlock';
+import { CookiesBlock, cookiesCode } from './CookiesBlock';
+import { ChatbotBlock, chatbotCode } from './ChatbotBlock';
 import './blocks.css';
 
 type BlockId =
@@ -28,14 +31,17 @@ type BlockId =
   | 'multiStep'
   | 'serviceForm'
   | 'hero'
-  | 'pricing'
   | 'faq'
   | 'settings'
-  | 'team'
   | 'catalog'
-  | 'emptyState'
-  | 'loading'
-  | 'confirmation';
+  | 'confirmation'
+  | 'search'
+  | 'sitemap'
+  | 'notFound'
+  | 'rating'
+  | 'pageFeedback'
+  | 'cookies'
+  | 'chatbot';
 
 const REGISTRY: Record<BlockId, { code: string; Component: ComponentType }> = {
   analytics: { code: analyticsCode, Component: AnalyticsBlock },
@@ -45,24 +51,29 @@ const REGISTRY: Record<BlockId, { code: string; Component: ComponentType }> = {
   multiStep: { code: multiStepCode, Component: MultiStepBlock },
   serviceForm: { code: serviceFormCode, Component: ServiceFormBlock },
   hero: { code: heroCode, Component: HeroBlock },
-  pricing: { code: pricingCode, Component: PricingBlock },
   faq: { code: faqCode, Component: FaqBlock },
   settings: { code: settingsCode, Component: SettingsBlock },
-  team: { code: teamCode, Component: TeamBlock },
   catalog: { code: catalogCode, Component: CatalogBlock },
-  emptyState: { code: emptyStateCode, Component: EmptyStateBlock },
-  loading: { code: loadingCode, Component: LoadingBlock },
   confirmation: { code: confirmationCode, Component: ConfirmationBlock },
+  search: { code: searchCode, Component: SearchBlock },
+  sitemap: { code: sitemapCode, Component: SitemapBlock },
+  notFound: { code: notFoundCode, Component: NotFoundBlock },
+  rating: { code: ratingCode, Component: RatingBlock },
+  pageFeedback: { code: pageFeedbackCode, Component: PageFeedbackBlock },
+  cookies: { code: cookiesCode, Component: CookiesBlock },
+  chatbot: { code: chatbotCode, Component: ChatbotBlock },
 };
 
-type CategoryId = 'dashboards' | 'forms' | 'marketing' | 'content' | 'feedback';
+type CategoryId = 'pages' | 'forms' | 'engagement' | 'apps';
 
 const CATEGORIES: { id: CategoryId; items: BlockId[] }[] = [
-  { id: 'dashboards', items: ['analytics', 'stats', 'requests'] },
-  { id: 'forms', items: ['signIn', 'multiStep', 'serviceForm'] },
-  { id: 'marketing', items: ['hero', 'pricing', 'faq'] },
-  { id: 'content', items: ['settings', 'team', 'catalog'] },
-  { id: 'feedback', items: ['emptyState', 'loading', 'confirmation'] },
+  { id: 'pages', items: ['hero', 'catalog', 'faq', 'search', 'sitemap', 'notFound'] },
+  { id: 'forms', items: ['serviceForm', 'multiStep'] },
+  { id: 'engagement', items: ['rating', 'pageFeedback', 'cookies', 'chatbot'] },
+  {
+    id: 'apps',
+    items: ['analytics', 'stats', 'requests', 'settings', 'signIn', 'confirmation'],
+  },
 ];
 
 export function BlocksPage() {
