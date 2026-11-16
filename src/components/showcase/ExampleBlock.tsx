@@ -1,12 +1,13 @@
 'use client';
 
 import { Suspense, useRef, useState, type ComponentType } from 'react';
-import { CodeSnippet, DgaProvider, Spinner } from '@dev-dga/react';
+import { DgaProvider, Spinner } from '@dev-dga/react';
 import { useSettings, type Mode } from '@/lib/settings';
 import type { Dir } from '@/lib/locale';
 import { useCopy } from '@/lib/i18n';
 import { exampleTitle } from '@/lib/example-titles';
 import { BiDi, Check, Code, Copy, Moon, Sun } from '@/components/icons';
+import { CodeView } from '@/components/site/CodeView';
 
 interface ExampleBlockProps {
   title: string;
@@ -158,7 +159,7 @@ export function ExampleBlock({ title, code, Demo, ArDemo, arCode }: ExampleBlock
       </div>
 
       {showCode && (
-        <CodeSnippet
+        <CodeView
           className="example__code"
           languages={[{ value: 'tsx', label: 'tsx', code: activeCode }]}
           maxLines={20}

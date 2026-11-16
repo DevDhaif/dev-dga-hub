@@ -1,11 +1,12 @@
 'use client';
 
 import { useRef, useState, type ComponentType } from 'react';
-import { CodeSnippet, DgaProvider } from '@dev-dga/react';
+import { DgaProvider } from '@dev-dga/react';
 import { useSettings, type Mode } from '@/lib/settings';
 import type { Dir } from '@/lib/locale';
 import { useCopy } from '@/lib/i18n';
 import { BiDi, Check, Code, Copy, Moon, Sun } from '@/components/icons';
+import { CodeView } from '@/components/site/CodeView';
 
 interface BlockShowcaseProps {
   name: string;
@@ -112,7 +113,7 @@ export function BlockShowcase({ name, desc, code, Component }: BlockShowcaseProp
       </div>
 
       {showCode && (
-        <CodeSnippet
+        <CodeView
           className="block__code"
           languages={[{ value: 'tsx', label: 'tsx', code }]}
           maxLines={28}

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { Button, CodeSnippet, CodeSnippetInline, Tag } from '@dev-dga/react';
+import { Button, CodeSnippetInline, Tag } from '@dev-dga/react';
 import { CATEGORIES } from '@/lib/catalog';
 import { categoryIllustrations } from '@/lib/illustrations.generated';
 import { enrichIllustration } from '@/lib/illustration-motion';
@@ -11,6 +11,7 @@ import { MasarDashboard } from '@/components/examples/MasarDashboard';
 import { ArrowRight, Code } from '@/components/icons';
 import { useHref } from '@/lib/use-href';
 import { componentName } from '@/lib/component-names';
+import { CodeView } from '@/components/site/CodeView';
 
 const CODE_URL = 'https://github.com/DevDhaif/dev-dga-hub';
 
@@ -159,7 +160,7 @@ export function InstallSteps() {
         <div className="install-step__num" aria-hidden />
         <div className="install-step__body">
           <p className="install-step__label">{c.install.step2}</p>
-          <CodeSnippet
+          <CodeView
             languages={[{ value: 'ts', label: 'layout.tsx', code: IMPORT_CODE }]}
             lineNumbers={false}
           />
@@ -169,7 +170,7 @@ export function InstallSteps() {
         <div className="install-step__num" aria-hidden />
         <div className="install-step__body">
           <p className="install-step__label">{c.install.step3}</p>
-          <CodeSnippet languages={[{ value: 'tsx', label: 'App.tsx', code: APP_CODE }]} />
+          <CodeView languages={[{ value: 'tsx', label: 'App.tsx', code: APP_CODE }]} />
         </div>
       </div>
     </div>

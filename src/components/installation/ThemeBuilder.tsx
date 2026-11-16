@@ -6,7 +6,6 @@ import {
   Button,
   Card,
   Checkbox,
-  CodeSnippet,
   Divider,
   InlineAlert,
   StatusTag,
@@ -15,6 +14,7 @@ import {
 } from '@dev-dga/react';
 import { useCopy } from '@/lib/i18n';
 import { ArrowRight } from '@/components/icons';
+import { CodeView } from '@/components/site/CodeView';
 
 interface Teaser {
   var: string;
@@ -173,7 +173,7 @@ export function ThemeBuilder() {
             <span className="tb__file-dot" aria-hidden />
             <span className="tb__file-name">globals.css</span>
           </div>
-          <CodeSnippet
+          <CodeView
             languages={[{ value: 'css', label: 'CSS', code: exportCss }]}
             lineNumbers={false}
           />

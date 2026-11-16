@@ -1,7 +1,8 @@
 import type { ReactNode } from 'react';
-import { CodeSnippet } from '@dev-dga/react';
+
 import '../installation/installation.css';
 import './guides.css';
+import { CodeView } from '@/components/site/CodeView';
 
 // Code cells stay LTR unless the localized copy mixes in Arabic, which isolates its own Latin runs.
 export const codeDir = (text: string) => (/[\u0600-\u06FF]/.test(text) ? undefined : 'ltr');
@@ -31,7 +32,7 @@ export function GuideSection({
 export function GuideCode({ label, lang, code }: { label: string; lang: string; code: string }) {
   return (
     <div dir="ltr">
-      <CodeSnippet languages={[{ value: lang, label, code }]} />
+      <CodeView languages={[{ value: lang, label, code }]} />
     </div>
   );
 }

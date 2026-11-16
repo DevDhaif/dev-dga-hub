@@ -14,6 +14,12 @@ export const INSTALL = {
 };
 
 const en = {
+  snippet: {
+    copy: 'Copy code',
+    copied: 'Copied',
+    showMore: 'Show more',
+    showLess: 'Show less',
+  },
   nav: {
     components: 'Components',
     installation: 'Installation',
@@ -151,9 +157,69 @@ const en = {
   templates: {
     eyebrow: 'Templates',
     title: 'Complete government pages, from the library alone.',
-    lead: 'Each template assembles every section of an official Platforms Code page from @dev-dga components: government banner, header, hero, about, services, news, partners, and footer. Arabic and English, light and dark, responsive.',
+    lead: 'Thirteen pages from the official Platforms Code templates, built only from @dev-dga components: home, services, content, forms, search, help, and more. Arabic and English, light and dark, responsive.',
     tag: 'Template',
     open: 'Open the template',
+    more: 'More page templates',
+    all: 'View all 13 templates',
+    allHref: 'https://dev-dga-templates.vercel.app/en',
+    pages: [
+      {
+        slug: 'service',
+        name: 'Service page',
+        desc: 'Service details and steps, an info card with channels and contacts, related services, and the rating section.',
+      },
+      {
+        slug: 'about',
+        name: 'About the entity',
+        desc: 'A tinted hero and eleven cards that lead to the entity’s pages.',
+      },
+      {
+        slug: 'help',
+        name: 'Help and support',
+        desc: 'Contact and FAQ channels with availability and response times.',
+      },
+      {
+        slug: 'faq',
+        name: 'FAQs',
+        desc: 'Live search with highlighted matches, a filter panel, category tabs, and a rating under each answer.',
+      },
+      {
+        slug: 'contact',
+        name: 'Contact us',
+        desc: 'A validated two-column form with file upload, beside a card of contact channels.',
+      },
+      {
+        slug: 'search',
+        name: 'Search results',
+        desc: 'Three result layouts, a full filter panel, sort, and pagination.',
+      },
+      {
+        slug: 'sitemap',
+        name: 'Sitemap',
+        desc: 'An indented tree of links: filled points for main pages, empty points for subpages.',
+      },
+      {
+        slug: 'content',
+        name: 'Content page',
+        desc: 'Headings, paragraphs, ordered, unordered, and icon lists, an image, and links.',
+      },
+      {
+        slug: 'content-heavy',
+        name: 'Heavy content page',
+        desc: 'The same content with a sticky in-page navigation that follows your scroll.',
+      },
+      {
+        slug: 'form',
+        name: 'Form page',
+        desc: 'Every text field state in two columns, beside a vertical progress indicator.',
+      },
+      {
+        slug: 'not-found',
+        name: 'Page not found',
+        desc: 'A large 404 with scattered marks, a short message, and a way back home.',
+      },
+    ],
     items: [
       {
         name: 'DGA home page template',
@@ -373,7 +439,7 @@ const en = {
     themeStudio: 'Theme studio: try a color, tune tokens, copy the CSS',
     blocks: 'Prebuilt blocks',
     styling: 'Styling with Tailwind',
-    templates: 'Templates: home page and National Day',
+    templates: 'Templates: 13 government pages',
   },
   // One topic, two pages: /theming explains, /theme is the tool.
   topics: {
@@ -1930,6 +1996,12 @@ const en = {
 };
 
 const ar: typeof en = {
+  snippet: {
+    copy: 'نسخ الكود',
+    copied: 'تم النسخ',
+    showMore: 'عرض المزيد',
+    showLess: 'عرض أقل',
+  },
   nav: {
     components: 'المكونات',
     installation: 'التثبيت',
@@ -2056,7 +2128,7 @@ const ar: typeof en = {
     open: 'عرض المثال',
     comingSoon: 'المزيد قريباً',
     liveDemo: 'معاينة مباشرة',
-    code: 'Code',
+    code: 'الكود',
     masarName: 'مسار',
     masarTag: 'لوحة تحكم',
     masarDesc:
@@ -2065,9 +2137,69 @@ const ar: typeof en = {
   templates: {
     eyebrow: 'القوالب',
     title: 'صفحات حكومية كاملة، من المكتبة وحدها.',
-    lead: 'يجمع كل قالب أقسام صفحة من كود منصات هيئة الحكومة الرقمية من مكونات dev-dga: الشريط الحكومي، والترويسة، والقسم الرئيسي، ومن نحن، والخدمات، والأخبار، والشركاء، والتذييل. كل قالب متجاوب، ويعمل بالعربية والإنجليزية وفي الوضعين الفاتح والداكن.',
+    lead: '13 صفحة من قوالب كود المنصات الرسمية، مبنية من مكونات dev-dga وحدها: الصفحة الرئيسية، والخدمات، والمحتوى، والنماذج، والبحث، والمساعدة، وغيرها. كل قالب متجاوب، ويعمل بالعربية والإنجليزية وفي الوضعين الفاتح والداكن.',
     tag: 'قالب',
     open: 'عرض القالب',
+    more: 'قوالب صفحات أخرى',
+    all: 'عرض كل القوالب',
+    allHref: 'https://dev-dga-templates.vercel.app/ar',
+    pages: [
+      {
+        slug: 'service',
+        name: 'صفحة الخدمة',
+        desc: 'تفاصيل الخدمة وخطواتها، وبطاقة معلومات بالقنوات وجهات التواصل، والخدمات ذات الصلة، وقسم التقييم.',
+      },
+      {
+        slug: 'about',
+        name: 'عن الجهة',
+        desc: 'قسم رئيسي ملون و11 بطاقة تقود إلى صفحات الجهة.',
+      },
+      {
+        slug: 'help',
+        name: 'المساعدة والدعم',
+        desc: 'قنوات التواصل والأسئلة الشائعة مع أوقات التوفر والاستجابة.',
+      },
+      {
+        slug: 'faq',
+        name: 'الأسئلة الشائعة',
+        desc: 'بحث فوري يبرز النتائج، ولوحة تصفية، وتبويبات للتصنيفات، وتقييم تحت كل إجابة.',
+      },
+      {
+        slug: 'contact',
+        name: 'تواصل معنا',
+        desc: 'نموذج بعمودين يتحقق من الحقول ويرفع الملفات، وبجانبه بطاقة قنوات التواصل.',
+      },
+      {
+        slug: 'search',
+        name: 'نتائج البحث',
+        desc: 'ثلاثة أشكال لعرض النتائج، ولوحة تصفية كاملة، والترتيب، وترقيم الصفحات.',
+      },
+      {
+        slug: 'sitemap',
+        name: 'خريطة الموقع',
+        desc: 'شجرة روابط متدرجة: نقاط ممتلئة للصفحات الرئيسية، ونقاط فارغة للصفحات الفرعية.',
+      },
+      {
+        slug: 'content',
+        name: 'صفحة المحتوى',
+        desc: 'عناوين وفقرات، وقوائم مرتبة وغير مرتبة وبأيقونات، وصورة، وروابط.',
+      },
+      {
+        slug: 'content-heavy',
+        name: 'صفحة المحتوى الثقيل',
+        desc: 'المحتوى نفسه مع قائمة تنقل ثابتة داخل الصفحة تتبع موضعك.',
+      },
+      {
+        slug: 'form',
+        name: 'صفحة النموذج',
+        desc: 'كل حالات حقل النص في عمودين، وبجانبها مؤشر تقدم عمودي.',
+      },
+      {
+        slug: 'not-found',
+        name: 'الصفحة غير موجودة',
+        desc: 'رقم 404 كبير حوله علامات متفرقة، ورسالة قصيرة، وطريق للعودة إلى الرئيسية.',
+      },
+    ],
     items: [
       {
         name: 'قالب الصفحة الرئيسية الحكومية',
@@ -2280,7 +2412,7 @@ const ar: typeof en = {
     themeStudio: 'منسق السمة: جرب لوناً واضبط الرموز وانسخ CSS',
     blocks: 'الكتل الجاهزة',
     styling: 'التنسيق مع Tailwind',
-    templates: 'القوالب: الصفحة الرئيسية واليوم الوطني',
+    templates: 'القوالب: 13 صفحة حكومية',
   },
   topics: {
     label: 'تخصيص السمة',
@@ -2575,7 +2707,7 @@ const ar: typeof en = {
     lead: 'تكتفي أغلب المكتبات بخاصية dir="rtl"، بينما يتعامل dev-dga مع العربية كلغة أولى: تقويم هجري، وترقيم عربي للقوائم، واتصال حروف محمي، ودلالات لوحة مفاتيح منعكسة، وبيانات سعودية سليمة الاتجاه، كلها حية أدناه. بدّل الاتجاه وشاهد الصفحة كلها تستجيب.',
     onThisPage: 'في هذه الصفحة',
     live: 'مباشر',
-    code: 'Code',
+    code: 'الكود',
     positioning: {
       title: 'الاتجاه ليس مجرد خانة تختارها.',
       body: 'يعكس قلب dir الصناديق فقط، لكنه لا يعطيك تقويم أم القرى، ولا ترقيم القوائم بالعربية، ولا اتصال حروف يصمد أمام رموز التصميم، ولا أسهماً تتبع اتجاه القراءة، ولا رقم هوية يبقى مقروءاً داخل جملة عربية. هذه أول ما يلاحظه أي فريق حكومي سعودي، ولذلك يهتم بها هذا النظام.',
@@ -3280,7 +3412,7 @@ const ar: typeof en = {
     title: 'كتل جاهزة، مركبة من العناصر الأساسية.',
     lead: 'طبقة فوق المكونات: أقسام كاملة تضعها في صفحتك، مثل النماذج والمؤشرات والجداول، مبنية بالكامل من مكونات dev-dga. عاين كلاً منها حياً بسمتك واتجاهك، ثم انسخ الكود.',
     preview: 'معاينة',
-    code: 'Code',
+    code: 'الكود',
     copy: 'نسخ الكود',
     copied: 'تم النسخ',
     toggleLang: 'اللغة',

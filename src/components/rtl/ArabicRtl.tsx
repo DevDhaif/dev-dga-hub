@@ -4,7 +4,6 @@ import { useState, type ReactNode } from 'react';
 import Link from 'next/link';
 import {
   Button,
-  CodeSnippet,
   DatePicker,
   DateRangePicker,
   DgaProvider,
@@ -25,6 +24,7 @@ import type { Dir } from '@/lib/locale';
 import { ArrowRight } from '@/components/icons';
 import './rtl.css';
 import { useHref } from '@/lib/use-href';
+import { CodeView } from '@/components/site/CodeView';
 
 
 const HIJRI_CODE = `import { DatePicker } from '@dev-dga/react';
@@ -268,7 +268,7 @@ export function ArabicRtl() {
             </ul>
 
             <div dir="ltr">
-              <CodeSnippet
+              <CodeView
                 languages={[{ value: 'tsx', label: 'DatePicker.tsx', code: HIJRI_CODE }]}
               />
             </div>
@@ -292,7 +292,7 @@ export function ArabicRtl() {
             </div>
             <p className="rtlp-note">{s.abjad.note}</p>
             <div dir="ltr">
-              <CodeSnippet languages={[{ value: 'tsx', label: 'List.tsx', code: ABJAD_CODE }]} />
+              <CodeView languages={[{ value: 'tsx', label: 'List.tsx', code: ABJAD_CODE }]} />
             </div>
           </Section>
 
@@ -324,7 +324,7 @@ export function ArabicRtl() {
             </div>
             <p className="rtlp-note">{s.joining.note}</p>
             <div dir="ltr">
-              <CodeSnippet
+              <CodeView
                 languages={[{ value: 'css', label: 'globals.css', code: JOINING_CODE }]}
                 lineNumbers={false}
               />
@@ -366,7 +366,7 @@ export function ArabicRtl() {
 
             <p className="rtlp-note">{s.keyboard.try}</p>
             <div dir="ltr">
-              <CodeSnippet
+              <CodeView
                 languages={[{ value: 'tsx', label: 'Tabs.tsx', code: KEYBOARD_CODE }]}
               />
             </div>
@@ -388,7 +388,7 @@ export function ArabicRtl() {
             </Preview>
             <p className="rtlp-note">{s.logical.note}</p>
             <div dir="ltr">
-              <CodeSnippet
+              <CodeView
                 languages={[{ value: 'css', label: 'card.css', code: LOGICAL_CODE }]}
                 lineNumbers={false}
               />
@@ -421,7 +421,7 @@ export function ArabicRtl() {
             </Preview>
             <p className="rtlp-note">{s.saudi.note}</p>
             <div dir="ltr">
-              <CodeSnippet
+              <CodeView
                 languages={[{ value: 'tsx', label: 'Fields.tsx', code: SAUDI_CODE }]}
               />
             </div>

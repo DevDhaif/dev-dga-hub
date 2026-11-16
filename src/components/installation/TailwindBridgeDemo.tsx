@@ -1,8 +1,9 @@
 'use client';
 
-import { CodeSnippet } from '@dev-dga/react';
+
 import { useCopy } from '@/lib/i18n';
 import { ThemeControls } from '@/components/site/ThemeControls';
+import { CodeView } from '@/components/site/CodeView';
 
 // The card below is bridge utilities only: no library component, no custom CSS.
 // DEMO_SOURCE mirrors its markup for the snippet; keep the two in sync.
@@ -91,7 +92,7 @@ export function TailwindBridgeDemo() {
 
       <p className="doc-subhead">{d.source}</p>
       <div dir="ltr">
-        <CodeSnippet languages={[{ value: 'tsx', label: 'ServiceCard.tsx', code: DEMO_SOURCE }]} />
+        <CodeView languages={[{ value: 'tsx', label: 'ServiceCard.tsx', code: DEMO_SOURCE }]} />
       </div>
     </div>
   );
