@@ -11,6 +11,8 @@ seoTitle: 'صورة رمزية: مكون Avatar ببديل نصي ومجموعا
 
 استخدم `AvatarGroup` لعرض عدة مشاركين بإيجاز، وحدد عدد عناصر المجموعة لتبقى مقروءة.
 
+أضف `border` حين تظهر صورة فاتحة أو أحرف بديلة على سطح فاتح، إذ يرسم الحلقة الداخلية من SDGA ليبقى حد الصورة واضحاً.
+
 ## Example: Image with fallback
 
 ```tsx
@@ -114,6 +116,28 @@ export default function Demo() {
         <AvatarFallback>عم</AvatarFallback>
       </Avatar>
     </AvatarGroup>
+  );
+}
+```
+
+## Example: Border
+
+```tsx
+import { Avatar, AvatarFallback } from '@dev-dga/react';
+
+export default function Demo() {
+  return (
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+      <Avatar border>
+        <AvatarFallback>أح</AvatarFallback>
+      </Avatar>
+      <Avatar size="xl" border>
+        <AvatarFallback>أح</AvatarFallback>
+      </Avatar>
+      <Avatar size="xl" shape="square" border>
+        <AvatarFallback>أح</AvatarFallback>
+      </Avatar>
+    </div>
   );
 }
 ```

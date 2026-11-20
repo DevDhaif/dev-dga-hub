@@ -11,6 +11,8 @@ seoTitle: 'قائمة منسدلة: مكون Dropdown مع بحث واختيار
 
 وفر `emptyMessage` لتظهر رسالة توضيحية حين لا يجد البحث نتائج.
 
+مرر `leadingIcon` لإظهار أيقونة بحجم 20px قبل القيمة، مثل أيقونة تقويم في حقل اختيار السنة. يبدل `helperIcon` الأيقونة التي تسبق النص المساعد، ويخفيها `null`.
+
 ## Example: Single select
 
 ```tsx
@@ -100,6 +102,30 @@ export default function Demo() {
           <DropdownItem value="node">Node.js</DropdownItem>
           <DropdownItem value="go">Go</DropdownItem>
         </DropdownGroup>
+      </Dropdown>
+    </div>
+  );
+}
+```
+
+## Example: Leading icon
+
+```tsx
+import { Dropdown, DropdownItem } from '@dev-dga/react';
+
+const Calendar = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+    <rect x="3" y="5" width="18" height="16" rx="2" />
+    <path d="M3 10h18M8 3v4M16 3v4" strokeLinecap="round" />
+  </svg>
+);
+
+export default function Demo() {
+  return (
+    <div style={{ maxWidth: 320 }}>
+      <Dropdown leadingIcon={<Calendar />} label="السنة المالية" placeholder="اختر سنة">
+        <DropdownItem value="2025">2025</DropdownItem>
+        <DropdownItem value="2026">2026</DropdownItem>
       </Dropdown>
     </div>
   );

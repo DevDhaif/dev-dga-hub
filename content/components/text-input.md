@@ -13,7 +13,7 @@ TextInput owns its label and field wiring. Use `helperText` and `errorMessage` f
 
 Use TextInput for short free-text values: names, national addresses, reference numbers, emails. Use Textarea for multi-line text, NumberInput for numeric values with steppers, and SearchBox for search.
 
-Put units, currency symbols, or icons in `startAdornment` and `endAdornment` rather than in the placeholder, so they stay visible after the user types. Use `helperText` for format hints such as the expected ID length.
+Put units, currency symbols, or icons in `startAdornment` and `endAdornment` rather than in the placeholder, so they stay visible after the user types. Use `helperText` for format hints such as the expected ID length. The helper text starts with the SDGA help-circle icon; pass `helperIcon` to swap it, or `null` to hide it.
 
 ## Example: Labelled field
 

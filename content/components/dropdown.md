@@ -15,6 +15,8 @@ Use Dropdown when a select needs search, multiple values, or grouped options: ch
 
 Provide `emptyMessage` so a search with no results still explains itself.
 
+Pass `leadingIcon` for a 20px icon before the value, such as a calendar on a year picker. `helperIcon` swaps the icon before the helper text, and `null` hides it.
+
 ## Example: Single select
 
 ```tsx
@@ -104,6 +106,30 @@ export default function Demo() {
           <DropdownItem value="node">Node.js</DropdownItem>
           <DropdownItem value="go">Go</DropdownItem>
         </DropdownGroup>
+      </Dropdown>
+    </div>
+  );
+}
+```
+
+## Example: Leading icon
+
+```tsx
+import { Dropdown, DropdownItem } from '@dev-dga/react';
+
+const Calendar = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden>
+    <rect x="3" y="5" width="18" height="16" rx="2" />
+    <path d="M3 10h18M8 3v4M16 3v4" strokeLinecap="round" />
+  </svg>
+);
+
+export default function Demo() {
+  return (
+    <div style={{ maxWidth: 320 }}>
+      <Dropdown leadingIcon={<Calendar />} label="Fiscal year" placeholder="Select a year">
+        <DropdownItem value="2025">2025</DropdownItem>
+        <DropdownItem value="2026">2026</DropdownItem>
       </Dropdown>
     </div>
   );

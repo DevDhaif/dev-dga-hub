@@ -15,6 +15,8 @@ Use Button for an action that changes something: submit a form, open a dialog, c
 
 Reserve the `primary` variant for the one main action on a screen and use `secondary` or `outline` for the rest. The `destructive` variants flag irreversible actions such as deleting a record. In government forms, keep the primary action at the inline end of the row so it lands on the same side in Arabic and English.
 
+For a toggle, such as a view or filter switch, set `aria-pressed`. The button shows the SDGA Selected fill, and screen readers announce it as pressed.
+
 ## Example: Variants
 
 ```tsx
@@ -109,6 +111,27 @@ export default function Demo() {
         Open the repository
       </a>
     </Button>
+  );
+}
+```
+
+## Example: Toggle (selected)
+
+```tsx
+import { useState } from 'react';
+import { Button } from '@dev-dga/react';
+
+export default function Demo() {
+  const [view, setView] = useState<'list' | 'grid'>('list');
+  return (
+    <div style={{ display: 'flex', gap: 8 }}>
+      <Button variant="outline" aria-pressed={view === 'list'} onClick={() => setView('list')}>
+        List
+      </Button>
+      <Button variant="outline" aria-pressed={view === 'grid'} onClick={() => setView('grid')}>
+        Grid
+      </Button>
+    </div>
   );
 }
 ```
