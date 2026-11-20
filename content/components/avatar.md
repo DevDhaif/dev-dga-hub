@@ -15,6 +15,8 @@ Use Avatar to represent a person or an organization in headers, comments, timeli
 
 Use `AvatarGroup` to show several participants compactly, and keep the group capped so it stays readable.
 
+Add `border` when a light photo or fallback sits on a light surface: it draws the SDGA inner ring so the edge stays visible.
+
 ## Example: Image with fallback
 
 ```tsx
@@ -118,6 +120,28 @@ export default function Demo() {
         <AvatarFallback>OM</AvatarFallback>
       </Avatar>
     </AvatarGroup>
+  );
+}
+```
+
+## Example: Border
+
+```tsx
+import { Avatar, AvatarFallback } from '@dev-dga/react';
+
+export default function Demo() {
+  return (
+    <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+      <Avatar border>
+        <AvatarFallback>AB</AvatarFallback>
+      </Avatar>
+      <Avatar size="xl" border>
+        <AvatarFallback>AB</AvatarFallback>
+      </Avatar>
+      <Avatar size="xl" shape="square" border>
+        <AvatarFallback>AB</AvatarFallback>
+      </Avatar>
+    </div>
   );
 }
 ```

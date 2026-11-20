@@ -13,7 +13,7 @@ Textarea shares the TextInput field contract. Set `rows` for the initial height 
 
 Use Textarea for free text longer than a line: complaint details, justification notes, or feedback. Set `rows` to show the expected length, and use `resize="none"` only when the layout cannot grow. For a single short value, use TextInput.
 
-If you enforce a maximum length, show the remaining count in `helperText` so users are not surprised on submit.
+If you enforce a maximum length, show the remaining count in `helperText` so users are not surprised on submit. The helper text starts with the SDGA help-circle icon; pass `helperIcon` to swap it, or `null` to hide it.
 
 ## Example: Message field
 

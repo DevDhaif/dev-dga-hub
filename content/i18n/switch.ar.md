@@ -11,6 +11,8 @@ seoTitle: 'مفتاح تبديل: مكون Switch للتشغيل والإيقا�
 
 اجعل التسمية اسم الإعداد نفسه: "تنبيهات البريد" أوضح من "تشغيل/إيقاف".
 
+في قائمة الإعدادات، مرر `labelPosition="start"` لتأتي التسمية أولاً ويصطف المفتاح في نهاية كل سطر. يعرض `checkIcon` علامة الصح من SDGA داخل المقبض حين يكون المفتاح مفعلاً.
+
 ## Example: Setting toggle
 
 ```tsx
@@ -50,6 +52,31 @@ export default function Demo() {
       <Switch label="مشاركة الموقع" error errorMessage="هذا مطلوب للمتابعة." />
     </div>
   );
+}
+```
+
+## Example: Settings list (label first)
+
+```tsx
+import { Switch } from '@dev-dga/react';
+
+export default function Demo() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 380 }}>
+      <Switch label="تنبيهات البريد" helperText="يرسل ملخصاً كل صباح." labelPosition="start" defaultChecked />
+      <Switch label="تنبيهات الرسائل النصية" labelPosition="start" />
+    </div>
+  );
+}
+```
+
+## Example: Check icon
+
+```tsx
+import { Switch } from '@dev-dga/react';
+
+export default function Demo() {
+  return <Switch label="تفعيل الإشعارات" checkIcon defaultChecked />;
 }
 ```
 

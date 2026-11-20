@@ -13,7 +13,7 @@ NumberInput holds `number | null`. `min`/`max` clamp the value, `step` sizes the
 
 Use NumberInput for quantities and counts the user might nudge: number of dependents, items, or years. `min` and `max` clamp the value and `step` sizes each increment, which suits fees and decimal amounts.
 
-Use TextInput with `inputMode="numeric"` for identifiers such as national IDs or phone numbers, because those are digits, not numbers. Set `hideControls` when steppers add noise in dense forms.
+Use TextInput with `inputMode="numeric"` for identifiers such as national IDs or phone numbers, because those are digits, not numbers. Set `hideControls` when steppers add noise in dense forms. The helper text starts with the SDGA help-circle icon; pass `helperIcon` to swap it, or `null` to hide it.
 
 ## Example: Quantity
 

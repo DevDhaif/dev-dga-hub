@@ -15,6 +15,8 @@ Use Switch for a setting that takes effect the moment it changes: notifications 
 
 Label the setting, not the states. "Email alerts" is clearer than "On/Off".
 
+In a settings list, pass `labelPosition="start"` so the label leads and the switch lines up at the end of each row. `checkIcon` shows the SDGA check inside the thumb while the switch is on.
+
 ## Example: Setting toggle
 
 ```tsx
@@ -64,6 +66,31 @@ import { Switch } from '@dev-dga/react';
 
 export default function Demo() {
   return <Switch label="تفعيل الإشعارات" defaultChecked />;
+}
+```
+
+## Example: Settings list (label first)
+
+```tsx
+import { Switch } from '@dev-dga/react';
+
+export default function Demo() {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 380 }}>
+      <Switch label="Email alerts" helperText="Sends a summary every morning." labelPosition="start" defaultChecked />
+      <Switch label="SMS alerts" labelPosition="start" />
+    </div>
+  );
+}
+```
+
+## Example: Check icon
+
+```tsx
+import { Switch } from '@dev-dga/react';
+
+export default function Demo() {
+  return <Switch label="Enable notifications" checkIcon defaultChecked />;
 }
 ```
 

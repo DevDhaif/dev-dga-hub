@@ -11,6 +11,8 @@ seoTitle: 'زر: مكون Button متاح الوصول لمنصات React الح
 
 اجعل النمط `primary` للإجراء الرئيسي الوحيد في الشاشة، واستخدم `secondary` أو `outline` للبقية. تنبه أنماط `destructive` إلى الإجراءات التي لا يمكن التراجع عنها، مثل حذف سجل. في النماذج الحكومية، ضع الإجراء الرئيسي في نهاية الصف ليظهر في الجهة نفسها بالعربية والإنجليزية.
 
+لزر التبديل، مثل اختيار طريقة العرض أو المرشح، اضبط `aria-pressed`. يظهر الزر بلون حالة التحديد من SDGA، ويعلنه قارئ الشاشة زراً مضغوطاً.
+
 ## Example: Variants
 
 ```tsx
@@ -90,6 +92,27 @@ export default function Demo() {
         افتح المستودع
       </a>
     </Button>
+  );
+}
+```
+
+## Example: Toggle (selected)
+
+```tsx
+import { useState } from 'react';
+import { Button } from '@dev-dga/react';
+
+export default function Demo() {
+  const [view, setView] = useState<'list' | 'grid'>('list');
+  return (
+    <div style={{ display: 'flex', gap: 8 }}>
+      <Button variant="outline" aria-pressed={view === 'list'} onClick={() => setView('list')}>
+        قائمة
+      </Button>
+      <Button variant="outline" aria-pressed={view === 'grid'} onClick={() => setView('grid')}>
+        شبكة
+      </Button>
+    </div>
   );
 }
 ```
